@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "94905449557",
+    "project_id": "sab-digital-banking-ux",
+    "storage_bucket": "sab-digital-banking-ux.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94905449557:android:f8ab7208db354bb1cb28dc",
+        "android_client_info": {
+          "package_name": "com.sabdesignsystem.demoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsqKMMAxjKi04TAuaj1W5LqwU6IRgYfAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94905449557:android:4eacbc8b9e0e9a5ecb28dc",
+        "android_client_info": {
+          "package_name": "com.sabdesignsystem.sb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsqKMMAxjKi04TAuaj1W5LqwU6IRgYfAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,19 @@
+pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
+plugins { id("com.facebook.react.settings") }
+extensions.configure(com.facebook.react.ReactSettingsExtension){ ex ->
+    // Android Studio / GUI launches often omit Homebrew + nvm from PATH.
+    // Prepend common Node locations so autolinking works on Apple Silicon and Intel Macs.
+    def nodePathFix = [
+        'sh',
+        '-c',
+        'export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.nvm/versions/node/$(ls \"$HOME/.nvm/versions/node\" 2>/dev/null | tail -1)/bin:$PATH"; npx @react-native-community/cli config'
+    ]
+    if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+        ex.autolinkLibrariesFromCommand(nodePathFix)
+    } else {
+        ex.autolinkLibrariesFromCommand()
+    }
+}
+rootProject.name = 'SabDesignSystem'
+include ':app'
+includeBuild('../node_modules/@react-native/gradle-plugin')

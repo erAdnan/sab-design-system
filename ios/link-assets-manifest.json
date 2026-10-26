@@ -1,0 +1,65 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/HSBC_MtUniversArabic-Medium.ttf",
+      "sha1": "eff6bd377316e4b891f4113f545f5281631c8c14"
+    },
+    {
+      "path": "src/assets/fonts/SARFont.ttf",
+      "sha1": "0e155421969865cec94237315369c435e518cc32"
+    },
+    {
+      "path": "src/assets/fonts/Univers Arabic forHSBC Bold.ttf",
+      "sha1": "6b0cb24a9599ac1e88a8a56d4a2c30decce87afe"
+    },
+    {
+      "path": "src/assets/fonts/Univers Arabic forHSBC Light.ttf",
+      "sha1": "3bebfe09f126cf3c5a1bc663d127f6908ff00847"
+    },
+    {
+      "path": "src/assets/fonts/Univers Arabic forHSBC Thin.ttf",
+      "sha1": "8e7200c80a55b4ab4db246da68dde60f2a425386"
+    },
+    {
+      "path": "src/assets/fonts/Univers0.ttf",
+      "sha1": "2e65e8450505b66829ea4f7de1ba5be5b625436b"
+    },
+    {
+      "path": "src/assets/fonts/UniversArabicforHSBC-Bold.ttf",
+      "sha1": "6b0cb24a9599ac1e88a8a56d4a2c30decce87afe"
+    },
+    {
+      "path": "src/assets/fonts/UniversArabicforHSBC.ttf",
+      "sha1": "b8158794a562cb9055dcd1aa2ee7e826e4ffaeb9"
+    },
+    {
+      "path": "src/assets/fonts/UniversArabicforHSBCLight.ttf",
+      "sha1": "3bebfe09f126cf3c5a1bc663d127f6908ff00847"
+    },
+    {
+      "path": "src/assets/fonts/UniversNextforHSBC-Bold.ttf",
+      "sha1": "5545acb43ff7ecb6d934e9d43aa769ae987b0955"
+    },
+    {
+      "path": "src/assets/fonts/UniversNextforHSBC-BoldTwo.ttf",
+      "sha1": "551c7f745d258042f9c8245d09bbafdf47a09ba9"
+    },
+    {
+      "path": "src/assets/fonts/UniversNextforHSBC-Light.ttf",
+      "sha1": "a3616e1ca92ceb11353092f065de17a33be08567"
+    },
+    {
+      "path": "src/assets/fonts/UniversNextforHSBC-Medium.ttf",
+      "sha1": "bc071271e7841de78beab4f0483cdfd8e7d2df72"
+    },
+    {
+      "path": "src/assets/fonts/UniversNextforHSBC-Regular.ttf",
+      "sha1": "1a1968210b359178ac0e50964b6efac47138e622"
+    },
+    {
+      "path": "src/assets/fonts/UniversNextforHSBC-Thin.ttf",
+      "sha1": "c920be8d4e37f75b0de8a9a6e79b262ad65d377a"
+    }
+  ]
+}

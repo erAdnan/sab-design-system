@@ -1,0 +1,112 @@
+# frozen_string_literal: true
+#
+# Fastlane Match — shared signing assets for SAB Design System
+# Docs: https://docs.fastlane.tools/actions/match/
+#
+# Remote git storage layout (created by `match` when you sync each type):
+#
+#   certificates.git/
+#     certs/
+#       development/          # Apple Development certs
+#       distribution/         # Apple Distribution certs
+#     profiles/
+#       development/          # development profiles
+#       adhoc/                # ad-hoc (Firebase App Distribution)
+#       appstore/             # App Store / TestFlight
+#       enterprise/           # In-House (Apple Developer Enterprise only)
+#
+# Clone URL can be overridden with MATCH_GIT_URL or GIT_CREDENTIALS_REPO_URL.
+
+# Matchfile is eval'd by Fastlane — __dir__ is unreliable. Resolve project root from PWD / cwd.
+require "pathname"
+require "dotenv"
+
+_match_project_root = begin
+  root = ENV["PWD"]
+  if root && File.directory?(root) && File.exist?(File.join(root, "package.json"))
+    root
+  elsif File.exist?(File.join(Dir.pwd, "package.json"))
+    Dir.pwd
+  elsif File.exist?(File.join(Dir.pwd, "..", "package.json"))
+    File.expand_path("..", Dir.pwd)
+  else
+    File.expand_path("..", __dir__)
+  end
+end
+
+# Bare `fastlane match` does not load Fastfile lanes — load ENVFILE here when set.
+_envfile = ENV["ENVFILE"].to_s.strip
+unless _envfile.empty?
+  _env_path = Pathname.new(_envfile).absolute? ? _envfile : File.expand_path(_envfile, _match_project_root)
+  Dotenv.overload(_env_path) if File.exist?(_env_path)
+end
+
+git_url(ENV["MATCH_GIT_URL"] || ENV["GIT_CREDENTIALS_REPO_URL"] || "https://github.com/SABDigitalBank/certificates.git")
+git_branch(ENV["MATCH_GIT_BRANCH"] || ENV["GIT_CREDENTIALS_REPO_BRANCH"] || "main")
+
+storage_mode("git")
+
+# Default for Firebase / internal IPA distribution. Override per-lane or MATCH_TYPE=
+# (adhoc | appstore | development | enterprise).
+type(ENV["MATCH_TYPE"] || ENV["GIT_TYPE"] || "adhoc")
+
+# Both iOS product flavors share this Match repo.
+app_identifier(
+  if ENV["APP_IDENTIFIER"].to_s.strip.empty?
+    ["com.sabdesignsystem.sb"]
+  else
+    [ENV["APP_IDENTIFIER"]]
+  end
+)
+
+_team = ENV["team_id"] || ENV["TEAM_ID"]
+team_id(_team) if _team.to_s.strip != ""
+
+# Prefer App Store Connect API key (.p8) — avoids Apple ID login + keychain reset prompts.
+# Reads APPSTORE_* (project env files) or APP_STORE_CONNECT_API_KEY_* (official Fastlane names).
+_asc_key_id = ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"] || ENV["APPSTORE_KEY_ID"]
+_asc_issuer = ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"] || ENV["APPSTORE_ISSUER_ID"]
+_asc_key_path = ENV["APP_STORE_CONNECT_API_KEY_KEY_FILEPATH"] || ENV["CERTIFICATE_PATH"]
+if _asc_key_id.to_s.strip != "" && _asc_issuer.to_s.strip != "" && _asc_key_path.to_s.strip != ""
+  require "json"
+  require "tmpdir"
+
+  unless Pathname.new(_asc_key_path).absolute?
+    _candidates = [
+      File.expand_path(_asc_key_path, _match_project_root),
+      File.expand_path(_asc_key_path, Dir.pwd),
+      File.expand_path(File.basename(_asc_key_path), File.join(_match_project_root, "fastlane")),
+      File.expand_path(File.basename(_asc_key_path), Dir.pwd)
+    ]
+    _asc_key_path = _candidates.find { |p| File.file?(p) } || _candidates.first
+  end
+
+  ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"] = _asc_key_id
+  ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"] = _asc_issuer
+  ENV["APP_STORE_CONNECT_API_KEY_KEY_FILEPATH"] = _asc_key_path
+
+  _api_key_json = File.join(Dir.tmpdir, "sab_match_asc_api_key.json")
+  File.write(
+    _api_key_json,
+    JSON.generate(
+      key_id: _asc_key_id,
+      issuer_id: _asc_issuer,
+      key: File.read(_asc_key_path),
+      duration: 1200,
+      in_house: false
+    )
+  )
+  api_key_path(_api_key_json)
+end
+
+# CI stays readonly (won't create certs). Local seed creates unless MATCH_READONLY=true.
+readonly(
+  if ENV.key?("MATCH_READONLY")
+    ENV["MATCH_READONLY"] != "false"
+  else
+    !ENV["CI"].to_s.empty?
+  end
+)
+
+# Verbose clone errors help when GitHub auth fails on CI.
+verbose(true)

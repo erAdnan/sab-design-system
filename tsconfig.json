@@ -1,0 +1,11 @@
+{
+  "extends": "@react-native/typescript-config",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@sab/design-system": ["src/index.ts"],
+      "@sab/design-system/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*", "stories/**/*", ".storybook/**/*", "index.js", "index.storybook.js"]
+}

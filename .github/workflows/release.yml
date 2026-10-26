@@ -1,0 +1,364 @@
+name: Release
+
+# Storybook device builds (Firebase or stores) and npm publish for @sab/design-system.
+# Run workflow and choose patch, minor, or major. After the selected builds succeed,
+# this commits the new version to main, tags vX.Y.Z, and publishes the package.
+#
+# iOS signing uses the same Match repo as the demo app:
+# https://github.com/SABDigitalBank/certificates.git
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version bump
+        required: true
+        type: choice
+        options: [patch, minor, major]
+      platform:
+        description: Storybook platforms to build
+        required: true
+        type: choice
+        default: both
+        options: [both, android, ios, none]
+      channel:
+        description: Distribution channel
+        required: true
+        type: choice
+        default: firebase
+        options: [firebase, store]
+      skip_distribution:
+        description: Build Storybook only (skip Firebase / store upload). npm still publishes.
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: sab-design-system-release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+  SLACK_THUMB_URL: ${{ secrets.SLACK_THUMB_URL }}
+
+jobs:
+  prepare:
+    name: Prepare
+    runs-on: self-hosted
+    outputs:
+      android_storybook: ${{ steps.matrix.outputs.android_storybook }}
+      ios_storybook: ${{ steps.matrix.outputs.ios_storybook }}
+      has_android: ${{ steps.matrix.outputs.has_android }}
+      has_ios: ${{ steps.matrix.outputs.has_ios }}
+      channel: ${{ steps.matrix.outputs.channel }}
+      skip_distribution: ${{ steps.matrix.outputs.skip_distribution }}
+      version: ${{ steps.version.outputs.version }}
+      workspace: ${{ steps.workspace.outputs.path }}
+    steps:
+      - name: Fix tool cache for self-hosted macOS
+        run: |
+          set -euo pipefail
+          TOOL_CACHE="${RUNNER_TOOL_CACHE:-$HOME/actions-runner/_work/_tool}"
+          mkdir -p "$TOOL_CACHE" "$HOME/hostedtoolcache" "$HOME/actions-runner/shared"
+          {
+            echo "RUNNER_TOOL_CACHE=$TOOL_CACHE"
+            echo "AGENT_TOOLSDIRECTORY=$TOOL_CACHE"
+            echo "PATH=/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:${PATH}"
+          } >> "$GITHUB_ENV"
+
+      - name: Unlock workspace for checkout
+        run: |
+          set -euo pipefail
+          WS="${GITHUB_WORKSPACE}"
+          mkdir -p "$WS"
+          chmod -R u+w "$WS" 2>/dev/null || true
+          rm -f "$WS/.git/index.lock" 2>/dev/null || true
+          if [ -d "$WS/.git" ]; then
+            chmod -R u+w "$WS/.git" 2>/dev/null || true
+            rm -rf "$WS/.git"
+          fi
+          for p in "$WS/android/app/build" "$WS/android/build" "$WS/ios/build" "$WS/build"; do
+            rm -rf "$p" 2>/dev/null || true
+          done
+
+      - uses: actions/checkout@v6
+        with:
+          clean: false
+          fetch-depth: 1
+          fetch-tags: false
+          persist-credentials: true
+
+      - name: Fetch this branch and version tags
+        run: |
+          set -euo pipefail
+          BRANCH="${GITHUB_REF_NAME}"
+          git config --unset-all remote.origin.fetch || true
+          git config --add remote.origin.fetch "+refs/heads/${BRANCH}:refs/remotes/origin/${BRANCH}"
+          git fetch --no-tags --prune origin "+refs/heads/${BRANCH}:refs/remotes/origin/${BRANCH}"
+          git fetch origin "refs/tags/v*:refs/tags/v*" --force || true
+          git checkout -B "$BRANCH"
+          echo "Checkout OK at $(git rev-parse --short HEAD) (branch=${BRANCH})"
+
+      - name: Bump version
+        id: version
+        run: |
+          set -euo pipefail
+          npm version "${{ inputs.bump }}" --no-git-tag-version
+          VERSION="$(node -p "require('./package.json').version")"
+          mkdir -p .ci
+          echo "$VERSION" > .ci/release-version
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Next version: $VERSION"
+
+      - name: Record shared workspace
+        id: workspace
+        run: |
+          set -euo pipefail
+          echo "path=${GITHUB_WORKSPACE}" >> "$GITHUB_OUTPUT"
+          printf '%s\n' "$GITHUB_WORKSPACE" > "$HOME/actions-runner/shared/last-workspace"
+
+      - name: Resolve build matrix
+        id: matrix
+        env:
+          EVENT_NAME: workflow_dispatch
+          VARIANT: storybook
+          PLATFORM: ${{ inputs.platform == 'both' && 'all' || inputs.platform }}
+          CHANNEL: ${{ inputs.channel }}
+          SKIP_DIST: ${{ inputs.skip_distribution }}
+        run: |
+          set -euo pipefail
+          if [ "${PLATFORM}" = "none" ]; then
+            mkdir -p .ci
+            echo "[]" > .ci/android-matrix.json
+            echo "[]" > .ci/ios-matrix.json
+            echo "false" > .ci/skip_distribution
+            {
+              echo "android_storybook=false"
+              echo "ios_storybook=false"
+              echo "has_android=false"
+              echo "has_ios=false"
+              echo "channel=${CHANNEL}"
+              echo "skip_distribution=true"
+            } >> "$GITHUB_OUTPUT"
+          else
+            bash .github/scripts/ci-resolve-matrix.sh
+          fi
+
+      - name: Export Android SDK env
+        if: steps.matrix.outputs.has_android == 'true'
+        run: |
+          set -euo pipefail
+          SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          if [ -z "$SDK" ] && [ -d "$HOME/Library/Android/sdk" ]; then
+            SDK="$HOME/Library/Android/sdk"
+          fi
+          if [ -z "$SDK" ] || [ ! -d "$SDK" ]; then
+            echo "::error::Android SDK not found. Set ANDROID_HOME on the runner."
+            exit 1
+          fi
+          {
+            echo "ANDROID_HOME=$SDK"
+            echo "ANDROID_SDK_ROOT=$SDK"
+          } >> "$GITHUB_ENV"
+
+      - name: Write android/local.properties
+        if: steps.matrix.outputs.has_android == 'true'
+        run: |
+          set -euo pipefail
+          {
+            echo "sdk.dir=${ANDROID_HOME}"
+            command -v node >/dev/null && echo "NODE_BINARY=$(command -v node)"
+          } > android/local.properties
+
+      - name: Select Xcode 26+
+        if: steps.matrix.outputs.has_ios == 'true'
+        run: |
+          set -euo pipefail
+          CANDIDATES=(
+            /Applications/Xcode_27.0.app /Applications/Xcode_27.app /Applications/Xcode.app
+            /Applications/Xcode_26.3.app /Applications/Xcode_26.2.app /Applications/Xcode_26.1.1.app
+            /Applications/Xcode_26.1.app /Applications/Xcode_26.0.1.app /Applications/Xcode_26.0.app
+            /Applications/Xcode_26.app
+          )
+          SELECTED=""
+          for app in "${CANDIDATES[@]}"; do
+            [ -d "$app" ] && SELECTED="$app" && break
+          done
+          if [ -z "$SELECTED" ]; then
+            echo "::error::No Xcode 26+ found."
+            exit 1
+          fi
+          DEV_DIR="${SELECTED}/Contents/Developer"
+          echo "DEVELOPER_DIR=${DEV_DIR}" >> "$GITHUB_ENV"
+          export DEVELOPER_DIR="$DEV_DIR"
+          sudo -n xcode-select -s "$SELECTED" 2>/dev/null || true
+          xcodebuild -version
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          package-manager-cache: false
+
+      - name: Verify Homebrew Ruby 3+
+        if: steps.matrix.outputs.has_android == 'true' || steps.matrix.outputs.has_ios == 'true'
+        run: |
+          set -euo pipefail
+          export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:${PATH}"
+          ruby -v
+          ruby_major="$(ruby -e 'print RUBY_VERSION.split(".")[0]')"
+          if [ "${ruby_major}" -lt 3 ]; then
+            echo "::error::Need Homebrew Ruby 3+ (brew install ruby)"
+            exit 1
+          fi
+          command -v bundle >/dev/null || gem install bundler
+
+      - uses: actions/setup-java@v5
+        if: steps.matrix.outputs.has_android == 'true'
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Persist tool env for build jobs
+        if: steps.matrix.outputs.has_android == 'true' || steps.matrix.outputs.has_ios == 'true'
+        run: |
+          set -euo pipefail
+          {
+            echo "export PATH=$(printf %q "$PATH")"
+            echo "export JAVA_HOME=$(printf %q "${JAVA_HOME:-}")"
+            echo "export ANDROID_HOME=$(printf %q "${ANDROID_HOME:-}")"
+            echo "export ANDROID_SDK_ROOT=$(printf %q "${ANDROID_SDK_ROOT:-}")"
+            [ -n "${DEVELOPER_DIR:-}" ] && echo "export DEVELOPER_DIR=$(printf %q "$DEVELOPER_DIR")"
+          } > "$HOME/actions-runner/shared/tool-env.sh"
+          if [ -n "${DEVELOPER_DIR:-}" ]; then
+            printf 'export DEVELOPER_DIR=%q\n' "$DEVELOPER_DIR" > "$HOME/actions-runner/shared/xcode.env"
+          fi
+
+      - name: Install JS deps
+        if: steps.matrix.outputs.has_android == 'true' || steps.matrix.outputs.has_ios == 'true'
+        run: yarn install --frozen-lockfile
+
+      - name: Install Ruby gems
+        if: steps.matrix.outputs.has_android == 'true' || steps.matrix.outputs.has_ios == 'true'
+        run: yarn bundle:install
+
+      - name: CocoaPods
+        if: steps.matrix.outputs.has_ios == 'true'
+        run: |
+          set -euo pipefail
+          echo "export NODE_BINARY=$(command -v node)" > ios/.xcode.env.local
+          ./scripts/run-bundle.sh exec bash -c 'cd ios && exec pod install'
+
+      - name: Write Android keystore
+        if: steps.matrix.outputs.has_android == 'true'
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          set -euo pipefail
+          [ -n "${ANDROID_KEYSTORE_BASE64:-}" ] || { echo "Missing ANDROID_KEYSTORE_BASE64"; exit 1; }
+          printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/app/sbds-release-key.keystore
+
+      - name: Write Firebase service account
+        if: steps.matrix.outputs.has_android == 'true' || steps.matrix.outputs.has_ios == 'true'
+        env:
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          set -euo pipefail
+          if [ "${{ inputs.skip_distribution }}" = "true" ]; then
+            exit 0
+          fi
+          DEST="firebase/sab-digital-banking-ux-firebase-adminsdk-fbsvc-df4e162a30.json"
+          mkdir -p firebase
+          if [ -n "${FIREBASE_SERVICE_ACCOUNT_JSON:-}" ]; then
+            printf '%s\n' "$FIREBASE_SERVICE_ACCOUNT_JSON" > "$DEST"
+          elif [ ! -f "$DEST" ]; then
+            echo "Missing FIREBASE_SERVICE_ACCOUNT_JSON"
+            exit 1
+          fi
+
+  android-storybook:
+    name: Android · Storybook
+    needs: prepare
+    if: needs.prepare.outputs.android_storybook == 'true'
+    runs-on: self-hosted
+    steps:
+      - name: Enter shared workspace
+        run: bash "${{ needs.prepare.outputs.workspace }}/.github/scripts/ci-enter-workspace.sh" "${{ needs.prepare.outputs.workspace }}"
+      - uses: actions/setup-java@v5
+        with: { distribution: temurin, java-version: "17" }
+      - name: Build + distribute Android Storybook
+        working-directory: ${{ needs.prepare.outputs.workspace }}
+        env:
+          SHARED_WORKSPACE: ${{ needs.prepare.outputs.workspace }}
+          ENV_STORYBOOK: ${{ secrets.ENV_STORYBOOK }}
+          ENV_STORYBOOK_PROD: ${{ secrets.ENV_STORYBOOK_PROD }}
+          PLAY_STORE_JSON: ${{ secrets.PLAY_STORE_JSON }}
+        run: bash .github/scripts/ci-build-one.sh android storybook
+
+  ios-storybook:
+    name: iOS · Storybook
+    needs: prepare
+    if: needs.prepare.outputs.ios_storybook == 'true'
+    runs-on: self-hosted
+    steps:
+      - name: Enter shared workspace
+        run: bash "${{ needs.prepare.outputs.workspace }}/.github/scripts/ci-enter-workspace.sh" "${{ needs.prepare.outputs.workspace }}"
+      - name: Build + distribute iOS Storybook
+        working-directory: ${{ needs.prepare.outputs.workspace }}
+        env:
+          SHARED_WORKSPACE: ${{ needs.prepare.outputs.workspace }}
+          ENV_STORYBOOK: ${{ secrets.ENV_STORYBOOK }}
+          ENV_STORYBOOK_PROD: ${{ secrets.ENV_STORYBOOK_PROD }}
+          ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+          MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
+          MATCH_GIT_BRANCH: ${{ secrets.MATCH_GIT_BRANCH }}
+        run: bash .github/scripts/ci-build-one.sh ios storybook
+
+  publish:
+    name: Commit version, tag, publish npm
+    needs: [prepare, android-storybook, ios-storybook]
+    if: |
+      always() &&
+      needs.prepare.result == 'success' &&
+      (needs.prepare.outputs.android_storybook != 'true' || needs.android-storybook.result == 'success') &&
+      (needs.prepare.outputs.ios_storybook != 'true' || needs.ios-storybook.result == 'success')
+    runs-on: self-hosted
+    steps:
+      - name: Enter shared workspace
+        run: bash "${{ needs.prepare.outputs.workspace }}/.github/scripts/ci-enter-workspace.sh" "${{ needs.prepare.outputs.workspace }}"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          registry-url: ${{ secrets.NPM_REGISTRY || 'https://registry.npmjs.org' }}
+      - name: Commit version and tag
+        id: tag
+        working-directory: ${{ needs.prepare.outputs.workspace }}
+        run: |
+          set -euo pipefail
+          VERSION="$(tr -d '[:space:]' < .ci/release-version)"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add package.json
+          git add android/app/build.gradle ios/SabDesignSystem.xcodeproj/project.pbxproj ios/SabDesignSystem/Info.plist || true
+          git status --short
+          git commit -m "chore: release v${VERSION}"
+          git tag "v${VERSION}"
+          git push origin HEAD:main
+          git push origin "v${VERSION}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+      - name: Publish npm package
+        working-directory: ${{ needs.prepare.outputs.workspace }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${NODE_AUTH_TOKEN:-}" ]; then
+            echo "::error::Add the NPM_TOKEN secret. Do not commit it."
+            exit 1
+          fi
+          npm publish --access restricted

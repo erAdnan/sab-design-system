@@ -1,0 +1,4 @@
+<resources>
+    <!-- Overridden by productFlavors via resValue in app/build.gradle -->
+    <string name="app_name">SAB DS DemoApp</string>
+</resources>

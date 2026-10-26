@@ -1,0 +1,833 @@
+# frozen_string_literal: true
+#
+# SAB Design System — Fastlane release lanes
+# Variants: Demo (demoapp / SABDSDemo) and Storybook (sb / SABDS)
+# Docs: https://docs.fastlane.tools/
+#
+require "dotenv"
+require "date"
+require "shellwords"
+
+def project_root
+  # Fastlane executes with cwd = ./fastlane; prefer the shell PWD (project root).
+  root = ENV["PWD"]
+  return root if root && File.directory?(root) && File.exist?(File.join(root, "package.json"))
+
+  File.expand_path("..", __dir__)
+end
+
+# `def` helpers cannot see Fastfile locals — always load via this method.
+def package_json
+  path = File.join(project_root, "package.json")
+  load_json(json_path: path)
+end
+
+def app_version
+  package_json["version"].to_s
+end
+
+def load_env_file(env_file)
+  return if env_file.to_s.strip.empty?
+
+  path = env_file
+  path = File.expand_path(path, project_root) unless Pathname.new(path).absolute?
+  if File.exist?(path)
+    UI.message("Loading env file: #{path}")
+    Dotenv.overload(path)
+  else
+    UI.user_error!("Env file not found: #{path}. Copy the matching .env.*.example and fill in secrets.")
+  end
+end
+
+# Firebase App Distribution accepts tester emails and group aliases as two
+# different request fields. Accept a comma-separated mix and route each value.
+def firebase_distribution_recipient_options(destinations)
+  values = destinations.to_s.split(",").map(&:strip).reject(&:empty?)
+  testers, groups = values.partition { |value| value.match?(/\A[^@\s]+@[^@\s]+\z/) }
+  options = {}
+  options[:testers] = testers.join(",") unless testers.empty?
+  options[:groups] = groups.join(",") unless groups.empty?
+  options
+end
+
+# ---------------------------------------------------------------------------
+# Release notes from last channel tag → HEAD.
+# Tags are created once by CI (tag-release job), not per build:
+#   v{VERSION}-{channel}   e.g. v1.0.0-firebase
+#   v{VERSION}-{channel}.{run} when the same version is rebuilt
+# ---------------------------------------------------------------------------
+
+def release_channel_name(options = {})
+  return "store" if store_release?(options)
+
+  value = options[:RELEASE_CHANNEL] || ENV["RELEASE_CHANNEL"] || ENV["BUILD_RELEASE_TYPE"]
+  value.to_s.strip.empty? ? "firebase" : value.to_s.strip.downcase
+end
+
+def list_git_tags
+  out = sh("git tag --list", log: false).to_s
+  out.split("\n").map(&:strip).reject(&:empty?)
+rescue StandardError
+  []
+end
+
+# latest_tag=$(git tag | grep 'v.*-sit$' | sort -V | tail -1)
+# Ours:        latest among v*-{channel} and v*-{channel}.{run}
+def last_release_tag(channel:)
+  tags = list_git_tags
+  return nil if tags.empty?
+
+  # Exact channel tags only (never match v*-firebase-demo-android as "latest").
+  re_channel = /\Av?\d[\w.]*-#{Regexp.escape(channel)}(\.\d+)?\z/i
+  family = tags.select { |t| t.match?(re_channel) }
+
+  unless family.empty?
+    # Prefer version sort (sort -V | tail -1).
+    sorted =
+      begin
+        require "open3"
+        out, status = Open3.capture2("sort", "-V", stdin_data: "#{family.join("\n")}\n")
+        status.success? ? out.split("\n").map(&:strip).reject(&:empty?) : family.sort
+      rescue StandardError
+        family.sort
+      end
+    return sorted.last
+  end
+
+
+  # First pipeline / migration: any prior tag, then git describe.
+  begin
+    sh("git describe --tags --abbrev=0", log: false).strip
+  rescue StandardError
+    nil
+  end
+end
+
+# Firebase App Distribution release notes are length-capped; keep Slack/Firebase usable.
+FIREBASE_RELEASE_NOTES_MAX = 3500
+
+def format_commits_as_release_notes(commit_titles, since_label:)
+  lines = commit_titles.to_s.split("\n").map(&:strip).reject(&:empty?)
+  lines = lines.reject { |l| l.match?(/\AMerge (pull request|branch|remote-tracking)/i) }
+
+  features = lines.select { |l| l.match?(/\Afeat(\(|:|\/|\s)/i) || l.match?(/\Afeature(\(|:|\/|\s)/i) }
+  fixes = lines.select { |l| l.match?(/\Afix(\(|:|\/|\s)/i) || l.match?(/\Abugfix(\(|:|\/|\s)/i) }
+  chores = lines.select { |l| l.match?(/\A(chore|build|ci|docs|refactor|perf|test)(\(|:|\/|\s)/i) }
+  used = (features + fixes + chores).uniq
+  other = lines - used
+
+  parts = []
+  parts << "Commits since #{since_label} (#{lines.length}):"
+  parts << ""
+  unless features.empty?
+    parts << "Features (#{features.length})"
+    features.each { |l| parts << "* #{l}" }
+    parts << ""
+  end
+  unless fixes.empty?
+    parts << "Fixes (#{fixes.length})"
+    fixes.each { |l| parts << "* #{l}" }
+    parts << ""
+  end
+  unless chores.empty?
+    parts << "Chore / CI / Docs (#{chores.length})"
+    chores.each { |l| parts << "* #{l}" }
+    parts << ""
+  end
+  unless other.empty?
+    parts << "Other (#{other.length})"
+    other.each { |l| parts << "* #{l}" }
+  end
+  parts.join("\n").strip
+end
+
+def truncate_release_notes(notes, max: FIREBASE_RELEASE_NOTES_MAX)
+  text = notes.to_s
+  return text if text.length <= max
+
+  "#{text[0, max - 40].rstrip}\n\n… truncated (#{text.length} chars total)"
+end
+
+def release_notes_from_git(options = {})
+  UI.message("Fetching commits for release notes…")
+  channel = release_channel_name(options)
+
+  begin
+    last_tag = last_release_tag(channel: channel)
+    if last_tag && !last_tag.empty?
+      UI.message("Release notes baseline tag: #{last_tag} (channel=#{channel})")
+      # All commits since last channel tag (user requirement;.
+      commit_titles = sh("git log #{Shellwords.escape(last_tag)}..HEAD --pretty=%s", log: false)
+      notes = format_commits_as_release_notes(commit_titles, since_label: last_tag)
+      return truncate_release_notes(notes) unless notes.empty? || notes.end_with?("(0):")
+    end
+  rescue StandardError => e
+    UI.message("Could not derive notes from tags (#{e.message}); using recent commits.")
+  end
+
+  begin
+    commit_titles = sh("git log -30 --pretty=%s", log: false)
+    truncate_release_notes(
+      format_commits_as_release_notes(commit_titles, since_label: "recent commits")
+    )
+  rescue StandardError
+    "No release notes available"
+  end
+end
+
+def store_release?(options)
+  value = options[:BUILD_RELEASE_TYPE] || ENV["BUILD_RELEASE_TYPE"]
+  value.to_s == "store"
+end
+
+def skip_distribution?(options)
+  value = options[:SKIP_DISTRIBUTION] || ENV["SKIP_DISTRIBUTION"]
+  %w[1 true yes].include?(value.to_s.downcase)
+end
+
+# Dotenv sets KEY= to "" — empty strings are truthy in Ruby, so use this.
+def env_value(*keys)
+  keys.each do |key|
+    value = ENV[key.to_s]
+    return value unless value.nil? || value.strip.empty?
+  end
+  nil
+end
+
+def env_present?(*keys)
+  !env_value(*keys).nil?
+end
+
+# Map gym export_method → match type (profiles/<type>/ in certificates.git).
+def match_type_for_export_method(export_method)
+  case export_method.to_s.strip.downcase
+  when "ad-hoc", "adhoc" then "adhoc"
+  when "app-store", "appstore" then "appstore"
+  when "development", "developer" then "development"
+  when "enterprise", "in-house", "inhouse" then "enterprise"
+  else
+    ENV["MATCH_TYPE"] || ENV["GIT_TYPE"] || "adhoc"
+  end
+end
+
+def match_profile_name(match_type, bundle_id)
+  prefix =
+    case match_type.to_s
+    when "adhoc" then "match AdHoc"
+    when "appstore" then "match AppStore"
+    when "development" then "match Development"
+    when "enterprise" then "match InHouse"
+    else
+      "match #{match_type}"
+    end
+  "#{prefix} #{bundle_id}"
+end
+
+# Sync certs/profiles from SABDigitalBank/certificates (readonly on CI).
+def sync_codesigning_with_match(bundle_id:, export_method:, readonly: true)
+  mtype = match_type_for_export_method(export_method)
+  git_url =
+    env_value("MATCH_GIT_URL", "GIT_CREDENTIALS_REPO_URL") ||
+    "https://github.com/SABDigitalBank/certificates.git"
+
+  UI.message("Match sync (type=#{mtype}, readonly=#{readonly}, id=#{bundle_id})")
+  match_opts = {
+    type: mtype,
+    readonly: readonly,
+    app_identifier: [bundle_id],
+    git_url: git_url,
+    git_branch: env_value("MATCH_GIT_BRANCH", "GIT_CREDENTIALS_REPO_BRANCH") || "main",
+    storage_mode: "git",
+    shallow_clone: true
+  }
+  # Only pass keychain opts when set (CI temporary keychain).
+  match_opts[:keychain_name] = env_value("MATCH_KEYCHAIN_NAME") if env_present?("MATCH_KEYCHAIN_NAME")
+  match_opts[:keychain_password] = env_value("MATCH_KEYCHAIN_PASSWORD") if env_present?("MATCH_KEYCHAIN_PASSWORD")
+  # Private certificates.git clone on CI (base64 of "x-access-token:PAT").
+  if env_present?("MATCH_GIT_BASIC_AUTHORIZATION")
+    match_opts[:git_basic_authorization] = env_value("MATCH_GIT_BASIC_AUTHORIZATION")
+  end
+  match_opts[:git_private_key] = env_value("MATCH_GIT_PRIVATE_KEY") if env_present?("MATCH_GIT_PRIVATE_KEY")
+  match(**match_opts)
+  match_profile_name(mtype, bundle_id)
+end
+
+def use_match_signing?
+  return false if ENV["USE_MATCH"].to_s.downcase == "false"
+  return true if ENV["USE_MATCH"].to_s.downcase == "true"
+  return true if env_present?("MATCH_PASSWORD")
+
+  false
+end
+
+def github_run_url
+  server = env_value("GITHUB_SERVER_URL")
+  repo = env_value("GITHUB_REPOSITORY")
+  run_id = env_value("GITHUB_RUN_ID")
+  return nil unless server && repo && run_id
+
+  "#{server}/#{repo}/actions/runs/#{run_id}"
+end
+
+# Compose Slack body: Firebase release notes first, then the static status line.
+def slack_release_message(release_notes:, static_message:)
+  notes = release_notes.to_s.strip
+  static = static_message.to_s.strip
+  return static if notes.empty?
+  return notes if static.empty?
+
+  "#{notes}\n\n#{static}"
+end
+
+# Posts to Slack Incoming Webhook. No-ops when SLACK_WEBHOOK_URL is unset
+# so local builds stay quiet without failing CI. Never fails the release.
+def notify_slack_release!(options = {})
+  webhook = options[:SLACK_WEBHOOK_URL] || env_value("SLACK_WEBHOOK_URL")
+  unless webhook
+    UI.message("SLACK_WEBHOOK_URL not set — skipping Slack notification.")
+    return
+  end
+
+  message = slack_release_message(
+    release_notes: options[:RELEASE_NOTES],
+    static_message: options[:MESSAGE]
+  )
+
+  begin
+    post_on_slack(
+      SLACK_WEBHOOK_URL: webhook,
+      SLACK_CHANNEL: options[:SLACK_CHANNEL] || env_value("SLACK_CHANNEL"),
+      SLACK_THUMB_URL: options[:SLACK_THUMB_URL] || env_value("SLACK_THUMB_URL"),
+      VERSION: options[:VERSION] || app_version,
+      PLATFORM: options[:PLATFORM],
+      VARIANT: options[:VARIANT],
+      CHANNEL: options[:CHANNEL],
+      MESSAGE: message,
+      SUCCESS: options.fetch(:SUCCESS, true)
+    )
+  rescue StandardError => e
+    UI.important("Slack notification failed (release still succeeded): #{e.message}")
+  end
+end
+
+desc "Post a release notification to Slack (Incoming Webhook)"
+lane :post_on_slack do |options|
+  webhook = options[:SLACK_WEBHOOK_URL] || env_value("SLACK_WEBHOOK_URL")
+  UI.user_error!("SLACK_WEBHOOK_URL is required for post_on_slack.") if webhook.to_s.strip.empty?
+
+  channel = options[:SLACK_CHANNEL] || env_value("SLACK_CHANNEL") || "#general"
+  version = options[:VERSION] || app_version
+  platform = options[:PLATFORM].to_s
+  variant = options[:VARIANT].to_s
+  channel_label = options[:CHANNEL].to_s
+  success = options.key?(:SUCCESS) ? !!options[:SUCCESS] : true
+  run_url = github_run_url
+
+  title_bits = ["App release"]
+  title_bits << platform.upcase unless platform.empty?
+  title_bits << variant unless variant.empty?
+  title_bits << "(#{channel_label})" unless channel_label.empty?
+  title = title_bits.join(" · ")
+
+  message =
+    options[:MESSAGE] ||
+    (success ? "App successfully distributed!" : "App release failed.")
+
+  payload = {
+    "Build Version" => version.to_s,
+    "Built by" => env_value("GITHUB_ACTIONS") ? "GitHub Actions" : "Fastlane"
+  }
+  payload["Platform"] = platform unless platform.empty?
+  payload["Variant"] = variant unless variant.empty?
+  payload["Channel"] = channel_label unless channel_label.empty?
+  payload["Workflow"] = run_url if run_url
+
+  fields = [
+    {
+      title: title,
+      value: version.to_s,
+      short: true
+    }
+  ]
+  fields << { title: "Platform", value: platform, short: true } unless platform.empty?
+  fields << { title: "Variant", value: variant, short: true } unless variant.empty?
+  fields << { title: "Channel", value: channel_label, short: true } unless channel_label.empty?
+
+  slack(
+    message: message,
+    channel: channel,
+    success: success,
+    payload: payload,
+    slack_url: webhook,
+    default_payloads: [],
+    attachment_properties: {
+      thumb_url: options[:SLACK_THUMB_URL] || env_value("SLACK_THUMB_URL"),
+      fields: fields
+    }.compact
+  )
+end
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Bump iOS build number and sync marketing version from package.json"
+  lane :inc_version do |options|
+    # version:inc does not pass ENVFILE; default like other local lanes.
+    env_file = ENV["ENVFILE"] || options[:ENVFILE] || ".env.storybook"
+    load_env_file(env_file)
+
+    workspace = ENV.fetch("APP_WORKSPACE")
+    xcodeproj = "./ios/#{workspace}.xcodeproj"
+
+    increment_build_number(xcodeproj: xcodeproj)
+    increment_version_number(
+      xcodeproj: xcodeproj,
+      version_number: app_version
+    )
+  end
+
+  desc "Fetch certificates and provisioning profiles via Match (readonly by default)"
+  lane :certificates do |options|
+    env_file = ENV["ENVFILE"] || options[:ENVFILE]
+    load_env_file(env_file) if env_file
+
+    bundle_id = ENV.fetch("APP_IDENTIFIER")
+    export_method = ENV["EXPORT_METHOD"] || "ad-hoc"
+    mtype = options[:type] || match_type_for_export_method(export_method)
+    readonly = options.key?(:readonly) ? options[:readonly] : true
+
+    match(
+      type: mtype,
+      readonly: readonly,
+      app_identifier: [bundle_id]
+    )
+  end
+
+  desc "Ad-hoc IPA via Match (readonly) + gym — Firebase-style distribution example"
+  lane :distribute_adhoc do |options|
+    env_file = ENV["ENVFILE"] || options[:ENVFILE] || ".env.storybook"
+    load_env_file(env_file)
+
+    workspace = ENV.fetch("APP_WORKSPACE")
+    scheme = ENV.fetch("APP_IOS_SCHEME")
+    configuration = ENV.fetch("APP_CONFIGURATION")
+    build_name = ENV.fetch("APP_BUILD_NAME")
+    bundle_id = ENV.fetch("APP_IDENTIFIER")
+    team_id = env_value("team_id", "TEAM_ID")
+    signing_targets = (ENV["IOS_SIGNING_TARGETS"] || "SabDesignSystem").split(",").map(&:strip)
+    export_method = "ad-hoc"
+    code_sign_identity = "Apple Distribution"
+
+    UI.user_error!("DEVELOPMENT_TEAM / team_id is required.") if team_id.to_s.empty?
+
+    profile_name = sync_codesigning_with_match(
+      bundle_id: bundle_id,
+      export_method: export_method,
+      readonly: true
+    )
+
+    update_code_signing_settings(
+      use_automatic_signing: false,
+      path: "./ios/#{workspace}.xcodeproj",
+      team_id: team_id,
+      code_sign_identity: code_sign_identity,
+      bundle_identifier: bundle_id,
+      profile_name: profile_name,
+      targets: signing_targets,
+      build_configurations: [configuration]
+    )
+
+    gym(
+      workspace: "./ios/#{workspace}.xcworkspace",
+      scheme: scheme,
+      configuration: configuration,
+      clean: true,
+      export_method: export_method,
+      output_directory: "./build",
+      output_name: "#{build_name}.ipa",
+      destination: "generic/platform=iOS",
+      codesigning_identity: code_sign_identity,
+      skip_profile_detection: true,
+      xcargs: "DEVELOPMENT_TEAM=#{team_id}",
+      export_team_id: team_id,
+      export_options: {
+        method: export_method,
+        signingStyle: "manual",
+        signingCertificate: code_sign_identity,
+        teamID: team_id,
+        provisioningProfiles: {
+          bundle_id => profile_name
+        }
+      }
+    )
+
+    UI.success("Ad-hoc IPA ready: ./build/#{build_name}.ipa")
+  end
+
+  desc "Build iOS release IPA and upload to Firebase or TestFlight"
+  lane :build_release do |options|
+    env_file = ENV["ENVFILE"] || options[:ENVFILE]
+    load_env_file(env_file)
+
+    release_note = release_notes_from_git(options)
+    is_store = store_release?(options)
+    workspace = ENV.fetch("APP_WORKSPACE")
+    scheme = ENV.fetch("APP_IOS_SCHEME")
+    configuration = ENV.fetch("APP_CONFIGURATION")
+    export_method = ENV.fetch("EXPORT_METHOD")
+    build_name = ENV.fetch("APP_BUILD_NAME")
+    signing_targets = (ENV["IOS_SIGNING_TARGETS"] || "SabDesignSystem").split(",").map(&:strip)
+
+    api_key = nil
+    key_id = env_value("APPSTORE_KEY_ID")
+    issuer_id = env_value("APPSTORE_ISSUER_ID")
+    key_filepath = env_value("CERTIFICATE_PATH")
+    if key_id && issuer_id && key_filepath
+      api_key = app_store_connect_api_key(
+        key_id: options[:APPSTORE_KEY_ID] || key_id,
+        issuer_id: options[:APPSTORE_ISSUER_ID] || issuer_id,
+        key_filepath: options[:CERTIFICATE_PATH] || key_filepath,
+        duration: 1200,
+        in_house: false
+      )
+    elsif is_store || export_method == "app-store"
+      UI.important("APPSTORE_KEY_ID / APPSTORE_ISSUER_ID / CERTIFICATE_PATH not set — relying on local Xcode signing.")
+    end
+
+    team_id = env_value("team_id", "TEAM_ID")
+    bundle_id = ENV.fetch("APP_IDENTIFIER")
+    profile_name = env_value("IOS_PROVISIONING_PROFILE_NAME")
+    profile_uuid = env_value("IOS_PROVISIONING_PROFILE_UUID")
+    # Prefer Match (certificates.git) whenever enabled — ignore stale IOS_PROVISIONING_* in ENV secrets.
+    legacy_ci_profile =
+      !use_match_signing? &&
+      (env_present?("IOS_PROVISIONING_PROFILE_UUID") || env_present?("IOS_PROVISIONING_PROFILE_NAME"))
+    code_sign_identity = "Apple Distribution"
+
+    if legacy_ci_profile
+      UI.message("Using legacy CI provisioning env (identity=#{code_sign_identity}, profile=#{profile_name || profile_uuid})")
+      profile_specifier = profile_name || profile_uuid
+      UI.user_error!("DEVELOPMENT_TEAM / team_id is required for manual signing.") if team_id.to_s.empty?
+      UI.user_error!("IOS_PROVISIONING_PROFILE_NAME (or UUID) is required for manual signing.") if profile_specifier.to_s.empty?
+
+      signing_opts = {
+        use_automatic_signing: false,
+        path: "./ios/#{workspace}.xcodeproj",
+        team_id: team_id,
+        code_sign_identity: code_sign_identity,
+        bundle_identifier: bundle_id,
+        targets: signing_targets,
+        build_configurations: [configuration]
+      }
+      signing_opts[:profile_name] = profile_name if profile_name
+      update_code_signing_settings(**signing_opts)
+
+      gym_options = {
+        workspace: "./ios/#{workspace}.xcworkspace",
+        scheme: scheme,
+        configuration: configuration,
+        clean: true,
+        export_method: export_method,
+        output_directory: "./build",
+        output_name: "#{build_name}.ipa",
+        destination: "generic/platform=iOS",
+        codesigning_identity: code_sign_identity,
+        skip_profile_detection: true,
+        xcargs: "DEVELOPMENT_TEAM=#{team_id}",
+        export_team_id: team_id,
+        export_options: {
+          method: export_method,
+          signingStyle: "manual",
+          signingCertificate: code_sign_identity,
+          teamID: team_id,
+          provisioningProfiles: {
+            bundle_id => profile_specifier
+          }
+        }
+      }
+    elsif use_match_signing?
+      UI.user_error!("DEVELOPMENT_TEAM / team_id is required for Match signing.") if team_id.to_s.empty?
+
+      if env_present?("IOS_PROVISIONING_PROFILE_UUID") || env_present?("IOS_PROVISIONING_PROFILE_NAME")
+        UI.important("Ignoring IOS_PROVISIONING_PROFILE_* — Match (certificates.git) is the source of truth.")
+      end
+
+      profile_specifier = sync_codesigning_with_match(
+        bundle_id: bundle_id,
+        export_method: export_method,
+        readonly: true
+      )
+      UI.message("Using Match profile: #{profile_specifier}")
+
+      update_code_signing_settings(
+        use_automatic_signing: false,
+        path: "./ios/#{workspace}.xcodeproj",
+        team_id: team_id,
+        code_sign_identity: code_sign_identity,
+        bundle_identifier: bundle_id,
+        profile_name: profile_specifier,
+        targets: signing_targets,
+        build_configurations: [configuration]
+      )
+
+      # Quote values with spaces — unquoted "Apple Distribution" / "match AdHoc …"
+      # are parsed by xcodebuild as extra build actions ("Unknown build action 'Distribution'").
+      require "shellwords"
+      xcargs = [
+        "DEVELOPMENT_TEAM=#{team_id}",
+        "CODE_SIGN_STYLE=Manual",
+        "CODE_SIGN_IDENTITY=#{Shellwords.escape(code_sign_identity)}",
+        "PROVISIONING_PROFILE_SPECIFIER=#{Shellwords.escape(profile_specifier)}"
+      ].join(" ")
+
+      gym_options = {
+        workspace: "./ios/#{workspace}.xcworkspace",
+        scheme: scheme,
+        configuration: configuration,
+        clean: true,
+        export_method: export_method,
+        output_directory: "./build",
+        output_name: "#{build_name}.ipa",
+        destination: "generic/platform=iOS",
+        codesigning_identity: code_sign_identity,
+        skip_profile_detection: true,
+        xcargs: xcargs,
+        export_team_id: team_id,
+        export_options: {
+          method: export_method,
+          signingStyle: "manual",
+          signingCertificate: code_sign_identity,
+          teamID: team_id,
+          provisioningProfiles: {
+            bundle_id => profile_specifier
+          }
+        }
+      }
+    else
+      if team_id
+        update_code_signing_settings(
+          use_automatic_signing: true,
+          path: "./ios/#{workspace}.xcodeproj",
+          team_id: team_id,
+          targets: signing_targets
+        )
+      end
+
+      gym_options = {
+        workspace: "./ios/#{workspace}.xcworkspace",
+        scheme: scheme,
+        configuration: configuration,
+        clean: true,
+        export_method: export_method,
+        output_directory: "./build",
+        output_name: "#{build_name}.ipa",
+        destination: "generic/platform=iOS",
+        xcargs: "-allowProvisioningUpdates",
+        export_options: {
+          signingStyle: "automatic"
+        }
+      }
+      gym_options[:export_options][:teamID] = team_id if team_id
+    end
+
+    begin
+      gym(gym_options)
+    rescue StandardError => e
+      gym_log = Dir.glob(File.expand_path("~/Library/Logs/gym/*.log")).max_by { |p| File.mtime(p) }
+      if gym_log && File.exist?(gym_log)
+        UI.error("----- Gym log excerpt (#{gym_log}) -----")
+        lines = File.readlines(gym_log)
+        interesting = lines.select { |l| l.match?(/error:|❌|Provisioning|Code Sign|codesign|PhaseScriptExecution|NODE_BINARY|failed|fatal/i) }
+        (interesting.empty? ? lines.last(80) : interesting.last(80)).each { |l| UI.error(l.rstrip) }
+      end
+      raise e
+    end
+
+    ipa_path = "./build/#{build_name}.ipa"
+    UI.success("iOS IPA ready: #{ipa_path}")
+
+    if skip_distribution?(options)
+      UI.important("SKIP_DISTRIBUTION=true — leaving IPA on disk, skipping upload.")
+      next
+    end
+
+    firebase_release_notes = "Release Note ->\n#{release_note}"
+
+    if is_store
+      UI.user_error!("App Store Connect API key is required for store uploads.") unless api_key
+      pilot(
+        api_key: api_key,
+        ipa: ipa_path,
+        apple_id: options[:APPSTORE_APPLE_ID] || ENV["APPSTORE_APPLE_ID"],
+        app_identifier: ENV.fetch("APP_IDENTIFIER"),
+        skip_submission: true,
+        changelog: options[:changelog] || release_note
+      )
+      notify_slack_release!(
+        PLATFORM: "ios",
+        VARIANT: ENV["APP_BUILD_NAME"] || scheme,
+        CHANNEL: "store",
+        RELEASE_NOTES: firebase_release_notes,
+        MESSAGE: "iOS build uploaded to TestFlight."
+      )
+    else
+      UI.user_error!("FIREBASE_APP_ID_IOS is required for Firebase distribution.") if ENV["FIREBASE_APP_ID_IOS"].to_s.empty?
+      firebase_app_distribution(
+        app: ENV["FIREBASE_APP_ID_IOS"],
+        service_credentials_file: ENV["FIREBASE_SERVICE_CRED_FILE_PATH"],
+        ipa_path: ipa_path,
+        **firebase_distribution_recipient_options(
+          options[:FIREBASE_DISTRIBUTION_DESTINATIONS] || ENV["FIREBASE_DISTRIBUTION_DESTINATIONS"]
+        ),
+        release_notes: firebase_release_notes
+      )
+      notify_slack_release!(
+        PLATFORM: "ios",
+        VARIANT: ENV["APP_BUILD_NAME"] || scheme,
+        CHANNEL: "firebase",
+        RELEASE_NOTES: firebase_release_notes,
+        MESSAGE: "iOS build distributed to Firebase App Distribution."
+      )
+    end
+  end
+
+  desc "Upload an existing iOS IPA to Firebase App Distribution"
+  lane :upload_firebase do |options|
+    env_file = ENV["ENVFILE"] || options[:ENVFILE]
+    load_env_file(env_file)
+    firebase_app_distribution(
+      app: ENV.fetch("FIREBASE_APP_ID_IOS"),
+      service_credentials_file: ENV["FIREBASE_SERVICE_CRED_FILE_PATH"],
+      ipa_path: "./build/#{ENV.fetch('APP_BUILD_NAME')}.ipa",
+      **firebase_distribution_recipient_options(ENV["FIREBASE_DISTRIBUTION_DESTINATIONS"]),
+      release_notes: release_notes_from_git(options)
+    )
+  end
+end
+
+
+platform :android do
+  desc "Bump Android versionCode and sync versionName from package.json"
+  lane :inc_version do
+    increment_version_code(
+      gradle_file_path: "./android/app/build.gradle"
+    )
+    increment_version_name(
+      gradle_file_path: "./android/app/build.gradle",
+      version_name: app_version
+    )
+  end
+
+  desc "Build Android release APK/AAB and upload to Firebase or Play Store"
+  lane :build_release do |options|
+    env_file = ENV["ENVFILE"] || options[:ENVFILE]
+    load_env_file(env_file)
+
+    is_store = store_release?(options)
+    android_task_type = options[:ANDROID_TASK_TYPE] || ENV["ANDROID_TASK_TYPE"] || (is_store ? "bundle" : "assemble")
+    artifact_type = android_task_type.to_s.start_with?("bundle") ? "AAB" : "APK"
+    artifact_path =
+      if artifact_type == "AAB"
+        ENV["ANDROID_FLAVOR_AAB_PATH"] || "./android/app/build/outputs/bundle/demoappRelease/app-demoapp-release.aab"
+      else
+        ENV["ANDROID_FLAVOR_APK_PATH"] || "./android/app/build/outputs/apk/demoapp/release/app-demoapp-release.apk"
+      end
+
+    release_note = release_notes_from_git(options)
+    flavor = ENV.fetch("ANDROID_FLAVOR")
+    build_type = ENV["ANDROID_BUILD_TYPE"].to_s.strip
+    if build_type.empty?
+      build_type = ENV.fetch("APP_CONFIGURATION").sub(/-SB\z/i, "")
+    end
+
+    keystore_props = {
+      "ANDROID_KEYSTORE_PATH" => options[:ANDROID_KEYSTORE_PATH] || ENV["ANDROID_KEYSTORE_PATH"],
+      "ANDROID_KEYSTORE_PASSWORD" => ENV["ANDROID_KEYSTORE_PASSWORD"],
+      "ANDROID_KEYSTORE_ALIAS" => ENV["ANDROID_KEYSTORE_ALIAS"],
+      "ANDROID_KEYSTORE_ALIAS_PASSWORD" => ENV["ANDROID_KEYSTORE_ALIAS_PASSWORD"]
+    }.reject { |_k, v| v.nil? || v.to_s.strip.empty? }
+
+    gradle(
+      gradle_path: "./gradlew",
+      project_dir: "./android",
+      task: android_task_type,
+      flavor: flavor,
+      build_type: build_type,
+      properties: keystore_props
+    )
+
+    UI.success("Android #{artifact_type} ready: #{artifact_path}")
+
+    if skip_distribution?(options)
+      UI.important("SKIP_DISTRIBUTION=true — leaving #{artifact_type} on disk, skipping upload.")
+      next
+    end
+
+    if is_store
+      supply_json = ENV["PLAY_STORE_JSON_KEY"] || "fastlane/fastlane-Supply.json"
+      UI.user_error!("Play Store JSON key missing at #{supply_json}. Copy fastlane-Supply_Sample.json.") unless File.exist?(supply_json)
+      validate_play_store_json_key(json_key: supply_json)
+
+      base_supply_options = {
+        json_key: supply_json,
+        package_name: ENV.fetch("APP_IDENTIFIER"),
+        aab: artifact_path,
+        track: ENV["PLAY_TRACK"] || "internal"
+      }
+      release_status = options[:PLAY_RELEASE_STATUS] || ENV["PLAY_RELEASE_STATUS"] || "completed"
+
+      begin
+        supply(**base_supply_options, release_status: release_status)
+      rescue StandardError => e
+        if e.to_s.include?("Only releases with status draft may be created on draft app")
+          UI.important("Play Console app is in draft state. Retrying with release_status 'draft'.")
+          supply(**base_supply_options, release_status: "draft")
+        else
+          raise e
+        end
+      end
+      firebase_release_notes = "Release Note ->\n#{release_note}"
+      notify_slack_release!(
+        PLATFORM: "android",
+        VARIANT: ENV["APP_BUILD_NAME"] || flavor,
+        CHANNEL: "store",
+        RELEASE_NOTES: firebase_release_notes,
+        MESSAGE: "Android build uploaded to Play Store (#{ENV['PLAY_TRACK'] || 'internal'})."
+      )
+    else
+      UI.user_error!("FIREBASE_APP_ID_ANDROID is required for Firebase distribution.") if ENV["FIREBASE_APP_ID_ANDROID"].to_s.empty?
+      firebase_release_notes = "Release Note ->\n#{release_note}"
+      firebase_app_distribution(
+        app: ENV["FIREBASE_APP_ID_ANDROID"],
+        service_credentials_file: ENV["FIREBASE_SERVICE_CRED_FILE_PATH"],
+        android_artifact_type: artifact_type,
+        android_artifact_path: artifact_path,
+        **firebase_distribution_recipient_options(
+          options[:FIREBASE_DISTRIBUTION_DESTINATIONS] || ENV["FIREBASE_DISTRIBUTION_DESTINATIONS"]
+        ),
+        release_notes: firebase_release_notes
+      )
+      notify_slack_release!(
+        PLATFORM: "android",
+        VARIANT: ENV["APP_BUILD_NAME"] || flavor,
+        CHANNEL: "firebase",
+        RELEASE_NOTES: firebase_release_notes,
+        MESSAGE: "Android build distributed to Firebase App Distribution."
+      )
+    end
+  end
+
+  desc "Upload an existing Android artifact to Firebase App Distribution"
+  lane :upload_firebase do |options|
+    env_file = ENV["ENVFILE"] || options[:ENVFILE]
+    load_env_file(env_file)
+    firebase_app_distribution(
+      app: ENV.fetch("FIREBASE_APP_ID_ANDROID"),
+      service_credentials_file: ENV["FIREBASE_SERVICE_CRED_FILE_PATH"],
+      android_artifact_path: ENV.fetch("ANDROID_FLAVOR_APK_PATH"),
+      **firebase_distribution_recipient_options(ENV["FIREBASE_DISTRIBUTION_DESTINATIONS"]),
+      android_artifact_type: "APK",
+      release_notes: release_notes_from_git(options)
+    )
+  end
+end

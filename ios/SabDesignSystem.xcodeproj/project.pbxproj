@@ -1,0 +1,1204 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E356F31AD99517003FC87E /* SabDesignSystemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SabDesignSystemTests.m */; };
+		054612F0228740D384EE30D0 /* HSBC_MtUniversArabic-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEDE2DBEA4564379AB7BA395 /* HSBC_MtUniversArabic-Medium.ttf */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		17A2DEAE62DB4F87BAB3AAD6 /* SARFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 741DE0A616204C7F9C80E78A /* SARFont.ttf */; };
+		19D6D5E41DFF6304E3AF3944 /* Pods_SabDesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FAF9D060543F82FC28D8597 /* Pods_SabDesignSystem.framework */; };
+		328227E3C1104FA1A07A2B56 /* Univers Arabic forHSBC Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A7BCD1A07C894B0A9B127F6F /* Univers Arabic forHSBC Light.ttf */; };
+		437F2CE729D543B68B09B7E2 /* UniversNextforHSBC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D96A0E9587F04A57A08723B2 /* UniversNextforHSBC-Regular.ttf */; };
+		4412DB3A5C99402C9761985A /* UniversNextforHSBC-BoldTwo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 493D86067A20473A8C2D5719 /* UniversNextforHSBC-BoldTwo.ttf */; };
+		4E82550CC3EC450798AECCB3 /* UniversNextforHSBC-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C288446166A454CA0D921C5 /* UniversNextforHSBC-Light.ttf */; };
+		685A962CF49A4BF6A9489A2D /* UniversNextforHSBC-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8A6DDD372AC440395AE76AF /* UniversNextforHSBC-Thin.ttf */; };
+		707434F22B774B8EB2B6992B /* UniversNextforHSBC-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39CD826F315745D1A42E0016 /* UniversNextforHSBC-Bold.ttf */; };
+		773C7D77BBE5BBB40706803B /* Pods_SabDesignSystem_SabDesignSystemTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD42971D95F079BD89BD3FA4 /* Pods_SabDesignSystem_SabDesignSystemTests.framework */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		858C5AFE392D401C96A8F6A4 /* Univers Arabic forHSBC Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6B82C1119284CA381601789 /* Univers Arabic forHSBC Thin.ttf */; };
+		86AB1763AE2F426CB0716096 /* UniversNextforHSBC-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4529060238F4D4B86A6FF90 /* UniversNextforHSBC-Medium.ttf */; };
+		9553B6F56F8C46B29101505D /* UniversArabicforHSBC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD2153FF67E84DB99F116301 /* UniversArabicforHSBC.ttf */; };
+		9A1ED30916FF492286C2798F /* Univers0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2E3F42F744F47B8993D2F23 /* Univers0.ttf */; };
+		9C15EF21E0714E6092EB72BB /* Univers Arabic forHSBC Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB87651F916E4F48A579A8B4 /* Univers Arabic forHSBC Bold.ttf */; };
+		B1E32F3B2BC04A10AA11DD01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E32F3A2BC04A10AA11DD01 /* AppDelegate.swift */; };
+		BF5E482ED15DCB4DD2392663 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 284AD3B95B7814690F64ADB1 /* PrivacyInfo.xcprivacy */; };
+		C2F41A1B0D204A10BB22EE02 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F41A1B0D204A10BB22EE01 /* SceneDelegate.swift */; };
+		CA95152C183B4154BC89FB35 /* HSBC_MtUniversArabic-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEDE2DBEA4564379AB7BA395 /* HSBC_MtUniversArabic-Medium.ttf */; };
+		DA15C70F3D1642B892E5B330 /* UniversArabicforHSBCLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B4AAA0AFC9415C99585CB1 /* UniversArabicforHSBCLight.ttf */; };
+		F1E2D3C40102030405060701 /* SABLiquidGlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E2D3C40102030405060711 /* SABLiquidGlassView.swift */; };
+		F1E2D3C40102030405060702 /* SABLiquidGlassContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E2D3C40102030405060712 /* SABLiquidGlassContainerView.swift */; };
+		F1E2D3C40102030405060703 /* SABLiquidGlassViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E2D3C40102030405060713 /* SABLiquidGlassViewManager.m */; };
+		F1E2D3C40102030405060704 /* SABLiquidGlassContainerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E2D3C40102030405060714 /* SABLiquidGlassContainerViewManager.m */; };
+		F1E2D3C40102030405060705 /* SABLiquidGlassModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E2D3C40102030405060715 /* SABLiquidGlassModule.m */; };
+		F1E2D3C40102030405060706 /* SABLiquidGlassReactSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E2D3C40102030405060716 /* SABLiquidGlassReactSubview.m */; };
+		F1E2D3C40102030405060708 /* SABNativeSegmentedControlViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E2D3C40102030405060722 /* SABNativeSegmentedControlViewManager.m */; };
+		F3D62AE9C24C4C3FB50C2EFE /* UniversArabicforHSBC-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4C7DDF17E33492E9A6B11F2 /* UniversArabicforHSBC-Bold.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = SabDesignSystem;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00E356EE1AD99517003FC87E /* SabDesignSystemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SabDesignSystemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* SabDesignSystemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SabDesignSystemTests.m; sourceTree = "<group>"; };
+		0CE6BBC63E321BF7F9AA8904 /* Pods-SabDesignSystem.debug-sb.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabDesignSystem.debug-sb.xcconfig"; path = "Target Support Files/Pods-SabDesignSystem/Pods-SabDesignSystem.debug-sb.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* SabDesignSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SabDesignSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SabDesignSystem/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SabDesignSystem/Info.plist; sourceTree = "<group>"; };
+		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = SabDesignSystem/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		284AD3B95B7814690F64ADB1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = SabDesignSystem/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		39CD826F315745D1A42E0016 /* UniversNextforHSBC-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = "UniversNextforHSBC-Bold.ttf"; path = "../src/assets/fonts/UniversNextforHSBC-Bold.ttf"; sourceTree = "<group>"; };
+		493D86067A20473A8C2D5719 /* UniversNextforHSBC-BoldTwo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = "UniversNextforHSBC-BoldTwo.ttf"; path = "../src/assets/fonts/UniversNextforHSBC-BoldTwo.ttf"; sourceTree = "<group>"; };
+		56B4AAA0AFC9415C99585CB1 /* UniversArabicforHSBCLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = UniversArabicforHSBCLight.ttf; path = "../src/assets/fonts/UniversArabicforHSBCLight.ttf"; sourceTree = "<group>"; };
+		5C288446166A454CA0D921C5 /* UniversNextforHSBC-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = "UniversNextforHSBC-Light.ttf"; path = "../src/assets/fonts/UniversNextforHSBC-Light.ttf"; sourceTree = "<group>"; };
+		6FAF9D060543F82FC28D8597 /* Pods_SabDesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SabDesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		741DE0A616204C7F9C80E78A /* SARFont.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = SARFont.ttf; path = "../src/assets/fonts/SARFont.ttf"; sourceTree = "<group>"; };
+		765082E57C1B20D6AFA83E35 /* Pods-SabDesignSystem-SabDesignSystemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabDesignSystem-SabDesignSystemTests.release.xcconfig"; path = "Target Support Files/Pods-SabDesignSystem-SabDesignSystemTests/Pods-SabDesignSystem-SabDesignSystemTests.release.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SabDesignSystem/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9694CE919A4EB1618C9B0026 /* Pods-SabDesignSystem.release-sb.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabDesignSystem.release-sb.xcconfig"; path = "Target Support Files/Pods-SabDesignSystem/Pods-SabDesignSystem.release-sb.xcconfig"; sourceTree = "<group>"; };
+		A4C7DDF17E33492E9A6B11F2 /* UniversArabicforHSBC-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = "UniversArabicforHSBC-Bold.ttf"; path = "../src/assets/fonts/UniversArabicforHSBC-Bold.ttf"; sourceTree = "<group>"; };
+		A7BCD1A07C894B0A9B127F6F /* Univers Arabic forHSBC Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = "Univers Arabic forHSBC Light.ttf"; path = "../src/assets/fonts/Univers Arabic forHSBC Light.ttf"; sourceTree = "<group>"; };
+		AD42971D95F079BD89BD3FA4 /* Pods_SabDesignSystem_SabDesignSystemTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SabDesignSystem_SabDesignSystemTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1E32F3A2BC04A10AA11DD01 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SabDesignSystem/AppDelegate.swift; sourceTree = "<group>"; };
+		B2E3F42F744F47B8993D2F23 /* Univers0.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = Univers0.ttf; path = "../src/assets/fonts/Univers0.ttf"; sourceTree = "<group>"; };
+		B6B82C1119284CA381601789 /* Univers Arabic forHSBC Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = "Univers Arabic forHSBC Thin.ttf"; path = "../src/assets/fonts/Univers Arabic forHSBC Thin.ttf"; sourceTree = "<group>"; };
+		BD2153FF67E84DB99F116301 /* UniversArabicforHSBC.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = UniversArabicforHSBC.ttf; path = "../src/assets/fonts/UniversArabicforHSBC.ttf"; sourceTree = "<group>"; };
+		BEDE2DBEA4564379AB7BA395 /* HSBC_MtUniversArabic-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = "HSBC_MtUniversArabic-Medium.ttf"; path = "../src/assets/fonts/HSBC_MtUniversArabic-Medium.ttf"; sourceTree = "<group>"; };
+		C2F41A1B0D204A10BB22EE01 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = SabDesignSystem/SceneDelegate.swift; sourceTree = "<group>"; };
+		C4529060238F4D4B86A6FF90 /* UniversNextforHSBC-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = "UniversNextforHSBC-Medium.ttf"; path = "../src/assets/fonts/UniversNextforHSBC-Medium.ttf"; sourceTree = "<group>"; };
+		D1046C6D5EC781449ACC5828 /* Pods-SabDesignSystem-SabDesignSystemTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabDesignSystem-SabDesignSystemTests.debug.xcconfig"; path = "Target Support Files/Pods-SabDesignSystem-SabDesignSystemTests/Pods-SabDesignSystem-SabDesignSystemTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D7654BED01B783F1B4989913 /* Pods-SabDesignSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabDesignSystem.debug.xcconfig"; path = "Target Support Files/Pods-SabDesignSystem/Pods-SabDesignSystem.debug.xcconfig"; sourceTree = "<group>"; };
+		D8A6DDD372AC440395AE76AF /* UniversNextforHSBC-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = "UniversNextforHSBC-Thin.ttf"; path = "../src/assets/fonts/UniversNextforHSBC-Thin.ttf"; sourceTree = "<group>"; };
+		D96A0E9587F04A57A08723B2 /* UniversNextforHSBC-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = "UniversNextforHSBC-Regular.ttf"; path = "../src/assets/fonts/UniversNextforHSBC-Regular.ttf"; sourceTree = "<group>"; };
+		EAB7D609E5DAAE2BB3000563 /* Pods-SabDesignSystem-SabDesignSystemTests.release-sb.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabDesignSystem-SabDesignSystemTests.release-sb.xcconfig"; path = "Target Support Files/Pods-SabDesignSystem-SabDesignSystemTests/Pods-SabDesignSystem-SabDesignSystemTests.release-sb.xcconfig"; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F1E2D3C40102030405060711 /* SABLiquidGlassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABLiquidGlassView.swift; sourceTree = "<group>"; };
+		F1E2D3C40102030405060712 /* SABLiquidGlassContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABLiquidGlassContainerView.swift; sourceTree = "<group>"; };
+		F1E2D3C40102030405060713 /* SABLiquidGlassViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SABLiquidGlassViewManager.m; sourceTree = "<group>"; };
+		F1E2D3C40102030405060714 /* SABLiquidGlassContainerViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SABLiquidGlassContainerViewManager.m; sourceTree = "<group>"; };
+		F1E2D3C40102030405060715 /* SABLiquidGlassModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SABLiquidGlassModule.m; sourceTree = "<group>"; };
+		F1E2D3C40102030405060716 /* SABLiquidGlassReactSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SABLiquidGlassReactSubview.m; sourceTree = "<group>"; };
+		F1E2D3C40102030405060722 /* SABNativeSegmentedControlViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SABNativeSegmentedControlViewManager.m; sourceTree = "<group>"; };
+		F26FABFF36C9F5ACA31441AA /* Pods-SabDesignSystem-SabDesignSystemTests.debug-sb.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabDesignSystem-SabDesignSystemTests.debug-sb.xcconfig"; path = "Target Support Files/Pods-SabDesignSystem-SabDesignSystemTests/Pods-SabDesignSystem-SabDesignSystemTests.debug-sb.xcconfig"; sourceTree = "<group>"; };
+		F9E1ED071DEA6D87CEA75549 /* Pods-SabDesignSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabDesignSystem.release.xcconfig"; path = "Target Support Files/Pods-SabDesignSystem/Pods-SabDesignSystem.release.xcconfig"; sourceTree = "<group>"; };
+		FB87651F916E4F48A579A8B4 /* Univers Arabic forHSBC Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 525013027785; includeInIndex = 0; lastKnownFileType = unknown; name = "Univers Arabic forHSBC Bold.ttf"; path = "../src/assets/fonts/Univers Arabic forHSBC Bold.ttf"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773C7D77BBE5BBB40706803B /* Pods_SabDesignSystem_SabDesignSystemTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19D6D5E41DFF6304E3AF3944 /* Pods_SabDesignSystem.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* SabDesignSystemTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* SabDesignSystemTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = SabDesignSystemTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0C308BFE11EC473FABDFE781 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				741DE0A616204C7F9C80E78A /* SARFont.ttf */,
+				FB87651F916E4F48A579A8B4 /* Univers Arabic forHSBC Bold.ttf */,
+				A7BCD1A07C894B0A9B127F6F /* Univers Arabic forHSBC Light.ttf */,
+				B6B82C1119284CA381601789 /* Univers Arabic forHSBC Thin.ttf */,
+				B2E3F42F744F47B8993D2F23 /* Univers0.ttf */,
+				A4C7DDF17E33492E9A6B11F2 /* UniversArabicforHSBC-Bold.ttf */,
+				BD2153FF67E84DB99F116301 /* UniversArabicforHSBC.ttf */,
+				56B4AAA0AFC9415C99585CB1 /* UniversArabicforHSBCLight.ttf */,
+				39CD826F315745D1A42E0016 /* UniversNextforHSBC-Bold.ttf */,
+				493D86067A20473A8C2D5719 /* UniversNextforHSBC-BoldTwo.ttf */,
+				5C288446166A454CA0D921C5 /* UniversNextforHSBC-Light.ttf */,
+				C4529060238F4D4B86A6FF90 /* UniversNextforHSBC-Medium.ttf */,
+				D96A0E9587F04A57A08723B2 /* UniversNextforHSBC-Regular.ttf */,
+				D8A6DDD372AC440395AE76AF /* UniversNextforHSBC-Thin.ttf */,
+				BEDE2DBEA4564379AB7BA395 /* HSBC_MtUniversArabic-Medium.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* SabDesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				B1E32F3A2BC04A10AA11DD01 /* AppDelegate.swift */,
+				C2F41A1B0D204A10BB22EE01 /* SceneDelegate.swift */,
+				F1E2D3C40102030405060710 /* LiquidGlass */,
+				F1E2D3C40102030405060720 /* SegmentedControl */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				284AD3B95B7814690F64ADB1 /* PrivacyInfo.xcprivacy */,
+			);
+			name = SabDesignSystem;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				6FAF9D060543F82FC28D8597 /* Pods_SabDesignSystem.framework */,
+				AD42971D95F079BD89BD3FA4 /* Pods_SabDesignSystem_SabDesignSystemTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				13B07FAE1A68108700A75B9A /* SabDesignSystem */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* SabDesignSystemTests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				0C308BFE11EC473FABDFE781 /* Resources */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* SabDesignSystem.app */,
+				00E356EE1AD99517003FC87E /* SabDesignSystemTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D7654BED01B783F1B4989913 /* Pods-SabDesignSystem.debug.xcconfig */,
+				F9E1ED071DEA6D87CEA75549 /* Pods-SabDesignSystem.release.xcconfig */,
+				0CE6BBC63E321BF7F9AA8904 /* Pods-SabDesignSystem.debug-sb.xcconfig */,
+				9694CE919A4EB1618C9B0026 /* Pods-SabDesignSystem.release-sb.xcconfig */,
+				D1046C6D5EC781449ACC5828 /* Pods-SabDesignSystem-SabDesignSystemTests.debug.xcconfig */,
+				765082E57C1B20D6AFA83E35 /* Pods-SabDesignSystem-SabDesignSystemTests.release.xcconfig */,
+				F26FABFF36C9F5ACA31441AA /* Pods-SabDesignSystem-SabDesignSystemTests.debug-sb.xcconfig */,
+				EAB7D609E5DAAE2BB3000563 /* Pods-SabDesignSystem-SabDesignSystemTests.release-sb.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F1E2D3C40102030405060710 /* LiquidGlass */ = {
+			isa = PBXGroup;
+			children = (
+				F1E2D3C40102030405060711 /* SABLiquidGlassView.swift */,
+				F1E2D3C40102030405060712 /* SABLiquidGlassContainerView.swift */,
+				F1E2D3C40102030405060713 /* SABLiquidGlassViewManager.m */,
+				F1E2D3C40102030405060714 /* SABLiquidGlassContainerViewManager.m */,
+				F1E2D3C40102030405060715 /* SABLiquidGlassModule.m */,
+				F1E2D3C40102030405060716 /* SABLiquidGlassReactSubview.m */,
+			);
+			name = LiquidGlass;
+			path = SabDesignSystem/LiquidGlass;
+			sourceTree = "<group>";
+		};
+		F1E2D3C40102030405060720 /* SegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				F1E2D3C40102030405060722 /* SABNativeSegmentedControlViewManager.m */,
+			);
+			name = SegmentedControl;
+			path = SabDesignSystem/SegmentedControl;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* SabDesignSystemTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SabDesignSystemTests" */;
+			buildPhases = (
+				2A053D49A04167E282286C9D /* [CP] Check Pods Manifest.lock */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+				077D16C5758B80B1DEB307AB /* [CP] Embed Pods Frameworks */,
+				E666B1FB78D61D8AEC278BCC /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = SabDesignSystemTests;
+			productName = SabDesignSystemTests;
+			productReference = 00E356EE1AD99517003FC87E /* SabDesignSystemTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* SabDesignSystem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SabDesignSystem" */;
+			buildPhases = (
+				9E7B6312AA4D778CBB0FDCFE /* [CP] Check Pods Manifest.lock */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				A11B2C3D4010203040506801 /* Copy GoogleService-Info.plist */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				27B04E17CDF06383E3262850 /* [CP] Embed Pods Frameworks */,
+				A47A168AC7CC4EB0079D14A3 /* [CP] Copy Pods Resources */,
+				1477BF7B90A13697FA0D7AC9 /* [CP-User] [RNFB] Core Configuration */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SabDesignSystem;
+			productName = SabDesignSystem;
+			productReference = 13B07F961A680F5B00A75B9A /* SabDesignSystem.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1120;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SabDesignSystem" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* SabDesignSystem */,
+				00E356ED1AD99517003FC87E /* SabDesignSystemTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA95152C183B4154BC89FB35 /* HSBC_MtUniversArabic-Medium.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				BF5E482ED15DCB4DD2392663 /* PrivacyInfo.xcprivacy in Resources */,
+				17A2DEAE62DB4F87BAB3AAD6 /* SARFont.ttf in Resources */,
+				9C15EF21E0714E6092EB72BB /* Univers Arabic forHSBC Bold.ttf in Resources */,
+				328227E3C1104FA1A07A2B56 /* Univers Arabic forHSBC Light.ttf in Resources */,
+				858C5AFE392D401C96A8F6A4 /* Univers Arabic forHSBC Thin.ttf in Resources */,
+				9A1ED30916FF492286C2798F /* Univers0.ttf in Resources */,
+				F3D62AE9C24C4C3FB50C2EFE /* UniversArabicforHSBC-Bold.ttf in Resources */,
+				9553B6F56F8C46B29101505D /* UniversArabicforHSBC.ttf in Resources */,
+				DA15C70F3D1642B892E5B330 /* UniversArabicforHSBCLight.ttf in Resources */,
+				707434F22B774B8EB2B6992B /* UniversNextforHSBC-Bold.ttf in Resources */,
+				4412DB3A5C99402C9761985A /* UniversNextforHSBC-BoldTwo.ttf in Resources */,
+				4E82550CC3EC450798AECCB3 /* UniversNextforHSBC-Light.ttf in Resources */,
+				86AB1763AE2F426CB0716096 /* UniversNextforHSBC-Medium.ttf in Resources */,
+				437F2CE729D543B68B09B7E2 /* UniversNextforHSBC-Regular.ttf in Resources */,
+				685A962CF49A4BF6A9489A2D /* UniversNextforHSBC-Thin.ttf in Resources */,
+				054612F0228740D384EE30D0 /* HSBC_MtUniversArabic-Medium.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		077D16C5758B80B1DEB307AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem-SabDesignSystemTests/Pods-SabDesignSystem-SabDesignSystemTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem-SabDesignSystemTests/Pods-SabDesignSystem-SabDesignSystemTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem-SabDesignSystemTests/Pods-SabDesignSystem-SabDesignSystemTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1477BF7B90A13697FA0D7AC9 /* [CP-User] [RNFB] Core Configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "[CP-User] [RNFB] Core Configuration";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\n\n##########################################################################\n##########################################################################\n#\n#  NOTE THAT IF YOU CHANGE THIS FILE YOU MUST RUN pod install AFTERWARDS\n#\n#  This file is installed as an Xcode build script in the project file\n#  by cocoapods, and you will not see your changes until you pod install\n#\n##########################################################################\n##########################################################################\n\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  _RN_ROOT_EXISTS=$(ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\" || echo '')\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_analytics_storage\n  _ANALYTICS_STORAGE=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_analytics_storage\")\n  if [[ $_ANALYTICS_STORAGE ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_ANALYTICS_STORAGE\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_STORAGE\")\")\n  fi\n\n  # config.analytics_default_allow_ad_storage\n  _ANALYTICS_AD_STORAGE=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_storage\")\n  if [[ $_ANALYTICS_AD_STORAGE ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_STORAGE\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AD_STORAGE\")\")\n  fi\n\n  # config.analytics_default_allow_ad_user_data\n  _ANALYTICS_AD_USER_DATA=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_user_data\")\n  if [[ $_ANALYTICS_AD_USER_DATA ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_USER_DATA\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AD_USER_DATA\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.analytics_registration_with_ad_network_enabled\n  _ANALYTICS_REGISTRATION_WITH_AD_NETWORK=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_registration_with_ad_network_enabled\")\n  if [[ $_ANALYTICS_REGISTRATION_WITH_AD_NETWORK ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_REGISTRATION_WITH_AD_NETWORK\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
+		};
+		27B04E17CDF06383E3262850 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem/Pods-SabDesignSystem-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem/Pods-SabDesignSystem-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem/Pods-SabDesignSystem-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A053D49A04167E282286C9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SabDesignSystem-SabDesignSystemTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E7B6312AA4D778CBB0FDCFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SabDesignSystem-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A11B2C3D4010203040506801 /* Copy GoogleService-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(PROJECT_DIR)/Firebase/GoogleService-Info-demoapp.plist",
+				"$(PROJECT_DIR)/Firebase/GoogleService-Info-sb.plist",
+				"$(PROJECT_DIR)/scripts/copy-google-services.sh",
+			);
+			name = "Copy GoogleService-Info.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(PRODUCT_NAME).app/GoogleService-Info.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/scripts/copy-google-services.sh\"\n";
+		};
+		A47A168AC7CC4EB0079D14A3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem/Pods-SabDesignSystem-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem/Pods-SabDesignSystem-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem/Pods-SabDesignSystem-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E666B1FB78D61D8AEC278BCC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem-SabDesignSystemTests/Pods-SabDesignSystem-SabDesignSystemTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem-SabDesignSystemTests/Pods-SabDesignSystem-SabDesignSystemTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SabDesignSystem-SabDesignSystemTests/Pods-SabDesignSystem-SabDesignSystemTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* SabDesignSystemTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1E32F3B2BC04A10AA11DD01 /* AppDelegate.swift in Sources */,
+				C2F41A1B0D204A10BB22EE02 /* SceneDelegate.swift in Sources */,
+				F1E2D3C40102030405060701 /* SABLiquidGlassView.swift in Sources */,
+				F1E2D3C40102030405060702 /* SABLiquidGlassContainerView.swift in Sources */,
+				F1E2D3C40102030405060703 /* SABLiquidGlassViewManager.m in Sources */,
+				F1E2D3C40102030405060704 /* SABLiquidGlassContainerViewManager.m in Sources */,
+				F1E2D3C40102030405060705 /* SABLiquidGlassModule.m in Sources */,
+				F1E2D3C40102030405060706 /* SABLiquidGlassReactSubview.m in Sources */,
+				F1E2D3C40102030405060708 /* SABNativeSegmentedControlViewManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* SabDesignSystem */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1046C6D5EC781449ACC5828 /* Pods-SabDesignSystem-SabDesignSystemTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SabDesignSystemTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SabDesignSystem.app/SabDesignSystem";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 765082E57C1B20D6AFA83E35 /* Pods-SabDesignSystem-SabDesignSystemTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = SabDesignSystemTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SabDesignSystem.app/SabDesignSystem";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7654BED01B783F1B4989913 /* Pods-SabDesignSystem.debug.xcconfig */;
+			buildSettings = {
+				APP_DISPLAY_NAME = "SAB DS DemoApp";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 69QN533WH6;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = SabDesignSystem/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.3;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sabdesignsystem.demoapp;
+				PRODUCT_NAME = SabDesignSystem;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9E1ED071DEA6D87CEA75549 /* Pods-SabDesignSystem.release.xcconfig */;
+			buildSettings = {
+				APP_DISPLAY_NAME = "SAB DS DemoApp";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 69QN533WH6;
+				INFOPLIST_FILE = SabDesignSystem/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.3;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sabdesignsystem.demoapp;
+				PRODUCT_NAME = SabDesignSystem;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CXX = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD = "";
+				LDPLUSPLUS = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				USE_HERMES = true;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				COPY_PHASE_STRIP = YES;
+				CXX = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD = "";
+				LDPLUSPLUS = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				USE_HERMES = true;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A11B2C3D4010203040506701 /* Debug-SB */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CXX = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD = "";
+				LDPLUSPLUS = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG STORYBOOK";
+				USE_HERMES = true;
+			};
+			name = "Debug-SB";
+		};
+		A11B2C3D4010203040506702 /* Release-SB */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				COPY_PHASE_STRIP = YES;
+				CXX = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD = "";
+				LDPLUSPLUS = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				USE_HERMES = true;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-SB";
+		};
+		A11B2C3D4010203040506703 /* Debug-SB */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CE6BBC63E321BF7F9AA8904 /* Pods-SabDesignSystem.debug-sb.xcconfig */;
+			buildSettings = {
+				APP_DISPLAY_NAME = "SAB DS";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-SB";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 69QN533WH6;
+				ENABLE_BITCODE = NO;
+				ENTRY_FILE = index.storybook.js;
+				INFOPLIST_FILE = SabDesignSystem/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.3;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sabdesignsystem.sb;
+				PRODUCT_NAME = SabDesignSystem;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG STORYBOOK";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-SB";
+		};
+		A11B2C3D4010203040506704 /* Release-SB */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9694CE919A4EB1618C9B0026 /* Pods-SabDesignSystem.release-sb.xcconfig */;
+			buildSettings = {
+				APP_DISPLAY_NAME = "SAB DS";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-SB";
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 69QN533WH6;
+				ENTRY_FILE = index.storybook.js;
+				INFOPLIST_FILE = SabDesignSystem/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.3;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sabdesignsystem.sb;
+				PRODUCT_NAME = SabDesignSystem;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) STORYBOOK";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-SB";
+		};
+		A11B2C3D4010203040506705 /* Debug-SB */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F26FABFF36C9F5ACA31441AA /* Pods-SabDesignSystem-SabDesignSystemTests.debug-sb.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SabDesignSystemTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SabDesignSystem.app/SabDesignSystem";
+			};
+			name = "Debug-SB";
+		};
+		A11B2C3D4010203040506706 /* Release-SB */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAB7D609E5DAAE2BB3000563 /* Pods-SabDesignSystem-SabDesignSystemTests.release-sb.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = SabDesignSystemTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SabDesignSystem.app/SabDesignSystem";
+			};
+			name = "Release-SB";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SabDesignSystemTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+				A11B2C3D4010203040506705 /* Debug-SB */,
+				A11B2C3D4010203040506706 /* Release-SB */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SabDesignSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+				A11B2C3D4010203040506703 /* Debug-SB */,
+				A11B2C3D4010203040506704 /* Release-SB */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SabDesignSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+				A11B2C3D4010203040506701 /* Debug-SB */,
+				A11B2C3D4010203040506702 /* Release-SB */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}

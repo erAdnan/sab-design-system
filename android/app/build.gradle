@@ -1,0 +1,149 @@
+apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "com.facebook.react"
+
+/**
+ * Release/bundled builds: pick the JS entry from the flavor being built (or env).
+ * Debug loads JS from Metro using getJSMainModuleName() in MainApplication.
+ */
+def isStorybookBuild =
+    (System.getenv("STORYBOOK_ENABLED") == "true") ||
+    gradle.startParameter.taskNames.any { task ->
+        def n = task.toLowerCase()
+        n.contains("sb") && !n.contains("demoapp")
+    }
+
+/**
+ * This is the configuration block to customize your React Native Android app.
+ * By default you don't need to apply any configuration, just uncomment the lines you need.
+ */
+react {
+    /* Variants */
+    // Flavor × buildType debug variants must be listed so RN skips release JS bundling in debug.
+    debuggableVariants = ["sbDebug", "demoappDebug"]
+
+    /* Bundling */
+    entryFile = file(isStorybookBuild ? "../../index.storybook.js" : "../../index.js")
+
+    /* Autolinking */
+    autolinkLibrariesWithApp()
+}
+
+/**
+ * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
+ */
+def enableProguardInReleaseBuilds = false
+
+/**
+ * The preferred build flavor of JavaScriptCore (JSC)
+ *
+ * For example, to use the international variant, you can use:
+ * `def jscFlavor = io.github.react-native-community:jsc-android-intl:2026004.+`
+ *
+ * The international variant includes ICU i18n library and necessary data
+ * allowing to use e.g. `Date.toLocaleString` and `String.localeCompare` that
+ * give correct results when using with locales other than en-US. Note that
+ * this variant is about 6MiB larger per architecture than default.
+ */
+def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
+
+def requiredKeystoreProps = [
+    "ANDROID_KEYSTORE_PATH",
+    "ANDROID_KEYSTORE_PASSWORD",
+    "ANDROID_KEYSTORE_ALIAS",
+    "ANDROID_KEYSTORE_ALIAS_PASSWORD"
+]
+def resolvedKeystoreProps = requiredKeystoreProps.collectEntries { prop ->
+    def value = project.findProperty(prop) ?: System.getenv(prop)
+    [(prop): value?.toString()?.trim()]
+}
+def hasCustomKeystore = requiredKeystoreProps.every { prop ->
+    resolvedKeystoreProps[prop]
+}
+def isReleaseLikeTask = gradle.startParameter.taskNames.any { taskName ->
+    def name = taskName.toLowerCase()
+    name.contains("release") || name.contains("bundle")
+}
+
+if (isReleaseLikeTask && !hasCustomKeystore) {
+    throw new GradleException(
+        "Release signing config is incomplete. Set ANDROID_KEYSTORE_PATH, " +
+        "ANDROID_KEYSTORE_PASSWORD, ANDROID_KEYSTORE_ALIAS, and ANDROID_KEYSTORE_ALIAS_PASSWORD " +
+        "(via Fastlane gradle properties or environment)."
+    )
+}
+
+android {
+    ndkVersion rootProject.ext.ndkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk rootProject.ext.compileSdkVersion
+
+    namespace "com.sabdesignsystem"
+    defaultConfig {
+        // Overridden per product flavor below.
+        applicationId "com.sabdesignsystem"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 4
+        versionName "1.0.3"
+    }
+
+    flavorDimensions "app"
+    productFlavors {
+        sb {
+            dimension "app"
+            applicationId "com.sabdesignsystem.sb"
+            resValue "string", "app_name", "SAB DS"
+            buildConfigField "boolean", "STORYBOOK_ENABLED", "true"
+        }
+        demoapp {
+            dimension "app"
+            applicationId "com.sabdesignsystem.demoapp"
+            resValue "string", "app_name", "SAB DS DemoApp"
+            buildConfigField "boolean", "STORYBOOK_ENABLED", "false"
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        release {
+            storeFile file(hasCustomKeystore ? resolvedKeystoreProps["ANDROID_KEYSTORE_PATH"] : "debug.keystore")
+            storePassword hasCustomKeystore ? resolvedKeystoreProps["ANDROID_KEYSTORE_PASSWORD"] : "android"
+            keyAlias hasCustomKeystore ? resolvedKeystoreProps["ANDROID_KEYSTORE_ALIAS"] : "androiddebugkey"
+            keyPassword hasCustomKeystore ? resolvedKeystoreProps["ANDROID_KEYSTORE_ALIAS_PASSWORD"] : "android"
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            // Production releases must supply ANDROID_KEYSTORE_* via Fastlane / CI.
+            signingConfig signingConfigs.release
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+}
+
+dependencies {
+    // The version of react-native is set by the React Native Gradle Plugin
+    implementation("com.facebook.react:react-android")
+
+    if (hermesEnabled.toBoolean()) {
+        implementation("com.facebook.react:hermes-android")
+    } else {
+        implementation jscFlavor
+    }
+}
+
+apply plugin: "com.google.gms.google-services"

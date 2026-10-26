@@ -12,6 +12,7 @@ const preview = {
         date: /Date$/,
       },
     },
+    deepControls: { enabled: true },
     options: {
       storySort: {
         method: "alphabetical",
