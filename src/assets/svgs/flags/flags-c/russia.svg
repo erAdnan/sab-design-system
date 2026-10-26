@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-russia">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-russia)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAzlJREFUeAHVmc1u2kAQx2fX1ATlAteqVZxTq1xqt+o5vAHtEySVei8PUAnnDcgTFI690SeoTz0W59A0tzhKcg6qkhCUeqczVk2IIYCBgPcn8bHrBc9/Z8b7JWABXFxcFNfW1ipCCJuKFiLa9CpSuTjQLOAX1flhGHpSSr9QKJzAnAiYETY6n8/vkEHvqFiGGSCRvlKqbhiGN6uY1AL+9/Ynunk10cNzQR5pkBg3rZBUArrdbm3RhichEXvr6+vutO2nEkC9bpmm2aJeegVLgDqJc6U8jTfkpAaXl5c7FOvtZRnPkPH8IPCvrq4qk9qOFUB/UKMEazxmyDwE35M6rUU2uGPbPXSBjac/cCEDjMuLkQLYdawessUu5UQzWTkkgBOWY34VYTMOyokOD5TJxB7KATLey5rxDNtEIoai4p4AjntquAEZhT2QTOp+CHHo0Ah7DBmHQ6nX622WSqUOl/seIONroAEcSjSoVvtlftOl92MGvRB5gIzfBo1gL/BMmL/n+K1Q/lqdY2a9IpCn8fsC7C8W5KU24XOPnipJMn5pk7SFY8qKBIVl0BWhHEkPUhu0xdjgp5AF2oI2CRAW6ApCceKKLNMI3QVANBfCDmgMe0BnAQEL8EFbBAlQ0Z6lpoQHnAMHoCuh/C7hFrK2+zA95q0vwf9ASYwe6AZS7v74eBKtB9p/PreQ9iJBI2hRU3cgXhPnc03dxgO8Njz+jAQ4ftARoOqgCaig8fr4ONrguptKmOa+Ll4QvZwbf+8L0MULIeBe3PvM0Er+59azNlVncpEjEALn9+nmYN3QbFSo3PsshhL1dAdvcuVk/ZAA5ygIhMIqZI/dwdCJGbkecI7OmwJCFzICx71zePpt1LWxu1ntrac1BMOFFcLGvz08cx+6PnE7rv3ieQUNbFDTpZ4ZcMxTQladX+fNCe0m035pWUr89ZZ1doAKD0TvSWVUzCdJtSH62CHFva4A628Oz/ZS/CYdkTdkWKMf7sKCiA2X17l9JwhSPcJn3pJmIXQAuo1SVWce+BA9AXQa2pXNtIbHLGRPPRKjQlsZYltKtAHppB3QGrgJGSd43eErpHUs0irwxmjNavQg/wAxv0qCcvnq0wAAAABJRU5ErkJggg=="/>
+</svg>

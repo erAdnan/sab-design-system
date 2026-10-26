@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-guadeloupe">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-guadeloupe)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAydJREFUeAHVmk9u2kAUxr8ZQzDKhm1XcVXWrVO1anfhBpAThBuEG8S5AbkB2XQb5wRl2W4a6K4VUdwTBKkLSMCevoehECAYOyR4fpI1eBjL7/N7z55/Ahvg9va2YJpmWQhh06mllLLpKNB5YaaZxwfVtXzfb0opW/l8/g+eiEBC2OhcLndEBlXotIQEkMhWEAR1wzCaScXEFjB+2sd089rcE34S5JEGiXHiCpFxGqNYOaGnfkO/nE0az5DxVSq874WiE+OyNT1gVSxk4EKId72fX/CctF+9hVDwsnfD0vv+TaQ3oj3w5vCIjL9i4/FCKAFrYGZa3wrFclTb1QIoZKhFAxsOl3VQAN1TuFEh9bgANl4IB1tGQZysErFcQPGwnAbjJ4Qi3hwt+29RACcsVAOpQ9Z/mK/3FmoX2hlobiPmo+CcGJiGO1//UMAoacUeUgqFkj2fD1MBHDopivvHEcdXBet/hEwFZNUJNIBD6R6Z2uQ8FDBKXFmFNky9EArYEQfQiFFCQ45eq6GAQNWgGQEkd+NJQJi8NrRDlDiMJHIv10nbNPcwyhK+KkFTFOQ+54CG4TNB7Uka0ljQFmmTB4QFTRFQhXhj4pTB3wOtBTCSJme60BhOYo0FCI890IK2KI/fQh70pc0h1Ia2qK8SA7jQlJ2+35Lw3C7lQROaQdOPLZ56DL8DQkMviKDORShggHPdvgfZftDkMhTAYQTUoQ+Nycz1tCsxxJkuXtjpD53J76kATbxAPdDT2XWDh525jnua5i8zL3x86nac2brF3ugQh2kMJUE28arNfP2iAM/1aH40ddMsUqC6bMlp+Xjg9wW/Vh2kBI77j93O5bL/Hh/QhPngYMuw8fNxP8vqERmLkKhsIyc45jN+UF1lPBM9pPx1cUmJvU/Tj0/eFrA+qp298+0Pf6/Po1quNybmxL52recOKVr971LIOJ+7HXudNWIm9laDXq9nUcFrCVVsiJHhQtRN0zyjMla4Jt7sMRZyQDes8e4UJKNJ17r5fP48ruETEguYhcUEQWAbhnEwFmONjxHjJ9zl3SlSSm84HLZ3d3fdpEbP8g8L/Ti/ibEV2gAAAABJRU5ErkJggg=="/>
+</svg>

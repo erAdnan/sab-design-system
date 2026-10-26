@@ -1,0 +1,239 @@
+name: Storybook release
+
+# Device Storybook (com.sabdesignsystem.sb) to Firebase App Distribution or the stores.
+# The native Xcode/Gradle project stays in the demo app so signing is not forked.
+# This workflow checks that app out, replaces its design-system folder with this
+# repo, then runs the demo app's Storybook fastlane lanes.
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: Platforms to build
+        required: true
+        type: choice
+        default: both
+        options: [both, android, ios]
+      channel:
+        description: Distribution channel
+        required: true
+        type: choice
+        default: firebase
+        options: [firebase, store]
+      skip_distribution:
+        description: Build only (skip Firebase / store upload)
+        required: false
+        type: boolean
+        default: false
+      host_repository:
+        description: Demo app repository that owns the native shell
+        required: true
+        default: DIGITALBANKINGUX/SAB_Storybook_cli
+        type: string
+      host_ref:
+        description: Demo app branch or tag to build against
+        required: true
+        default: main
+        type: string
+
+concurrency:
+  group: sab-storybook-release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+  SLACK_THUMB_URL: ${{ secrets.SLACK_THUMB_URL }}
+
+jobs:
+  prepare:
+    name: Prepare (host + this package)
+    runs-on: self-hosted
+    outputs:
+      android_storybook: ${{ steps.matrix.outputs.android_storybook }}
+      ios_storybook: ${{ steps.matrix.outputs.ios_storybook }}
+      has_android: ${{ steps.matrix.outputs.has_android }}
+      has_ios: ${{ steps.matrix.outputs.has_ios }}
+      channel: ${{ steps.matrix.outputs.channel }}
+      workspace: ${{ steps.workspace.outputs.path }}
+    steps:
+      - name: Fix tool cache for self-hosted macOS
+        run: |
+          set -euo pipefail
+          TOOL_CACHE="${RUNNER_TOOL_CACHE:-$HOME/actions-runner/_work/_tool}"
+          mkdir -p "$TOOL_CACHE" "$HOME/hostedtoolcache" "$HOME/actions-runner/shared"
+          {
+            echo "RUNNER_TOOL_CACHE=$TOOL_CACHE"
+            echo "AGENT_TOOLSDIRECTORY=$TOOL_CACHE"
+            echo "PATH=/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:${PATH}"
+          } >> "$GITHUB_ENV"
+
+      - uses: actions/checkout@v6
+        with:
+          path: package
+          fetch-depth: 1
+
+      - uses: actions/checkout@v6
+        with:
+          repository: ${{ inputs.host_repository }}
+          ref: ${{ inputs.host_ref }}
+          token: ${{ secrets.APP_REPO_TOKEN }}
+          path: host
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Overlay this package onto the demo app
+        run: |
+          set -euo pipefail
+          chmod +x package/scripts/overlay-into-host.sh host/.github/scripts/*.sh
+          bash package/scripts/overlay-into-host.sh \
+            "$GITHUB_WORKSPACE/package" \
+            "$GITHUB_WORKSPACE/host"
+
+      - name: Record host workspace
+        id: workspace
+        run: echo "path=${GITHUB_WORKSPACE}/host" >> "$GITHUB_OUTPUT"
+
+      - name: Resolve Storybook matrix
+        id: matrix
+        working-directory: host
+        env:
+          EVENT_NAME: workflow_dispatch
+          VARIANT: storybook
+          PLATFORM: ${{ inputs.platform == 'both' && 'all' || inputs.platform }}
+          CHANNEL: ${{ inputs.channel }}
+          SKIP_DIST: ${{ inputs.skip_distribution }}
+        run: |
+          set -euo pipefail
+          export GITHUB_WORKSPACE="$PWD"
+          bash .github/scripts/ci-resolve-matrix.sh
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          package-manager-cache: false
+
+      - name: Verify Homebrew Ruby 3+
+        run: |
+          set -euo pipefail
+          export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:${PATH}"
+          ruby -v
+          ruby_major="$(ruby -e 'print RUBY_VERSION.split(".")[0]')"
+          if [ "${ruby_major}" -lt 3 ]; then
+            echo "::error::Need Homebrew Ruby 3+ (brew install ruby)"
+            exit 1
+          fi
+          command -v bundle >/dev/null || gem install bundler
+
+      - uses: actions/setup-java@v5
+        if: steps.matrix.outputs.has_android == 'true'
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Export Android SDK env
+        if: steps.matrix.outputs.has_android == 'true'
+        working-directory: host
+        run: |
+          set -euo pipefail
+          SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          if [ -z "$SDK" ] && [ -d "$HOME/Library/Android/sdk" ]; then
+            SDK="$HOME/Library/Android/sdk"
+          fi
+          if [ -z "$SDK" ] || [ ! -d "$SDK" ]; then
+            echo "::error::Android SDK not found. Set ANDROID_HOME on the runner"
+            exit 1
+          fi
+          {
+            echo "ANDROID_HOME=$SDK"
+            echo "ANDROID_SDK_ROOT=$SDK"
+          } >> "$GITHUB_ENV"
+          printf 'sdk.dir=%s\n' "$SDK" > android/local.properties
+
+      - name: Install JS deps
+        working-directory: host
+        run: yarn install --frozen-lockfile
+
+      - name: Install Ruby gems
+        working-directory: host
+        run: yarn bundle:install
+
+      - name: Storybook generate
+        working-directory: host
+        run: yarn storybook-generate
+
+      - name: CocoaPods
+        if: steps.matrix.outputs.has_ios == 'true'
+        working-directory: host
+        run: |
+          set -euo pipefail
+          echo "export NODE_BINARY=$(command -v node)" > ios/.xcode.env.local
+          ./scripts/run-bundle.sh exec bash -c 'cd ios && exec pod install'
+
+      - name: Write Android keystore
+        if: steps.matrix.outputs.has_android == 'true'
+        working-directory: host
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          set -euo pipefail
+          [ -n "${ANDROID_KEYSTORE_BASE64:-}" ] || { echo "Missing ANDROID_KEYSTORE_BASE64"; exit 1; }
+          printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/app/sbds-release-key.keystore
+
+      - name: Write Firebase service account
+        working-directory: host
+        env:
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          set -euo pipefail
+          DEST="firebase/sab-digital-banking-ux-firebase-adminsdk-fbsvc-df4e162a30.json"
+          mkdir -p firebase
+          if [ -n "${FIREBASE_SERVICE_ACCOUNT_JSON:-}" ]; then
+            printf '%s\n' "$FIREBASE_SERVICE_ACCOUNT_JSON" > "$DEST"
+          elif [ ! -f "$DEST" ]; then
+            echo "Missing FIREBASE_SERVICE_ACCOUNT_JSON"
+            exit 1
+          fi
+
+  android-storybook:
+    name: Android · storybook
+    needs: prepare
+    if: needs.prepare.outputs.android_storybook == 'true'
+    runs-on: self-hosted
+    steps:
+      - name: Enter shared workspace
+        run: bash "${{ needs.prepare.outputs.workspace }}/.github/scripts/ci-enter-workspace.sh" "${{ needs.prepare.outputs.workspace }}"
+      - uses: actions/setup-java@v5
+        with: { distribution: temurin, java-version: "17" }
+      - name: Build + distribute Android storybook
+        working-directory: ${{ needs.prepare.outputs.workspace }}
+        env:
+          SHARED_WORKSPACE: ${{ needs.prepare.outputs.workspace }}
+          ENV_STORYBOOK: ${{ secrets.ENV_STORYBOOK }}
+          ENV_STORYBOOK_PROD: ${{ secrets.ENV_STORYBOOK_PROD }}
+          PLAY_STORE_JSON: ${{ secrets.PLAY_STORE_JSON }}
+        run: bash .github/scripts/ci-build-one.sh android storybook
+
+  ios-storybook:
+    name: iOS · storybook
+    needs: prepare
+    if: needs.prepare.outputs.ios_storybook == 'true'
+    runs-on: self-hosted
+    steps:
+      - name: Enter shared workspace
+        run: bash "${{ needs.prepare.outputs.workspace }}/.github/scripts/ci-enter-workspace.sh" "${{ needs.prepare.outputs.workspace }}"
+      - name: Build + distribute iOS storybook
+        working-directory: ${{ needs.prepare.outputs.workspace }}
+        env:
+          SHARED_WORKSPACE: ${{ needs.prepare.outputs.workspace }}
+          ENV_STORYBOOK: ${{ secrets.ENV_STORYBOOK }}
+          ENV_STORYBOOK_PROD: ${{ secrets.ENV_STORYBOOK_PROD }}
+          ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+          MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
+          MATCH_GIT_BRANCH: ${{ secrets.MATCH_GIT_BRANCH }}
+        run: bash .github/scripts/ci-build-one.sh ios storybook

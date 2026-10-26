@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-romania">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-romania)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAylJREFUeAHVmk9u2kAUxr83Jibd+QZx1aqq0kUhVdfhBqQngBuEZVeJwwnIDcINyAnKBVpg0SpVU4XewFIXpQXP6xsc/hP+K/H8JEwyDOh9ft/zeGZM2AHc8DyovbyGyhCzr4GMNHsgeQ07oS2HNpFqKurV0YuadBT+wpYQNiQOOl2IWJ+AKIcNYOZmilBB1K1vKmZtASZwrdxTZpQmzvCWSOaulO4G6wpR63TG4dl5RO4dA8EugzcwUTFy3PZn72WwzvdSK/V6/dGH49bkPL3d3HSrITVy3vBeFbjTzR117pZmY3kG3pwV4KQb/eAfCSb4eJZqNryX+WV9FwsQy0jgV8Bu7bIa5DGp2jJLPSzABE8U4IkxllokYr6Aw7N8EoIfENfFi8K8z2YFmIKlvm0Shdip8mX/+cF0+6wAx63jSTy/DPJof6823TopIC7aAyQUuTplputhJCC2ToCEQ0SnDc8fOmQkwEmfwwrI00iVBv/FAszZB4qwhPEs3GfAPYZVkAS/17+sxgIcKsE61En/eG+fDCyDiXPGRgrsPtpN2u5x8wqpzWZTSUCDs6YGrLPPEKIDI8CHpcjcKmO1ACllb705ceIg2wWYcYAohMXIOMA2C2hLBtCEpRBIBPTXLO1Es24pRLoFS5Gz/0lh36nBUrgTNRWagSniOixDRuGmWXqMxwHN9mWBo4p5iwWkVdW28YA7um7eYwHGRlpXYAmyMXI1WLke3Uq46tKWLFCnFwz+HgmwJAuypXUxvm8weTP3rXwhx8SOzHLlab8Pb4Pxttm70Yg+JNFKEnzIf7q56fZZATdBGz2dvGUW1sV5W07z5wM35aqUeoCEYHyfDW+v53328ITG1EMCRJjgp30/zuIZmRHR45OnqAnjeepFxUXBG5ZPKb+Xr9FDVky49WMBqyIDVUsKNpP9/bO6rO9qc2JT2F/L/iNYKmTWwbvwR2aVPWLDJo8a+LJbLzuYO12ODyWQitL/LikbrmXXbR728KH2jjWoxJuu7hHXHVY16L/VdQMf/gR2QD8rcDOk6NjsY4nVfEwumIX9l8y/ianNmloOOrVNgx7nP6HsLjL7an/pAAAAAElFTkSuQmCC"/>
+</svg>

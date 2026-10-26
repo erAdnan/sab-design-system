@@ -1,0 +1,78 @@
+name: Publish npm package
+
+# Manual only. Bumps package.json, tags vX.Y.Z, and publishes @sab/design-system.
+# Does not run on push.
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Semver bump (ignored when exact_version is set)
+        required: true
+        type: choice
+        default: patch
+        options: [patch, minor, major]
+      exact_version:
+        description: Optional exact version (for example 1.2.0). Leave empty to bump.
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: Version and publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          registry-url: ${{ secrets.NPM_REGISTRY || 'https://registry.npmjs.org' }}
+
+      - name: Require publish token
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${NODE_AUTH_TOKEN:-}" ]; then
+            echo "::error::Add the NPM_TOKEN secret (Automation token). Do not commit it."
+            exit 1
+          fi
+
+      - name: Bump version
+        id: version
+        run: |
+          set -euo pipefail
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          if [ -n "${{ inputs.exact_version }}" ]; then
+            npm version "${{ inputs.exact_version }}" --no-git-tag-version
+          else
+            npm version "${{ inputs.bump }}" --no-git-tag-version
+          fi
+          VERSION="$(node -p "require('./package.json').version")"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Publishing @sab/design-system@$VERSION"
+
+      - name: Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access restricted
+
+      - name: Commit version and push tag
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          set -euo pipefail
+          git add package.json
+          git commit -m "chore: release v${VERSION}"
+          git tag "v${VERSION}"
+          git push origin HEAD
+          git push origin "v${VERSION}"

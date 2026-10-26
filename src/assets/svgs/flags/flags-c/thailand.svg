@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-thailand">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-thailand)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA2hJREFUeAHVms1SGkEQgLtn2QWEw3oKlYvrzVs2VclZjrmhlcolVkrzBPIG4hvoEyiVys8lFXLJNeQJWJ9APIWbWAUEF9hOz+oiCgKLiDvfgVpmZ6F7pqenp3sR5sCRaZt6AnJAYCOABQg2EZgo0Ox3IqryvapH4PQ0KMcIna2/lTN4IAgzIoU24rBNCBuImIWZIIcVPeDny7MqE1oBX/AE7PIf52+N8EMhOgbEQlhFQinwOWPvzV3wO3hE+x9qTmHa/lMpcJSxLR2hhIAvYBHweuHZyE4zG2JShy8Ze1snqCxMeAmidARO8bmdm9R1rAJfpckgHj+mydwLezH2VKVPGbswrpt23w0pvMeLCp4Y6eE20xn80aiVR94f1dhsdnME3RJECRI76bRRvNs8pMD5OVm64Vb4icWbzViwrgnDTibx1sIeWgO63i5HT3gJmT3PHbKKWwo0m509NroViCxkX1xcFgZb+iZ0ZTqXpxB5sN5xjdXlZazLb/0Z0HV3D5SATCHcfPDNnwF1Rj/gZhb8GUgkOuugFGTqemdbXsXkx+tXG3kkUAuiDf48xLW1N5YuhELmc4PWai0LnWhxQdqc6aRSOeHFYllQFPS8l4LdkA2KwiH+ikAiCxQFeWeWbtQCReGzijnxRBZxlFfAj4XqoDBKK8AOqCo4gnBAUVh2VgCxCorCCpwI0aMTUBTOmvwWWsKIVvYhBPF/4AjHKdXZjMqgGBz+O5XTX2f+iazVcnc98g5AJa7zRMGRkk84fKREiGA6ZTSppbjFWbszfyeWZ0tETZkZ4Cj0WAp/dX2NSrMQjL687sdCqsxCr4v7gfCSodxoo9GuyCIdRBHedNNL8dXBpqFoVNPim7zFRS4+Is4FpZJG9m77kAKc/a1qmshDxBCg7QyaTkBsVOdk0ihygcOKQoFDcl34+znq3r0Vmu+N2p936Yw8tmXhCZlUtZxYpfz2zM51BftdWKx75UizLojy72tOcVy/EGVWLHPnhdQOuPp/kiTIvZ2izBqq0P3YhT856nzKOtiqOfvTPhP+VQOeDQNAVnJ2YE4EgrttOPxYd0K58Nlf9mBF4gDrvMily51p4+M/L5NHJfcSimEFH/iNh+Mr47ESCOuewKtXbgYSZv4Iy+QBooM9r9plG++1oTSr0IP8B13ZPXY7JZhTAAAAAElFTkSuQmCC"/>
+</svg>

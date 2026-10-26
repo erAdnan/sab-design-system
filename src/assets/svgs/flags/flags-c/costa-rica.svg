@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-costa-rica">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-costa-rica)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA0BJREFUeAHVmsFSGkEQhv+eBQTJATzl5lpecgvmBSSVByC55aZvEO4xJVbFqhz1DeQNyAvEzQuE9ZxUuZ5y0z2EEgrZTs8qFAjKsgLufIeVHUbof6ZnmO5ewjwo1ApApgKFEphtEJdAkDYqDPowe2B4IOUiCBy04aK9d4EnQohLaHR6Bxa/l48pIw7MIgZHIsaJK2Z2Adpwlf4ko1wdGeGnc4IW12YVMpuAtcP9BRg+CgcHuPxSi9o9moBCzUbKaoDVaywHT2ajHGU21LQOKHwVP081l2i8xkaeXPnuyrSO1qPvapdRdCQTlcXyycp3f0TuLeH61Hmo08MCQn9HDc8NyQ73iIiJa6DValWUUg0ki91cLle/3zgm4Orqyl5ZWWkSLXCniQEz+2JTSUSMLOyxRSzGO0kzXqNtEhFjXjEiQFxnXzquI6HoGRAbayNt/RfadbLZ7DkSjnalTqezUSwWfX0/mAExfh8GoF0pk8lUB/f6Ysro9xmehXAGxPhtGISeBdlsdvTrlL78KW1WpRUmwQjkGI9jar56aadgGeM+w9y0W0VlMS/zkDZX0tm8PjGkyjCUHmNLMUscaygEXldysWEqhJJikA1D0dvp9IgsyTAMFwB9FiLyYTCKODBWAIM9xSQpPmMRAQTyYCjM6kx1GWcwlJTFpwrZdNKyD5HpXLOrtlxPL2IHpsFw35z/vQjjgc1fvxtEMVPkz0Sv1zvCixe3MbGEZ3Uy7Pcgn887+m8oQMeWoSJDkBjgRAY8THANp1UKkvU6l4A5cUmt+0gMb/cFDM5CpsxCEAQHfeM1Y5F8u91uyiwkMsgRu7zV1dWN4TY1odOHJC5onQsSFy/fbx8TIJ086VxFwhCbdoddp09qUucwD792aCeiwKG5Lfx9n/TWwxWa6x8/kXunV0kZz8mUquX0dFzhWwXWzclCS6sTYR89VOHv1R/rFb3MalmOLJnl1A4oOMM/qkQps8YodC9yXcios1RFLz8fRP2POI8a2FBpLWQXc+PO8KB7DL820xb+lIc9bCCzDSVbLsXN7pEDXfcKuvVZDR98AubBrRgtYlv2tbtHbqTaPiAcYV8yIK4sTE/uJQrsNuIaPcx/SFoyeTT7eGkAAAAASUVORK5CYII="/>
+</svg>

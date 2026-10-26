@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-estonia">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-estonia)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAwZJREFUeAHVml1u2kAUhc8YEuXvAVYQZwV1+tLHsAPaFSQroN4Bzg5opb7DDugK4sdWqQSsIM4KsCJFwQm2e64DCcFADCHE80nGwlzse2bOzHjGVlgHdqeEaFCFUhYimDBgAaqEOC49xSh4/JStixguwu0ufn2+xhtRWJUk6eCUyXzlWSpYBaVETAPhlruqmOUFJInff+c/7Rcl/FYUmhhuO8sKWU5A7W997YmnUOf4+cXJHJ0pyu6YCIM2oz9hEyjlYbhVyVIbxmsBqP2jz+87G0teiGMThYcuan+qr4UuFlC7rAPD5vtaZh7JNdu0rbMoar6FkuRDB7lgfruYLaB2yaoL28gV6owiWqmjqThpsOL5D7HNIpTP8cKabtjpNhAO3PwlLzCn4kPKFS8FiO+VOkReiWNrulE/W0isEwVXyD20krF9hMaxL9+eayAO6tCCWG5l7PG3xxrQpvTHPNfCYw1E9yfQCqmFh9PJIx05qtl2IYmLhUxuV9CTslhoczdp66cqAirQl2MRYEFfDkWACX2xpBHH0BdfdwEZppQ5RwT40BjdBXgioAt9SQR40JeeCOhBXy6kG5X5bx96Yhb54ReLRbdQKFSgEWEYdofD4bUIwM3NTVspVYFGUEDj4ODgcSALgqBFAVp1p/v7+67sEwHlctkXRdAEwzCaLPBkgetpWaXf75d2d3ev4lwuar1kZ2fHHAt4uhfSpRaiKDofJy+k1kYHg0EnlhWwHMK8vL29vaPJY8aMoG95bNDMy6fFK9PHUwIY5DHYRs5gTmeT1hkzcz5AES16zUFOEN+z2/w967eFD/lub2/r7LIcfCCj5J15v7/6lJKDXJXV19x09yqeZ/I2R9vWorhMj1nv7u5MntBVG3p2wMR77G2qszw/TaY5sTRsntB873Yhpc6dQ8tYWZIXln7VQGqDuzq3M6wJSZwJNzjC/li2C1/5ZY+RkBNe0H7DwOfyv23p9VYde1Z/W2UCEUN7WZxTnIzEmJhY8RuVsM99l72ax/v4Hm3SXseA+R9VB2575fh7rAAAAABJRU5ErkJggg=="/>
+</svg>

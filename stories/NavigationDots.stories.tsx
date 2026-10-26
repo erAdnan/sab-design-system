@@ -1,0 +1,20 @@
+import { NavigationDots } from "../src/components/navigationDots/NavigationDots";
+
+export default {
+    title: "Components/NavigationDots",
+    component: NavigationDots,
+};
+
+export const FiveOrMore = {
+    args: {
+        numberOfDots: 5,
+        activeDotIndex: 3
+    },
+};
+
+export const Four = {
+    args: {
+        numberOfDots: 4,
+        activeDotIndex: 3
+    },
+};

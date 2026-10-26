@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-faroe-islands">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-faroe-islands)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA4xJREFUeAHVWj1v2lAUvX5GfCgZYIw6xIxthzh/oPGSmWSrukClDt1CpXbG2TukU5dWhaFVtxJ17FCk/ICapSvOlJEMSWgS8Ou5gBEh5sOEEL8joQfPz+icd8979r22RgtAw7TS2cdvciQ0kyQZrc/bppQyrWlaemiYyx/0OZ1OpyaEcFKp1DHdETGaE0w6QV5eI7lDmmeBfO+A32ja6CkGfyDMAvkid1xcXDie5x3oul6bV0xoAUw8Sd4eiBelRukB4zkAkSbIl/n75eVlGWLssEJEmMH04mcpRbIBzrbUZJoWCJAvoHHPz8/tEKfNGIHnPwzSRZVIboA43SdgrxKslUd0rFmiMTUCZ2dnedL1Pwj4Bi0JIM9rxUE0ctPGThSAPyj1PbpQu8wC3sEQjeo0S40VwOTxBzY9MNhSk0QECuDQRYG8DxbRarXygcdGO5rNpoHwlSliwJo4gIj10f5bAhKJRG3kChoJMCeIqI723xDAvsfAdYoo+MI3uh4GAtg6UfL9OEDEHrgOHDIQkEwmS6QA2ErxeLzo/+4K4NlHUyBFMByFrgDM/hYpBI4CNpvutir6HUVSDOC8w61g+2B7Mkk9WGyjWOb10cb8aU0wUq9+0XIgcgLkLVIV8noTa0BT0T49SH1dO9l81qBevqoiXN6FDFIUyA3T4XLiiEFTXQCDqzmnpDCEVFuAG1t7+s5BumPMesbJ3/eB/WtP3tLS4fEuJKVLqkLr1AV1OnVSFvHfseZHq4rb6S+ThoW9t2l92qZlALwdkclkeBHXSDFw5Q631Mei/6NKioHL8tx2BaC0XYEapbbTlZWVGrddAWwjPDU5IEWA6kmZ7dP97ndeXV19UCUKqErY/veBAFWiAO/v+7PPuHEzB1/xQYciCmw2Ljjaw30iYNBuFK0EXqd4YmON9t8SgEEuBkeuzAJOhWHr+AjMByCiwk8MKSJg38M6h0HHxiY0vB6iIKJP3h53fGJGxiKw5+JB9vJzBvY8dsXCJPKMqSklapCH1O5sYi7u/FrArMCs12Fjc3V1tTJt7Gw58fddl77uGJgWm+4RPOtobMy6GbRggxAuqf+W2/8nRdaTskwLhE8cs57FZz/MuaGrElmn5j5yjl6yEBRmCigK3OXCV+Mt2yc+z/Vn7rIuC6HeKzSVhmkZdI0SpS63uq/c9N9M8cfyDDM5vofHpuC22+06bFJdxAXzP1V3Yx5lCJVfAAAAAElFTkSuQmCC"/>
+</svg>

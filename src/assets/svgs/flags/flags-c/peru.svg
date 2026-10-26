@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-peru">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-peru)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAz9JREFUeAHVmk9O20AUxt+boU0iBMqyO9xKXVUC0wuQG9CegNyA3CDmBuEGcINwguYEjVOpq1bC3XWHVRYUyMzjPZNEJglxbAJ4flLi2HHi9837Zjx/jLACLi4u6tVqdR8Rfd71iMjnV53366nTInnxsdAY01NKhbVa7Q88EYSCSNCVSuWAA/rCuw0oAIsMrbUdrXWvqJjcAkalfcgXb02V8JPgjJywmCCvEJXn5MHmhzaX+jl/DFYZvMDBN3kT9etekONny2WA/9RDwK4i3Pn49yc8J7/efeJ3iobX0Pj8/zwzG5kZ6G94B2uk+hI8vBjo6QqEPza8/awzFwrob3ptzd4kgJXaZRk443WuGN0sSz0qIAkeVQCvjCbVXiRirgBJXRmCHyMiBmzled/NCEgqLNsGyobCzvfq+62Zw7MHVO81PJ+F1Amu2N3p4w8EiO+RYAtKCovwp+vDRIBYp0y+fwxuzg851olDJgLQqjY4QNK8ArTG+4kAKX2F0ARHSGchEaAM7IFDSBbWrEqa1XsBSrXAMQhJuvGgxD7cbPrgHNgQGylt4AU7aavljdH7ClA1wFFutdlVo3Gsk3AfaUux/z1wFALyuRUiD9ylnmtMXDbkfuC0AEEExOAwLACdFcCVOJIMhOAoPCfEAogicBSDNFBG2QE4yluz9k0s1AVHub41odqNo5jb0x44BoENZeoxuQ9YMs5lQVvdke29AAWn4Nj94ObW9mSbCBAbEdkOOIIlezKeuZ50JTgLx+BIFuwNBuPPEwGuZMGgPUqvGzzozO38i46wxHdmbnkiLuggfWymNzpE+xVKaSWKzTU2po/OCGCFEVlbvmkWq5vzlpzmjgd2LqNTrg8BlATx/fbl77N53z06oJH6UAYREvy079MsHJGJCF7/lBmwV6gTFLOVm4uCFzKHlNuX0RmXwq5FevJjAcvC1xvwMqsvVs46d6kxsVRsPz73nttSvPof8wJLwNfzl1kjFnI/anB1deXxRtYSmrAiksARO9Vq9Zi3uexa+GGPkZA9vmBLnk6BYvT4t91arXaaN/AxhQWkETHWWl9rvTcS40Fqxm9UwrE8ncJT+dFwOBysr693iwad5g5UslgrECdo/AAAAABJRU5ErkJggg=="/>
+</svg>

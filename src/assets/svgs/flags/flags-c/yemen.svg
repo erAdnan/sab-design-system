@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-yemen">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-yemen)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAArRJREFUeAHVmltu2kAUhv8ZLgKkVmYFTFXeS/qSx9AV0B3QHSQ7gOwgOyjdATsIj61SCfLeCncF+A1zMdNzzCXGJFwMBs8nHXEb4f/M+Y8ZjxE4AV1LWS6yNQFdAbSiqAgtLC2E9TJqZgOCo0efd7Ku1/vs9v/hSAQiwqJHyNRJzFf6mioiQAlzMg8Zd9aJmszBCbDwMdK30Lhbn+GjaWXdafPQRA5K4JdVbsQgHOuC9P2186e5//g9oFlXI6TbNPwTzoDQsDOjaXWfashdA36/+1gf63T3XOIZLaAmuXTvp1Wu7Rq7NYGn9+XGNCVbcVrmLTRAxxRtsm1z27g3LcTiPSmaSADb+uLVBJ6odB5ljwQhMPt27fz9sfl+CG5Y9vwlbLMNEupk3Gkl3NgbPeAi1UmaeIZ7YpJLbbhiLQH2vYAsIaFoiEq4qVcWmp/rM30kHLZSFpMPV47t8OtVBUh8AwbAVqKlzN3ytV8BU2Z/SbAKfgXGyN7AIPyGhqzzc78Crut2tea1vFF08vn8FzEYDFQulzPGPkFo4ouyUCicbZF2amjia9LzvCoMhWx/JYUQpnl/hZSyxGchBUPhE48YDocahkIJODuvyJIM2d8yOgGGm9iBwUj2EczF5gr0YC62nM14z9JMyD3PnMAzDIUSeOTFnEVrigEMhHQrWSwWuYk7MAya/R7172qH4hb+dYJRUQ8mxNsog4QLDkeJhS9/idlGDzCHFsXGzrVJVfBnnwmuhUypwj1emf0gdC8gsTPfxx4oJNNKrKmEPakDFxccjp13a8I0gIsKDkYTEUlCEk0cCZfuEj3Bx6zjRCgKGzibeL5GKSEGGkCswgeLY8SKovgOxCL8rLe2FOYePeaH7xHzlXBk4ZH/rRJCUfAW5c3iUWF9x89ZBHvbpuCrwPbivaP4D0m6iKISeW9GAAAAAElFTkSuQmCC"/>
+</svg>

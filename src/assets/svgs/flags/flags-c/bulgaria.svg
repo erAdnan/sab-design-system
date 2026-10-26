@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-bulgaria">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-bulgaria)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAzZJREFUeAHVmr1u2lAUx//32pBkQfAEcaRIHQtVqozhDWifIHmASqVD5zhTVzK0W6WwdKZPUMaqGWLWNlWcJ8BJh1DAvj2H2oivAHYI8f1Jxvb1tXz+95zj+2EEVkC73c4bhlERQhSVUhYVFWnLh1uEyxvVcahOM5PJOFtbW9d4IAIJYaOllIdk0Cs6LSMBJMSh+2skpplUTGwBoeFv6cFVjLfwQzkjIXZcIbEE3NzcHD+C4WP4vn9SKBTsZesvJYBa3SLDG9Tyz7EGKLTcbDZbXsYbclGF29vbQ0rQi3UZz1BjWd1u16FnVxbVnSuAQ4Z2Z3jEkLkPEsHPbJD37bn17rsQxruNFDAvL2YKCF3XQLo4yuVy9cnCKQGcsBzzeIKwmQcltkeJXZxM7KkcoGRtImXGM5wTlNhTUTEmIIz7baQUHqqQjfZYWXQQhs4VUg6HUhAEO5TUHp8PPUDGH0MDOJQozKvDc/7RpfUjRr0w8AAZfwCNYC/QwO+Qj03+yX1+X4VKPLJ+KngYfyrwoWpho6NN+IwhNgsSG3drG6StHPW3IiFkGboSqBIlsSpCV4TaZgEWdIV6ZklvHwvaQp0atEbpLmAwFlIeNIZeo9BZgMsh5EBfWIB0oSsBWpJ6sxZ0RapvEnIzbasPy5M1HYl3NY8SuQntEA7efLwezAd+fPrSEMooQyNMpWolhHPiTE/WdesPVNBp8n4goOR6ZHxQgyYooc5eXHUGC1zDoYTZl6e6eMHsd+zoeChAFy8EUCdR6zNTM/nz3Tyti4pUTnKEgLv3q70zWjY1GjX7eJ3GUKKW9mT/rjxZPiWAQskNJKpIGQbU0WjoRMycD+z/9Oi16ttICRz3pUvv66xrc1ezzndztF5q2HhC2Pj9S8++7/rC5bjvz/IVw+fvZGKt3ww45qH61b3ff+oL6i3mwspbfYPGS2v6dqCgWqbfqcyK+UliLYg+dkhxq5PxtZeX3kmMe+LB3uhlcCyUOMKKiAynV/jp/w411r3JYCF+FgcqGPz1IGnH1xRCNYwe6nENj1jJmjqL6WZRFAoH5BneW7Rab408hBKSWlnAoYGYS0WtTA+NpEaP8g/2nDk8We/F3gAAAABJRU5ErkJggg=="/>
+</svg>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-belgium">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-belgium)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA29JREFUeAHVmk1MU0EQx2f2SQAhsSBcuFBiSICQWE4CHmyinsED3gwYE6/oVRAKAQ5ehIMXDwQ8yqWeMbEHAW+0CTGgIS0xepGPHjB87zhDeaTiK/3go29/yaSvu9t2/52dfbuzD+EcoKjfswfQxpc+QuVFpEYE9BBBxVGTTbZlbrkBRGEFGLIKd8JYNbsCZwQhRw47raATCNv5a/yQG/MK9djOm4LpklfTvyAHFGSPh63/7qNIFEiNnqHzQpMmNbG38ufHal3z+EZNazVkSbYC+tiibIH9ffLAeUGgEPGxLqLv63XNL7L5aKYCvGxhtgFIeOCiKCDE4bX6lmim3shEQAfbPNtNuDy8uhjCqw232tI1TCegh+09XOy/7gyRB0kFf9e1Bk5rdpqAfrYhyDMKqX+9vrknZX2KcnFdAFwCAQ6tNbR0ONU5CfCyTYDrwLdOge0kIAT5GPPp4JjgaTZ4svikAJmDs76ZXCK+tbrbfckFyQK8kJjn3Y2i5xte//EISRbwku0KuB0eSvtFu8/st7aAKrYuMASloNv2gi3gPuS2sMsPEtDFO51yaXe6GwwDidrlVQR42ZrAMHjR55dhJAIuc5F2rhwUbbeJAD+YCmGTCPCBoSilq0VAGZgKqkYRcANMhfAwiEvBUAiowpybVwpEwCoYC26KgDiYCullEbAAhsK5pA0REAND0RoiIiACpmLpTyIgCIZSsmWF7SAOgWFwWn2+ODq7Yt8HjPOCVjQmr7aASTBrOj2APfwoF7YA6fwoGAJpelfxbe6nXCcvJcQlrvcCIuyV7Krj9E+yAOn8a3A7WgUkeO23Jxdzg5A4yHArsfLFmZHkAqfV6ANw51CKX93+/zzOSUCM7Sm4DD5E60oeOsflKdpPsfWCS9CEA2VfZz841Z2WCx0+qg9AHkGNvZVLs8Op6tPtyGS6kgxYPmIibmnrYfkpnRcy2VKK6yRzd+bHAjJFE0U4YH2epc9T6dpmuieOQSIFKYdt+3BxxHmn3l+5+MXnFLBOZLuplzm4lm2c74gHcF5YyB2ngNoqrLm+ODeYzUdzOdCIsT2pry3tU6jvabI4s005JocpZKEKXhspmMSamZziLOenVf7pRtTv3eUUJX/ZHUSLU5VURomEWenRr6zy0Ihz/QKRjrHvIgUWBLEmdObJ4S+rqgGKpb1ExAAAAABJRU5ErkJggg=="/>
+</svg>

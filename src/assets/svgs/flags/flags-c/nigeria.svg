@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-nigeria">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-nigeria)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAxFJREFUeAHVms9PE1EQx7/zrIBGEkzwogeaeCWx/AVy8WhoSTDe8OTNoBcjUGkxBbwpV6NGPEoCq0djhL8ASuKVWA5ejAlqCOFHu+OM20KBLSWw3e77JN++7dtN9k1n5v3qIwQAM3dI0SdKiOKibpHWdZYf2RCtitZFedGilkS0hmahjRYNiRb49CyJBkVXERblhmdE6xwcJdFbURcaibxgLOCGH2ZHNILAySbjj7/O5DkkHnx+/R25/hN5w9R9Yio1gDYs/9z8cwMh8XdnMw7DeeRu99V79ngDplKj8vkBTB0IG5Je7FzMwUQye9xjtQ2YSmbkM4dmYyhT/iH9b/vW5lLiOsoiOuSkTQN+N44aIAmLGL9D1DB45ZfYRw1olVGyGTFfD80J4zqHqw8a8Lxf+mBq7GByFogSmEyNVVftG6Ch45bGEX0eSVv3ImTfgFY8BZkYoo6G0nk8rHz1DMjelckU3YMtEA1VvOAZ0LJ9CycZlaOC54VBvfQaTTwE2zBIeoUmL6gH1kG9GkYGbRTaJC1wWqjPwOVe2Apxj5GESMBWCF2axJdhK2y6jcx7rsNauEND6BLspdOewasG4gH+BVth2pAcwG/YCrmrYgB/g7XQuuQAFWAtvKK90ApspUQLBttwYC2Ul9moI0nMi7AOXkZ6bq28HrDQCyWa1sIzYAszMh7Y050SSkDsi16W18QSRoyXsAUX75Ge/aGX+1OJbUxb4oVduLS3/VO1LyRecOkFog7Lnq0kb+XrwcncyPwz8UIekYULGJmbrK45OhvdQiqSoaRtKpnew9U+u9NOAUX3PqJGUTbeqkKngv96IP1pVjI9jajg8jjS8x/9btVe0IzOT0jMZdF80hh1srVuHr8iG3bGZdBINiUn/sc87mBYf8ja1F9SPhHXbaGnvfVCaMcCrlxsX0HRJCRsZhEk+ie0aJcbh/6JPoZGIi+Ii96Iihwc2vAMe4dGwkFedo29gxpLfHoW2DswcuqGEwJAGhCHd9TmZrnU3T7dMKvsOenOh3YEuv4uiHQV6BDRmTuHf6vrRGyP9EPxAAAAAElFTkSuQmCC"/>
+</svg>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-mauritius">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-mauritius)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA0ZJREFUeAHVmr1uE0EQx/+zNsFJKA6JAmi4UFlpcCpQKOI3sCNEQ0AJT4DfwM4bmJIKR0IKTeDeANNEdLGLSOl8qaKgSLjKhz9umD1jJ/G3Hcfc/gqfvbe25r8zs7veOcIEKNlxaz5ymgBRjD3YJFdisphgXfZiV15cEBcUIV85CxUel3YPcUMIY+IbPXu2Dqak/Ewc40AoKMXZyqnKjytmZAHa8LnI+QfFlLo+wjeDwbn6hcqMKmQkAcfRF+lJG95OHbT56GA3M2z/oQQcReO2wrlDoGeYDm7tguLDeEMN6vA7+nI9zBd7UzReY4cjKJwsPk8M6thXwHF0OQ14udsMmZ4wW56nnKPocqZft54hpI0ncAYBoF9edBVwsric8Dx2ECBUiDce7P/aam/vEKATVsf8fwmbfhCVa+eItSd2Rw7IbJMPnPEayYlwpDMqrgloxD09QVBhxI7bkroVQg/tlMz19RKCT/kUoYWymy3rDy0PKK+ahhlYc6ilmh98Dxg0+k1aXvjnAW8FZmHdQ21dv1GNFy8Fw6gDSX0lA8OnhYTRfcXwprlJmyjzqCZUGPU4DMUDLUkOUAyGohddxUw2DIVl8JXIsGEost23Bv4jCzgW8b54wmCUmF+GwegcMFcAwZVdBAowF1d7wIWpMIp6FirCXH4Q78n/3xn8gYnMwla0JEnMyMM8CvQUh42FLIxAnQENBSOrLw0BZ9gybj2Ya0SNL8APo1BDkSHkdPjoN61jFT+Z76CEIB5qtSPJ2xQQbrb5XthOZuFRBkHG4028c1rHi52Hu1+Se7pYh0AihcI1Z+FqS+d2uopVOYcMXkJrmyIq3t7cKeC940JR8I5ZiDbw6ltHySnUtfPOQRGvo6J6zPLppNFx/9b51O1WqOeXdg5+BkJEI2kzvW4PrlJ+XU2gxjlx4XSnVx3zOpTffN/q1224OvHnpC1rRF5ETKd2wFzErEp0i/l2RqvUbyfTt7pO6FEn2RGsOZvDfmX0ZyW0N2ZYaglqA5OiaXgFH2UWHGkKH/thD1/IXVqRTaCecsdb+EjCkqXuVZHN5IiGX/7EJPDFaBFSZ/BUTHLFlla7dd8fYRIDuQDyXJkUiqiHnHGNvspf+C8oHH2nPl4AAAAASUVORK5CYII="/>
+</svg>

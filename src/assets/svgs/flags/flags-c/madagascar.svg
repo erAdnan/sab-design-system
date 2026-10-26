@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-madagascar">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-madagascar)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAzNJREFUeAHVmmFS2kAUx/+7wQD6oXAC4wmKn9rxi/FjP2FPoDfQA3Qm8Qb0BnADPEEz0ylfG05gPAEdR4sJJdv30qIREZKImv3NOBuWrLz/vvc2bxcE1sDIthsGfrcVREsBFqiFEg0hVGN2D/UH1AQCyhcC3kZo+PXB4BLPRKAgbLTE+IiMPqR/YqMANNaXUJ2NSHpFxeQW8M/w2xOlxGl6htdA14ykm1eIzHPzeDx2hAov6NJds/HMcWTGwcjec/MMyuSB0WhkmabZl1K+jz4d4KUh7wbVibCzeGOlB66vr4+q1epPNh6vBHnXikzlXx18aK+6d6mAm5sbxzCMrhBi3eGSAdUgT/RXhdSTAth4mnUXb4xE7CwTsVAAGd8ug/EzWMSV/fFo8XtzcMJSyHRRMuiZ0Rnv7W3P9z8SQAnrvU3Mr0I1QlP153sfCOC4J+O3UVKoDGnN58OdAA6dMsX9U1DpccLVwP3r/9RqNQdawBVAdDp7lQjg2afmGJqQ9kIigGZ/H1qhqKAMk2U1EUCJewrNUFCH3AoOH/LARdaBr1HMZSVGrSk3NzdfrUhbNwZu23I6ndrQlCnErqT4b0FTBOJtTmILmiLo8EBrASShkWtPXD5Uo4KcvLMNlAlO4l/QGKmU0liACtgDPrRFBDKO4wDaEg9ZwBC6Iirf5GQy6UNXjKkvm80mJ7EH/fDxZXCZPMhoJdLPC8LocJMICMOwp93zwPjjcZMI4DCisroDbVBdDh++uquFoij6qo0XKnBnl3cC9PGCOpvNPvOgGt3a2jor+ZM5gDtw0x2PymlakT6XM5TIpoqy53sfCajX6wGJKN8xixDH6dCZsXBDQyJ6VGK4KA0U987380XvPLkj43wohwgyfi7u0yzdUrIIOrE+fJucoM8UdF67xHhm5Z6YvvA4p5zYpb9n/ywgB0NU4hacH71VN2baE3NiU2PxFyDUungxeNbjDpzBWdYRuU4lOKSAjR1aa7tYK2y4cmk+d/IYn4xEUVzbgpjs0zExL7lFT/c8Wh77UJUeXK9QnhUXkIbFIGyRmH0IyWIsPDgw40WADw+UT94LEIshDLNf1Og0fwEKtDKVAH0WJQAAAABJRU5ErkJggg=="/>
+</svg>

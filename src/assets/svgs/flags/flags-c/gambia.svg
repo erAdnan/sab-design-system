@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-gambia">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-gambia)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA3dJREFUeAHVmc1PE1EQwGd2twuEaNaEmzEsCQFuFD2YwIF6NynevME/YGxiIt5aDiaCl3IynqTevNWjJ9dDEQ+mbTxIIoYleuBA4p5gS+mO81paSks/KWXfL2n37Xtvk5k3M+9jHkIPSBumAaCHASjoAZoKYJDLBiEY5T5IaPODf16G2yxyC5m77u4eXBKELikJHVgkgAVADEEXIAErU4iT61ndKtOxAqej/ZSLkeoRviyszAa5+VininSkQNqYiEKPBa+FyFu55+zE2u3flgI86qYHgSQiTkMfYGvYbI1QO9ZQWnVI35hYZJdJ90t4AVvYhCEtkzbGw636NlUgfXMiShr75hW6TGOQZzEl+d0YjzXt1aihKLwKMfABzeLiQgWE6YT24COQCkszzu9EXX1thQhY4fPX4zbNIAeOToK1gV0XAx7olv+EF6CBg4E6rzingPB7RBgFn8IDG6wN6ooLCdch1HfB95CDlB+bcWxHvFVZIBAFKUDDAy1SeRN/8ox+mTMrnFpAnwepwOJOuFgSf0SU5kcQ5MLi7c0DZOFNfpHIfc5xS3v34cd0AFvu6XzJ8HAgrD159inEpgBJmVFYeNl8vwLLPqoU997yElT49GOCpPAEZMgZvWdIr0BxL+SAxIggllYBnoVspZQdkxPidKXCkWyDtHhZ7f2bh9nDowLISN7NfxabOXH+/QdyYoqthAhiC+Qjw7LvaaI0+2IqidBdivy60EiNi2dxIRvIDSVYAamm05PAoSWeRQWseMbhWIiDJHgAG5svSwmuylZCPx5cl8UKipaLlctquWBv7bt35kYG+ZQcAj9DsLL5audj+bXuKDa7PMkHfH8ecvg+zv66uj1WXVe3G9Vz+MifrsS5IC0Xqq1VayvsrQPn9tzIPh+TF8BHqAX1cWr117e6+os6/00dZDkewDfxwH6fev3z7UVNaqNv/qQOvvhCCRG0a9uxRs0t8yn3lyfDGigbBNTnOwOR/8RIam070axXWwmhUGTKzOkildefuwOPIKsEcuHyYtWMjjJas8+novxFDK4MvkYijLPLrLT7RccpOWGN4wGF7xK8JegZJcH1Y3fditsdTeFd5xSFInkd5gkp0u3CxwuTpQImtdxRolPBy/QkKVqKES8IqM4rQEEWzASoTpjxCIvFkTDDSQQbkbK66ya7Fbqa//GzSJUefv8qAAAAAElFTkSuQmCC"/>
+</svg>

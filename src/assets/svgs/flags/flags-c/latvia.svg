@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-latvia">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-latvia)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA0lJREFUeAHVms9PE0EUx997uwsmmIAnjRcW/gCtSCI3ejYxhZs3QPBs/4OW/6Ac/QHCH2DSwB/gejHGiGzjHZaDevCyV233PWeWtKxtoe1S6s4naXdnOs2+78yb2Z33FmEIvHVzUwJjBSHOqaIrgPo4herTbCMAgfoKEMVHBo8x8jdOjk7hiiCkRBsN4KxEKEuImIcUsIBvCVcY2UsrZmAB2nAm+4Xq5WKyh68M864glwcVMpCA7dn50tANb4M52nwefC33274vAarX3To6VQvhPowAEQwA6vl+RoN6NdhxH65E5ByNyniNmugugu3vuPOFXm2ty37cdudLQFRRw3QDRg2qayI+fTJ5Bw/Cn95FzS4UcGY8luE/g0j5y0R0nQN66ISwChkCmVefBYd7HfXtFXrCap+/zpUmFQKhQCPXPrE7JnGDbC9zxmsQ1N3e7vCKfwRovyfAacgohJB77c6Vk3UtF9Kuw+ScQNZRrkRSn1kL/FAXWyMQkVUCE1Cu1AAqnhfBoN5vkhgFOiuPLYJJqFFQHrOiT2MBTFIE0xBa0gc0zn0SENdvkcD4yB7Shk1kWQX78btXef7TABMhhx7Yt+fu5cBcpvUkdsFccigKMJfQdAG9t5RZRwsIwWBMFxBoAT6YS2D/8r8F0e86mAg6ds0+WF6vmTqVkeQ9EdQzFX0YBI7GfNKbAkHxwDCEUYXnP57GzmNF2YoB9QNZUSU+nhXrKmAkRi2nzOOePsYC4h0+QwVMgWFXu48+ba0/BI0tU0ZB0Ck3z1sCTBkFnQBp9r6mIzb6ZnZexUUxk5sctfIEG8HnmWRdxy3MYns5i66kHvpDQDvfXt8hYC34FAhT5sIsZMlq0nWadE1w7Iffa4XJuzq7kIcMEPv98eHLbr9dmKHZD398yIKIXlnLnlnKHfeRytZEu6rpSHMGEsc/udgtK5OkzzTrgtvAhkc4mtxBxFAjdArdfL6dwRLd15z4072uUqyV9eMvm/3+J8WrBgsqhxaV1B9XYUg0DSe+ubUWeAMt4Vd42WPBFYsXWUS/epDqxqcM91QCvQo8sTeo4U1SC0gSj4rFOkq2iCqPJYKuMs+Fc0NVD6M2UO2/JVBXrVE0UU1rdJK/A1VeeMAlZOcAAAAASUVORK5CYII="/>
+</svg>

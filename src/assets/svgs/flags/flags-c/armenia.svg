@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-armenia">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-armenia)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA6JJREFUeAHVmktvE1cUx39nxsRJS5uxlE3bBaGVWhZIddQP0FRq1ymqUlGpUkBq2ZJuaQpOJbql/gSt2fDIxqxBwp8AOxISoAgRQCAWER7xCAHbcznXiSMTG2MbY+b+pNHceeqce/73MeeOMACKBMEHMGMgDTIpsN8gge4n7HUtPxHMTYMp61HJh4LPRulzNm7zlgh9Yo0egzl9xY+CTNMXpqhb1vDi4j7W79MHPTuwVdtHDf681mrAAND3RDVMLsnGYq9R6cmBGwTH1fA/BmX4TlRiFTUo8xXlf7p9pisHrhGoriWv29cMAW1LqyOsT3cTDe9NN6wwPiv4xWEZb9FanawyVlohmHnTvR0duM74nxH++XclmU7YXizCy2v0M53ue62EbvDxCUhkiAFagQtfUj7Z/lobbOis98QIbRc/7+Ph0s7zLQ5sNlir+eHLphNqT5jgWXpnw27TBrxC3Iy32DZRYaxFFa84cI3xY3piD7FF0irv46+caRSsdNSfFXUgQYyxUnqK2TtFGNrj7QjoBOuvuBtvsVIahfnGcT0Cd5j4dJ3ornQxsMWB5ijUa/yen/wh4YjxWwTGyBxRmN1sA9/krmhwpnCJiALFQ98J6f8m8eUWLlIzKZWNN7RJ2sDxvRmPhJnGVUw05Wm/lMZZZI86ICncZb+HmC9wFZHA9v27cRYz4dLg1RZ1QNZwFSNP1AET4izRTSuhq7iKkbL2QqziKmKWPSKzjKt43mV1gFhlH3qiVil5lA7bRlzANYzmmYu/3a5/0DyY/z3vC9M4RBWyn/y69Q2c3F3J+c/JaDF26ZTXUJPnXLKF+kicOkAowr84Qi3i9MQc92x5eypRHSGru9gPamKojCZZbBxvO2CjYDxOEXPUxszYT2ynF1tyo4/PUtxcrIsfduFj/CB7m8+1zEarhgPEU0rhyK7WnrLFgdQvrGpYjhAzfJ9DzdJp0PZ74KODLEUeC8QEY1j8cJYL7a51XOR7fI4T+nCG94gauKAVerLD9c48OotdaPuf4Q9yYeRzJJhlqdNNXS2zls8wqVor6GA3lLWDCJaTu5hpp/md9LTQHZ7jmEQsqiPvKg0fqkGnVDJ/d/tAz78a2GiIp2sJxv4nYZcVBkJ9KlNdJ5s63FsX3vfPHms5Phsd5Xtt5Ed1gOk3s11QaeYrz8j1aniDvh1oxkbF1xSlRuZbNkfxlDplE2b1nJPOX9aMqIHCVS2vqtPLtQ3y/RrdzEu51BSt85iRMQAAAABJRU5ErkJggg=="/>
+</svg>

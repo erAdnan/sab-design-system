@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-indonesia">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-indonesia)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAvpJREFUeAHVmu+R2jAQxZ9EJuHfB6jgfBWEqwA6IKkglEAHcB2QCgIdkApCBwcVnK8C+BDOMAM4b8EQnzEYfMZn/WY8QkJjdq23K1lCIQGmQCUPNBVQY9VyWfKqsF7xdbPlYtt4DYw0ywLwgneiEBMx+gvwgzf4xmoDMaCT4w3Qy9GhJJy5CDHcATqv/MjSTepaAr9Y3uGW3MLw4DUHutfYdJGE+NStz8CQuv2KFHB3sdK4RFY6qsNf6pxaf0rLeEHtEsGYo9GM6nvWAd6gwwDrB7JJKshv0rhhlKROSkiM11fq8VYwUz2WTtgS6oAMnXiPbNFiTAyCjUcOSMCK5j9CNudgTMxkogwG9pEDr7sMcNt8HBMJ7CLw4G97E8Si+6waL8gIBIP6MAIiHa5nnpFxREqcte+rLKV+GAEa34EBSGxyUm376uY8/T3+UdiOAI2vwyCUtxKWz9praMMwvGU8lGny8bMAqrqY4iItaeQtUK9jvk1lAQbzg/beY42EAXwnQWzBUGTzQDnb0ky2CzyTHRA+wXFgMlopNYPBaNd1TXbAlhEYw1xsvdlsbBgK1TMRByYwFDrwR02n00o+n5/CQGi3pavVqgTxCIbBpz9m/L5or5K1PaBIKP2elFsHlsvlwLT5oFQqjaTcOiAyWq/XPRiC1rov8pHP/7dVGMyFQuGZcsrUjlwYErx7Bw7bKqaMArX/uDdeONpaXCwWTxyFTL7k0C67WCze+9t0SKfvWQxoWbNR4o1g+5ED7GSzc+a2WWhTyy+dPaEnNHRiQK11kRFE90ybv8O+O3vIN5/PO0xZXXwgnvHdU99HnlJykmty+Pppp1fRPI1vl8vlwbl+Fx2zOo5j8YYjajCVswNZITPbNMM0HyTymFWQwOYNrVvHhfd22KVkapcYL1z9XwkZDezOElpICDGcBvc4w/68NoXH/rOH50idP9h+x8Q3kpWwZL24c09sB/yIM5RXLZfL1T1nLPh2/LwnPJM1PLOavVqtJpTJMIkJ8x972XnZ2AqD/QAAAABJRU5ErkJggg=="/>
+</svg>

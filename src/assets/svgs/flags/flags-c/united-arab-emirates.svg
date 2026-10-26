@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-united-arab-emirates">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-united-arab-emirates)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAwFJREFUeAHVmrtuE0EUhv+ZBGGbZvMAUbYNENg8QUIBraFEIkooqJBiv4GXNwgFTRpsCYkS5wniN8CpKGOewCmAALE9+c+ubfkWX9frnU8aX3bHq/OfOWdn5qwVIqAOOCkgqwDv7YtN9+v2hsfDTrt1qAGGTVVhTAXNRhWffvzEgijMiRh9HzjkBV7y637n+Lvnm/jycGPay1AMTtC8qcwrZh0z0vZ2zgB51e/hefDowiLW7/GKO0U0Gv6sQvQsna+BAr1+yY9+BMYPoI4opIb8Y3+WX00lgF53f8twL8XwAYwuIPfkEu+3t6bpPlHAL8Y5vf6dHZ8iPlyORhXHO9lJHccKoNcLa0Bx6V4fjQOlypNC6k4BYjxP+lg1ElJjRIwUQOOziTC+g4g4fnQ46tSQAElYhkwRSUOtnYxK7CEBTNjKimJ+Eg4Tuzx4sE+AxD2Nn+r2tSK8wXzoCpDQSVTc34XROeS9boR0BXB5UIAd0PhGvvMlECDe59sRbKFnFAIB9P4e7MJBqxXcVoPl9F8uFYwkSBScngIHB4iBSjqdfqYlfCIzPl726/W6ozPxLtIiJZVKZXWzZzdlG8aYXa3sDJ8ArfWW3IVcWApHwLNdgDPTnjhpKKXsFiBIEl/BYrSxW0BNRqAKe6npVlCztBPehS5EwAUshQLO9Q1QhqVkMpmq3giTuALLoPernAfCQvAf1oZZuDVRtDdsiKcFG5pgIvsHlCycDyryEgiQMOKy+gT2UGQLwqe7lPgPfLRoFPzOh64Ai0bhA9reF/oWcw94MuEzcw0Dxbeh1SjT+1VCQ0ls2h88OCQgTZXyAA/J4wg9odNh5H6AIkqtZNVJJe7PMCtSrU7AROZjETjJZVm5q69AAGtu4Ww7jolbSj7wOOPVds2I+FsiskKWck9pUsep9sSS2KzguTHkhdxpfITGL8dhDBOX7XPEISThUkCcj7baQg6lsr2AgHO23CKGz/1vlV6uw/Dy+FB87zXfv4XFMreny1W7ySxfQxjjZUQwYd4CCf2BV3TiRUsAAAAASUVORK5CYII="/>
+</svg>

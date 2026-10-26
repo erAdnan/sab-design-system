@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-svalbard">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-svalbard)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA3hJREFUeAHVmk9u2kAUxt8bSFolILm77kJ27aKJc4JSqVFSdZFkV6mVyg2SG0BukJ6gRKrUZeiiilIq1TeIoYsscU5QpICUxODpe3ahDhiwHQKen2T5D2N4n+cbz5sZEKZBbleTjZMdOtL5rJrRdUTQJIDWLyPBAgRLgjQFSuPW7phvry8u4Z4gxIWCBlj6SF+xS2d52fjS/6ia1cN9hwRTCHl0Y9tGXDHRBXiB79OtB+B7wrEE+HAQyl37thRViIhSWEpZBFhuUPAl8NtjCggJhYX0onWaWStFui9MIQo8R5tJhyWYcuCDpACLP5bXG98fP18JU36igLPsGvkczmlbh1mBkKPaMKvZFzuTio4VcJZZK6LEMjzwUx+BJqWoTLLUSAFu8J7X5wpbapyIQAFcdUkIvgeL+OlZeYghAafasxxIUYaE4Ug8CmrYQwJS9iNDzsfzk9AWUouVwYt3BLDv6Q0Q6vU1FxD0s4H20BfA1kmS70dBMe6faHrfIX0BZJ0iqIG21HEOeieuALfhIhRAEfy14AoQ3cWXoBZa1nbc16onQOIBKIaDbhoPgu0jvYGIauTZRuntPxdTT9I2r0yYETtsoTyoywYLUNE+PVao333f4PwblERaQt3gGdQijYkTiPICuCPDJihMWggWgKHzf8dxAq8LMZfKtJCmS07oYDfsHbj6IfC6f2Jrhhj82CxQlxoLqIG6/EobTzYqdkd+Hlcqam4TZ240DnZHmOJV02zSDK8BikEZNE3Pn1+6rw4pZAUUI4XyiPeugAUhjmmnVH9wY6cM3rsCPBt5ilSA1xLYPnzc733SafEJFKmFri1KveO+AFVqgdbYDntPn7nT/2+26oe0m9l4MCqSFgq3WvWS/9pQAtNN4x4k00rNTlfkBy8OCXjTNC3KjxI3zYLoFPzW6RGYQm6168fUHkqQENj3m1e/vwV9NjIH5vaQBBEc/KDv/YxN4lmEgw6n2vNoE01a0S+MC56ZOArZ9qpug7Z7/y0gLI6EGiVq+uur+vGksqGGUYho0ZYDb534IeG+qLTdrulBDTaISONAEkH9RHeVHlEZposbeDuNq//6ovAxQVxy73J0O03LC37l6jH/K2HQ1HilTcnkHmUCEIP4AvyQGNn4ylHzOoNezeg52j/9/yvYom60hQimQ7NpDoradQoqcYP28xcZVDlF2mDGlAAAAABJRU5ErkJggg=="/>
+</svg>

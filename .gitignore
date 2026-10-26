@@ -1,0 +1,11 @@
+node_modules/
+.npmrc
+.env
+.env.*
+!.env.example
+!.env.storybook.example
+!.env.storybook.prod.example
+storybook-static/
+dist/
+*.log
+.DS_Store

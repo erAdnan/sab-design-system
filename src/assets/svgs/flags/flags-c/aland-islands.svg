@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-aland-islands">
+      <circle cx="12" cy="12" r="12"/>
+    </clipPath>
+  </defs>
+  <image width="24" height="24" clip-path="url(#clip-aland-islands)" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA6tJREFUeAHVmstOE1EYx//nTIuggIOJMSQkDAsXGo3lCSAxceOC+1aKxcSdvEFbn6AkGi8pUtyo4ZLyBDbxAWjjgsSYdFhp4sIu3GDpHL8zZeiF6WWGts78kuYcTqeZ73/Ody7fd2DoAAeqql4uKTNX7x+Hbjz/o1FTCAwqlSpb3y0/JKCDMZ0qWYBlIKjcWDjCBWFwiTR6wAgucyFmybBp2TYwWcTYi0LtCywBtpAIwRNUZtyK4XCIOIAqviKqjrI8/ThhGe8ORiMlUtSNOiI7m4jsjsMhjgRIwxFAnqoxlJiKTsJY2BTyeDvm5GdtCYi9mtXI+Kys0qezhtfDeRRPdvPtjkZrAZGd5fffHxxQ7R56hYBGo5HF6t5Mq0ebC1jdjtLQpgzBu9vr9tA7RbqVSzUWII0Hj+F/I12qiQh7AebQecB4Cykisrds+9W5lvAHjYYuBa/BRMJuYp8XEAhm0O2Vxh0qiUjXN9YKMP2eOd5MegdtfHXzoSLAdB0P+X0jOH+G8OaZh1QEKMEo/IEKPrhm/VEWIHtfbuV+oWoUygL6Lk3BX6hQhsxltSxAGGvwG4zPmgUdj7XTE6Yj9IVrKP5Uatrs4oGucoIRDqWHh7ROE8QMJyeahl8pYZLT0TUEv8IwzvK3R/IUXWlwSPGHYtseHC2hZyjQ2bfh6wL+peA4qPcYqt8FyI1M9HDh7jyB4Fip4CZFYjeJlUEDfKiHU4omcUD79FumSzQ4xG4n7rtZ6u1OTOlKbiaT/IpAjqOIHPxKAJ/lKpSGXzlGNsAmUcDqTob25elGz2nDv5BfeQo3NM9OXwSWRXL+qLwPMB+OgqDMOKyApqhs+W4/6L+UkUVZQGqOjBcJ+AWGFF4+NC9EKkeJk8C6b0ahrz9mVSsC/DIKhhG3el9Se5hLLsXLl3AeRV4UvluKVTfZ5EaVOU+6kqDlvr9/ur75vIDXczq1ei/NIhNvVa5jYR8PvF2kZdWIwStIv0/O79t91TigMeeDB0RI4+v8vprmEZkUobBZzkq9nxPS54UINzNe0jqkfDO//+jOl0mqXfjfAtpGiBxN2BA2pCs3p7174pWPOrtrBj0xdBPZ6/IdG4shuwlrh6OgnkTEKR85QS9KoZNYhg/xCSQX4k5+GoBD6PitU7FyqBrxoFCmDGYuuS6zeyIDpqQxiC0k5lzNM8cCLG4VCjoV8rN1qKoaR19I/DXkPUPo9KZdO3vY7GFWAKddnnGd0vk5XOFpt0ZX8w9/rSAqz9Wb8AAAAABJRU5ErkJggg=="/>
+</svg>
