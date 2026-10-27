@@ -28,8 +28,11 @@ module.exports = {
   },
 
   webpackFinal: async (config) => {
+    const root = path.resolve(__dirname, "..");
     config.resolve.alias = {
       ...config.resolve.alias,
+      react: path.join(root, "node_modules/react"),
+      "react-dom": path.join(root, "node_modules/react-dom"),
       "@react-native-community/blur": path.resolve(__dirname, "./mocks/blur.js"),
     };
     return config;
