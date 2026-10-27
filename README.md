@@ -1,6 +1,6 @@
 # SAB Design System
 
-`@sab/design-system` is the React Native component library and the Storybook app (`com.sabdesignsystem.sb`). Components, theme, localization, stories, Fastlane, and the iOS/Android Storybook projects live in this repository.
+`@sab-digital-bank/design-system` is the React Native component library and the Storybook app (`com.sabdesignsystem.sb`). Components, theme, localization, stories, Fastlane, and the iOS/Android Storybook projects live in this repository.
 
 Current version: **0.0.1**.
 
@@ -64,7 +64,7 @@ After the selected Storybook builds succeed, the workflow:
 
 1. Commits the new version to `main` (`chore: release vX.Y.Z`)
 2. Pushes tag `vX.Y.Z`
-3. Publishes `@sab/design-system` to npm
+3. Publishes `@sab-digital-bank/design-system` to npm
 
 A failed device build does not commit, tag, or publish.
 
@@ -74,7 +74,7 @@ A failed device build does not commit, tag, or publish.
 | minor | New component or optional prop |
 | major | Removed or renamed prop, or a visual change callers must adopt |
 
-The package name is `@sab/design-system` with `"access": "restricted"`. npmjs must own the `@sab` scope. GitHub Packages only accepts a scope that matches the org (`@sabdigitalbank/...`). Use npmjs for this name. `.npmrc` is gitignored. Copy `.npmrc.example` only for a local dry-run.
+The package name is `@sab-digital-bank/design-system` with `"access": "restricted"`. The npm organization is `sab-digital-bank`. `.npmrc` is gitignored. Copy `.npmrc.example` only for a local dry-run.
 
 `npm publish` ships `src/`, `stories/`, and `examples/`. The native app, Fastlane, and workflows stay in git.
 
@@ -120,7 +120,7 @@ The self-hosted macOS runner label `self-hosted` must be available to this repos
 Until the first npm publish, the demo app depends on the folder:
 
 ```json
-"@sab/design-system": "file:./design-system"
+"@sab-digital-bank/design-system": "file:./design-system"
 ```
 
-After a release, set that dependency to the published version, for example `"@sab/design-system": "0.0.2"`, and reinstall.
+After a release, set that dependency to the published version, for example `"@sab-digital-bank/design-system": "0.0.2"`, and reinstall.

@@ -2600,7 +2600,7 @@
   dependencies:
     nanoid "^3.3.11"
 
-"@sab/design-system@file:./design-system":
+"@sab-digital-bank/design-system@file:./design-system":
   version "0.1.0"
 
 "@sideway/address@^4.1.5":

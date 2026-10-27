@@ -1,13 +1,8 @@
 # Copy to .npmrc in this repo only. Never commit .npmrc (it is gitignored).
 # NPM_TOKEN is an Automation token for the registry below.
 #
-# npmjs (scope @sab must exist on that registry):
-#   @sab:registry=https://registry.npmjs.org/
-#   //registry.npmjs.org/:_authToken=${NPM_TOKEN}
-#
-# GitHub Packages requires the package scope to match the org
-# (@sabdigitalbank/...). Keep the public name @sab/design-system and publish
-# to npmjs unless the package is renamed.
+# npm organization: sab-digital-bank
+# package: @sab-digital-bank/design-system
 
-@sab:registry=https://registry.npmjs.org/
+@sab-digital-bank:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:_authToken=${NPM_TOKEN}

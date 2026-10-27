@@ -13,16 +13,16 @@ const {
 
 function resolveDesignSystemRequest(context, moduleName, platform) {
   if (
-    moduleName !== "@sab/design-system" &&
-    !moduleName.startsWith("@sab/design-system/")
+    moduleName !== "@sab-digital-bank/design-system" &&
+    !moduleName.startsWith("@sab-digital-bank/design-system/")
   ) {
     return null;
   }
 
   const subpath =
-    moduleName === "@sab/design-system"
+    moduleName === "@sab-digital-bank/design-system"
       ? "index"
-      : moduleName.slice("@sab/design-system/".length);
+      : moduleName.slice("@sab-digital-bank/design-system/".length);
 
   const target = path.resolve(src, subpath).split(path.sep).join("/");
   return context.resolveRequest(context, target, platform);
@@ -40,7 +40,7 @@ const config = {
     assetExts: assetExts.filter((ext) => ext !== "svg"),
     sourceExts: [...sourceExts, "svg", "js", "json", "ts", "tsx"],
     extraNodeModules: {
-      "@sab/design-system": src,
+      "@sab-digital-bank/design-system": src,
     },
     resolveRequest: (context, moduleName, platform) => {
       const designSystemResolved = resolveDesignSystemRequest(

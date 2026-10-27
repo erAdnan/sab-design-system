@@ -1,5 +1,5 @@
 {
-  "name": "@sab/design-system",
+  "name": "@sab-digital-bank/design-system",
   "version": "0.0.1",
   "description": "SAB Design System — React Native UI kit (components, foundations, theme, stories).",
   "license": "UNLICENSED",

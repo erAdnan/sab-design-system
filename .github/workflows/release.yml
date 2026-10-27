@@ -1,6 +1,6 @@
 name: Release
 
-# Storybook device builds (Firebase or stores) and npm publish for @sab/design-system.
+# Storybook device builds (Firebase or stores) and npm publish for @sab-digital-bank/design-system.
 # Run workflow and choose patch, minor, or major. After the selected builds succeed,
 # this commits the new version to main, tags vX.Y.Z, and publishes the package.
 #
