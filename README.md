@@ -18,7 +18,7 @@ yarn bundle:install
 | Component, token, icon, asset | `src/` |
 | Theme | `src/context/theme`, `src/assets/styles/theme` |
 | Language codes and component copy | `src/localization/` |
-| Story | `stories/` or `src/**/*.stories.tsx` |
+| Story | `stories/` |
 | Storybook preview | `.storybook/` |
 | Device Storybook (Xcode, Gradle, Fastlane) | `ios/`, `android/`, `fastlane/` |
 

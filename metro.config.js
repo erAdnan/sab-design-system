@@ -60,7 +60,7 @@ const finalConfig = mergeConfig(defaultConfig, config);
 
 module.exports = withStorybook(finalConfig, {
   enabled: true,
-  configPath: path.resolve(__dirname, "./.storybook"),
+  configPath: path.resolve(__dirname, "./.rnstorybook"),
   useJs: true,
   assets: ["./src/assets/fonts"],
 });

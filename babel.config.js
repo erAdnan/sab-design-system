@@ -1,24 +1,35 @@
+const fs = require("fs");
+const path = require("path");
+
 require("./scripts/load-app-env");
 
 module.exports = function (api) {
   api.cache.using(() => process.env.ENVFILE || ".env");
 
-  const envFile = process.env.ENVFILE || ".env";
+  const requested = process.env.ENVFILE || ".env";
+  const envFile = path.isAbsolute(requested)
+    ? requested
+    : path.resolve(__dirname, requested);
+  const plugins = [];
+
+  if (fs.existsSync(envFile)) {
+    plugins.push([
+      "module:react-native-dotenv",
+      {
+        moduleName: "@env",
+        path: envFile,
+        allowlist: ["MOCKS_ENABLED"],
+        safe: false,
+        allowUndefined: true,
+        verbose: false,
+      },
+    ]);
+  }
 
   return {
     presets: ["module:@react-native/babel-preset"],
     plugins: [
-      [
-        "module:react-native-dotenv",
-        {
-          moduleName: "@env",
-          path: envFile,
-          allowlist: ["MOCKS_ENABLED"],
-          safe: false,
-          allowUndefined: true,
-          verbose: false,
-        },
-      ],
+      ...plugins,
       [
         "module-resolver",
         {

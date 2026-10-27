@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { view } from "./storybook.requires";
+import { view } from "../.rnstorybook/storybook.requires";
 
 const StorybookUIRoot = view.getStorybookUI({
   storage: {

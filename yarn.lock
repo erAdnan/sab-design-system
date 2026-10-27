@@ -2033,6 +2033,18 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@lottiefiles/dotlottie-react@^0.20.0":
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/dotlottie-react/-/dotlottie-react-0.20.0.tgz#51966e85125b892c735b7a22f5fee6df00f1ff4c"
+  integrity sha512-M4HLo6RxNTbYwByZw7ns2zaGgPx0PpGZU1xfyMdj8VEoTasSJ1uhsJZjl+l55TPQ7g0soF7JVHEJLTOv1TIeMA==
+  dependencies:
+    "@lottiefiles/dotlottie-web" "0.81.0"
+
+"@lottiefiles/dotlottie-web@0.81.0":
+  version "0.81.0"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/dotlottie-web/-/dotlottie-web-0.81.0.tgz#04d7313eb658d95376e9aa36dc86bfee6752ae2a"
+  integrity sha512-BmX/+0eaK2unVexuB0VZLvBsax2BS8fLwwIdUqF4AO9C7tFw97eTi90C//20QVK4q08SDhnnszysCGX0Qt7XPA==
+
 "@mdx-js/react@^3.0.0":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-3.1.1.tgz#24bda7fffceb2fe256f954482123cda1be5f5fef"
@@ -2599,9 +2611,6 @@
   integrity sha512-1tJHg4KKRJuQ1/EvJxatrMef3NZXEPzwUIUZ3n1yJ2t7Q97siwRtbynRpQG9/69ebbtiZ8W3ScOZF/OmhvM4Rg==
   dependencies:
     nanoid "^3.3.11"
-
-"@sab-digital-bank/design-system@file:./design-system":
-  version "0.1.0"
 
 "@sideway/address@^4.1.5":
   version "4.1.5"

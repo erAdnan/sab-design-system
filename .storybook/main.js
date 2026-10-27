@@ -1,21 +1,37 @@
-/** @type{import("@storybook/react-native").StorybookConfig} */
+const path = require("path");
+
+/** Web Storybook. Device Storybook uses `.rnstorybook`. */
 module.exports = {
   stories: [
-    "../stories/*.stories.?(ts|tsx|js|jsx)",
-    "../stories/foundations/**/*.stories.?(ts|tsx|js|jsx)",
-    "../src/**/*.stories.?(ts|tsx|js|jsx)",
+    "../stories/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/foundations/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [
-    "@storybook/addon-ondevice-controls",
-    "@storybook/addon-ondevice-actions",
+    "@storybook/addon-webpack5-compiler-babel",
     "@storybook/addon-essentials",
-    "@storybook/addon-react-native-web",
+    {
+      name: "@storybook/addon-react-native-web",
+      options: {
+        modulesToTranspile: ["@sab-digital-bank/design-system"],
+        modulesToAlias: {
+          "@sab-digital-bank/design-system": path.resolve(__dirname, "../src"),
+        },
+      },
+    },
     "storybook-addon-deep-controls",
   ],
 
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
+  },
+
+  webpackFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@react-native-community/blur": path.resolve(__dirname, "./mocks/blur.js"),
+    };
+    return config;
   },
 };

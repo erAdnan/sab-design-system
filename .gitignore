@@ -25,3 +25,5 @@ fastlane/fastlane-Supply.json
 !debug.keystore
 .storybook/storybook.requires.js
 .storybook/storybook.requires.ts
+.rnstorybook/storybook.requires.js
+.rnstorybook/storybook.requires.ts
