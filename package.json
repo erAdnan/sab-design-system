@@ -49,6 +49,11 @@
     "fastlane:storybook:android:aab:store": "yarn storybook-generate && cross-env STORYBOOK_ENABLED=true ENVFILE=.env.storybook.prod ./scripts/run-bundle.sh exec fastlane android build_release",
     "fastlane:storybook:ios:ipa": "yarn storybook-generate && cross-env STORYBOOK_ENABLED=true ENVFILE=.env.storybook ./scripts/run-bundle.sh exec fastlane ios build_release",
     "fastlane:storybook:ios:ipa:store": "yarn storybook-generate && cross-env STORYBOOK_ENABLED=true ENVFILE=.env.storybook.prod ./scripts/run-bundle.sh exec fastlane ios build_release",
+    "android:clean": "cd android && ./gradlew clean && cd ..",
+    "ios:clean": "cd ios && rm -rf ~/Library/Caches/CocoaPods && rm -rf Pods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && pod cache clean --all && pod deintegrate && pod setup && pod install && cd ..",
+    "clean:all": "yarn android:clean && yarn ios:clean",
+    "build": "node scripts/build-package.js",
+    "prepublishOnly": "yarn build",
     "version:patch": "npm version patch --no-git-tag-version",
     "version:minor": "npm version minor --no-git-tag-version",
     "version:major": "npm version major --no-git-tag-version"
