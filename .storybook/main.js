@@ -13,7 +13,10 @@ module.exports = {
     {
       name: "@storybook/addon-react-native-web",
       options: {
-        modulesToTranspile: ["@sab-digital-bank/design-system"],
+        modulesToTranspile: [
+          "@sab-digital-bank/design-system",
+          "react-native-svg-charts",
+        ],
         modulesToAlias: {
           "@sab-digital-bank/design-system": path.resolve(__dirname, "../src"),
         },
@@ -34,7 +37,70 @@ module.exports = {
       react: path.join(root, "node_modules/react"),
       "react-dom": path.join(root, "node_modules/react-dom"),
       "@react-native-community/blur": path.resolve(__dirname, "./mocks/blur.js"),
+      // No web build; index.js calls requireNativeComponent, which react-native-web does not provide.
+      "react-native-linear-gradient": path.resolve(__dirname, "./mocks/linearGradient.js"),
+      "react-native-restart": path.resolve(__dirname, "./mocks/restart.js"),
+      // Prefer the DOM implementation. The package "react-native" field points at native views.
+      "react-native-svg$": path.join(
+        root,
+        "node_modules/react-native-svg/lib/module/ReactNativeSVG.web.js"
+      ),
     };
+
+    excludeSvgFromAssetRules(config.module.rules);
+    config.module.rules.unshift({
+      test: /\.svg$/,
+      exclude: /node_modules/,
+      use: [
+        {
+          loader: require.resolve("babel-loader"),
+          options: {
+            presets: [
+              [
+                "module:@react-native/babel-preset",
+                { useTransformReactJSXExperimental: true },
+              ],
+              ["@babel/preset-react", { runtime: "automatic" }],
+            ],
+          },
+        },
+        {
+          loader: require.resolve("@svgr/webpack"),
+          options: {
+            // Same shape Metro's react-native-svg-transformer emits: a react-native-svg component.
+            native: true,
+            svgoConfig: {
+              plugins: [
+                {
+                  name: "preset-default",
+                  params: {
+                    overrides: {
+                      inlineStyles: { onlyMatchedOnce: false },
+                      removeViewBox: false,
+                      removeUnknownsAndDefaults: false,
+                      convertColors: false,
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
+    });
+
     return config;
   },
 };
+
+function excludeSvgFromAssetRules(rules) {
+  if (!Array.isArray(rules)) return;
+  for (const rule of rules) {
+    if (!rule || typeof rule !== "object") continue;
+    if (rule.test && rule.test.test && rule.test.test(".svg")) {
+      rule.exclude = /\.svg$/;
+    }
+    excludeSvgFromAssetRules(rule.oneOf);
+    excludeSvgFromAssetRules(rule.rules);
+  }
+}
