@@ -134,12 +134,57 @@ Set these on `SABDigitalBank/sab-design-system`. Do not commit them.
 
 The self-hosted macOS runner label `self-hosted` must be available to this repository. It needs Homebrew Ruby 3+, JDK 17, Android SDK, and Xcode 26+.
 
-## How the demo app uses this package
+## Install in a React Native app
 
-Until the first npm publish, the demo app depends on the folder:
+`@sab-digital-bank/design-system` is published as a private package: [npmjs.com/package/@sab-digital-bank/design-system](https://www.npmjs.com/package/@sab-digital-bank/design-system). The first published version is `0.0.1`. `npm publish` ships `src/`, `stories/`, and `examples/`. The app compiles that source. The Storybook iOS and Android projects stay in this git repo and are not inside the npm tarball.
 
-```json
-"@sab-digital-bank/design-system": "file:./design-system"
+### 1. Authenticate
+
+In the app repo, copy `.npmrc.example` to `.npmrc`:
+
+```
+@sab-digital-bank:registry=https://registry.npmjs.org/
+//registry.npmjs.org/:_authToken=${NPM_TOKEN}
 ```
 
-After a release, set that dependency to the published version, for example `"@sab-digital-bank/design-system": "0.0.2"`, and reinstall.
+`NPM_TOKEN` is an npm Automation token that can read this package. Do not commit `.npmrc`.
+
+```bash
+export NPM_TOKEN=your_read_token
+yarn add @sab-digital-bank/design-system@0.0.1
+```
+
+After a later release, change `0.0.1` to that version and reinstall.
+
+### 2. Packages the app must provide
+
+`0.0.1` lists React Native libraries as devDependencies of this repo, so `yarn add` does not install them into the app. The app needs one copy of each library the components import:
+
+| Package | Why |
+| --- | --- |
+| `react`, `react-native` | Host runtime |
+| `react-native-svg` and `react-native-svg-transformer` | Icon and illustration `.svg` imports |
+| `react-native-reanimated`, `react-native-gesture-handler`, `react-native-screens`, `react-native-safe-area-context` | Motion, gestures, screens |
+| `react-native-linear-gradient`, `@react-native-community/blur`, `lottie-react-native` | Gradients, blur, stories |
+| `@gorhom/bottom-sheet`, `@react-native-async-storage/async-storage` | Sheets and saved language |
+| `i18next`, `react-i18next` | Component copy |
+
+Metro must compile SVG imports. Remove `svg` from `assetExts`, add it to `sourceExts`, and set `babelTransformerPath` to `react-native-svg-transformer`.
+
+Fonts ship inside the package. Point the app at them and rebuild the native projects:
+
+```js
+module.exports = {
+  assets: ["./node_modules/@sab-digital-bank/design-system/src/assets/fonts/"],
+};
+```
+
+### 3. Import from the package
+
+```ts
+import { Button } from "@sab-digital-bank/design-system/components/button/Button";
+import { useTheme } from "@sab-digital-bank/design-system/context/theme/themeContext";
+import { spacingS } from "@sab-digital-bank/design-system/assets/styles/constants/size";
+```
+
+If Metro does not apply the package `exports` map, resolve `@sab-digital-bank/design-system` and its subpaths to `node_modules/@sab-digital-bank/design-system/src`. The demo app does that in `metro.config.js`. Do not point the app at a `file:` checkout of this repo.
