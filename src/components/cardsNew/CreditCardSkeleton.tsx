@@ -59,30 +59,70 @@ export const CreditCardSkeleton: React.FC<CreditCardSkeletonProps> = ({ view }) 
       flexDirection: 'row',
       justifyContent: 'space-between'
     },
+    defaultSkeleton: {
+      flex: 1,
+      width: "100%",
+      justifyContent: "space-between",
+    },
+    defaultTop: {
+      width: "100%",
+      gap: spacingXS,
+    },
+    defaultTopRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: spacingS,
+    },
+    defaultTopLine: {
+      width: actuatedNormalize(201),
+      height: actuatedNormalize(16),
+      borderRadius: actuatedNormalize(8),
+    },
+    defaultTopPill: {
+      width: actuatedNormalize(44),
+      height: actuatedNormalize(16),
+      borderRadius: actuatedNormalize(8),
+    },
+    defaultMidLine: {
+      width: actuatedNormalize(201),
+      height: actuatedNormalize(8),
+      borderRadius: actuatedNormalize(8),
+    },
+    defaultBottomLine: {
+      width: actuatedNormalize(201),
+      height: actuatedNormalize(16),
+      borderRadius: actuatedNormalize(8),
+    },
   });
 
   const defaultSkeleton = (
-    <View style={styles.elementsWrapper}>
-      <View style={styles.rowContent}>
-        <View style={styles.parallelLines}>
-          <SkeletonBox shape='line' size='small' overrideStyles={{ width: actuatedNormalize(152)} }/>
-          <SkeletonBox shape='line' size='small' overrideStyles={{ width: actuatedNormalize(152)} }/>
+    <View style={styles.defaultSkeleton}>
+      <View style={styles.defaultTop}>
+        <View style={styles.defaultTopRow}>
+          <SkeletonBox
+            shape="line"
+            size="small"
+            overrideStyles={styles.defaultTopLine}
+          />
+          <SkeletonBox
+            shape="line"
+            size="small"
+            overrideStyles={styles.defaultTopPill}
+          />
         </View>
-        <SkeletonBox shape='circle' size='large' />
+        <SkeletonBox
+          shape="line"
+          size="small"
+          overrideStyles={styles.defaultMidLine}
+        />
       </View>
-      <View style={styles.rowContent}>
-        <View style={styles.parallelLines}>
-          <SkeletonBox shape='line' size='small' overrideStyles={{ width: actuatedNormalize(152)} }/>
-          <SkeletonBox shape='line' size='medium' overrideStyles={{ width: actuatedNormalize(152)} }/>
-        </View>
-        <View style={styles.parallelLines}>
-          <SkeletonBox shape='line' size='small' overrideStyles={{ width: actuatedNormalize(152)} }/>
-          <SkeletonBox shape='line' size='medium' overrideStyles={{ width: actuatedNormalize(152)} }/>
-        </View>
-      </View>
+      <SkeletonBox
+        shape="line"
+        size="small"
+        overrideStyles={styles.defaultBottomLine}
+      />
     </View>
   )
-
 
   const carouselSkeleton = (
     <View style={{

@@ -9,9 +9,28 @@ Current version: **0.0.1**.
 ```bash
 git clone git@github.com:SABDigitalBank/sab-design-system.git
 cd sab-design-system
+yarn install:all
+```
+
+`yarn install:all` installs Node modules, Ruby gems (Fastlane and CocoaPods), and iOS pods. On Linux it skips pods. Android still needs JDK 17 and the Android SDK installed separately.
+
+Step by step, the same setup is:
+
+```bash
 yarn install
 yarn bundle:install
+./scripts/run-bundle.sh exec bash -c 'cd ios && exec pod install'
 ```
+
+Native clean commands:
+
+```bash
+yarn android:clean
+yarn ios:clean
+yarn clean:all
+```
+
+`yarn ios:clean` reinstalls pods with the same Bundler CocoaPods that `yarn install:all` uses.
 
 | Change | Where |
 | --- | --- |

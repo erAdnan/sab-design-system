@@ -249,7 +249,7 @@ export const NewGeneric: FC < BlockNewGenericProps > = ({
           }
           {countLoading &&  (<SkeletonBox shape="circle" size="small"  />)}
           {!countLoading && badgeNumber !== undefined && (
-            <Badge size={BadgeSize.small} type={BadgeType.primary} number={badgeNumber} maxCount={9} />
+            <Badge size={BadgeSize.small} type={badgeNumber > 0 ? BadgeType.primary : BadgeType.neutral} number={badgeNumber} maxCount={9} />
           )}
         </View>
 
