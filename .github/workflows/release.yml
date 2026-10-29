@@ -2,7 +2,9 @@ name: Release
 
 # Storybook device builds (Firebase or stores) and npm publish for @sab-digital-bank/design-system.
 # Run workflow and choose patch, minor, or major. After the selected builds succeed,
-# this commits the new version to main, tags vX.Y.Z, and publishes the package.
+# this writes release notes, commits the new version to main, tags vX.Y.Z,
+# opens a GitHub Release, and publishes the package.
+# Platform "none" skips iOS and Android and only verifies, builds, and publishes npm.
 #
 # iOS signing uses the same Match repo as the demo app:
 # https://github.com/SABDigitalBank/certificates.git
@@ -39,6 +41,7 @@ concurrency:
 
 permissions:
   contents: write
+  pull-requests: read
 
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -56,6 +59,7 @@ jobs:
       has_ios: ${{ steps.matrix.outputs.has_ios }}
       channel: ${{ steps.matrix.outputs.channel }}
       skip_distribution: ${{ steps.matrix.outputs.skip_distribution }}
+      npm_only: ${{ steps.matrix.outputs.npm_only }}
       version: ${{ steps.version.outputs.version }}
       workspace: ${{ steps.workspace.outputs.path }}
     steps:
@@ -99,6 +103,9 @@ jobs:
           git config --unset-all remote.origin.fetch || true
           git config --add remote.origin.fetch "+refs/heads/${BRANCH}:refs/remotes/origin/${BRANCH}"
           git fetch --no-tags --prune origin "+refs/heads/${BRANCH}:refs/remotes/origin/${BRANCH}"
+          if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+            git fetch --unshallow origin
+          fi
           git fetch origin "refs/tags/v*:refs/tags/v*" --force || true
           git checkout -B "$BRANCH"
           echo "Checkout OK at $(git rev-parse --short HEAD) (branch=${BRANCH})"
@@ -143,9 +150,11 @@ jobs:
               echo "has_ios=false"
               echo "channel=${CHANNEL}"
               echo "skip_distribution=true"
+              echo "npm_only=true"
             } >> "$GITHUB_OUTPUT"
           else
             bash .github/scripts/ci-resolve-matrix.sh
+            echo "npm_only=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Export Android SDK env
@@ -319,12 +328,32 @@ jobs:
           MATCH_GIT_BRANCH: ${{ secrets.MATCH_GIT_BRANCH }}
         run: bash .github/scripts/ci-build-one.sh ios storybook
 
+  publish-npm:
+    name: Verify build and publish npm
+    needs: prepare
+    if: needs.prepare.outputs.npm_only == 'true'
+    runs-on: self-hosted
+    steps:
+      - name: Enter shared workspace
+        run: bash "${{ needs.prepare.outputs.workspace }}/.github/scripts/ci-enter-workspace.sh" "${{ needs.prepare.outputs.workspace }}"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          registry-url: ${{ secrets.NPM_REGISTRY || 'https://registry.npmjs.org' }}
+      - name: Compile, write notes, and publish
+        working-directory: ${{ needs.prepare.outputs.workspace }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: bash .github/scripts/ci-publish-package.sh
+
   publish:
     name: Commit version, tag, publish npm
     needs: [prepare, android-storybook, ios-storybook]
     if: |
       always() &&
       needs.prepare.result == 'success' &&
+      needs.prepare.outputs.npm_only != 'true' &&
       (needs.prepare.outputs.android_storybook != 'true' || needs.android-storybook.result == 'success') &&
       (needs.prepare.outputs.ios_storybook != 'true' || needs.ios-storybook.result == 'success')
     runs-on: self-hosted
@@ -335,30 +364,9 @@ jobs:
         with:
           node-version: "20"
           registry-url: ${{ secrets.NPM_REGISTRY || 'https://registry.npmjs.org' }}
-      - name: Commit version and tag
-        id: tag
-        working-directory: ${{ needs.prepare.outputs.workspace }}
-        run: |
-          set -euo pipefail
-          VERSION="$(tr -d '[:space:]' < .ci/release-version)"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
-          git add package.json
-          git add android/app/build.gradle ios/SabDesignSystem.xcodeproj/project.pbxproj ios/SabDesignSystem/Info.plist || true
-          git status --short
-          git commit -m "chore: release v${VERSION}"
-          git tag "v${VERSION}"
-          git push origin HEAD:main
-          git push origin "v${VERSION}"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-      - name: Build package and publish to npm
+      - name: Compile, write notes, and publish
         working-directory: ${{ needs.prepare.outputs.workspace }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          set -euo pipefail
-          if [ -z "${NODE_AUTH_TOKEN:-}" ]; then
-            echo "::error::Add the NPM_TOKEN secret. Do not commit it."
-            exit 1
-          fi
-          npm publish --access restricted
+          GH_TOKEN: ${{ github.token }}
+        run: bash .github/scripts/ci-publish-package.sh

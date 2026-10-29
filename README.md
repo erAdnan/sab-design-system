@@ -73,19 +73,23 @@ GitHub **Actions → Release → Run workflow**. The form asks for:
 | Input | Values |
 | --- | --- |
 | Version bump | `patch`, `minor`, or `major` |
-| Platform | `both`, `android`, `ios`, or `none` (npm only) |
+| Platform | `both`, `android`, `ios`, or `none` |
 | Channel | `firebase` or `store` |
 | Skip distribution | build the binary and still publish npm |
 
+`none` runs a single job. It installs dependencies, compiles the package, and publishes to npm. It does not build the iOS or Android Storybook apps.
+
 From `0.0.1`, a patch release becomes `0.0.2`, a minor release `0.1.0`, and a major release `1.0.0`.
 
-After the selected Storybook builds succeed, the workflow:
+After the selected jobs succeed, the workflow:
 
-1. Commits the new version to `main` (`chore: release vX.Y.Z`)
-2. Pushes tag `vX.Y.Z`
-3. Publishes `@sab-digital-bank/design-system` to npm
+1. Compiles the package with `yarn build`. A failed compile does not tag or publish.
+2. Writes release notes from commits and merged pull requests since the previous `v*` tag.
+3. Commits the version and the notes to `main` (`chore: release vX.Y.Z`)
+4. Pushes tag `vX.Y.Z` and creates the GitHub Release
+5. Publishes `@sab-digital-bank/design-system` to npm
 
-A failed device build does not commit, tag, or publish.
+A failed device build does not commit, tag, or publish. With platform `none` there is no device build.
 
 | Bump | When |
 | --- | --- |
@@ -95,7 +99,19 @@ A failed device build does not commit, tag, or publish.
 
 The package name is `@sab-digital-bank/design-system` with `"access": "restricted"`. The npm organization is `sab-digital-bank`. `.npmrc` is gitignored. Copy `.npmrc.example` only for a local dry-run.
 
-`npm publish` ships `src/`, `stories/`, and `examples/`. The native app, Fastlane, and workflows stay in git.
+`npm publish` ships `src/`, `stories/`, `examples/`, and `CHANGELOG.md`. The native app, Fastlane, and workflows stay in git.
+
+## Releases
+
+Each publish lists the commits and merged pull requests since the previous `v*` tag. The npm page below shows the latest version. Older versions stay in `CHANGELOG.md`, which also ships in the package, and on the matching GitHub Release.
+
+<!-- release-notes:start -->
+## [0.0.1] - 2026-10-26
+
+### Changes
+- Initial import of the SAB design system. ([83e352c](https://github.com/SABDigitalBank/sab-design-system/commit/83e352c))
+- Storybook device builds and npm publishing live in this repository. ([b585480](https://github.com/SABDigitalBank/sab-design-system/commit/b585480))
+<!-- release-notes:end -->
 
 ## Storybook device builds
 
@@ -136,7 +152,7 @@ The self-hosted macOS runner label `self-hosted` must be available to this repos
 
 ## Install in a React Native app
 
-`@sab-digital-bank/design-system` is published as a private package: [npmjs.com/package/@sab-digital-bank/design-system](https://www.npmjs.com/package/@sab-digital-bank/design-system). The first published version is `0.0.1`. `npm publish` ships `src/`, `stories/`, and `examples/`. The app compiles that source. The Storybook iOS and Android projects stay in this git repo and are not inside the npm tarball.
+`@sab-digital-bank/design-system` is published as a private package: [npmjs.com/package/@sab-digital-bank/design-system](https://www.npmjs.com/package/@sab-digital-bank/design-system). The first published version is `0.0.1`. `npm publish` ships `src/`, `stories/`, `examples/`, and `CHANGELOG.md`. The app compiles that source. The Storybook iOS and Android projects stay in this git repo and are not inside the npm tarball.
 
 ### 1. Authenticate
 

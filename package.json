@@ -34,7 +34,8 @@
   "files": [
     "src",
     "stories",
-    "examples"
+    "examples",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "start": "react-native start --reset-cache",
