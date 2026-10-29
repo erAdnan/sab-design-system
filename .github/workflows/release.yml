@@ -4,7 +4,7 @@ name: Release
 # Run workflow and choose patch, minor, or major. After the selected builds succeed,
 # this writes release notes, commits the new version to main, tags vX.Y.Z,
 # opens a GitHub Release, and publishes the package.
-# Platform "none" skips iOS and Android and only verifies, builds, and publishes npm.
+# "Publish npm only" skips iOS and Android and only verifies, builds, and publishes npm.
 #
 # iOS signing uses the same Match repo as the demo app:
 # https://github.com/SABDigitalBank/certificates.git
@@ -22,7 +22,12 @@ on:
         required: true
         type: choice
         default: both
-        options: [both, android, ios, none]
+        options: [both, android, ios, npm]
+      npm_only:
+        description: Publish npm only (skip iOS and Android builds)
+        required: false
+        type: boolean
+        default: false
       channel:
         description: Distribution channel
         required: true
@@ -136,9 +141,10 @@ jobs:
           PLATFORM: ${{ inputs.platform == 'both' && 'all' || inputs.platform }}
           CHANNEL: ${{ inputs.channel }}
           SKIP_DIST: ${{ inputs.skip_distribution }}
+          NPM_ONLY: ${{ inputs.npm_only }}
         run: |
           set -euo pipefail
-          if [ "${PLATFORM}" = "none" ]; then
+          if [ "${NPM_ONLY}" = "true" ] || [ "${PLATFORM}" = "npm" ] || [ "${PLATFORM}" = "none" ]; then
             mkdir -p .ci
             echo "[]" > .ci/android-matrix.json
             echo "[]" > .ci/ios-matrix.json

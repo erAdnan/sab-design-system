@@ -73,11 +73,12 @@ GitHub **Actions → Release → Run workflow**. The form asks for:
 | Input | Values |
 | --- | --- |
 | Version bump | `patch`, `minor`, or `major` |
-| Platform | `both`, `android`, `ios`, or `none` |
+| Platform | `both`, `android`, `ios`, or `npm` |
+| Publish npm only | checkbox. Skip iOS and Android. Compile the package and publish. |
 | Channel | `firebase` or `store` |
 | Skip distribution | build the binary and still publish npm |
 
-`none` runs a single job. It installs dependencies, compiles the package, and publishes to npm. It does not build the iOS or Android Storybook apps.
+Check **Publish npm only**, or set Platform to `npm`. That runs one job: install, compile, write the release notes, and publish. It does not build the iOS or Android Storybook apps. Channel does not matter for that run.
 
 From `0.0.1`, a patch release becomes `0.0.2`, a minor release `0.1.0`, and a major release `1.0.0`.
 
@@ -89,7 +90,7 @@ After the selected jobs succeed, the workflow:
 4. Pushes tag `vX.Y.Z` and creates the GitHub Release
 5. Publishes `@sab-digital-bank/design-system` to npm
 
-A failed device build does not commit, tag, or publish. With platform `none` there is no device build.
+A failed device build does not commit, tag, or publish. With **Publish npm only** there is no device build.
 
 | Bump | When |
 | --- | --- |
