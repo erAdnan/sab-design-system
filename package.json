@@ -42,6 +42,8 @@
     "storybook": "storybook dev -p 6006 -c .storybook",
     "storybook:web": "storybook dev -p 6006 -c .storybook",
     "build-storybook": "storybook build -c .storybook",
+    "deploy:storybook:web": "bash scripts/deploy-storybook-web.sh",
+    "fastlane:storybook:web": "./scripts/run-bundle.sh exec fastlane web deploy_storybook",
     "storybook-generate": "sb-rn-get-stories --config-path .rnstorybook",
     "storybook:ios": "yarn storybook-generate && node scripts/run-ios-variant.js --variant=sb",
     "storybook:android": "yarn storybook-generate && cross-env STORYBOOK_ENABLED=true react-native run-android --mode=sbDebug --appId=com.sabdesignsystem.sb",

@@ -831,3 +831,30 @@ platform :android do
     )
   end
 end
+
+platform :web do
+  desc "Build web Storybook and deploy to Firebase Hosting (sab-digital-banking-ux)"
+  lane :deploy_storybook do |options|
+    Dir.chdir(project_root) do
+      ENV["SKIP_BUILD"] = (options[:SKIP_BUILD] || ENV["SKIP_BUILD"]).to_s unless (options[:SKIP_BUILD] || ENV["SKIP_BUILD"]).to_s.empty?
+      skip_deploy = options[:SKIP_DEPLOY] || ENV["SKIP_DEPLOY"]
+      skip_deploy = "true" if skip_deploy.to_s.empty? && skip_distribution?(options)
+      ENV["SKIP_DEPLOY"] = skip_deploy.to_s unless skip_deploy.to_s.empty?
+      project = options[:FIREBASE_PROJECT] || ENV["FIREBASE_PROJECT"]
+      ENV["FIREBASE_PROJECT"] = project.to_s unless project.to_s.empty?
+
+      UI.message("Deploying web Storybook (SKIP_BUILD=#{ENV['SKIP_BUILD']} SKIP_DEPLOY=#{ENV['SKIP_DEPLOY']})")
+      sh("bash scripts/deploy-storybook-web.sh")
+
+      unless ENV["SKIP_DEPLOY"].to_s == "true"
+        notify_slack_release!(
+          PLATFORM: "web",
+          VARIANT: "storybook",
+          CHANNEL: "firebase-hosting",
+          RELEASE_NOTES: release_notes_from_git(options),
+          MESSAGE: "Web Storybook deployed to Firebase Hosting (https://sab-digital-banking-ux.web.app)."
+        )
+      end
+    end
+  end
+end

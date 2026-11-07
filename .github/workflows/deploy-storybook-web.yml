@@ -1,0 +1,71 @@
+name: Deploy Storybook web
+
+# Build web Storybook and deploy to Firebase Hosting.
+# Does not bump the package version, tag, or publish npm.
+# For a full release (devices + web + npm) use the Release workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      skip_deploy:
+        description: Build only (do not upload to Firebase Hosting)
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: sab-design-system-storybook-web-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Build and deploy Hosting
+    runs-on: self-hosted
+    steps:
+      - name: Fix tool cache for self-hosted macOS
+        run: |
+          set -euo pipefail
+          TOOL_CACHE="${RUNNER_TOOL_CACHE:-$HOME/actions-runner/_work/_tool}"
+          mkdir -p "$TOOL_CACHE" "$HOME/hostedtoolcache"
+          {
+            echo "RUNNER_TOOL_CACHE=$TOOL_CACHE"
+            echo "AGENT_TOOLSDIRECTORY=$TOOL_CACHE"
+            echo "PATH=/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:${PATH}"
+          } >> "$GITHUB_ENV"
+
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          package-manager-cache: false
+
+      - name: Install JS deps
+        run: yarn install --frozen-lockfile
+
+      - name: Write Firebase service account
+        if: inputs.skip_deploy != true
+        env:
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          set -euo pipefail
+          DEST="firebase/sab-digital-banking-ux-firebase-adminsdk-fbsvc-df4e162a30.json"
+          mkdir -p firebase
+          if [ -n "${FIREBASE_SERVICE_ACCOUNT_JSON:-}" ]; then
+            printf '%s\n' "$FIREBASE_SERVICE_ACCOUNT_JSON" > "$DEST"
+          elif [ ! -f "$DEST" ]; then
+            echo "::error::Missing FIREBASE_SERVICE_ACCOUNT_JSON secret"
+            exit 1
+          fi
+
+      - name: Build and deploy web Storybook
+        env:
+          FIREBASE_SERVICE_CRED_FILE_PATH: firebase/sab-digital-banking-ux-firebase-adminsdk-fbsvc-df4e162a30.json
+          GOOGLE_APPLICATION_CREDENTIALS: firebase/sab-digital-banking-ux-firebase-adminsdk-fbsvc-df4e162a30.json
+          SKIP_DEPLOY: ${{ inputs.skip_deploy == true && 'true' || 'false' }}
+        run: bash scripts/deploy-storybook-web.sh

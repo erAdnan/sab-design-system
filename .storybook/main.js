@@ -30,6 +30,12 @@ module.exports = {
     options: {},
   },
 
+  // Bakes package.json version into the static Hosting build (Release bumps it first).
+  env: (config) => ({
+    ...config,
+    STORYBOOK_VERSION: require("./version").version,
+  }),
+
   webpackFinal: async (config) => {
     const root = path.resolve(__dirname, "..");
     config.resolve.alias = {

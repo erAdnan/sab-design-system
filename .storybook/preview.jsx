@@ -2,6 +2,8 @@ import { View } from "react-native";
 import { ThemeProvider } from "../src/context/theme/themeContext.tsx";
 import { ThemeSwitch } from "../src/components/local/ThemeSwitch.tsx";
 import { StoryBookWrapper } from "../src/components/local/StoryBookWrapper.tsx";
+import { StorybookVersionBadge } from "./StorybookVersionBadge.jsx";
+import { versionLabel } from "./version";
 
 /** @type{import("@storybook/react").Preview} */
 const preview = {
@@ -27,7 +29,19 @@ const preview = {
         <View style={{ flex: 1 }}>
           <ThemeProvider>
             <StoryBookWrapper>
-              <ThemeSwitch />
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  zIndex: 9999,
+                }}
+              >
+                <StorybookVersionBadge />
+                <ThemeSwitch
+                  overrideStyles={{ marginBottom: 50, flex: 0 }}
+                />
+              </View>
               <View style={{ flex: 1 }}>
                 <Story />
               </View>
@@ -38,5 +52,9 @@ const preview = {
     },
   ],
 };
+
+if (typeof document !== "undefined" && document.title) {
+  document.title = `SAB Design System ${versionLabel}`;
+}
 
 export default preview;

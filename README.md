@@ -73,12 +73,14 @@ GitHub **Actions → Release → Run workflow**. The form asks for:
 | Input | Values |
 | --- | --- |
 | Version bump | `patch`, `minor`, or `major` |
-| Platform | `both`, `android`, `ios`, or `npm` |
-| Publish npm only | checkbox. Skip iOS and Android. Compile the package and publish. |
-| Channel | `firebase` or `store` |
-| Skip distribution | build the binary and still publish npm |
+| Platform | `both` (Android + iOS + **web**), `android`, `ios`, `web`, or `npm` |
+| Publish npm only | checkbox. Skip device and web builds. Compile the package and publish. |
+| Channel | `firebase` or `store` (device App Distribution / stores) |
+| Skip distribution | skip device upload; web builds Storybook but does not upload Hosting |
 
-Check **Publish npm only**, or set Platform to `npm`. That runs one job: install, compile, write the release notes, and publish. It does not build the iOS or Android Storybook apps. Channel does not matter for that run.
+Check **Publish npm only**, or set Platform to `npm`. That runs one job: install, compile, write the release notes, and publish. It does not build device or web Storybook. Channel does not matter for that run.
+
+**Web Storybook** is hosted on Firebase Hosting (`sab-digital-banking-ux`). Locally: `yarn deploy:storybook:web`. Docs: [`firebase/README.md`](firebase/README.md). Deploy without a version bump: **Actions → Deploy Storybook web**.
 
 From `0.0.1`, a patch release becomes `0.0.2`, a minor release `0.1.0`, and a major release `1.0.0`.
 
@@ -137,7 +139,7 @@ Set these on `SABDigitalBank/sab-design-system`. Do not commit them.
 | --- | --- |
 | `ENV_STORYBOOK` | Firebase env file contents |
 | `ENV_STORYBOOK_PROD` | Store env file contents |
-| `FIREBASE_SERVICE_ACCOUNT_JSON` | Firebase App Distribution |
+| `FIREBASE_SERVICE_ACCOUNT_JSON` | Firebase App Distribution and Firebase Hosting (needs Hosting Admin) |
 | `ANDROID_KEYSTORE_BASE64` | Android release signing |
 | `PLAY_STORE_JSON` | Play Store upload |
 | `ASC_API_KEY_P8` | App Store Connect API key |

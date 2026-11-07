@@ -1,10 +1,12 @@
 name: Release
 
-# Storybook device builds (Firebase or stores) and npm publish for @sab-digital-bank/design-system.
+# Storybook device builds (Firebase or stores), web Storybook Hosting, and npm publish
+# for @sab-digital-bank/design-system.
 # Run workflow and choose patch, minor, or major. After the selected builds succeed,
 # this writes release notes, commits the new version to main, tags vX.Y.Z,
 # opens a GitHub Release, and publishes the package.
-# "Publish npm only" skips iOS and Android and only verifies, builds, and publishes npm.
+# "Publish npm only" skips device/web builds and only verifies, builds, and publishes npm.
+# Platform "both" → Android + iOS + web Hosting. Platform "web" → Hosting only.
 #
 # iOS signing uses the same Match repo as the demo app:
 # https://github.com/SABDigitalBank/certificates.git
@@ -22,7 +24,7 @@ on:
         required: true
         type: choice
         default: both
-        options: [both, android, ios, npm]
+        options: [both, android, ios, web, npm]
       npm_only:
         description: Publish npm only (skip iOS and Android builds)
         required: false
@@ -60,8 +62,10 @@ jobs:
     outputs:
       android_storybook: ${{ steps.matrix.outputs.android_storybook }}
       ios_storybook: ${{ steps.matrix.outputs.ios_storybook }}
+      web_storybook: ${{ steps.matrix.outputs.web_storybook }}
       has_android: ${{ steps.matrix.outputs.has_android }}
       has_ios: ${{ steps.matrix.outputs.has_ios }}
+      has_web: ${{ steps.matrix.outputs.has_web }}
       channel: ${{ steps.matrix.outputs.channel }}
       skip_distribution: ${{ steps.matrix.outputs.skip_distribution }}
       npm_only: ${{ steps.matrix.outputs.npm_only }}
@@ -152,8 +156,10 @@ jobs:
             {
               echo "android_storybook=false"
               echo "ios_storybook=false"
+              echo "web_storybook=false"
               echo "has_android=false"
               echo "has_ios=false"
+              echo "has_web=false"
               echo "channel=${CHANNEL}"
               echo "skip_distribution=true"
               echo "npm_only=true"
@@ -253,7 +259,7 @@ jobs:
           fi
 
       - name: Install JS deps
-        if: steps.matrix.outputs.has_android == 'true' || steps.matrix.outputs.has_ios == 'true'
+        if: steps.matrix.outputs.has_android == 'true' || steps.matrix.outputs.has_ios == 'true' || steps.matrix.outputs.has_web == 'true'
         run: yarn install --frozen-lockfile
 
       - name: Install Ruby gems
@@ -277,14 +283,14 @@ jobs:
           printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/app/sbds-release-key.keystore
 
       - name: Write Firebase service account
-        if: steps.matrix.outputs.has_android == 'true' || steps.matrix.outputs.has_ios == 'true'
+        if: >
+          (steps.matrix.outputs.has_web == 'true') ||
+          ((steps.matrix.outputs.has_android == 'true' || steps.matrix.outputs.has_ios == 'true') &&
+            inputs.skip_distribution != true)
         env:
           FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
         run: |
           set -euo pipefail
-          if [ "${{ inputs.skip_distribution }}" = "true" ]; then
-            exit 0
-          fi
           DEST="firebase/sab-digital-banking-ux-firebase-adminsdk-fbsvc-df4e162a30.json"
           mkdir -p firebase
           if [ -n "${FIREBASE_SERVICE_ACCOUNT_JSON:-}" ]; then
@@ -334,6 +340,26 @@ jobs:
           MATCH_GIT_BRANCH: ${{ secrets.MATCH_GIT_BRANCH }}
         run: bash .github/scripts/ci-build-one.sh ios storybook
 
+  web-storybook:
+    name: Web · Storybook Hosting
+    needs: prepare
+    if: needs.prepare.outputs.web_storybook == 'true'
+    runs-on: self-hosted
+    steps:
+      - name: Enter shared workspace
+        run: bash "${{ needs.prepare.outputs.workspace }}/.github/scripts/ci-enter-workspace.sh" "${{ needs.prepare.outputs.workspace }}"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          package-manager-cache: false
+      - name: Build and deploy web Storybook
+        working-directory: ${{ needs.prepare.outputs.workspace }}
+        env:
+          FIREBASE_SERVICE_CRED_FILE_PATH: firebase/sab-digital-banking-ux-firebase-adminsdk-fbsvc-df4e162a30.json
+          GOOGLE_APPLICATION_CREDENTIALS: firebase/sab-digital-banking-ux-firebase-adminsdk-fbsvc-df4e162a30.json
+          SKIP_DEPLOY: ${{ needs.prepare.outputs.skip_distribution == 'true' && 'true' || 'false' }}
+        run: bash scripts/deploy-storybook-web.sh
+
   publish-npm:
     name: Verify build and publish npm
     needs: prepare
@@ -355,13 +381,14 @@ jobs:
 
   publish:
     name: Commit version, tag, publish npm
-    needs: [prepare, android-storybook, ios-storybook]
+    needs: [prepare, android-storybook, ios-storybook, web-storybook]
     if: |
       always() &&
       needs.prepare.result == 'success' &&
       needs.prepare.outputs.npm_only != 'true' &&
       (needs.prepare.outputs.android_storybook != 'true' || needs.android-storybook.result == 'success') &&
-      (needs.prepare.outputs.ios_storybook != 'true' || needs.ios-storybook.result == 'success')
+      (needs.prepare.outputs.ios_storybook != 'true' || needs.ios-storybook.result == 'success') &&
+      (needs.prepare.outputs.web_storybook != 'true' || needs.web-storybook.result == 'success')
     runs-on: self-hosted
     steps:
       - name: Enter shared workspace

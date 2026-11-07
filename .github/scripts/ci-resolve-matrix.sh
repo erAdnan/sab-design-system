@@ -3,8 +3,8 @@
 # Env: EVENT_NAME, VARIANT, PLATFORM, CHANNEL, SKIP_DIST, GITHUB_WORKSPACE
 #
 # Writes .ci/* matrices and GITHUB_OUTPUT flags:
-#   android_demo, android_storybook, ios_demo, ios_storybook,
-#   has_android, has_ios, channel, need_storybook_generate, skip_distribution
+#   android_demo, android_storybook, ios_demo, ios_storybook, web_storybook,
+#   has_android, has_ios, has_web, channel, need_storybook_generate, skip_distribution
 set -euo pipefail
 
 # Normalize UI aliases
@@ -26,6 +26,7 @@ android_demo=false
 android_storybook=false
 ios_demo=false
 ios_storybook=false
+web_storybook=false
 
 add_android() {
   local variant="$1" channel="$2" script="$3" env_key="$4" file="$5"
@@ -55,6 +56,13 @@ add_ios() {
 
 want_variant() { [ "$VARIANT" = "all" ] || [ "$VARIANT" = "$1" ]; }
 want_platform() { [ "$PLATFORM" = "all" ] || [ "$PLATFORM" = "$1" ]; }
+
+# Web Storybook Hosting: included when platform is all/both (mapped to all) or web.
+if want_platform web || [ "$PLATFORM" = "all" ]; then
+  if want_variant storybook || want_variant all; then
+    web_storybook=true
+  fi
+fi
 
 if want_platform android; then
   if want_variant demo; then
@@ -110,9 +118,11 @@ fi
 
 has_android=false
 has_ios=false
+has_web=false
 need_sb=false
 if [ "$android_demo" = true ] || [ "$android_storybook" = true ]; then has_android=true; fi
 if [ "$ios_demo" = true ] || [ "$ios_storybook" = true ]; then has_ios=true; fi
+if [ "$web_storybook" = true ]; then has_web=true; fi
 if [ "$android_storybook" = true ] || [ "$ios_storybook" = true ]; then need_sb=true; fi
 
 {
@@ -120,8 +130,10 @@ if [ "$android_storybook" = true ] || [ "$ios_storybook" = true ]; then need_sb=
   echo "android_storybook=$android_storybook"
   echo "ios_demo=$ios_demo"
   echo "ios_storybook=$ios_storybook"
+  echo "web_storybook=$web_storybook"
   echo "has_android=$has_android"
   echo "has_ios=$has_ios"
+  echo "has_web=$has_web"
   echo "channel=$CHANNEL"
   echo "need_storybook_generate=$need_sb"
   if [ "$SKIP_DIST" = "true" ]; then
@@ -135,3 +147,4 @@ echo "Matrix resolved:"
 echo "  PLATFORM=$PLATFORM VARIANT=$VARIANT CHANNEL=$CHANNEL"
 echo "  android_demo=$android_demo android_storybook=$android_storybook"
 echo "  ios_demo=$ios_demo ios_storybook=$ios_storybook"
+echo "  web_storybook=$web_storybook"
