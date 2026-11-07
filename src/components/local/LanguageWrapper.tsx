@@ -52,13 +52,14 @@ export const LanguageWrapper: FC<any> = ({ children, setArabic }) => {
 
  
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}>
       <View
         style={{
           display: "flex",
           width: "100%",
+          maxWidth: "100%",
           alignItems: "flex-end",
-          marginBottom: 16
+          marginBottom: 16,
         }}
       >
         <Button size="small" variant="outlined" buttonText={{ children: t('changeLanguage') }} onButtonPress={() => setIsSelectLangOpen(true)}/>
@@ -92,7 +93,9 @@ export const LanguageWrapper: FC<any> = ({ children, setArabic }) => {
         </View>
       </View>
       </Modal>
-      <View style={{ flex: 1 }}>{children}</View>
+      <View style={{ flex: 1, width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}>
+        {children}
+      </View>
     </View>
   );
 };

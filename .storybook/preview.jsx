@@ -26,24 +26,16 @@ const preview = {
   decorators: [
     (Story) => {
       return (
-        <View style={{ flex: 1 }}>
+        <View style={canvasRootStyle}>
           <ThemeProvider>
             <StoryBookWrapper>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "flex-end",
-                  alignItems: "center",
-                  marginBottom: 8,
-                  zIndex: 9999,
-                }}
-              >
+              <View style={toolbarStyle}>
                 <StorybookVersionBadge />
               </View>
               <ThemeSwitch
-                overrideStyles={{ marginBottom: 50, flex: 0 }}
+                overrideStyles={{ marginBottom: 24, flex: 0, width: "100%" }}
               />
-              <View style={{ flex: 1 }}>
+              <View style={storySlotStyle}>
                 <Story />
               </View>
             </StoryBookWrapper>
@@ -52,6 +44,32 @@ const preview = {
       );
     },
   ],
+};
+
+const canvasRootStyle = {
+  flex: 1,
+  width: "100%",
+  maxWidth: "100%",
+  minWidth: 0,
+  overflow: "hidden",
+};
+
+const toolbarStyle = {
+  flexDirection: "row",
+  justifyContent: "flex-end",
+  alignItems: "center",
+  marginBottom: 8,
+  width: "100%",
+  maxWidth: "100%",
+  zIndex: 9999,
+};
+
+const storySlotStyle = {
+  flex: 1,
+  width: "100%",
+  maxWidth: "100%",
+  minWidth: 0,
+  overflow: "hidden",
 };
 
 if (typeof document !== "undefined" && document.title) {

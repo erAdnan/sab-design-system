@@ -1,0 +1,25 @@
+<style>
+  /* Keep Storybook canvas from growing past the iframe and forcing x-scroll. */
+  html,
+  body,
+  #root,
+  #storybook-root,
+  #storybook-docs {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+  }
+
+  #storybook-root *,
+  #storybook-docs * {
+    box-sizing: border-box;
+  }
+
+  /* react-native-web roots often omit this; without it % widths misbehave. */
+  #storybook-root > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+</style>
