@@ -9,7 +9,6 @@ module.exports = {
 
   addons: [
     "@storybook/addon-webpack5-compiler-babel",
-    "@storybook/addon-essentials",
     {
       name: "@storybook/addon-react-native-web",
       options: {
@@ -23,6 +22,7 @@ module.exports = {
       },
     },
     "storybook-addon-deep-controls",
+    "@storybook/addon-docs",
   ],
 
   framework: {
@@ -44,7 +44,10 @@ module.exports = {
       "react-dom": path.join(root, "node_modules/react-dom"),
       "@react-native-community/blur": path.resolve(__dirname, "./mocks/blur.js"),
       // No web build; index.js calls requireNativeComponent, which react-native-web does not provide.
-      "react-native-linear-gradient": path.resolve(__dirname, "./mocks/linearGradient.js"),
+      "react-native-linear-gradient": path.resolve(
+        __dirname,
+        "./mocks/linearGradient.js"
+      ),
       "react-native-restart": path.resolve(__dirname, "./mocks/restart.js"),
       // Prefer the DOM implementation. The package "react-native" field points at native views.
       "react-native-svg$": path.join(
@@ -97,6 +100,9 @@ module.exports = {
 
     return config;
   },
+
+  // experimentalDocgenServer / experimentalReview need a live Storybook server.
+  // Keep them off for static Firebase Hosting builds.
 };
 
 function excludeSvgFromAssetRules(rules) {

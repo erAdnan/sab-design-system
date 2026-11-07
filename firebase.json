@@ -8,7 +8,34 @@
     ],
     "headers": [
       {
-        "source": "**/*.@(js|css|woff2|woff|ttf|png|jpg|jpeg|gif|svg|webp)",
+        "source": "**/*.@(html|json)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "/sb-*/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "/mocker-runtime-injected.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "**/*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]*.@(js|css)",
         "headers": [
           {
             "key": "Cache-Control",
@@ -17,19 +44,22 @@
         ]
       },
       {
-        "source": "**/index.html",
+        "source": "**/*.@(woff2|woff|ttf|png|jpg|jpeg|gif|svg|webp)",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "no-cache"
+            "value": "public,max-age=31536000,immutable"
           }
         ]
-      }
-    ],
-    "rewrites": [
+      },
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "**/*.@(js|css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=0,must-revalidate"
+          }
+        ]
       }
     ]
   }

@@ -8,7 +8,6 @@ import { BlurView } from "@react-native-community/blur";
 import { fontLarge, fontSmall, radiusL, spacingM, spacingS, spacingXS } from "../../assets/styles/constants/size";
 import { useTheme } from "../../context/theme/themeContext";
 import MarketingBannerIconSample from "../icons/other/MarketingBannerIconSample";
-import { background } from "@storybook/core/theming";
 import { lightTheme } from "../../assets/styles/theme/light";
 import fonts from "../../assets/styles/constants/fonts";
 import BannerSkeleton from './BannerSkeleton';

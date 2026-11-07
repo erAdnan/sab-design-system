@@ -5,9 +5,13 @@ module.exports = {
     "../stories/foundations/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
-  addons: [
+  deviceAddons: [
     "@storybook/addon-ondevice-controls",
     "@storybook/addon-ondevice-actions",
     "storybook-addon-deep-controls",
   ],
+
+  features: {
+    experimentalReview: true
+  }
 };

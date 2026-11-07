@@ -10,7 +10,6 @@ export function StorybookVersionBadge() {
       style={{
         flexDirection: "row",
         alignItems: "center",
-        marginRight: 12,
         paddingHorizontal: 10,
         paddingVertical: 4,
         borderRadius: 4,

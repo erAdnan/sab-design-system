@@ -1,4 +1,3 @@
-import { background } from "@storybook/core/theming";
 import { CreditCard } from '../src/components/cardsNew/CreditCard';
 import Success from "../src/components/icons/status/Success";
 

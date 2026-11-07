@@ -5,7 +5,7 @@ import { StoryBookWrapper } from "../src/components/local/StoryBookWrapper.tsx";
 import { StorybookVersionBadge } from "./StorybookVersionBadge.jsx";
 import { versionLabel } from "./version";
 
-/** @type{import("@storybook/react").Preview} */
+/** @type{import("@storybook/react-webpack5").Preview} */
 const preview = {
   parameters: {
     controls: {
@@ -34,14 +34,15 @@ const preview = {
                   flexDirection: "row",
                   justifyContent: "flex-end",
                   alignItems: "center",
+                  marginBottom: 8,
                   zIndex: 9999,
                 }}
               >
                 <StorybookVersionBadge />
-                <ThemeSwitch
-                  overrideStyles={{ marginBottom: 50, flex: 0 }}
-                />
               </View>
+              <ThemeSwitch
+                overrideStyles={{ marginBottom: 50, flex: 0 }}
+              />
               <View style={{ flex: 1 }}>
                 <Story />
               </View>

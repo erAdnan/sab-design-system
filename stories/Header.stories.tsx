@@ -7,7 +7,6 @@ import Close from "../src/components/icons/arrows/outline/Close";
 import Wallet from "../src/components/icons/filled/Wallet";
 import Menu from "../src/components/icons/functionals/Menu";
 import {actuatedNormalize} from "../src/assets/styles/utils/pixelScaling";
-import { posix } from "@storybook/core/common";
 
 export default {
   title: "Components/Header",

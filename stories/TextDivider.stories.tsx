@@ -1,7 +1,6 @@
 
 import { useTranslation } from "react-i18next";
 import {TextDivider} from "../src/components/text/TextDivider";
-import { background } from "@storybook/core/theming";
 
 export default {
   title: "Components/TextDivider",
