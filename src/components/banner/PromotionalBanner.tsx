@@ -21,6 +21,7 @@ import ImageThumbnail, {
 } from "../imageThumbnail/ImageThumbnail";
 import { Button } from "../button/Button";
 import fonts from "../../assets/styles/constants/fonts";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface PromotionalBannerProps {
   title: string;
@@ -59,6 +60,7 @@ export const PromotionalBanner: FC<PromotionalBannerProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
 
   const containerHeight = actuatedNormalize(106);
 
@@ -68,7 +70,7 @@ export const PromotionalBanner: FC<PromotionalBannerProps> = ({
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "flex-start",
-      width: actuatedNormalize(343),
+      ...frame.of(343),
       borderRadius: radiusL,
       padding: spacingS,
       // gap: spacingS,
@@ -194,12 +196,12 @@ export const PromotionalBanner: FC<PromotionalBannerProps> = ({
       </View>
     </View>
   ) : (
-    <TouchableOpacity onPress={() => onPress && onPress()}>
+    <TouchableOpacity style={frame.of()} onPress={() => onPress && onPress()}>
       {solidBackground ? (
         <View style={[styles.container, overrideStyles]}>{bannerContent}</View>
       ) : (
         <ImageThumbnail
-          width={actuatedNormalize(343)}
+          width={frame.span}
           // height={actuatedNormalize(109)}
           url={bgImageUrl || require('../../assets/images/promotional_banner_pattern.png')}
           overrideStyles={[styles.container, overrideStyles]}

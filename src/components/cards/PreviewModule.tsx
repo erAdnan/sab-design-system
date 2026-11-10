@@ -23,6 +23,7 @@ import { SarFont } from "../sarFont/SarFont";
 import { TooltipComponent } from "../tooltip/Tooltip";
 import { ProgressIndicator } from "../progressIndicator/ProgressIndicator";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface CardsPreviewModuleProps {
   type: "account" | "cards" | "finance" | "portfolio";
@@ -77,6 +78,7 @@ export const PreviewModule: FC<CardsPreviewModuleProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
 
   const styles = StyleSheet.create({
@@ -163,7 +165,7 @@ export const PreviewModule: FC<CardsPreviewModuleProps> = ({
       alignItems: isRtl ? "flex-end" : "flex-start",
     },
     cardsBackground: {
-      width: actuatedNormalize(345),
+      ...frame.of(345),
       height: actuatedNormalize(178),
     },
   });

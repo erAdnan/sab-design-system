@@ -1,49 +1,41 @@
+import { TextDivider } from "../src/components/text/TextDivider";
+import en from "../src/localization/locales/en";
+import { useStoryCopy } from "./helpers/useStoryCopy";
 
-import { useTranslation } from "react-i18next";
-import {TextDivider} from "../src/components/text/TextDivider";
+const SAMPLE_HEADLINE = en.stories.pageTitle;
+const SAMPLE_BODY = en.stories.loremIpsum;
 
 export default {
   title: "Components/TextDivider",
   component: TextDivider,
   args: {
-    text: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur",
+    headline: SAMPLE_HEADLINE,
+    text: SAMPLE_BODY,
     subTitle: true,
   },
 };
 
 const TextDivderInteractive = (args: any) => {
-  const { t } = useTranslation();
-
-  let textDivider = <TextDivider {...args} headLine={t("titleText")} />;
-
-  // if (args.badge) {
-  //   textDivider = <TextDivider
-  //     {...args}
-  //     headLine={t("titleText")}
-  //     showBadge={true}
-  //     badgeProps={{
-  //       number: 5,
-  //     }}
-  //   />;
-  // }
-
-  // if (args.tooltip) {
-  //   textDivider = <TextDivider
-  //     {...args}
-  //     headLine={t("titleText")}
-  //     showTooltip={true}
-  //     tooltipProps={{
-  //       text: "Lorem Ipsum"
-  //     }}
-  //   />;
-  // }
-
+  const copy = useStoryCopy();
   return (
     <TextDivider
-        {...args}
-        headline={t("titleText")}
-        text={t("loremIpsum")}
-      />
+      {...args}
+      headline={copy.resolvePageTitle(args.headline)}
+      text={copy.resolveLoremIpsum(args.text)}
+      linkButtonLink={
+        args.linkButtonLink
+          ? copy.resolveLinkText(args.linkButtonLink)
+          : args.linkButtonLink
+      }
+      tooltipProps={
+        args.tooltipProps
+          ? {
+              ...args.tooltipProps,
+              text: copy.resolveTooltipText(args.tooltipProps.text),
+            }
+          : args.tooltipProps
+      }
+    />
   );
 };
 
@@ -51,61 +43,75 @@ export const PageTitle = {
   render: TextDivderInteractive,
   args: {
     type: "Page Title",
-  }
+    headline: SAMPLE_HEADLINE,
+    text: SAMPLE_BODY,
+  },
 };
 
 export const Promotional = {
   render: TextDivderInteractive,
   args: {
     type: "Promotional",
-  }
+    headline: SAMPLE_HEADLINE,
+    text: SAMPLE_BODY,
+  },
 };
 
 export const Bottomsheet = {
   render: TextDivderInteractive,
   args: {
     type: "BottomSheet",
-  }
+    headline: SAMPLE_HEADLINE,
+    text: SAMPLE_BODY,
+  },
 };
 
 export const InPageDefault = {
   render: TextDivderInteractive,
   args: {
     type: "In Page",
-     link : true,
-     linkButtonLink: "Link Text"
-  }
+    headline: SAMPLE_HEADLINE,
+    text: SAMPLE_BODY,
+    link: true,
+    linkButtonLink: en.stories.linkText,
+  },
 };
 
 export const InPageBadge = {
   render: TextDivderInteractive,
   args: {
     type: "In Page",
+    headline: SAMPLE_HEADLINE,
+    text: SAMPLE_BODY,
     badge: true,
-    badgeProps:{
-        number: 5,
-      }
-  }
+    badgeProps: {
+      number: 5,
+    },
+  },
 };
 
 export const InPageTooltip = {
   render: TextDivderInteractive,
   args: {
     type: "In Page",
+    headline: SAMPLE_HEADLINE,
+    text: SAMPLE_BODY,
     tooltip: true,
-    tooltipProps:{
-        text: "Lorem Ipsum"
-      }
-  }
+    tooltipProps: {
+      text: en.stories.tooltipText,
+    },
+  },
 };
 
 export const InPageOverideStyle = {
   render: TextDivderInteractive,
   args: {
     type: "In Page",
-    linkButtonLink: "Link text",
-    mainWrapper:{ alignItems:"center",justifyContent:"center"},
-    descriptionStyle: { alignSelf:"center",textAlign:"center"},
-    headlineStyle: { alignSelf:"center",textAlign:"center",flex:1},
-  }
+    headline: SAMPLE_HEADLINE,
+    text: SAMPLE_BODY,
+    linkButtonLink: en.stories.linkText,
+    mainWrapper: { alignItems: "center", justifyContent: "center" },
+    descriptionStyle: { alignSelf: "center", textAlign: "center" },
+    headlineStyle: { alignSelf: "center", textAlign: "center", flex: 1 },
+  },
 };

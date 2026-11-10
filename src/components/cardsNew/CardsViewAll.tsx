@@ -14,6 +14,7 @@ import { Button, ButtonProps } from "../button/Button";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
 import { NewCurrency } from '../text/NewCurrency';
 import Plus from '../icons/outline/Plus';
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface CardsViewAllProps {
   cardName: "Default" |
@@ -106,6 +107,7 @@ export const CardsViewAll: React.FC<CardsViewAllProps> = ({
   cardFullnameStyles,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
 
   const cardFullName = useMemo(() => {
@@ -251,7 +253,7 @@ export const CardsViewAll: React.FC<CardsViewAllProps> = ({
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      width: actuatedNormalize(150)
+      ...frame.of(150)
     }
   })
   return (

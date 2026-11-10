@@ -21,6 +21,7 @@ import Mada from "../icons/banking/Mada";
 import { ChipsInfoProps } from "../chips/ChipsInfo";
 import { CreditCardSkeleton } from "./CreditCardSkeleton";
 import { NewChipsInfo } from '../chips/NewChipsInfo';
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 const LIGHT_CARD_CONTENT_OVERLAY = "rgba(21, 21, 21, 0.8)";
 
@@ -445,6 +446,7 @@ export const CreditCard: FC<CreditCardProps> = ({
   isLightCardImage = false,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
   const [fallback, setFallback] = useState(false);
 
@@ -696,22 +698,30 @@ export const CreditCard: FC<CreditCardProps> = ({
   }, [cardName]);
 
   const imageDimensions = useMemo(() => {
+    const sized = (designWidth: number, designHeight: number) => {
+      const design = Math.max(1, actuatedNormalize(designWidth));
+      const ratio = frame.span > 0 ? frame.span / design : 1;
+      return {
+        ...frame.of(designWidth),
+        height: Math.round(actuatedNormalize(designHeight) * ratio),
+      };
+    };
     if (isViewAll) {
       return { width: actuatedNormalize(73), height: actuatedNormalize(46) };
     } else {
       switch (view) {
         case "default":
         case "detailed":
-          return { width: actuatedNormalize(342), height: actuatedNormalize(172) };
+          return sized(342, 172);
         case "carousel":
-          return { width: actuatedNormalize(200), height: actuatedNormalize(100) };
+          return sized(200, 100);
         case "selection":
-          return { width: actuatedNormalize(306), height: actuatedNormalize(100) };
+          return sized(306, 100);
         case "virtual":
-          return { width: actuatedNormalize(325), height: actuatedNormalize(203) };
+          return sized(325, 203);
       }
     }
-  }, [view, cardName]);
+  }, [view, cardName, frame, isViewAll]);
 
   const freezeIconSize = useMemo(() => {
     if (isCarouselView || isSelectionView) {

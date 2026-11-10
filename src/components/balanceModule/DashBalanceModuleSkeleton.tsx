@@ -7,9 +7,11 @@ import {
 } from "../../assets/styles/constants/size";
 import { useTheme } from "../../context/theme/themeContext";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 export const DashBalanceModuleSkeleton = () => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   return (
     <View
       style={{
@@ -19,7 +21,7 @@ export const DashBalanceModuleSkeleton = () => {
         alignItems: "center",
         backgroundColor: theme.stylesblockbg,
         borderRadius: radiusS,
-        width: actuatedNormalize(343),
+        ...frame.of(343),
         height: actuatedNormalize(183),
         paddingVertical: actuatedNormalize(12),
       }}
@@ -38,7 +40,7 @@ export const DashBalanceModuleSkeleton = () => {
         <SkeletonBox
           shape="line"
           size="medium"
-          overrideStyles={{ width: actuatedNormalize(270) }}
+          overrideStyles={{ width: "100%", maxWidth: "100%", flexShrink: 1 }}
         />
       </View>
 

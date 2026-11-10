@@ -228,7 +228,7 @@ export const AmountInputText: FC<AmountInputProps> = ({
         )}
         <View style={styles.inputContainer}>
           {loading ? (
-            <SkeletonBox shape="line" size="extralarge" overrideStyles={{width:actuatedNormalize(300)}} />
+            <SkeletonBox shape="line" size="extralarge" overrideStyles={{width: "100%", maxWidth: "100%", flexShrink: 1}} />
           ) : (
             <TextFieldInput {...inputProps} />
           )}

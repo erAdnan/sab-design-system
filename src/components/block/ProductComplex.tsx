@@ -32,19 +32,20 @@ interface BlockProductComplexProps {
   variantColor?: string;
 }
 
-const LARGE_CARD_MAX_WIDTH = actuatedNormalize(300);
 const LARGE_IMAGE_SIZE = actuatedNormalize(200);
 
 const ProductComplexSkeleton = ({ variant = "default" }: { variant?: "default" | "large" }) => {
   const { theme } = useTheme();
   const isLarge = variant === "large";
-  const w = isLarge ? "100%" : actuatedNormalize(213);
+  const w = "100%";
   const h = isLarge ? undefined : actuatedNormalize(224);
   return (
     <View
       style={{
         width: w,
-        maxWidth: isLarge ? LARGE_CARD_MAX_WIDTH : undefined,
+        maxWidth: "100%",
+        minWidth: 0,
+        alignSelf: "stretch",
         height: h,
         minHeight: isLarge ? actuatedNormalize(360) : undefined,
         alignSelf: "flex-start",
@@ -189,14 +190,18 @@ const styles = StyleSheet.create({
     padding: spacingS,
   },
   containerDefault: {
-    width: actuatedNormalize(213),
+    width: "100%",
+    maxWidth: "100%",
+    minWidth: 0,
+    alignSelf: "stretch",
     gap: actuatedNormalize(21),
     borderRadius: radiusS,
   },
   containerLarge: {
     width: "100%",
-    maxWidth: LARGE_CARD_MAX_WIDTH,
-    alignSelf: "flex-start",
+    maxWidth: "100%",
+    minWidth: 0,
+    alignSelf: "stretch",
     gap: actuatedNormalize(24),
     borderRadius: radiusL,
   },

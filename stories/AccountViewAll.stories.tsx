@@ -1,6 +1,6 @@
 import React from 'react';
 import { AccountViewAll } from "../src/components/cards/AccountsViewAll";
-import { View } from "react-native";
+import { useWindowDimensions, View } from "react-native";
 import { spacingXS } from "../src/assets/styles/constants/size";
 
 export default {
@@ -56,6 +56,14 @@ export default {
 };
 
 const RowExample = (args: any) => {
+  const { width } = useWindowDimensions();
+  const stacked = width < 560;
+  const cell = {
+    width: stacked ? ("100%" as const) : undefined,
+    flexGrow: stacked ? 0 : 1,
+    flexBasis: stacked ? ("100%" as const) : 0,
+    minWidth: 0,
+  };
   return (
     <View
       style={{
@@ -65,11 +73,15 @@ const RowExample = (args: any) => {
         gap: spacingXS,
         width: "100%",
         maxWidth: "100%",
-        justifyContent: "center",
+        alignItems: "stretch",
       }}
     >
-      <AccountViewAll {...args} variant="current" />
-      <AccountViewAll {...args} variant="hsbc global account" />
+      <View style={cell}>
+        <AccountViewAll {...args} variant="current" />
+      </View>
+      <View style={cell}>
+        <AccountViewAll {...args} variant="hsbc global account" />
+      </View>
     </View>
   );
 };

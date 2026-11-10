@@ -11,7 +11,6 @@ import Tick from "../src/components/icons/functionals/Tick";
 import { BadgeSize } from "../src/components/badge/Badge";
 import { useTheme } from "../src/context/theme/themeContext";
 import InfoFrame from "../src/components/icons/status/InfoFrame";
-import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
 
 export default {
   title: "Components/List",
@@ -158,7 +157,7 @@ const ShoppingIcon = () => (
 );
 
 const transactionListDecorator = (Story: React.ComponentType) => (
-  <View style={{ width: actuatedNormalize(343) }}>
+  <View style={{ width: "100%", maxWidth: "100%", minWidth: 0, alignSelf: "stretch" }}>
     <Story />
   </View>
 );

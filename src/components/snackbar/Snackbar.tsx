@@ -34,6 +34,7 @@ import { Button, ButtonProps } from "../button/Button";
 import SnackbarSkeleton from "./SnackbarSkeleton";
 import fonts from "../../assets/styles/constants/fonts";
 import { AutomationProps, getAutomationProps, getNestedAutomationProps } from "../automationProps";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 export interface SnackbarProps extends AutomationProps {
   text: string | ReactElement;
   usage: "inline" | "toast";
@@ -87,6 +88,7 @@ export const Snackbar: FC<SnackbarProps> = ({
   accessibilityLabel,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const [isVisible, setIsVisible] = useState(usage === "inline");
 
   const isRtl =I18nManager.isRTL;
@@ -252,7 +254,7 @@ export const Snackbar: FC<SnackbarProps> = ({
       borderRadius: radiusS,
       paddingHorizontal: spacingS,
       paddingVertical: spacing1XS,
-      width: actuatedNormalize(343),
+      ...frame.of(343),
     },
     container: {
       display: "flex",

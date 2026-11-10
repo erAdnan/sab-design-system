@@ -59,7 +59,7 @@ export const LightSkeletonBox: FC<LightSkeletonBoxProps> = ({
     },
     square: {},
     line: {
-      width: actuatedNormalize(240),
+      width: actuatedNormalize(240), maxWidth: "100%", flexShrink: 1,
     },
     small: {
       height: actuatedNormalize(24),

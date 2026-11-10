@@ -1,4 +1,4 @@
-import { Appearance } from "react-native";
+import { Appearance, Platform } from "react-native";
 import React, {
   createContext,
   useCallback,
@@ -61,7 +61,14 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode; }> = ({
     // props. `Appearance.setColorScheme` forces `overrideUserInterfaceStyle`
     // on every app window, which is the only way to make that native chrome
     // follow the in-app theme instead of the OS setting.
-    Appearance.setColorScheme(themeKey === "dark" ? "dark" : "light");
+    // react-native-web does not implement setColorScheme — skip on web /
+    // Storybook or the theme toolbar crashes.
+    if (
+      Platform.OS !== "web" &&
+      typeof Appearance.setColorScheme === "function"
+    ) {
+      Appearance.setColorScheme(themeKey === "dark" ? "dark" : "light");
+    }
   }, []);
 
   // Follow system theme changes only until the user manually overrides it.

@@ -24,6 +24,7 @@ import Success from "../icons/status/Success";
 import Warning from "../icons/status/Warning";
 import { useTranslation } from "react-i18next";
 import BudgetCardSkeleton from "./BudgetCardSkeleton";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface BudgetCardProps {
   pieGraphLabel: string;
@@ -71,6 +72,7 @@ export const BudgetCard: FC<BudgetCardProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const { t } = useTranslation();
 
   const isFullySpent = useMemo(
@@ -112,7 +114,7 @@ export const BudgetCard: FC<BudgetCardProps> = ({
 
   const styles = StyleSheet.create({
     container: {
-      width: actuatedNormalize(344),
+      ...frame.of(344),
       borderRadius: radiusS,
       backgroundColor: theme.stylesblockbg,
       padding: spacingS,

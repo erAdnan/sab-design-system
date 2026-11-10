@@ -43,17 +43,26 @@ export const WidgetSkeleton: FC<WidgetSkeletonProps> = ({
 
   const widgetSize = StyleSheet.create({
     small: {
-      width: actuatedNormalize(164),
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
       height: actuatedNormalize(160),
       paddingVertical: spacingS,
     },
     medium: {
-      width: actuatedNormalize(164),
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
       height: actuatedNormalize(232),
       paddingVertical: spacingM,
     },
     large: {
-      width: actuatedNormalize(164),
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
       height: actuatedNormalize(406),
       paddingVertical: spacingM,
     },

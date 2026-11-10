@@ -24,6 +24,7 @@ import { Text } from "../text/Text";
 import Heart from "../icons/outline/Heart";
 import HeartFilled from "../icons/filled/HeartFilled";
 import Redeem from "../icons/outline/Redeem";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 export interface ProductsCardsProps {
   type: "product-page" | "carousel";
@@ -69,6 +70,7 @@ export const ProductsCards: FC<ProductsCardsProps> = ({
   textContainerStyles,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
   const [favorite, setFavorite] = useState(isFavorite);
 
@@ -85,11 +87,11 @@ export const ProductsCards: FC<ProductsCardsProps> = ({
       backgroundColor: theme.stylesblockbg,
     },
     productPageContainer: {
-      width: actuatedNormalize(164),
+      ...frame.of(164),
       height: actuatedNormalize(164),
     },
     productPageImageThumbnail: {
-      width: actuatedNormalize(164),
+      ...frame.of(164),
       height: actuatedNormalize(95),
       borderRadius: radiusS,
     },

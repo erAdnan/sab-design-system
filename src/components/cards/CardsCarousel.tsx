@@ -26,6 +26,7 @@ import { SarFont } from "../sarFont/SarFont";
 import ChevronRight from "../icons/arrows/chevron/ChevronRight";
 import ChevronLeft from "../icons/arrows/chevron/ChevronLeft";
 import { BaseCardSkeleton } from "./BaseCardSkeleton";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 interface CardCarouselProps {
   type: "platinum" | "premier" | "signature" | "solid";
   cardTitle: string;
@@ -59,12 +60,13 @@ export const CardsCarousel: FC<CardCarouselProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
 
   const styles = StyleSheet.create({
     container: {
       height: actuatedNormalize(124),
-      width: actuatedNormalize(246),
+      ...frame.of(246),
       borderRadius: radiusS,
       padding: spacingS,
       backgroundColor: theme.primarycolorstatic,

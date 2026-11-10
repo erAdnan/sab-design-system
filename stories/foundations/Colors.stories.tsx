@@ -12,6 +12,7 @@ import { lightTheme } from "../../src/assets/styles/theme/light";
 import { darkTheme } from "../../src/assets/styles/theme/dark";
 import { useTheme } from "../../src/context/theme/themeContext";
 
+import { tx } from "../../src/localization/tx";
 type ThemeMap = Record<string, string>;
 
 type ColorToken = {
@@ -383,7 +384,7 @@ const ColorPalette = () => {
       contentContainerStyle={styles.page}
       onLayout={onLayout}
     >
-      <Text style={[styles.title, { color: titleColor }]}>SAB Color tokens</Text>
+      <Text style={[styles.title, { color: titleColor }]}>{tx("SAB Color tokens")}</Text>
       <Text style={[styles.meta, { color: mutedColor }]}>
         Active theme:{" "}
         <Text style={[styles.metaStrong, { color: titleColor }]}>{mode}</Text>

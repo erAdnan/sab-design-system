@@ -12,6 +12,7 @@ import { lightTheme } from "../../assets/styles/theme/light";
 import fonts from "../../assets/styles/constants/fonts";
 import BannerSkeleton from './BannerSkeleton';
 import { SkeletonBox } from '../skeleton/SkeletonBox';
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface InfoMarketingBannerProps {
   imageProps: ImageThumbnailProps;
@@ -35,6 +36,7 @@ export const InfoMarketingBanner: React.FC<InfoMarketingBannerProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const hasChips = Boolean(chips?.length);
   const footerHeight = actuatedNormalize(
     size === "medium" && !hasChips ? 80 : 126
@@ -50,7 +52,7 @@ export const InfoMarketingBanner: React.FC<InfoMarketingBannerProps> = ({
       borderTopLeftRadius: radiusL,
       borderTopRightRadius: radiusL,
       height: actuatedNormalize(56),
-      width: actuatedNormalize(343),
+      width: "100%",
       backgroundColor: 'rgba(29, 29, 29, 0.45)',
       overflow: 'hidden'
     },
@@ -62,7 +64,7 @@ export const InfoMarketingBanner: React.FC<InfoMarketingBannerProps> = ({
       borderBottomLeftRadius: radiusL,
       borderBottomRightRadius: radiusL,
       height: footerHeight,
-      width: actuatedNormalize(343),
+      width: "100%",
       backgroundColor: 'rgba(29, 29, 29, 0.45)',
       overflow: 'hidden'
           
@@ -79,7 +81,7 @@ export const InfoMarketingBanner: React.FC<InfoMarketingBannerProps> = ({
       justifyContent: 'flex-start',
       padding: spacingS,
       height: actuatedNormalize(56),
-      width: actuatedNormalize(343),
+      width: "100%",
       borderBottomLeftRadius: radiusL,
       borderBottomRightRadius: radiusL,
       overflow: 'hidden'
@@ -95,7 +97,7 @@ export const InfoMarketingBanner: React.FC<InfoMarketingBannerProps> = ({
       gap: actuatedNormalize(10),
       padding: spacingS,
       height: footerHeight,
-      width: actuatedNormalize(343),
+      width: "100%",
       borderBottomLeftRadius: radiusL,
       borderBottomRightRadius: radiusL,
       overflow: 'hidden'
@@ -110,7 +112,7 @@ export const InfoMarketingBanner: React.FC<InfoMarketingBannerProps> = ({
   if(loading) {
     return (
       <BannerSkeleton
-      width={actuatedNormalize(343)}
+      width={frame.span}
       height={bannerHeight}>
       <View
         style={{
@@ -142,7 +144,7 @@ export const InfoMarketingBanner: React.FC<InfoMarketingBannerProps> = ({
     <ImageThumbnail
        {...imageProps}
       url={imageProps.url}
-      width={actuatedNormalize(343)}
+      width={frame.span}
       height={bannerHeight}
       overrideImageStyles={[
         { borderRadius: radiusL },

@@ -76,7 +76,7 @@ export const GroupWithDisabled = {
 
 export const DisabledStates = {
     render: () => (
-        <View style={{ flexDirection: 'row', gap: actuatedNormalize(8) }}>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', width: '100%', gap: actuatedNormalize(8) }}>
             {/* disabled unselected */}
             <RadioButton value="a" checked="none" disabled={true} />
             {/* disabled selected */}

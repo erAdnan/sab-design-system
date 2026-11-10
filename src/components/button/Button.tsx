@@ -266,10 +266,18 @@ export const Button: FC < ButtonProps > = ({
     ? "primarytextcolor5"
     : activeTextColor}, [disabled, variant, underline, buttonText.variant]);
 
+    const compactHitSlop =
+      size === "small"
+        ? { top: 6, bottom: 6, left: 4, right: 4 }
+        : size === "medium"
+          ? { top: 2, bottom: 2, left: 2, right: 2 }
+          : undefined;
+
     if (loadingCta) {
       return (
         <View style={activeStyles.buttonWrapper}>
           <TouchableOpacity
+            hitSlop={compactHitSlop}
             disabled={disabled}
             style={{
               ...activeStyles.general,
@@ -309,7 +317,7 @@ export const Button: FC < ButtonProps > = ({
           ? actuatedNormalize(40)
           : actuatedNormalize(48)} overrideStyles={loadingStyles}/>)
     : (<View style={activeStyles.buttonWrapper}>
-      <TouchableOpacity onPress={onButtonPress} disabled={disabled} style={disabled
+      <TouchableOpacity hitSlop={compactHitSlop} onPress={onButtonPress} disabled={disabled} style={disabled
           ? {
             ...activeStyles.general,
             ...linkChevronGap,

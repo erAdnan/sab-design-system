@@ -39,12 +39,12 @@ const logoInSlot = (Logo: ComponentType<SvgProps>) => () => (
 
 const SABLogosTemplate = () => (
   <View style={{ display: "flex", flexDirection: "column", gap: 20, alignItems: "flex-start" }}>
-    <View style={{ display: "flex", flexDirection: "row", gap: 20, alignItems: "center" }}>
+    <View style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", width: "100%", gap: 20, alignItems: "center" }}>
       <SABLogo width={106} height={34} />
       <SABLogo width={60} height={20} />
       <SABLogo width={46} height={15} />
     </View>
-    <View style={{ display: "flex", flexDirection: "row", gap: 20, alignItems: "center" }}>
+    <View style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", width: "100%", gap: 20, alignItems: "center" }}>
       <SABLogo  width={64} height={72} vertical={true} />
       <SABLogo  width={36} height={40} vertical={true} />
       <SABLogo  width={23} height={26} vertical={true} />

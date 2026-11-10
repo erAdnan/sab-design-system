@@ -4,11 +4,11 @@ import {
   spacingXS,
 } from "../src/assets/styles/constants/size";
 import { Accordion } from "../src/components/accordion/Accordion";
-import { BulletPoint } from "../src/components/list/BulletPoint";
 import { List } from "../src/components/list/List";
 import { ListItemBadgeType } from "../src/components/list/ListItem";
 import { Text } from "../src/components/text/Text";
 import { Divider } from "../src/components/divider/Divider";
+import { deepTranslateArgs, tx } from "../src/localization/tx";
 
 export default {
   title: "Components/Accordion",
@@ -20,7 +20,7 @@ export default {
   },
 };
 
-const list = [
+const listTemplate = [
   {
     label: { children: "Full Name", variant: "primarycolor2_100static" },
     badgeType: ListItemBadgeType.text,
@@ -77,32 +77,70 @@ const list = [
       paddingHorizontal: 0,
       justfyContent: "space-between",
     },
-    statusTextState: "active" as "success" | "error" | "warning" | "neutral", // Example value
+    statusTextState: "active" as "success" | "error" | "warning" | "neutral",
   },
 ];
 
-/* @ts-ignore*/
-const accordionListItems = <List items={list} />;
+const loremLine = () => (
+  <View>
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "flex-start",
+        gap: 8,
+        paddingVertical: 8,
+      }}
+    >
+      <View
+        style={{
+          width: 4,
+          height: 4,
+          borderRadius: 2,
+          backgroundColor: "#767676",
+          marginTop: 8,
+        }}
+      />
+      <Text
+        variant="primarycolor2_100"
+        overrideStyles={{ flex: 1, flexShrink: 1 }}
+      >
+        {tx(
+          "Lorem Epsum Lorem Epsum Lorem Epsum Lorem EpsumLorem Epsum Lorem Epsum",
+        )}
+      </Text>
+    </View>
+    <Divider />
+  </View>
+);
+
+const AccordionWithList = (args: any) => {
+  const items = (
+    <List items={deepTranslateArgs(listTemplate)} />
+  );
+  return <Accordion {...args} items={items} />;
+};
+
+const AccordionWithContent = (args: any) => (
+  <Accordion {...args} items={[loremLine(), loremLine(), loremLine()]} />
+);
 
 export const Default = {
-  args: {
-    items: accordionListItems,
-  },
+  render: AccordionWithList,
 };
 
 export const NewAccordionWithEditOption = {
+  render: AccordionWithList,
   args: {
     text: "Beneficiary Personal Details",
-    items: accordionListItems,
     showEdit: true,
     editLabel: "Edit Section",
   },
 };
 
 export const NewAccordionWithCheckbox = {
+  render: AccordionWithList,
   args: {
     text: "Title",
-    items: accordionListItems,
     showEdit: true,
     editLabel: "Edit Section",
     showCheckbox: true,
@@ -111,36 +149,14 @@ export const NewAccordionWithCheckbox = {
       handleCheck: (isChecked: boolean) => {
         console.log("Checkbox is now: ", isChecked);
       },
-    }
+    },
   },
 };
 
 export const NewAccordionWithContent = {
+  render: AccordionWithContent,
   args: {
     text: "Title",
-    items: [
-      <View>
-        <View style={{ flexDirection: "row", alignItems: "flex-start", gap: 8, paddingVertical: 8 }}>
-          <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: "#767676", marginTop: 8 }}></View>
-          <Text variant="primarycolor2_100">Lorem Epsum Lorem Epsum Lorem Epsum Lorem EpsumLorem Epsum Lorem Epsum</Text>
-        </View>
-        <Divider />
-      </View>,
-      <View>
-        <View style={{ flexDirection: "row", alignItems: "flex-start", gap: 8, paddingVertical: 8 }}>
-          <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: "#767676", marginTop: 8 }}></View>
-          <Text variant="primarycolor2_100">Lorem Epsum Lorem Epsum Lorem Epsum Lorem EpsumLorem Epsum Lorem Epsum</Text>
-        </View>
-        <Divider />
-      </View>,
-      <View>
-        <View style={{ flexDirection: "row", alignItems: "flex-start", gap: 8, paddingVertical: 8 }}>
-          <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: "#767676", marginTop: 8 }}></View>
-          <Text variant="primarycolor2_100">Lorem Epsum Lorem Epsum Lorem Epsum Lorem EpsumLorem Epsum Lorem Epsum</Text>
-        </View>
-        <Divider />
-      </View>,
-    ],
     showEdit: true,
     editLabel: "Edit Section",
     showCheckbox: true,
@@ -149,6 +165,6 @@ export const NewAccordionWithContent = {
       handleCheck: (isChecked: boolean) => {
         console.log("Checkbox is now: ", isChecked);
       },
-    }
+    },
   },
 };

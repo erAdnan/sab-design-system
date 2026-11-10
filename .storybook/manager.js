@@ -3,8 +3,11 @@ import { create } from "storybook/theming";
 import pkg from "../package.json";
 
 /**
- * Sidebar brand shows the package version this Storybook build was made from.
- * Matches package.json (Release bumps it before Hosting deploy, then tags vX.Y.Z).
+ * Web Storybook manager chrome only.
+ * On-device Storybook (`.rnstorybook`) has its own UI and does not load this file.
+ *
+ * Theme + language live in the preview toolbar via `globalTypes` in preview.jsx.
+ * Version is shown in the sidebar brand title and as a toolbar badge (globalTypes).
  */
 const fromEnv = (typeof process !== "undefined" && process.env.STORYBOOK_VERSION) || "";
 const version = (fromEnv || pkg.version || "0.0.0").toString().replace(/^v/i, "");

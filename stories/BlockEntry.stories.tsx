@@ -41,7 +41,7 @@ export const Tile = {
 };
 
 const TilePairTemplate = (args: any) => (
-  <View style={{ flexDirection: "row", gap: actuatedNormalize(8) }}>
+  <View style={{ flexDirection: "row", flexWrap: "wrap", width: "100%", maxWidth: "100%", gap: actuatedNormalize(8) }}>
     <Entry {...args} variant="tile" icon={placeholderIcon} />
     <Entry {...args} variant="tile" icon={placeholderIcon} />
   </View>

@@ -1,25 +1,27 @@
-import i18n from "i18next";
 import { TextText } from "../src/components/text/TextText";
+import en from "../src/localization/locales/en";
+import { useStoryCopy } from "./helpers/useStoryCopy";
+
+const SAMPLE_TEXT = en.stories.simpleText;
 
 export default {
   title: "Components/Text Text",
   component: TextText,
   argTypes: {
     hierarchy: {
-      action: "Text hierarchy",
       control: "radio",
       options: ["primary", "secondary"],
     },
     bullet: {
-      action: "Text bullet",
       control: "radio",
       options: ["true", "false", "true.success"],
     },
-    editable: { action: "Text editable", control: "boolean" },
-    copyable: { action: "Text copyable", control: "boolean" },
-    text: { action: "Text text", type: "string", control: "text" },
+    editable: { control: "boolean" },
+    copyable: { control: "boolean" },
+    text: { control: "text" },
   },
   args: {
+    text: SAMPLE_TEXT,
     hierarchy: "primary",
     bullet: "false",
     editable: false,
@@ -29,8 +31,14 @@ export default {
   },
 };
 
+const TranslatedTextText = (args: any) => {
+  const copy = useStoryCopy();
+  return <TextText {...args} text={copy.resolveSimpleText(args.text)} />;
+};
+
 export const Text = {
+  render: TranslatedTextText,
   args: {
-    text: i18n.t("simpleText"),
+    text: SAMPLE_TEXT,
   },
 };

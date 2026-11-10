@@ -24,6 +24,7 @@ import { t } from "i18next";
 import CheckCircle from "../icons/filled/CheckCircle";
 import Warning from "../icons/status/Warning";
 import InfoFrame from "../icons/status/InfoFrame";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface CategoryCardWidgetProps {
   listItemProps?: ListItemProps;
@@ -99,6 +100,7 @@ export const CategoryCard: FC<CategoryCardWidgetProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
 
   const styles = StyleSheet.create({
@@ -116,7 +118,7 @@ export const CategoryCard: FC<CategoryCardWidgetProps> = ({
     },
     containerVertical: {
       gap: spacingS,
-      width: actuatedNormalize(164),
+      ...frame.of(164),
     },
     itemAddon: {
       display: "flex",

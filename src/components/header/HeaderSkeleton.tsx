@@ -6,7 +6,6 @@ import {I18nManager, StyleSheet, View} from "react-native";
 import {spacingS, spacingXS} from "../../assets/styles/constants/size";
 import {SkeletonBox} from "../skeleton/SkeletonBox";
 import {actuatedNormalize} from "../../assets/styles/utils/pixelScaling";
-
 interface HeaderProps {
   type: | "link" | "level0" | "level1" | "level1-intermediate" | "level1-foryou" | "level2" | "authentication" | "search" | "level1services";
   state: "prelogin" | "postlogin";
@@ -52,7 +51,8 @@ export const HeaderSkeleton: FC < HeaderProps > = ({type, state}) => {
       width: actuatedNormalize(112)
     },
     squareLarge: {
-      width: actuatedNormalize(162)
+      width: actuatedNormalize(162),
+      maxWidth: "100%",
     }
   });
 

@@ -108,7 +108,7 @@ export const Disclaimer: FC<DisclaimerProps> = ({
   return loading ? (
     <View style={{ ...styles.container, borderColor: 'transparent', backgroundColor: theme.stylesblockbg }}>
       <SkeletonBox shape='square' size='small' />
-      <SkeletonBox shape='line' size='small' overrideStyles={{ width: actuatedNormalize(240)}} />
+      <SkeletonBox shape='line' size='small' overrideStyles={{ width: "100%", maxWidth: "100%", flexShrink: 1}} />
     </View>
   ) : (
     <View style={[styles.container, isSmall && styles.smallContainer, overrideStyles]}>

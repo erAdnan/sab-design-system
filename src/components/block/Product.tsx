@@ -55,7 +55,10 @@ const BlockProductSkeleton: React.FC<Partial<BlockProductProps>> = ({ imgType,sk
   return (
      <View
       style={[{
-        width: actuatedNormalize(213),
+        width: "100%",
+        maxWidth: "100%",
+        minWidth: 0,
+        alignSelf: "stretch",
         height: actuatedNormalize(isImage ? 306 : 224),
         backgroundColor: theme.stylesblockbg,
         display: "flex",
@@ -153,7 +156,10 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "column",
-    width: actuatedNormalize(213),
+    width: "100%",
+    maxWidth: "100%",
+    minWidth: 0,
+    alignSelf: "stretch",
     minHeight: actuatedNormalize(224),
     borderRadius: radiusS,
     padding: spacingS,

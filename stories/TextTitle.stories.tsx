@@ -1,30 +1,30 @@
-import i18n from "i18next";
 import { TextTitle } from "../src/components/text/TextTitle";
+import en from "../src/localization/locales/en";
+import { useStoryCopy } from "./helpers/useStoryCopy";
+
+const SAMPLE_TITLE = en.stories.titleText;
 
 export default {
   title: "Components/Text Title",
   component: TextTitle,
   argTypes: {
-    text: { action: "Text text", type: "string", control: "text" },
-    badge: { action: "Text badge", control: "boolean" },
-    tooltip: { action: "Text tooltip", control: "boolean" },
+    text: { control: "text" },
+    badge: { control: "boolean" },
+    tooltip: { control: "boolean" },
     badgeNotificationType: {
-      action: "Text badge notification type",
       control: "radio",
       options: ["primary", "success", "warning", "neutral", "reverse"],
     },
     badgeNotificationSize: {
-      action: "Text badge notification size",
       control: "radio",
       options: ["small", "xs", "large"],
     },
     badgeNotificationNumber: {
-      action: "Text badge notification number",
-      type: "number",
       control: "number",
     },
   },
   args: {
+    text: SAMPLE_TITLE,
     badge: false,
     tooltip: false,
     badgeNotificationType: "primary",
@@ -35,9 +35,25 @@ export default {
   },
 };
 
+const TranslatedTextTitle = (args: any) => {
+  const copy = useStoryCopy();
+  return (
+    <TextTitle
+      {...args}
+      text={copy.resolveTitleText(args.text)}
+      tooltipText={
+        args.tooltip
+          ? copy.resolveTooltipText(args.tooltipText)
+          : args.tooltipText
+      }
+    />
+  );
+};
+
 export const Text = {
+  render: TranslatedTextTitle,
   args: {
-    text: i18n.t("titleText"),
+    text: SAMPLE_TITLE,
     badge: false,
     badgeNotificationNumber: 1,
     badgeNotificationType: "primary",
@@ -45,8 +61,9 @@ export const Text = {
 };
 
 export const TextWithBadge = {
+  render: TranslatedTextTitle,
   args: {
-    text: i18n.t("titleText"),
+    text: SAMPLE_TITLE,
     badge: true,
     tooltip: false,
     badgeNotificationNumber: 1,
@@ -55,11 +72,12 @@ export const TextWithBadge = {
 };
 
 export const TextWithTooltip = {
+  render: TranslatedTextTitle,
   args: {
-    text: i18n.t("titleText"),
+    text: SAMPLE_TITLE,
     badge: false,
     tooltip: true,
-    tooltipText: i18n.t("titleText"),
+    tooltipText: en.stories.tooltipText,
     badgeNotificationNumber: 1,
     badgeNotificationType: "primary",
   },

@@ -22,7 +22,7 @@ const ProductsCardsSkeleton: FC<ProductsCardsSkeletonProps> = ({
       alignItems: "center",
     },
     large: {
-      width: actuatedNormalize(164),
+      width: actuatedNormalize(164), maxWidth: "100%", flexShrink: 1,
       height: actuatedNormalize(164),
     },
 

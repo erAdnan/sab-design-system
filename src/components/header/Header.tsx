@@ -916,7 +916,7 @@ const formattedPostloginLabel2 = useMemo(() => {
         <Animated.View style={largeTitleAnim} pointerEvents="box-none">
           <View style={layoutStyles.headlineContent} pointerEvents="box-none">
             <Title
-              overrideStyles={{ paddingHorizontal: 0, paddingVertical: 0,...(showLinkButton && { width: actuatedNormalize(217) }),lineHeight: lineHeightXXLarge}}
+              overrideStyles={{ paddingHorizontal: 0, paddingVertical: 0,...(showLinkButton && { flex: 1, minWidth: 0, flexShrink: 1 }),lineHeight: lineHeightXXLarge}}
               size={fontXLarge}
               numberOfLines={1}
             >

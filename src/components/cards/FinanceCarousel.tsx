@@ -17,6 +17,7 @@ import { Text } from "../text/Text";
 import { SarFont } from "../sarFont/SarFont";
 import ChevronRight from "../icons/arrows/chevron/ChevronRight";
 import { BaseCardSkeleton } from "./BaseCardSkeleton";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface FinanceCarouselCardProps {
   totalAmountLabel: string;
@@ -54,6 +55,7 @@ export const FinanceCarousel: FC<FinanceCarouselCardProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
 
   const background = useMemo(() => {
     return require("../../assets/images/financeCarousel.png");
@@ -63,7 +65,7 @@ export const FinanceCarousel: FC<FinanceCarouselCardProps> = ({
     container: {
       display: "flex",
       flexDirection: "row",
-      width: actuatedNormalize(313),
+      ...frame.of(313),
       height: actuatedNormalize(132),
       padding: spacingS,
       alignItems: "center",
@@ -103,7 +105,7 @@ export const FinanceCarousel: FC<FinanceCarouselCardProps> = ({
   });
 
   return loading ? (
-    <BaseCardSkeleton width={actuatedNormalize(313)} height={actuatedNormalize(132)} />
+    <BaseCardSkeleton width={frame.span} height={actuatedNormalize(132)} />
   ) : (
     <ImageBackground
       style={[styles.container, overrideStyles]}

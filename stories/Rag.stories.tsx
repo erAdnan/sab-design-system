@@ -13,25 +13,25 @@ export default {
 
 const InteractiveTemplateDefault = (args: any) => {
   return <View style={{ flexDirection: "column", justifyContent: "space-around", gap: spacingS }}>
-    <View style={{ flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
+    <View style={{ flexDirection: "row", flexWrap: "wrap", width: "100%", justifyContent: "space-around", alignItems: "center" }}>
       <Rag {...args} type={RagIconType.success} size="extralarge" />
       <Rag {...args} type={RagIconType.success} size="large" />
       <Rag {...args} type={RagIconType.success} size="medium" />
       <Rag {...args} type={RagIconType.success} size="small" />
     </View>
-    <View style={{ flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
+    <View style={{ flexDirection: "row", flexWrap: "wrap", width: "100%", justifyContent: "space-around", alignItems: "center" }}>
       <Rag {...args} type={RagIconType.warning} size="extralarge" />
       <Rag {...args} type={RagIconType.warning} size="large" />
       <Rag {...args} type={RagIconType.warning} size="medium" />
       <Rag {...args} type={RagIconType.warning} size="small" />
     </View>
-    <View style={{ flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
+    <View style={{ flexDirection: "row", flexWrap: "wrap", width: "100%", justifyContent: "space-around", alignItems: "center" }}>
       <Rag {...args} type={RagIconType.error} size="extralarge" />
       <Rag {...args} type={RagIconType.error} size="large" />
       <Rag {...args} type={RagIconType.error} size="medium" />
       <Rag {...args} type={RagIconType.error} size="small" />
     </View>
-    <View style={{ flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
+    <View style={{ flexDirection: "row", flexWrap: "wrap", width: "100%", justifyContent: "space-around", alignItems: "center" }}>
       <Rag {...args} type={RagIconType.info} size="extralarge" />
       <Rag {...args} type={RagIconType.info} size="large" />
       <Rag {...args} type={RagIconType.info} size="medium" />
@@ -57,7 +57,7 @@ const InteractiveTemplateFamily = () => {
 const filledSize = 16;
 
 const InteractiveTemplateFilled = () => {
-  return <View style={{ flexDirection: "row", justifyContent: "space-around", alignItems: "center", gap: spacingS }}>
+  return <View style={{ flexDirection: "row", flexWrap: "wrap", width: "100%", justifyContent: "space-around", alignItems: "center", gap: spacingS }}>
     <RagFilledSuccess width={filledSize} height={filledSize} />
     <RagFilledWarning width={filledSize} height={filledSize} />
     <RagFilledError width={filledSize} height={filledSize} />

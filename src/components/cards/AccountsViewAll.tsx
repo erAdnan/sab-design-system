@@ -38,6 +38,7 @@ import fonts from "../../assets/styles/constants/fonts";
 import DualUser from "../icons/outline/DualUser";
 import ShieldLock from "../icons/outline/ShieldLock";
 import { NewCurrency } from "../text/NewCurrency";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 type CardVariant =
   | 'portfolio account'
@@ -195,12 +196,12 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
 }) => {
   const { t } = useTranslation();
   const { theme, isDarkTheme } = useTheme();
+  const frame = useFluidWidth();
   const isCarousel = useMemo(() => type === 'carousel', [type]);
   const cardConfig = useMemo(() => getCardConfig(variant, theme, isDarkTheme, accountType, accountName,t), [variant,accountType,accountName, theme, isDarkTheme, t]);
   const styles = StyleSheet.create({
     container: {
-      width: isCarousel ? actuatedNormalize(217) : actuatedNormalize(343),
-      maxWidth: "100%",
+      ...frame.of(isCarousel ? 217 : 343),
       padding: spacingS,
       backgroundColor: cardConfig.bgColor,
       borderRadius: radiusS,
@@ -246,6 +247,7 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
       maxWidth: "100%",
       minWidth: 0,
       flexDirection: "row",
+      flexWrap: "wrap",
       justifyContent: "space-between",
       alignItems: "flex-start", 
       gap: spacingS
@@ -300,7 +302,7 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
   return loading ? (
     <AccountsViewAllSkeleton type={type} />
   ) : (
-    <TouchableOpacity onPress={onIconPress}>
+    <TouchableOpacity style={frame.of()} onPress={onIconPress}>
       <View style={[styles.container, overrideStyles]}>
         <View style={styles.topContainer}>
           <View style={styles.accountInfo}>
@@ -311,7 +313,7 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
             </View>
             <View style={styles.inlineContent}>
             {(accountNumber || accountNumberShort) && !hideBalance && (
-                <Text size={fontMediumLarge} variant="primarytextcolor2" numberOfLines={1}>
+                <Text size={fontMediumLarge} variant="primarytextcolor2" numberOfLines={1} overrideStyles={{ flexShrink: 1, minWidth: 0 }}>
                     {isCarousel ? accountNumberShort : accountNumber}
                     </Text>
                         )}

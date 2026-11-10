@@ -21,6 +21,7 @@ import { useTranslation } from "react-i18next";
 import fonts from "../../assets/styles/constants/fonts";
 import { NewCurrency } from "../text/NewCurrency";
 import { AccountsViewAllSkeletonNew } from "./skeletons/AccountsViewAllSkeletonNew";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 type CardVariant =
   | 'portfolio account'
@@ -225,6 +226,7 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
 }) => {
   const { t } = useTranslation();
   const { theme, isDarkTheme } = useTheme();
+  const frame = useFluidWidth();
   const isCarousel = useMemo(() => type === 'carousel', [type]);
   // Developer can pass either accountNumber or accountNumberShort — show whichever is provided
   const displayAccountNumber = accountNumber || accountNumberShort;
@@ -238,8 +240,7 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
   }, [variant, isCarousel, isDarkTheme]);
   const styles = StyleSheet.create({
     container: {
-      width: isCarousel ? actuatedNormalize(306) : actuatedNormalize(343),
-      maxWidth: "100%",
+      ...frame.of(isCarousel ? 306 : 343),
       height: actuatedNormalize(150),
       padding: spacingS,
       backgroundColor: "transparent",
@@ -286,6 +287,7 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
       maxWidth: "100%",
       minWidth: 0,
       flexDirection: "row",
+      flexWrap: "wrap",
       justifyContent: "space-between",
       alignItems: "flex-start", 
       gap: spacingS,
@@ -327,7 +329,7 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
   return loading ? (
     <AccountsViewAllSkeletonNew type={type} overrideStyles={overrideStyles} />
   ) : (
-    <TouchableOpacity onPress={onIconPress}>
+    <TouchableOpacity style={frame.of()} onPress={onIconPress}>
       <ImageBackground
         source={bgImage}
         resizeMode="cover"

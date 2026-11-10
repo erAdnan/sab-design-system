@@ -24,6 +24,7 @@ import { NewCurrency } from "../text/NewCurrency";
 import { ChipInfo, ChipInfoProps } from "../chips/ChipInfo";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
 import { SarFont } from "../sarFont/SarFont";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 const secondaryTextStyles = {
   size: fontSmallMedium,
@@ -104,6 +105,7 @@ export const BlockBill: FC<BlockBillProps> = ({
   onDoublePress,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
   const lastPressRef = useRef(0);
   const amountInputRef = useRef<TextInput>(null);
@@ -187,7 +189,7 @@ export const BlockBill: FC<BlockBillProps> = ({
 
   const styles = StyleSheet.create({
     container: {
-      width: actuatedNormalize(344),
+      ...frame.of(344),
       paddingVertical: spacing1XS,
       paddingHorizontal: spacingS,
       flexDirection: "row",

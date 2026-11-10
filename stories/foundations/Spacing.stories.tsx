@@ -14,6 +14,7 @@ import {
 } from "../../src/assets/styles/constants/size";
 import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
 
+import { tx } from "../../src/localization/tx";
 export default {
   title: "Foundations/Spacing",
 };
@@ -36,7 +37,7 @@ const radii = [
 
 export const Tokens = () => (
   <ScrollView contentContainerStyle={styles.wrap}>
-    <Text style={styles.title}>Spacing</Text>
+    <Text style={styles.title}>{tx("Spacing")}</Text>
     {spaces.map((item) => (
       <View key={item.name} style={styles.row}>
         <Text style={styles.label}>{item.name}</Text>

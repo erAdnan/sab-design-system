@@ -84,7 +84,7 @@ export const BarChartTopFilters = ({
               shape="line"
               size="small"
               overrideStyles={{
-                width: actuatedNormalize(160),
+                width: actuatedNormalize(160), maxWidth: "100%", flexShrink: 1,
                 height: actuatedNormalize(BAR_CHART_SKELETON.TOP_FILTER_NAV_HEIGHT),
                 borderRadius: radiusS,
               }}

@@ -12,6 +12,7 @@ import {
 import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
 import fonts from "../../src/assets/styles/constants/fonts";
 
+import { tx } from "../../src/localization/tx";
 export default {
   title: "Foundations/Typography",
 };
@@ -25,7 +26,7 @@ const samples = [
 
 export const Scale = () => (
   <ScrollView contentContainerStyle={styles.wrap}>
-    <Text style={styles.heading}>Type scale</Text>
+    <Text style={styles.heading}>{tx("Type scale")}</Text>
     {samples.map((item) => (
       <Text
         key={item.label}
@@ -35,7 +36,7 @@ export const Scale = () => (
           marginBottom: actuatedNormalize(spacingM),
         }}
       >
-        {item.label} — The quick brown fox
+        {tx(item.label)} — {tx("The quick brown fox")}
       </Text>
     ))}
   </ScrollView>

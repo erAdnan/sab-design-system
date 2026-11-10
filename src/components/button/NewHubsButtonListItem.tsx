@@ -141,8 +141,8 @@ export const NewHubsButtonListItem: FC<NewHubsButtonListItemProps> = ({
       <SkeletonBox shape='circle' size='large' />
       <View style={{ ...styles.textWrapper, gap: spacingXS }}>
         <SkeletonBox shape='line' size='medium' overrideStyles={{ width: actuatedNormalize(60)}}/>
-        <SkeletonBox shape='line' size='small' overrideStyles={{ width: actuatedNormalize(240)}}/>
-        <SkeletonBox shape='line' size='small' overrideStyles={{ width: actuatedNormalize(240)}}/>
+        <SkeletonBox shape='line' size='small' overrideStyles={{ width: "100%", maxWidth: "100%", flexShrink: 1}}/>
+        <SkeletonBox shape='line' size='small' overrideStyles={{ width: "100%", maxWidth: "100%", flexShrink: 1}}/>
       </View>
     </View>
   ) : (

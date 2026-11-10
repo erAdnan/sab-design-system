@@ -4,6 +4,7 @@ import { View } from "react-native";
 import { Text } from "../src/components/text/Text";
 import BeneficiaryOutline from "../src/components/icons/users/BeneficiaryOutline";
 
+import { deepTranslateArgs, tx } from "../src/localization/tx";
 export default {
     title: "Components/Tabs",
     component: Tabs,
@@ -82,20 +83,20 @@ const InteractiveTemplateTabs = (args: any) => {
             case 2:
                 return <Text>{`Displaying content for Local tab ${activeSubTab ? `and SubTab ${activeSubTab}` : ''}`}</Text>;
             case 3:
-                return <Text>Displaying content for SAB tab</Text>;
+                return <Text>{tx("Displaying content for SAB tab")}</Text>;
             case 4:
-                return <Text>Displaying content for International tab</Text>;
+                return <Text>{tx("Displaying content for International tab")}</Text>;
             case 5:
-				return <Text>Displaying content for Test tab</Text>;
+				return <Text>{tx("Displaying content for Test tab")}</Text>;
             default:
-                return <Text>No selected tab</Text>;
+                return <Text>{tx("No selected tab")}</Text>;
         }
     };
 
     return (
         <View>
             <Tabs
-                items={items}
+                items={deepTranslateArgs(items)}
                 active={activeMainTab}
                 activeSubTab={activeSubTab}
                 onTabPress={(id: number) => setActive(id)}

@@ -1,0 +1,142 @@
+/** Arabic copy used by Storybook demos and shared shell chrome (i18next resource). */
+export default {
+  changeLanguage: "تغيير اللغة",
+  selectLanguage: "اختر اللغة",
+  english: "الإنجليزية",
+  arabic: "العربية",
+
+  simpleText: "هذا نص تجريبي لعرض المكوّن",
+  titleText: "نظرة عامة على الحساب",
+  loremIpsum:
+    "لا يوجد من يحب الألم لذاته أو يسعى إليه أو يرغب فيه لأنه ألم، بل لأنه أحياناً تنجم عنه منفعة",
+  label: "التسمية",
+  viewAll: "عرض الكل",
+  of: "من",
+  bannerText: "احصل على بطاقة واستمتع بخصم 20%.",
+  exchangeRateIndicator: "يتوفر سعر صرف جديد. يرجى التحديث لمتابعة التحويل.",
+  widgetTitle: "اسم الأداة",
+  widgetDescription: "اكتب عنوانك الفرعي هنا",
+  widgetExtraContent: "محتوى إضافي",
+  TotalAmount: "المبلغ الإجمالي",
+  Currency: "العملة",
+  "Premier Credit Card": "بطاقة بريمير الائتمانية",
+
+  navigation: {
+    home: "الرئيسية",
+    payments: "المدفوعات",
+    transfers: "التحويلات",
+    forYou: "لك",
+    contact: "تواصل معنا",
+    menu: "القائمة",
+  },
+
+  budgetCardStatus: {
+    onTrack: "على المسار الصحيح",
+    beCareful: "كن حذراً",
+    overspent: "تجاوز الميزانية",
+  },
+
+  months: {
+    jan: "يناير",
+    feb: "فبراير",
+    mar: "مارس",
+    apr: "أبريل",
+    may: "مايو",
+    jun: "يونيو",
+    jul: "يوليو",
+    aug: "أغسطس",
+    sep: "سبتمبر",
+    oct: "أكتوبر",
+    nov: "نوفمبر",
+    dec: "ديسمبر",
+  },
+
+  lineChart: {
+    week1: "الأسبوع 1",
+    week2: "الأسبوع 2",
+    week3: "الأسبوع 3",
+    week4: "الأسبوع 4",
+    averageOf: "متوسط",
+  },
+
+  timeFrame: {
+    thisMonth: "هذا الشهر",
+    lastMonth: "الشهر الماضي",
+    "3Months": "3 أشهر",
+    "6Months": "6 أشهر",
+    "12Months": "12 شهراً",
+    currentYear: "السنة الحالية",
+    lastYear: "السنة الماضية",
+  },
+
+  accountViewAll: {
+    InvestmentPortfolio: "المحفظة الاستثمارية",
+    CashWalletAccount: "حساب المحفظة النقدية",
+    HSBCGlobalView: "HSBC Global View",
+    FamilyAccount: "حساب العائلة",
+    IslamicCommodity: "السلع الإسلامية",
+    WafferAccount: "حساب وفّر",
+    GreenDeposit: "الوديعة الخضراء",
+    MudarabahSavingsAccount: "حساب التوفير بالمضاربة",
+    CurrentAccount: "الحساب الجاري",
+    JointAccount: "حساب مشترك",
+    SafeDepositLocker: "خزنة الأمانات",
+  },
+
+  accountViewType: {
+    InvestmentPortfolio: "استثمار",
+    CashWalletAccount: "محفظة نقدية",
+    HSBCGlobalView: "نظرة عالمية",
+    FamilyAccount: "عائلي",
+    IslamicCommodity: "سلع إسلامية",
+    WafferAccount: "توفير",
+    GreenDeposit: "وديعة",
+    MudarabahSavingsAccount: "توفير",
+    CurrentAccount: "جاري",
+    JointAccount: "مشترك",
+    SafeDepositLocker: "خزنة",
+  },
+
+  blockAccountHeadline: "فتح حساب جديد",
+  blockProductTitle: "حساب بريمير",
+  blockProductSubtitle: "افتح حساباً جديداً معنا في بضع خطوات سهلة.",
+
+  stories: {
+    simpleText: "هذا نص تجريبي لعرض المكوّن",
+    titleText: "نظرة عامة على الحساب",
+    subtitleText: "تم التحديث للتو",
+    viewAll: "عرض الكل",
+    loremIpsum:
+      "لا يوجد من يحب الألم لذاته أو يسعى إليه أو يرغب فيه لأنه ألم، بل لأنه أحياناً تنجم عنه منفعة",
+    tooltipText: "مزيد من المعلومات حول هذا العنوان",
+    accountBalance: "رصيد الحساب",
+    pageTitle: "عنوان الصفحة",
+    linkText: "نص الرابط",
+  },
+
+  calendar: {
+    monthNames: {
+      january: "يناير",
+      february: "فبراير",
+      march: "مارس",
+      april: "أبريل",
+      may: "مايو",
+      june: "يونيو",
+      july: "يوليو",
+      august: "أغسطس",
+      september: "سبتمبر",
+      october: "أكتوبر",
+      november: "نوفمبر",
+      december: "ديسمبر",
+    },
+    weekdays: {
+      sunday: "الأحد",
+      monday: "الإثنين",
+      tuesday: "الثلاثاء",
+      wednesday: "الأربعاء",
+      thursday: "الخميس",
+      friday: "الجمعة",
+      saturday: "السبت",
+    },
+  },
+};

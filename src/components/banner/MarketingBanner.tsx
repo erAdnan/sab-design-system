@@ -19,6 +19,7 @@ import BannerSkeleton from "./BannerSkeleton";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
 import { Button } from "../button/Button";
 import fonts from "../../assets/styles/constants/fonts";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 export interface MarketingBannerProps {
   title: string;
@@ -62,11 +63,12 @@ export const MarketingBanner: FC<MarketingBannerProps> = ({
   linkIconRight,
   underline,
 }) => {
+  const frame = useFluidWidth();
   const isBig = useMemo(() => size === "big", [size]);
 
   return loading ? (
     <BannerSkeleton
-      width={actuatedNormalize(344)}
+      width={frame.span}
       height={isBig ? actuatedNormalize(380) : actuatedNormalize(143)}>
       <View
         style={{
@@ -94,7 +96,7 @@ export const MarketingBanner: FC<MarketingBannerProps> = ({
       disabled={!onBannerPress}
     >
       <ImageThumbnail
-        width={actuatedNormalize(344)}
+        width={frame.span}
         height={overrideHeight || (isBig ? actuatedNormalize(380) : actuatedNormalize(143))}
         overrideImageStyles={{ borderRadius: isBig ? radiusXL : radiusL }}
         {...imageThumbnailProps}
@@ -111,7 +113,7 @@ export const MarketingBanner: FC<MarketingBannerProps> = ({
           <Text
             size={fontLarge}
             variant="primarycolor4static"
-            overrideStyles={{ width: actuatedNormalize(296),lineHeight: lineHeightLarge }}
+            overrideStyles={{ width: "100%", maxWidth: "100%", flexShrink: 1,lineHeight: lineHeightLarge }}
           >
             {description}
           </Text>

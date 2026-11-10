@@ -52,4 +52,46 @@
     align-self: stretch !important;
     min-height: 100% !important;
   }
+
+  /*
+   * Kill the browser's default blue focus ring on form fields.
+   * Component focus/active borders (theme.primClr etc.) still apply.
+   */
+  #storybook-root input,
+  #storybook-root textarea,
+  #storybook-root select,
+  #storybook-root [contenteditable="true"],
+  #storybook-docs input,
+  #storybook-docs textarea,
+  #storybook-docs select,
+  #storybook-docs [contenteditable="true"] {
+    outline: none !important;
+    outline-color: transparent !important;
+    outline-style: none !important;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #storybook-root input:focus,
+  #storybook-root input:focus-visible,
+  #storybook-root input:active,
+  #storybook-root textarea:focus,
+  #storybook-root textarea:focus-visible,
+  #storybook-root select:focus,
+  #storybook-root select:focus-visible,
+  #storybook-root [contenteditable="true"]:focus,
+  #storybook-root [contenteditable="true"]:focus-visible,
+  #storybook-docs input:focus,
+  #storybook-docs input:focus-visible,
+  #storybook-docs textarea:focus,
+  #storybook-docs textarea:focus-visible,
+  #storybook-docs select:focus,
+  #storybook-docs select:focus-visible {
+    outline: none !important;
+    outline-color: transparent !important;
+    outline-style: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
 </style>

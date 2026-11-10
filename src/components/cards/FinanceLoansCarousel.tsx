@@ -14,6 +14,7 @@ import {
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import { Text } from "../text/Text";
 import { SarFont } from "../sarFont/SarFont";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface FinanceLoansCarouselProps {
   cardLabel: string;
@@ -34,12 +35,13 @@ const FinanceLoansCarousel: FC<FinanceLoansCarouselProps> = ({
   amount,
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const styles = StyleSheet.create({
     container: {
       display: "flex",
       flexDirection: "column",
       borderRadius: radiusS,
-      width: actuatedNormalize(315),
+      ...frame.of(315),
     },
     cardContent: {
       display: "flex",

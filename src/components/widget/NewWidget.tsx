@@ -6,6 +6,7 @@ import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import { Text, TextProps } from "../text/Text";
 import fonts from "../../assets/styles/constants/fonts";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
+import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface NewWidgetProps {
   icon: ReactElement;
@@ -46,6 +47,7 @@ export const NewWidget: React.FC<NewWidgetProps> = ({
   headlineProps
 }) => {
   const { theme } = useTheme();
+  const frame = useFluidWidth();
   const containerHeight = useMemo(() => {
     switch (size) {
       case 'small':
@@ -81,7 +83,7 @@ export const NewWidget: React.FC<NewWidgetProps> = ({
       alignItems: 'flex-start',
       padding: actuatedNormalize(12),
       borderRadius: radiusL,
-      width: actuatedNormalize(164),
+      ...frame.of(164),
       borderWidth: 1,
       borderColor: colors.border,
       height: containerHeight,

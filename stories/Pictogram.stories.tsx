@@ -6,6 +6,7 @@ import { PictogramSpecial } from "../src/components/pictogram/PictogramSpecial";
 import { PictogramSabstorePlus } from "../src/components/pictogram/PictogramSabstorePlus";
 import Bolt from "../src/components/icons/filled/Bolt";
 
+import { tx } from "../src/localization/tx";
 export default {
     title: "Components/Pictograms",
     component: Pictogram,
@@ -21,7 +22,7 @@ const InteractiveTemplate = (args: any) => {
             showsVerticalScrollIndicator={false}
             nestedScrollEnabled
         >
-            <Text bold size={fontXLarge}>Icons</Text>
+            <Text bold size={fontXLarge}>{tx("Icons")}</Text>
             <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacingXS, marginVertical: spacingSM }}>
                 <Pictogram {...args} type="success" />
                 <Pictogram {...args} type="error" />
@@ -37,16 +38,16 @@ const InteractiveTemplate = (args: any) => {
                 <Pictogram {...args} type="loginLocked" />
                 <Pictogram {...args} type="achievement" />
             </View>
-            <Text bold size={fontXLarge}>Number and Loader</Text>
+            <Text bold size={fontXLarge}>{tx("Number and Loader")}</Text>
             <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacingXS, marginVertical: spacingSM }}>
                 <Pictogram {...args} type="number" number={72} />
                 <Pictogram {...args} type="loader" loading />
             </View>
-            <Text bold size={fontXLarge}>Carbon Footprint - new</Text>
+            <Text bold size={fontXLarge}>{tx("Carbon Footprint - new")}</Text>
             <Pictogram {...args} type="carbon-footprint" />
-            <Text bold size={fontXLarge}>Special</Text>
+            <Text bold size={fontXLarge}>{tx("Special")}</Text>
             <PictogramSpecial {...args} icon={<Bolt />}/>
-            <Text bold size={fontXLarge}>Sabstore Plus</Text>
+            <Text bold size={fontXLarge}>{tx("Sabstore Plus")}</Text>
             <PictogramSabstorePlus />
         </ScrollView>
     );

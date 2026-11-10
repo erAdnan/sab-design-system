@@ -1,25 +1,25 @@
 import { Text } from "../src/components/text/Text";
-import { Size } from "../src/types/Size";
-import { TextColor } from "../src/types/TextColor";
 import Edit from "../src/components/icons/functionals/Edit";
-import i18n from "i18next";
 import { fontMedium } from "../src/assets/styles/constants/size";
+import en from "../src/localization/locales/en";
+import { useStoryCopy } from "./helpers/useStoryCopy";
+
+const SAMPLE_TEXT = en.stories.simpleText;
 
 export default {
   title: "Components/Text",
   component: Text,
   argTypes: {
-    children: { action: "Text", control: "text" },
+    children: { control: "text" },
     variant: {
-      action: "Text variant",
       control: "text",
     },
     size: {
-      action: "Text size",
       control: "number",
     },
   },
   args: {
+    children: SAMPLE_TEXT,
     size: fontMedium,
     variant: "primarytextcolor",
     loading: false,
@@ -27,61 +27,71 @@ export default {
   },
 };
 
+const TranslatedText = (args: any) => {
+  const copy = useStoryCopy();
+  return <Text {...args} children={copy.resolveSimpleText(args.children)} />;
+};
+
 export const SimpleText = {
+  render: TranslatedText,
   args: {
-    children: i18n.t("simpleText"),
+    children: SAMPLE_TEXT,
   },
 };
 
 export const SimpleTextWithDivider = {
+  render: TranslatedText,
   args: {
-    children: i18n.t("simpleText"),
+    children: SAMPLE_TEXT,
     showDivider: true,
     overrideStyles: { paddingBottom: 8 },
   },
 };
 
 export const TextWithIconLeft = {
+  render: TranslatedText,
   args: {
-    children: i18n.t("simpleText"),
+    children: SAMPLE_TEXT,
     iconLeft: <Edit />,
   },
 };
 
 export const TextWithIconRigth = {
+  render: TranslatedText,
   args: {
-    children: i18n.t("simpleText"),
+    children: SAMPLE_TEXT,
     iconRight: <Edit />,
   },
 };
 
 export const TextCopyable = {
+  render: TranslatedText,
   args: {
-    children: i18n.t("simpleText"),
+    children: SAMPLE_TEXT,
     copyable: true,
   },
 };
 
 export const TextEditable = {
+  render: TranslatedText,
   args: {
-    children: i18n.t("simpleText"),
+    children: SAMPLE_TEXT,
     editable: true,
   },
 };
 
 export const TextWithBulletPoint = {
+  render: TranslatedText,
   args: {
-    children: i18n.t("simpleText"),
+    children: SAMPLE_TEXT,
     showBulletPoint: true,
   },
   argTypes: {
     "bulletPointProps.type": {
-      action: "Bullet point type",
       control: "radio",
       options: ["success", "disc"],
     },
     "bulletPointProps.variant": {
-      action: "Bullet point variant",
       control: "radio",
       options: ["primary", "secondary"],
     },

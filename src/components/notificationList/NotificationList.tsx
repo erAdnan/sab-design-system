@@ -69,7 +69,7 @@ export const NotificationList: FC<NotificationListProps> = ({
   return loading ? (
     <View style={{...styles.container, backgroundColor: theme.stylesblockbg, borderBottomWidth: 0, gap: spacingXS}}>
       <View style={{ ...styles.titleWrapper, marginBottom: spacingS }}>
-        <SkeletonBox shape='line' size='medium' overrideStyles={{ width: actuatedNormalize(160)}}/>
+        <SkeletonBox shape='line' size='medium' overrideStyles={{ width: "100%", maxWidth: "100%", flexShrink: 1}}/>
         <SkeletonBox shape='line' size='medium' overrideStyles={{ width: actuatedNormalize(80)}}/>
       </View>
       <SkeletonBox shape='line' size='small' overrideStyles={{ width: '100%' }} />

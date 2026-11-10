@@ -63,7 +63,7 @@ export const IcsabCashback: FC<IcsabCashbackProps> = ({
       </View>}
       {loading ?
         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginTop: spacingS }}>
-          <SkeletonBox shape='line' size='small' overrideStyles={{ width: actuatedNormalize(205) }} />
+          <SkeletonBox shape='line' size='small' overrideStyles={{ width: "100%", maxWidth: "100%", flexShrink: 1 }} />
           <SkeletonBox shape='line' size='small' overrideStyles={{ width: actuatedNormalize(80)}}/>
         </View>
         :
