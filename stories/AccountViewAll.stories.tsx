@@ -57,12 +57,22 @@ export default {
 
 const RowExample = (args: any) => {
   return (
-    <View style={{ display: 'flex', flexDirection: 'row', gap: spacingXS}}>
-      <AccountViewAll {...args} variant="current"/>
-      <AccountViewAll {...args} variant="hsbc global account"/>
+    <View
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        gap: spacingXS,
+        width: "100%",
+        maxWidth: "100%",
+        justifyContent: "center",
+      }}
+    >
+      <AccountViewAll {...args} variant="current" />
+      <AccountViewAll {...args} variant="hsbc global account" />
     </View>
-  )
-}
+  );
+};
 
 export const Current = {
   args: {

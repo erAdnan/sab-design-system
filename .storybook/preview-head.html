@@ -1,5 +1,5 @@
 <style>
-  /* Keep Storybook canvas from growing past the iframe and forcing x-scroll. */
+  /* Full-viewport canvas so light/dark theme backgrounds fill the iframe. */
   html,
   body,
   #root,
@@ -7,8 +7,16 @@
   #storybook-docs {
     width: 100% !important;
     max-width: 100% !important;
+    min-height: 100% !important;
+    height: 100% !important;
     overflow-x: hidden !important;
     box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   #storybook-root *,
@@ -21,5 +29,27 @@
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
+    min-height: 100% !important;
+    height: 100% !important;
+  }
+
+  /*
+   * Story canvas: fill height for theme background, center story content
+   * horizontally. Full-width components still stretch via width: 100% /
+   * alignSelf: stretch on the component itself.
+   */
+  #storybook-root,
+  #storybook-docs .docs-story {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    min-height: 100vh !important;
+    height: 100% !important;
+  }
+
+  #storybook-root > div,
+  #storybook-root > div > div {
+    align-self: stretch !important;
+    min-height: 100% !important;
   }
 </style>

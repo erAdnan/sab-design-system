@@ -266,6 +266,12 @@ export const ListItem: FC<ListItemProps> = ({
   const shouldRenderActionOrBadge = badgeType || actionType;
 
   const styles = StyleSheet.create({
+    root: {
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
+    },
     default: {
       display: "flex",
       flexDirection: "row",
@@ -275,8 +281,11 @@ export const ListItem: FC<ListItemProps> = ({
       paddingHorizontal: spacingS,
       paddingVertical: spacing1XS,
       width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
     },
-    bodyText: { flexDirection: "column", alignItems: "flex-start" },
+    bodyText: { flexDirection: "column", alignItems: "flex-start", minWidth: 0 },
     withBackground: {
       borderRadius: radiusS,
     },
@@ -285,9 +294,19 @@ export const ListItem: FC<ListItemProps> = ({
       flexDirection: "row",
       gap: spacingXS,
       alignItems: "center",
+      minWidth: 0,
     },
     bodyContent: {
       alignItems: "flex-start",
+      flexShrink: 1,
+      minWidth: 0,
+      flex: 1,
+    },
+    actionContent: {
+      flexGrow: 0,
+      flexShrink: 0,
+      justifyContent: "flex-end",
+      marginStart: "auto",
     },
     titleTooltip: {
       marginBottom: actuatedNormalize(2),
@@ -567,7 +586,7 @@ export const ListItem: FC<ListItemProps> = ({
   const Wrapper: React.ElementType = onItemPress ? TouchableOpacity : View;
 
   return (
-    <View>
+    <View style={styles.root}>
       {loading ? (
         <ListItemSkeleton
           label={Boolean(label)}
@@ -610,7 +629,7 @@ export const ListItem: FC<ListItemProps> = ({
           <View
             style={[
               styles.content,
-              { flex: shouldRenderActionOrBadge ? 1 : 2.5 },
+              { flex: 1, minWidth: 0 },
               addonBodyWrapperStyle,
             ]}
           >
@@ -734,9 +753,8 @@ export const ListItem: FC<ListItemProps> = ({
             <View
               style={[
                 styles.content,
+                styles.actionContent,
                 {
-                  flex: 1,
-                  justifyContent: "flex-end",
                   marginRight: isLinkButton ? spacingS : 0,
                 },
                 actionBadgeStyle,

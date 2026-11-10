@@ -239,6 +239,7 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
   const styles = StyleSheet.create({
     container: {
       width: isCarousel ? actuatedNormalize(306) : actuatedNormalize(343),
+      maxWidth: "100%",
       height: actuatedNormalize(150),
       padding: spacingS,
       backgroundColor: "transparent",
@@ -253,29 +254,49 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
       fontFamily:fonts.HSBC_Medium,
       textAlign: "left", 
       width:"100%",
+      maxWidth: "100%",
+      flexShrink: 1,
+    },
+    textClamp: {
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      flexShrink: 1,
+      overflow: "hidden",
     },
     accountInfo: {
       flexDirection: 'column', 
       alignItems: "flex-start", 
       justifyContent: "space-between",
-      flex: 1
+      flex: 1,
+      minWidth: 0,
+      maxWidth: "100%",
+      overflow: "hidden",
     },
     inlineContent: {
       flexDirection:  "row",
       alignItems: "center",
-      gap: spacingXS,      
+      gap: spacingXS,
+      maxWidth: "100%",
+      minWidth: 0,
+      flexShrink: 1,
     },
     topContainer: {
       width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "flex-start", 
-      gap: spacingS
+      gap: spacingS,
     },
     bottomContainer:{
       flexDirection: "column",
       alignItems:"flex-start",
       display:"flex",
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
     },
     balanceWrapper: {
       flexDirection: "row",
@@ -283,6 +304,12 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
       alignItems:"center",
       display:"flex",
       width:"100%",
+      maxWidth: "100%",
+      minWidth: 0,
+    },
+    chipSlot: {
+      flexGrow: 0,
+      flexShrink: 0,
     },
   });
 
@@ -309,27 +336,33 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
       >
         <View style={styles.topContainer}>
           <View style={styles.accountInfo}>
-            <Text bold size={fontMediumLarge} overrideStyles={styles.accountName} numberOfLines={numberOfLines} variant="primarytextcolor">
-              {accountName || cardConfig.accountName} 
-            </Text>
+            <View style={styles.textClamp}>
+              <Text bold size={fontMediumLarge} overrideStyles={styles.accountName} numberOfLines={numberOfLines} variant="primarytextcolor">
+                {accountName || cardConfig.accountName}
+              </Text>
+            </View>
             <View style={styles.inlineContent}>
             {(displayAccountNumber) && !hideBalance && (
-                <Text size={fontMedium} variant="primarytextcolor2">
+                <Text size={fontMedium} variant="primarytextcolor2" numberOfLines={1}>
                     {displayAccountNumber}
                     </Text>
                         )}
               
-                <View style={[styles.inlineContent,{flexShrink:1}]}>
+                <View style={[styles.inlineContent,{flexShrink:1, minWidth: 0}]}>
                   {verticalLine && !hideBalance && <Text size={fontSmallMedium} variant="primarytextcolor2">|</Text>}
-                  <Text size={fontSmallMedium} numberOfLines={numberOfLines} variant="primarytextcolor2">
-                    {accountType || cardConfig.accountType} 
-                  </Text>
+                  <View style={styles.textClamp}>
+                    <Text size={fontSmallMedium} numberOfLines={1} variant="primarytextcolor2" overrideStyles={{ maxWidth: "100%" }}>
+                      {accountType || cardConfig.accountType}
+                    </Text>
+                  </View>
                 </View>
               
             </View>
           </View>
           {showChipsInfo && (
-            <ChipsInfo type="default" pill showIcon={false} label="Label" state="error" {...chipsInfoProps} />
+            <View style={styles.chipSlot}>
+              <ChipsInfo type="default" pill showIcon={false} label="Label" state="error" {...chipsInfoProps} />
+            </View>
           )}
         </View>
           <View style={styles.bottomContainer}>

@@ -29,7 +29,10 @@ export const FlagListItem: React.FC<FlagListItemProps> = ({
   const styles = StyleSheet.create({
     container: {
       paddingVertical: spacingS,
-      width: actuatedNormalize(343),
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
       display: 'flex',
       flexDirection: 'row',
       gap: spacingXS,
@@ -49,8 +52,15 @@ export const FlagListItem: React.FC<FlagListItemProps> = ({
       borderRadius: actuatedNormalize(2),
       backgroundColor: theme.primarycolor2_10
     },
+    countryName: {
+      fontFamily: fonts.HSBC_Medium,
+      flex: 1,
+      minWidth: 0,
+    },
     actionContainer: {
-      marginLeft: 'auto'
+      marginStart: 'auto',
+      flexGrow: 0,
+      flexShrink: 0,
     }
   })
   return (
@@ -77,7 +87,7 @@ export const FlagListItem: React.FC<FlagListItemProps> = ({
         />
         : <View style={styles.placeholderRect}></View>
       }
-      <Text size={fontLarge} overrideStyles={{ fontFamily: fonts.HSBC_Medium }}>{countryName}</Text>
+      <Text size={fontLarge} overrideStyles={styles.countryName}>{countryName}</Text>
       {showAction && checkboxProps && <View style={styles.actionContainer}><Checkbox {...checkboxProps} /></View>}
     </View>
   )

@@ -106,6 +106,17 @@ const PFMInteractiveTemplate = (args: any) => {
   );
 
   const [currentItem, setCurrentItem] = useState(1);
+  const viewabilityConfig = useRef({
+    itemVisiblePercentThreshold: 60,
+  }).current;
+  const onViewableItemsChanged = useRef(
+    ({ viewableItems }: { viewableItems: Array<{ item?: { key?: string } }> }) => {
+      const next = viewableItems[0]?.item?.key ?? viewableItems[1]?.item?.key;
+      if (next != null) {
+        setCurrentItem(parseInt(String(next), 10));
+      }
+    }
+  ).current;
 
   const renderItem = useCallback(
     ({ item }: { item: any }) => {
@@ -125,6 +136,7 @@ const PFMInteractiveTemplate = (args: any) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        width: "100%",
       }}
     >
       <FlatList
@@ -140,14 +152,8 @@ const PFMInteractiveTemplate = (args: any) => {
         pagingEnabled
         horizontal
         renderItem={renderItem}
-        onViewableItemsChanged={({ changed, viewableItems }) => {
-          const newKey = parseInt(
-            viewableItems[0]
-              ? viewableItems[0].item?.key
-              : viewableItems[1].item?.key
-          );
-          setCurrentItem(newKey);
-        }}
+        onViewableItemsChanged={onViewableItemsChanged}
+        viewabilityConfig={viewabilityConfig}
         decelerationRate={-100000000000000}
         scrollEventThrottle={16}
       />

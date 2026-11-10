@@ -33,20 +33,34 @@ export const NotificationList: FC<NotificationListProps> = ({
       borderBottomColor: theme.primarycolor2_20,
       borderBottomWidth: 1,
       gap: read? spacingXS :spacingXXS,
-      width: actuatedNormalize(343),
-      alignItems: "flex-start"
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
+      alignItems: "stretch",
     },
     titleWrapper: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      width: "100%"
-      
+      alignItems: "center",
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+    },
+    titleText: {
+      flex: 1,
+      minWidth: 0,
+      textAlign: "left",
+      marginEnd: spacingXS,
     },
     statusWrapper: {
       display: 'flex',
       flexDirection: 'row',
       alignItems: "center",
+      flexGrow: 0,
+      flexShrink: 0,
+      marginStart: "auto",
     }
   });
   const showBadge = useMemo(() => {
@@ -64,13 +78,13 @@ export const NotificationList: FC<NotificationListProps> = ({
   ) : (
     <View style={{ ...styles.container, backgroundColor: read ? "transparent" : theme.stylesblockbg }}>
       <View style={styles.titleWrapper}>
-        <Text overrideStyles={{width:read ? actuatedNormalize(200) : actuatedNormalize(170),textAlign: "left"}} numberOfLines={1} bold>{title}</Text>
+        <Text overrideStyles={styles.titleText} numberOfLines={1} bold>{title}</Text>
         <View style={styles.statusWrapper}>
           <Text size={fontMedium} overrideStyles={{ marginHorizontal: spacingXS}}>{timeLabel}</Text>
           {showBadge && <Badge size={BadgeSize.xs} />}
         </View>
       </View>
-      <Text size={fontSmall} variant={read ? "primarytextcolor" : "primarytextcolor2"} overrideStyles={{ textAlign: "left"}}>{body}</Text>
+      <Text size={fontSmall} variant={read ? "primarytextcolor" : "primarytextcolor2"} overrideStyles={{ textAlign: "left", width: "100%" }}>{body}</Text>
     </View>
   )
 }

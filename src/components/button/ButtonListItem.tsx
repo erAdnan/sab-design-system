@@ -93,11 +93,16 @@ export const ButtonListItem: FC<ButtonListItemProps> = ({
       alignItems: "center",
       justifyContent: "space-between",
       backgroundColor: theme.stylesblockbg,
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
     },
     leftContent: {
       flexDirection:  "row",
       alignItems: "center",
-      flex: 1, // Ensures it takes available space and prevents overflow
+      flex: 1,
+      minWidth: 0,
     },
     iconWrapper: {
       marginRight: spacingXS, // Adjust spacing between icon and text
@@ -108,13 +113,17 @@ export const ButtonListItem: FC<ButtonListItemProps> = ({
     textWrapper: {
       flexDirection: "column",
       gap: spacingXXS,
-      flexShrink: 1, // Prevents text from overflowing
-     flex:1,
+      flexShrink: 1,
+      flex: 1,
+      minWidth: 0,
     },
     rightContent: {
       alignItems: "center",
       justifyContent: "center",
-      marginLeft: spacingS, // Ensures spacing from text to chevron
+      marginLeft: spacingS,
+      flexGrow: 0,
+      flexShrink: 0,
+      marginStart: "auto",
     },
     rightContentRtl: {
       alignItems: "center",

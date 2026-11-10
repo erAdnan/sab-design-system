@@ -27,25 +27,40 @@ export const DropdownScreenMenuItem: FC<DropdownScreenMenuItemProps> = ({
   const styles = StyleSheet.create({
     container: {
       width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
       paddingVertical: spacing1XS,
       paddingHorizontal: spacingS,
     },
     textWrapper: {
       width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
       gap: spacingS,
+    },
+    label: {
+      flex: 1,
+      minWidth: 0,
+      ...(I18nManager.isRTL && { paddingBottom: actuatedNormalize(3) }),
+    },
+    iconSlot: {
+      flexGrow: 0,
+      flexShrink: 0,
+      marginStart: "auto",
     },
   });
 
   return (
     <TouchableOpacity style={styles.container} onPress={() => onPress && onPress(value)}>
       <View style={styles.textWrapper}>
-        <Text size={fontSmallMedium} variant="primarycolor" overrideStyles={{maxWidth:actuatedNormalize(146),...(I18nManager.isRTL && { paddingBottom: actuatedNormalize(3) })}}>
+        <Text size={fontSmallMedium} variant="primarycolor" overrideStyles={styles.label}>
           {label.toString()}
         </Text>
-        {icon}
+        {icon ? <View style={styles.iconSlot}>{icon}</View> : null}
       </View>
     </TouchableOpacity>
   );

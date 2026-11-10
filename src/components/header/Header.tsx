@@ -370,6 +370,10 @@ export const Header: FC<HeaderProps> = ({
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
     },
     headlineContentWrapper:{
      position: "absolute",

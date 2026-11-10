@@ -189,7 +189,12 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     padding: spacingS,
+    width: "100%",
+    maxWidth: "100%",
+    minWidth: 0,
+    alignSelf: "stretch",
   },
   withBackground: {
     borderRadius: radiusS,
@@ -199,8 +204,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: spacingXS,
     alignItems: "center",
+    flex: 1,
+    minWidth: 0,
   },
   bodyContent: {
     alignItems: "flex-start",
+    flex: 1,
+    minWidth: 0,
   },
 });

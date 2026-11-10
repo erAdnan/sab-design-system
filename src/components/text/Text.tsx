@@ -101,8 +101,19 @@ export const Text: FC<TextProps> = ({
       overrideStyles={loadingStateStyles}
     />
   ) : (
-    <View>
-      <View style={!isRtl ? styles.textContainer : styles.rtlText}>
+    <View
+      style={
+        numberOfLines
+          ? { maxWidth: "100%", minWidth: 0, flexShrink: 1 }
+          : undefined
+      }
+    >
+      <View
+        style={[
+          !isRtl ? styles.textContainer : styles.rtlText,
+          numberOfLines ? { maxWidth: "100%", minWidth: 0, flexShrink: 1 } : null,
+        ]}
+      >
         {showBulletPoint && bulletPointProps && (
           <View>
             <BulletPoint
@@ -114,6 +125,7 @@ export const Text: FC<TextProps> = ({
         {iconLeft && !showBulletPoint && <View>{iconLeft}</View>}
         <TextWrapper
           numberOfLines={numberOfLines}
+          ellipsizeMode="tail"
           style={fonts.withTrueBoldWeight([
             {
               fontSize: size,
@@ -126,6 +138,9 @@ export const Text: FC<TextProps> = ({
               // ...(bold && { fontWeight: fontWeightBold }),
               // paddingBottom: needsFix ? actuatedNormalize(3) : 0,
               writingDirection: isRtl ? "rtl" : "ltr",
+              ...(numberOfLines
+                ? { flexShrink: 1, maxWidth: "100%", minWidth: 0 }
+                : null),
             },
             ...(overrideStyles
               ? Array.isArray(overrideStyles)

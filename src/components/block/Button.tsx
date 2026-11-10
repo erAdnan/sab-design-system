@@ -54,6 +54,9 @@ export const BlockButton: FC<BlockButtonProps> = ({
   const styles = StyleSheet.create({
     container: {
       width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
       height: actuatedNormalize(80),
       padding: spacingS,
       backgroundColor: theme.stylesblockbg,
@@ -67,6 +70,8 @@ export const BlockButton: FC<BlockButtonProps> = ({
       display: "flex",
       flexDirection: "column",
       gap: spacingXXS,
+      flex: 1,
+      minWidth: 0,
     },
     textWithAmount: {
       display: "flex",
@@ -79,7 +84,10 @@ export const BlockButton: FC<BlockButtonProps> = ({
   return loading ? (
     <View
       style={{
-        width: actuatedNormalize(343),
+        width: "100%",
+        maxWidth: "100%",
+        minWidth: 0,
+        alignSelf: "stretch",
         height: actuatedNormalize(80),
         backgroundColor: theme.stylesblockbg,
         display: "flex",
@@ -90,11 +98,11 @@ export const BlockButton: FC<BlockButtonProps> = ({
         gap: spacingS,
         borderRadius: radiusS,
       }}>
-      <View style={{ flexDirection: "column", gap: spacingXS, justifyContent: "center", width: "60%" }}>
+      <View style={{ flexDirection: "column", gap: spacingXS, justifyContent: "center", width: "60%", minWidth: 0 }}>
         <SkeletonBox shape="line" size="small" overrideStyles={{ width: "100%" }} />
         <SkeletonBox shape="line" size="small" overrideStyles={{ width: "100%" }} />
       </View>
-      <View style={{ width: "40%" }}>
+      <View style={{ width: "40%", minWidth: 0 }}>
         <SkeletonBox shape="line" size="medium" overrideStyles={{ width: "100%" }} />
       </View>
     </View>

@@ -85,12 +85,11 @@ export const TextTitleActions: FC<TextTitleProps> = ({
         })
       : null;
   }, [theme, icon]);
-console.log("+++++++++++++++++++++++++++", isRtl)
   return (
-    <View>
+    <View style={{ width: "100%", maxWidth: "100%", minWidth: 0, alignSelf: "stretch" }}>
       <Title
         size={size}
-        overrideStyles={{ paddingVertical: 0,paddingHorizontal : 0 }}
+        overrideStyles={{ paddingVertical: 0, paddingHorizontal: 0, width: "100%" }}
         loading={loading}
         loadingNumOfLines={1}
         iconRight={

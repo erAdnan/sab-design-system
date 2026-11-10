@@ -8,7 +8,7 @@ interface ListProps {
 
 export const List: FC<ListProps> = ({ items }) => {
   return (
-    <View>
+    <View style={{ width: "100%", maxWidth: "100%", minWidth: 0, alignSelf: "stretch" }}>
       {items.map((item, index) => (
         <ListItem {...item} key={index} />
       ))}

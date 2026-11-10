@@ -16,7 +16,10 @@ export const StoryBookWrapper: FC<any> = ({ children }) => {
                 width: "100%",
                 maxWidth: "100%",
                 minWidth: 0,
-                overflow: "hidden",
+                minHeight: "100%",
+                height: "100%",
+                overflow: "visible",
+                alignSelf: "stretch",
             }}
         >
             <LanguageWrapper setArabic={() => setArabic(!arabic)}>

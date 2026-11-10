@@ -9,11 +9,8 @@ import {
   heightM,
   heightL,
   heightXl,
-  spacingL,
-  spacingXL,
   widthM,
   widthL,
-  widthXl,
   fontXSmall,
 } from "../../assets/styles/constants/size";
 import AvatarSkeleton from "./AvatarSkeleton";
@@ -43,6 +40,18 @@ export interface AvatarProps {
  * @property disableStatusWrapper - use this props true if you dont want to use any default border behaviour of the status icon pass this disableStatusWrapper as true
  */
 
+const AVATAR_SIZE = {
+  small: actuatedNormalize(32),
+  medium: heightXl,
+  large: actuatedNormalize(72),
+} as const;
+
+const BADGE_SIZE = {
+  small: actuatedNormalize(16),
+  medium: widthM,
+  large: actuatedNormalize(36),
+} as const;
+
 export const Avatar: FC<AvatarProps> = ({
   img,
   initials,
@@ -57,6 +66,11 @@ export const Avatar: FC<AvatarProps> = ({
   const { theme, isDarkTheme } = useTheme();
   const isMediumSize = size === "medium"; // Rename the variable to match the new default
   const isLogoWithIcon = Boolean(logoSource && icon);
+  const avatarSize = AVATAR_SIZE[size];
+  const badgeSize = BADGE_SIZE[size];
+  // Reserve room so the bottom-right badge is never clipped by parent overflow.
+  const badgeOverlap = statusIcon ? Math.round(badgeSize * 0.35) : 0;
+  const outerSize = avatarSize + badgeOverlap;
 
   const initialsTrim = useMemo(() => {
     if (!initials) {
@@ -98,7 +112,7 @@ export const Avatar: FC<AvatarProps> = ({
     const bigPadding = actuatedNormalize(24);
     const smallPadding = actuatedNormalize(6);
     return (
-      <View style={[styles.avatar, { width: containerSize, height: containerSize }, overrideStyles]}>
+      <View style={[styles.avatar, { width: containerSize, height: containerSize, overflow: "visible" }, overrideStyles]}>
         <View
           style={{
             width: bigSize,
@@ -122,8 +136,8 @@ export const Avatar: FC<AvatarProps> = ({
         <View
           style={{
             position: "absolute",
-            right: -smallPadding,
-            bottom: -smallPadding,
+            right: 0,
+            bottom: 0,
             width: smallSize,
             height: smallSize,
             padding: smallPadding,
@@ -141,95 +155,88 @@ export const Avatar: FC<AvatarProps> = ({
 
   return (
     <View
-      style={{
-        ...styles.avatar,
-        ...styles[size],
-        backgroundColor:
-        initialsTrim || icon ? theme["primarycolor3tonal"] : "",
-        borderRadius: (styles[size].height || 0) / 2, // make it circular
-        justifyContent: initialsTrim || icon ? "center" : "flex-start",
+      style={[
+        styles.avatar,
+        {
+          width: outerSize,
+          height: outerSize,
+          overflow: "visible",
+        },
+        overrideStyles,
+      ]}
+    >
+      <View
+        style={{
+          width: avatarSize,
+          height: avatarSize,
+          backgroundColor:
+            initialsTrim || icon ? theme["primarycolor3tonal"] : "transparent",
+          borderRadius: avatarSize / 2,
+          justifyContent: initialsTrim || icon ? "center" : "flex-start",
           alignItems: "center",
-        ...overrideStyles
-      }}
-    >
-      {img && <Image source={{ uri: img }} style={styles.img} />}
-      {initialsTrim && (
-        <Text
-          variant="primarycolor3"
-          size={size === "small" ? fontXSmall :isMediumSize ? fontMediumLarge : fontXLarge}
-        >
-          {initialsTrim}
-        </Text>
-      )}
-      {statusIcon && (
-  disableStatusWrapper ? (
-    <View
-      style={{
-        ...styles.statusIcon,
-        top: size === "small"
-          ? actuatedNormalize(20)
-          : isMediumSize ? spacingL : spacingXL,
-        left: size === "small"
-          ? actuatedNormalize(20)
-          : isMediumSize ? spacingL : spacingXL,
-      }}
-     >
-      {statusIcon}
+          overflow: "hidden",
+        }}
+      >
+        {img && <Image source={{ uri: img }} style={styles.img} />}
+        {initialsTrim && (
+          <Text
+            variant="primarycolor3"
+            size={size === "small" ? fontXSmall :isMediumSize ? fontMediumLarge : fontXLarge}
+          >
+            {initialsTrim}
+          </Text>
+        )}
+        {dynamicIcon}
       </View>
-  ) : (
-    <View
-      style={{
-        ...styles.statusIcon,
-        width: size === "small"
-          ? actuatedNormalize(16)
-          : isMediumSize ? widthM : actuatedNormalize(36),
-        height: size === "small"
-          ? actuatedNormalize(16)
-          : isMediumSize ? heightM : actuatedNormalize(36),
-        top: size === "small"
-          ? actuatedNormalize(20)
-          : isMediumSize ? spacingL : spacingXL,
-        left: size === "small"
-          ? actuatedNormalize(20)
-          : isMediumSize ? spacingL : spacingXL,
-        borderColor: theme.primarycolor4,
-        backgroundColor: isDarkTheme
-          ? theme.primarycolor4static
-          : theme.stylescolor7,
-        borderRadius: actuatedNormalize(100),
-        borderWidth: actuatedNormalize(1),
-      }}
-    >
-      {statusIcon}
-    </View>
-  )
-)}
-      {dynamicIcon}
+      {statusIcon && (
+        disableStatusWrapper ? (
+          <View
+            style={[
+              styles.statusIcon,
+              {
+                width: badgeSize,
+                height: badgeSize,
+                right: 0,
+                bottom: 0,
+              },
+            ]}
+          >
+            {statusIcon}
+          </View>
+        ) : (
+          <View
+            style={[
+              styles.statusIcon,
+              {
+                width: badgeSize,
+                height: badgeSize,
+                right: 0,
+                bottom: 0,
+                borderColor: theme.primarycolor4,
+                backgroundColor: isDarkTheme
+                  ? theme.primarycolor4static
+                  : theme.stylescolor7,
+                borderRadius: actuatedNormalize(100),
+                borderWidth: actuatedNormalize(1),
+              },
+            ]}
+          >
+            {statusIcon}
+          </View>
+        )
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   avatar: {
-    top: actuatedNormalize(3),
     marginRight: actuatedNormalize(6),
-    // borderRadius: actuatedNormalize(100),
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
     position: "relative",
-  },
-  medium: {  // Changed "default" to "medium"
-    height: heightXl,
-    width: widthXl,
-  },
-  large: {
-    height: actuatedNormalize(72),
-    width: actuatedNormalize(72),
-  },
-  small: {
-    height: actuatedNormalize(32),
-    width: actuatedNormalize(32),
+    overflow: "visible",
   },
   img: {
     width: "100%",

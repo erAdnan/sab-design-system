@@ -32,7 +32,10 @@ export const BlockOffers: React.FC<BlockOffersProps> = ({
   const styles = StyleSheet.create({
     container: {
       display: 'flex',
-      width: actuatedNormalize(343),
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
       padding: actuatedNormalize(16),
       flexDirection: 'row',
       alignItems: 'center',
@@ -46,11 +49,14 @@ export const BlockOffers: React.FC<BlockOffersProps> = ({
       flexDirection: 'row',
       alignItems: 'center',
       gap: actuatedNormalize(8),
+      flex: 1,
+      minWidth: 0,
     },
     textWrapper: {
       display: 'flex',
       flexDirection: 'column',
-      // gap: actuatedNormalize(4)
+      flexShrink: 1,
+      minWidth: 0,
     },
     rightContent: {
       backgroundColor: theme.inverttransparent,
@@ -59,7 +65,10 @@ export const BlockOffers: React.FC<BlockOffersProps> = ({
       paddingLeft: actuatedNormalize(12),
       paddingRight: actuatedNormalize(12),
       borderRadius: actuatedNormalize(4),
-      alignItems: 'center'
+      alignItems: 'center',
+      flexGrow: 0,
+      flexShrink: 0,
+      marginStart: "auto",
     }
 })
   return (

@@ -21,6 +21,7 @@ const preview = {
         order: ["Components", "Foundations", "*"],
       },
     },
+    layout: "fullscreen",
   },
 
   decorators: [
@@ -51,7 +52,9 @@ const canvasRootStyle = {
   width: "100%",
   maxWidth: "100%",
   minWidth: 0,
-  overflow: "hidden",
+  minHeight: "100%",
+  height: "100%",
+  overflow: "visible",
 };
 
 const toolbarStyle = {
@@ -62,6 +65,7 @@ const toolbarStyle = {
   width: "100%",
   maxWidth: "100%",
   zIndex: 9999,
+  alignSelf: "stretch",
 };
 
 const storySlotStyle = {
@@ -69,7 +73,11 @@ const storySlotStyle = {
   width: "100%",
   maxWidth: "100%",
   minWidth: 0,
-  overflow: "hidden",
+  minHeight: 0,
+  overflow: "visible",
+  alignItems: "center",
+  alignSelf: "stretch",
+  justifyContent: "flex-start",
 };
 
 if (typeof document !== "undefined" && document.title) {

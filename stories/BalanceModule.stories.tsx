@@ -3,9 +3,9 @@ import {
   BalanceModule,
   BalanceModuleExtendedProps,
 } from "../src/components/balanceModule/BalanceModule";
-import { ReactElement, useCallback, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { NavigationDots } from "../src/components/navigationDots/NavigationDots";
-import { spacingM, spacingXXS, spacingXXXS } from "../src/assets/styles/constants/size";
+import { spacingM } from "../src/assets/styles/constants/size";
 import { QuickActionButtonPattern } from "../src/components/button/QuickActionButtonPattern";
 import MyAccounts from "../src/components/icons/banking/MyAccounts";
 import { useTheme } from "../src/context/theme/themeContext";
@@ -15,7 +15,6 @@ import VirtualCard from "../src/components/icons/banking/VirtualCard";
 import More from "../src/components/icons/functionals/More";
 import { DropdownScreen } from "../src/components/dropdown/DropdownScreen";
 import Icon from "../src/components/icon/Icon";
-import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
 
 export default {
   title: "Components/BalanceModule",
@@ -77,6 +76,17 @@ const InteractiveTemplate = () => {
   );
 
   const [currentItem, setCurrentItem] = useState(1);
+  const viewabilityConfig = useRef({
+    itemVisiblePercentThreshold: 60,
+  }).current;
+  const onViewableItemsChanged = useRef(
+    ({ viewableItems }: { viewableItems: Array<{ item?: BalanceModuleExtendedProps }> }) => {
+      const next = viewableItems[0]?.item?.key ?? viewableItems[1]?.item?.key;
+      if (next != null) {
+        setCurrentItem(parseInt(String(next), 10));
+      }
+    }
+  ).current;
 
   const renderItem = useCallback(
     ({ item }: { item: BalanceModuleExtendedProps }) => {
@@ -97,6 +107,7 @@ const InteractiveTemplate = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        width: "100%",
       }}
     >
       <FlatList
@@ -112,14 +123,8 @@ const InteractiveTemplate = () => {
         pagingEnabled
         horizontal
         renderItem={renderItem}
-        onViewableItemsChanged={({ changed, viewableItems }) => {
-          const newKey = parseInt(
-            viewableItems[0]
-              ? viewableItems[0].item?.key
-              : viewableItems[1].item?.key
-          );
-          setCurrentItem(newKey);
-        }}
+        onViewableItemsChanged={onViewableItemsChanged}
+        viewabilityConfig={viewabilityConfig}
         decelerationRate={-100000000000000}
         scrollEventThrottle={16}
       />
@@ -259,6 +264,18 @@ const InteractiveWithDropdownTemplate = (args: any) => {
   );
 
   const [currentItem, setCurrentItem] = useState(1);
+  // FlatList forbids swapping onViewableItemsChanged after mount — keep a stable ref.
+  const viewabilityConfig = useRef({
+    itemVisiblePercentThreshold: 60,
+  }).current;
+  const onViewableItemsChanged = useRef(
+    ({ viewableItems }: { viewableItems: Array<{ item?: BalanceModuleExtendedProps }> }) => {
+      const next = viewableItems[0]?.item?.key ?? viewableItems[1]?.item?.key;
+      if (next != null) {
+        setCurrentItem(parseInt(String(next), 10));
+      }
+    }
+  ).current;
 
   const renderItem = useCallback(
     ({ item }: { item: BalanceModuleExtendedProps }) => {
@@ -298,6 +315,7 @@ const InteractiveWithDropdownTemplate = (args: any) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        width: "100%",
       }}
     >
       <FlatList
@@ -313,14 +331,8 @@ const InteractiveWithDropdownTemplate = (args: any) => {
         pagingEnabled
         horizontal
         renderItem={renderItem}
-        onViewableItemsChanged={({ changed, viewableItems }) => {
-          const newKey = parseInt(
-            viewableItems[0]
-              ? viewableItems[0].item?.key
-              : viewableItems[1].item?.key
-          );
-          setCurrentItem(newKey);
-        }}
+        onViewableItemsChanged={onViewableItemsChanged}
+        viewabilityConfig={viewabilityConfig}
         scrollEventThrottle={16}
       />
       {!args.loading && <View style={{ marginTop: spacingM }}>

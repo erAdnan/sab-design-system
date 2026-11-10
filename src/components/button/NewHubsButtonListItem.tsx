@@ -64,13 +64,18 @@ export const NewHubsButtonListItem: FC<NewHubsButtonListItemProps> = ({
       justifyContent: "space-between",
       gap: spacingXS,
       backgroundColor: theme.stylesblockbg,
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
       ...(showThemeIcon && { position: "relative", }),
     },
     leftContent: {
       flexDirection: "row",
       alignItems: "center",
       gap: spacingXS,
-      flex: 1, // Ensures it takes available space and prevents overflow
+      flex: 1,
+      minWidth: 0,
     },
     iconWrapper: {
       height: actuatedNormalize(48),
@@ -93,20 +98,27 @@ export const NewHubsButtonListItem: FC<NewHubsButtonListItemProps> = ({
     textWrapper: {
       flexDirection: "column",
       alignItems:"flex-start",
-      flexShrink: 1, // Prevents text from overflowing
+      flexShrink: 1,
+      flex: 1,
+      minWidth: 0,
     },
     rightContent: {
       ...(!chipsLabel && { alignSelf: "flex-end",}),
       alignItems: "flex-end",
       justifyContent: "space-between",
       marginLeft: spacingS,
-      gap: spacingXS// Ensures spacing from text to chevron
+      flexGrow: 0,
+      flexShrink: 0,
+      marginStart: "auto",
+      gap: spacingXS,
     },
     rightContentRtl: {
       ...(!chipsLabel && { alignSelf: "flex-end",}),
       justifyContent: "space-between",
       alignItems: "flex-end",
-      gap: spacingXS// Ensures spacing from text to chevron
+      flexGrow: 0,
+      flexShrink: 0,
+      gap: spacingXS,
     },
     chips: {
       backgroundColor: theme.primarycolor3static,

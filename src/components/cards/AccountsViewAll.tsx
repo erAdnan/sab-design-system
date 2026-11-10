@@ -200,9 +200,11 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
   const styles = StyleSheet.create({
     container: {
       width: isCarousel ? actuatedNormalize(217) : actuatedNormalize(343),
+      maxWidth: "100%",
       padding: spacingS,
       backgroundColor: cardConfig.bgColor,
       borderRadius: radiusS,
+      overflow: "hidden",
       flexDirection: "column",
       justifyContent: "space-between",
       gap: showLabel? 0 : spacingS,
@@ -212,20 +214,37 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
       fontFamily:fonts.HSBC_Medium,
       textAlign: "left", 
       width:"100%",
+      maxWidth: "100%",
+      flexShrink: 1,
+    },
+    textClamp: {
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
+      flexShrink: 1,
+      overflow: "hidden",
     },
     accountInfo: {
       flexDirection: 'column', 
       alignItems: "flex-start", 
       justifyContent: "space-between",
-      flex: 1
+      flex: 1,
+      minWidth: 0,
+      maxWidth: "100%",
+      overflow: "hidden",
     },
     inlineContent: {
       flexDirection:  "row",
       alignItems: "center",
-      gap: spacingXS,      
+      gap: spacingXS,
+      maxWidth: "100%",
+      minWidth: 0,
+      flexShrink: 1,
     },
     topContainer: {
       width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "flex-start", 
@@ -238,12 +257,17 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
       alignItems: "center",
       borderRadius: actuatedNormalize(100),
       height: heightXl,
-      width: widthXl, 
+      width: widthXl,
+      flexGrow: 0,
+      flexShrink: 0,
     },
     bottomContainer:{
       flexDirection: "column",
       alignItems:"flex-start",
       display:"flex",
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: 0,
     },
     balanceWrapper: {
       flexDirection: "row",
@@ -251,6 +275,8 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
       alignItems:"center",
       display:"flex",
       width:"100%",
+      maxWidth: "100%",
+      minWidth: 0,
     },
   });
 
@@ -278,21 +304,25 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
       <View style={[styles.container, overrideStyles]}>
         <View style={styles.topContainer}>
           <View style={styles.accountInfo}>
-            <Text bold size={fontMediumLarge} overrideStyles={styles.accountName} numberOfLines={numberOfLines} variant="primarytextcolor">
-              {accountName || cardConfig.accountName} 
-            </Text>
+            <View style={styles.textClamp}>
+              <Text bold size={fontMediumLarge} overrideStyles={styles.accountName} numberOfLines={numberOfLines} variant="primarytextcolor">
+                {accountName || cardConfig.accountName}
+              </Text>
+            </View>
             <View style={styles.inlineContent}>
             {(accountNumber || accountNumberShort) && !hideBalance && (
-                <Text size={fontMediumLarge} variant="primarytextcolor2">
+                <Text size={fontMediumLarge} variant="primarytextcolor2" numberOfLines={1}>
                     {isCarousel ? accountNumberShort : accountNumber}
                     </Text>
                         )}
               {(!isCarousel && (accountType || cardConfig.accountType)) && 
-                <View style={[styles.inlineContent,{flexShrink:1}]}>
+                <View style={[styles.inlineContent,{flexShrink:1, minWidth: 0}]}>
                   {verticalLine && !hideBalance && <Text size={fontMediumLarge} variant="primarytextcolor2">|</Text>}
-                  <Text size={fontMediumLarge} numberOfLines={numberOfLines} variant="primarytextcolor2">
-                    {accountType || cardConfig.accountType} 
-                  </Text>
+                  <View style={styles.textClamp}>
+                    <Text size={fontMediumLarge} numberOfLines={1} variant="primarytextcolor2" overrideStyles={{ maxWidth: "100%" }}>
+                      {accountType || cardConfig.accountType}
+                    </Text>
+                  </View>
                 </View>
               }
             </View>
