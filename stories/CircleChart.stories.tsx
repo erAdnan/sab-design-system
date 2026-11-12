@@ -1,3 +1,5 @@
+import * as allStories from "./CircleChart.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import React from "react";
 import {
@@ -10,8 +12,10 @@ import {
   CHART_DEFAULT_STROKE_WIDTH,
 } from "../src/components/graphs/circle-chart/utils/constants";
 import FoodIcon from "../src/assets/svgs/light/sab360/food.svg";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 const meta: Meta<typeof CircleChartWrapper> = {
+  decorators: mobileContentDecorators,
   title: "Components/CircleGraphWrapper",
   component: CircleChartWrapper,
   argTypes: {
@@ -175,3 +179,10 @@ export const Empty: Story = {
     strokeWidth: CHART_DEFAULT_STROKE_WIDTH,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "ThickStroke",
+    "CustomCenterIcon",
+    "Empty",
+]);

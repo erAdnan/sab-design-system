@@ -22,6 +22,10 @@ export interface TitleProps extends TextProps {
   textWidth?: number;
   loadingNumOfLines?: number;
   mediumFont?: boolean;
+  /** Gap between icon(s) and title text. Defaults to spacingXS (8). */
+  iconGap?: number;
+  /** Center the title row (and subtitle) within the Title width instead of start-aligning it. */
+  centered?: boolean;
 }
 
 /**
@@ -51,6 +55,8 @@ export const Title: FC<TitleProps> = ({
   textWidth,
   loadingNumOfLines,
   mediumFont = false,
+  iconGap,
+  centered = false,
 }) => {
   const { theme } = useTheme();
   const isRtl = I18nManager.isRTL;
@@ -63,10 +69,16 @@ export const Title: FC<TitleProps> = ({
       numOfLines={loadingNumOfLines}
     />
   ) : (
-    <View style={styles.root}>
+    <View>
       <View style={{ ...styles.container, ...overrideStyles }}>
-        <View style={styles.textContainer}>
-          <View style={[!isRtl ? styles.title : globalStyles.rtlTitle, styles.titleSlot]}>
+        <View style={[styles.textContainer, centered && styles.textContainerCentered]}>
+          <View
+            style={[
+              !isRtl ? styles.title : globalStyles.rtlTitle,
+              iconGap != null ? { gap: iconGap } : null,
+              centered && styles.titleCentered,
+            ]}
+          >
             {iconLeft && <View>{iconLeft}</View>}
             {children && (
               <TextWrapper
@@ -79,7 +91,6 @@ export const Title: FC<TitleProps> = ({
                     fontFamily: mediumFont ? fonts.HSBC_Medium : fonts.HSBC_Bold,
                     // fontWeight:fontWeightBold,
                     writingDirection: isRtl ? "rtl" : "ltr",
-                    flexShrink: 1,
                   },
                   ...(overrideStyles
                     ? Array.isArray(overrideStyles)
@@ -94,10 +105,10 @@ export const Title: FC<TitleProps> = ({
             )}
             {iconRight && <View>{iconRight}</View>}
           </View>
-          {action && <View style={styles.actionSlot}>{action}</View>}
+          {action && <View>{action}</View>}
         </View>
         {subtitle && (
-          <View style={styles.subtitleSlot}>
+          <View>
             <Text
               size={subtitleSize}
               variant={subtitleVariant}
@@ -118,23 +129,13 @@ export const Title: FC<TitleProps> = ({
  */
 
 const styles = StyleSheet.create({
-  root: {
-    width: "100%",
-    maxWidth: "100%",
-    minWidth: 0,
-    alignSelf: "stretch",
-  },
   container: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "stretch",
-    alignSelf: "stretch",
+    alignItems: "flex-start",
     gap: Size.spacingXXS,
     paddingVertical: Size.spacingM,
     paddingHorizontal: Size.spacingS,
-    width: "100%",
-    maxWidth: "100%",
-    minWidth: 0,
   },
   title: {
     display: "flex",
@@ -142,28 +143,18 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     gap: Size.spacingXS,
   },
-  titleSlot: {
-    flex: 1,
-    minWidth: 0,
-    flexShrink: 1,
-  },
-  actionSlot: {
-    flexGrow: 0,
-    flexShrink: 0,
-    marginStart: "auto",
-  },
-  subtitleSlot: {
-    width: "100%",
-    maxWidth: "100%",
-    minWidth: 0,
-  },
   textContainer: {
     width: "100%",
-    maxWidth: "100%",
-    minWidth: 0,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
+  },
+  textContainerCentered: {
+    justifyContent: "center",
+  },
+  titleCentered: {
+    justifyContent: "center",
     alignItems: "center",
   },
 });

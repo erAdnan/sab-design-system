@@ -1,3 +1,5 @@
+import * as allStories from "./BarChart.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState, useMemo } from "react";
 import {
@@ -8,8 +10,10 @@ import {
   type BarChartBottomTimeFrame,
   type BarChartTopGranularity,
 } from "../src/components/graphs/bar-chart";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 const meta: Meta<typeof BarChartWrapper> = {
+  decorators: mobileContentDecorators,
   title: "Components/BarChartWrapper",
   component: BarChartWrapper,
   argTypes: {
@@ -306,3 +310,10 @@ export const TopFiltersMonthly: Story = {
     yAxisTicks: undefined,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Empty",
+    "TopFiltersWeekly",
+    "TopFiltersMonthly",
+]);

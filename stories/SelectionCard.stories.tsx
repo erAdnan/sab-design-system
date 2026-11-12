@@ -1,3 +1,5 @@
+import * as allStories from "./SelectionCard.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import React from "react";
 import { View } from "react-native";
 import { SelectionCard } from "../src/components/cards/SelectionCard";
@@ -80,3 +82,10 @@ export const WithSubtitleNoBorder = {
     image: illustration,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "WithBorder",
+    "WithBorderAndSubtitle",
+    "WithSubtitleNoBorder",
+]);

@@ -3,8 +3,10 @@ import { TextTitle } from "../src/components/text/TextTitle";
 import { Text } from "../src/components/text/Text";
 import { StyleSheet, View } from "react-native";
 import { spacingS } from "../src/assets/styles/constants/size";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/Divider",
   component: Divider,
 };

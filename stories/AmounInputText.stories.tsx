@@ -1,6 +1,10 @@
+import * as allStories from "./AmounInputText.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { AmountInputText } from "../src/components/input/AmountInputText";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/AmountInputText",
   component: AmountInputText,
 };
@@ -82,3 +86,12 @@ export const AmountInputTextMultiCurrency = {
   },
 };
 
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "AmountInputTextWithLabel",
+    "AmountInputTextWithLabelErrorState",
+    "AmountInputTextWithLabelDisabledFilledErrorState",
+    "AmountInputTextWithTwoHelperText",
+    "AmountInputTextWithTwoHelperTextArabic",
+    "AmountInputTextMultiCurrency",
+]);

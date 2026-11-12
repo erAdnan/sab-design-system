@@ -65,24 +65,18 @@ export const Entry: FC<BlockEntryProps> = ({
       backgroundColor: theme.stylesblockbg,
       borderRadius: radiusL,
       gap: spacingS,
-      maxWidth: "100%",
-      minWidth: 0,
-      alignSelf: "stretch",
     },
+    // Figma block.entry: Type=List 343×60, Type=Tile 167.5×156 (two tiles = 343 with an 8 gap).
     row: {
-      width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
-      alignSelf: "stretch",
+      width: actuatedNormalize(343),
       minHeight: actuatedNormalize(60),
       flexDirection: "row",
       alignItems: "center",
-      justifyContent: "space-between",
       paddingVertical: spacing1XS,
       paddingHorizontal: spacingS,
     },
     tile: {
-      flex: 1,
+      width: actuatedNormalize(167.5),
       minHeight: actuatedNormalize(156),
       flexDirection: "column",
       alignItems: "flex-start",
@@ -94,7 +88,6 @@ export const Entry: FC<BlockEntryProps> = ({
       flexDirection: "column",
       alignItems: "flex-start",
       flexShrink: 1,
-      minWidth: 0,
       ...(isTile ? { width: "100%" } : { flex: 1 }),
     },
     title: {
@@ -107,10 +100,7 @@ export const Entry: FC<BlockEntryProps> = ({
       textAlign:  "left",
     },
     chevron: {
-      flexGrow: 0,
-      flexShrink: 0,
-      marginStart: "auto",
-      ...(isTile && { alignSelf: "flex-end", marginStart: 0 }),
+      ...(isTile && { alignSelf: "flex-end" }),
     },
     iconContainer: {
       width: actuatedNormalize(32),

@@ -1,3 +1,5 @@
+import * as allStories from "./CreditCards.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { CreditCard } from '../src/components/cardsNew/CreditCard';
 import Success from "../src/components/icons/status/Success";
 
@@ -137,3 +139,216 @@ export const DefaultView = {
         statusChipsProps: { label: "Active", state: "success", showIcon: true },
     }
 };
+
+
+// ---- Figma parity (Cards & Accounts page 227:2376, credit cards): View (Default 343x172 / Carousel 200x100 / Virtual 325x205) x Status ----
+export const DefaultViewCard = {
+    args: {
+        view: "default",
+        cardName: "Emirates Infinite",
+        showActiveStatus: false
+    }
+};
+
+export const DefaultViewFrozen = {
+    args: {
+        view: "default",
+        cardName: "Emirates Infinite",
+        freeze: true,
+        showActiveStatus: false
+    }
+};
+
+export const DefaultViewInactive = {
+    args: {
+        view: "default",
+        cardName: "Emirates Infinite",
+        statusOverlay: "inactive",
+        showActiveStatus: false
+    }
+};
+
+export const DefaultViewExpiringSoon = {
+    args: {
+        view: "default",
+        cardName: "Emirates Infinite",
+        statusOverlay: "expiring-soon",
+        showActiveStatus: false
+    }
+};
+
+export const DefaultViewBlocked = {
+    args: {
+        view: "default",
+        cardName: "Emirates Infinite",
+        statusOverlay: "blocked",
+        showActiveStatus: false
+    }
+};
+
+export const CarouselViewCard = {
+    args: {
+        view: "carousel",
+        cardName: "Emirates Infinite",
+        showActiveStatus: false
+    }
+};
+
+export const CarouselViewFrozen = {
+    args: {
+        view: "carousel",
+        cardName: "Emirates Infinite",
+        freeze: true,
+        showActiveStatus: false
+    }
+};
+
+export const CarouselViewInactive = {
+    args: {
+        view: "carousel",
+        cardName: "Emirates Infinite",
+        statusOverlay: "inactive",
+        showActiveStatus: false
+    }
+};
+
+export const CarouselViewExpiringSoon = {
+    args: {
+        view: "carousel",
+        cardName: "Emirates Infinite",
+        statusOverlay: "expiring-soon",
+        showActiveStatus: false
+    }
+};
+
+export const CarouselViewBlocked = {
+    args: {
+        view: "carousel",
+        cardName: "Emirates Infinite",
+        statusOverlay: "blocked",
+        showActiveStatus: false
+    }
+};
+
+export const VirtualViewCard = {
+    args: {
+        view: "virtual",
+        cardName: "Emirates Infinite",
+        showActiveStatus: false
+    }
+};
+
+export const VirtualViewFrozen = {
+    args: {
+        view: "virtual",
+        cardName: "Emirates Infinite",
+        freeze: true,
+        showActiveStatus: false
+    }
+};
+
+export const VirtualViewInactive = {
+    args: {
+        view: "virtual",
+        cardName: "Emirates Infinite",
+        statusOverlay: "inactive",
+        showActiveStatus: false
+    }
+};
+
+export const VirtualViewExpiringSoon = {
+    args: {
+        view: "virtual",
+        cardName: "Emirates Infinite",
+        statusOverlay: "expiring-soon",
+        showActiveStatus: false
+    }
+};
+
+export const VirtualViewBlocked = {
+    args: {
+        view: "virtual",
+        cardName: "Emirates Infinite",
+        statusOverlay: "blocked",
+        showActiveStatus: false
+    }
+};
+
+// View all = 73x46 thumbnail (renders the virtual artwork, no text).
+export const ViewAllCard = {
+    args: {
+        view: "virtual",
+        isViewAll: true,
+        cardName: "Emirates Infinite",
+        showActiveStatus: false
+    }
+};
+
+export const ViewAllFrozen = {
+    args: {
+        view: "virtual",
+        isViewAll: true,
+        cardName: "Emirates Infinite",
+        freeze: true,
+        showActiveStatus: false
+    }
+};
+
+export const ViewAllInactive = {
+    args: {
+        view: "virtual",
+        isViewAll: true,
+        cardName: "Emirates Infinite",
+        statusOverlay: "inactive",
+        showActiveStatus: false
+    }
+};
+
+export const ViewAllExpiringSoon = {
+    args: {
+        view: "virtual",
+        isViewAll: true,
+        cardName: "Emirates Infinite",
+        statusOverlay: "expiring-soon",
+        showActiveStatus: false
+    }
+};
+
+export const ViewAllBlocked = {
+    args: {
+        view: "virtual",
+        isViewAll: true,
+        cardName: "Emirates Infinite",
+        statusOverlay: "blocked",
+        showActiveStatus: false
+    }
+};
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Cards",
+    "CardsWithStatus",
+    "CardsNovmberRelease",
+    "DebitCard",
+    "MadaCard",
+    "DefaultView",
+    "DefaultViewCard",
+    "DefaultViewFrozen",
+    "DefaultViewInactive",
+    "DefaultViewExpiringSoon",
+    "DefaultViewBlocked",
+    "CarouselViewCard",
+    "CarouselViewFrozen",
+    "CarouselViewInactive",
+    "CarouselViewExpiringSoon",
+    "CarouselViewBlocked",
+    "VirtualViewCard",
+    "VirtualViewFrozen",
+    "VirtualViewInactive",
+    "VirtualViewExpiringSoon",
+    "VirtualViewBlocked",
+    "ViewAllCard",
+    "ViewAllFrozen",
+    "ViewAllInactive",
+    "ViewAllExpiringSoon",
+    "ViewAllBlocked",
+]);

@@ -1,3 +1,5 @@
+import * as allStories from "./BlockBeneficiary.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Beneficiary } from "../src/components/block/Beneficiary";
 import { View } from "react-native";
 import MyAccounts from "../src/components/icons/banking/MyAccounts";
@@ -62,3 +64,10 @@ export const BeneficiaryInitialsWithIcon = {
     },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "BeneficiaryInitials",
+    "BeneficiaryImage",
+    "BeneficiaryInitialsWithStatusIcon",
+    "BeneficiaryInitialsWithIcon",
+]);

@@ -24,7 +24,6 @@ import { t } from "i18next";
 import CheckCircle from "../icons/filled/CheckCircle";
 import Warning from "../icons/status/Warning";
 import InfoFrame from "../icons/status/InfoFrame";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface CategoryCardWidgetProps {
   listItemProps?: ListItemProps;
@@ -100,7 +99,6 @@ export const CategoryCard: FC<CategoryCardWidgetProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
 
   const styles = StyleSheet.create({
@@ -112,13 +110,14 @@ export const CategoryCard: FC<CategoryCardWidgetProps> = ({
       alignItems: "flex-start",
       borderRadius: radiusS,
     },
+    // Figma pfm.categoryCard: medium-horizontal 343, small-vertical 164.
     containerHorizontal: {
       gap: spacingXS,
-      width: "100%",
+      width: actuatedNormalize(343),
     },
     containerVertical: {
       gap: spacingS,
-      ...frame.of(164),
+      width: actuatedNormalize(164),
     },
     itemAddon: {
       display: "flex",

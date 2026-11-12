@@ -1,3 +1,5 @@
+import * as allStories from "./NewDashWidget.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import More from "../src/components/icons/functionals/More";
 import LogoNoText from "../src/components/icons/sab360/LogoNoText";
 import ProfileOutline from "../src/components/icons/users/ProfileOutline";
@@ -50,3 +52,8 @@ export const TwoIcons = {
       }]
   }
 }
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "IconAndLogo",
+    "TwoIcons",
+]);

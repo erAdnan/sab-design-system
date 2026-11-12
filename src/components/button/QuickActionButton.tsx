@@ -1,13 +1,18 @@
 import { FC, ReactElement } from "react";
-import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../../context/theme/themeContext";
 import { Text } from "../text/Text";
 import { Badge, BadgeProps } from "../badge/Badge";
 import {
+  fontMedium,
   fontSmall,
   fontWeightRegular,
+  lineHeightMedium,
+  lineHeightSmall,
+  radiusM,
   radiusS,
   sizeXL,
+  spacing1XS,
   spacingS,
   spacingXS,
 } from "../../assets/styles/constants/size";
@@ -53,6 +58,10 @@ export const QuickActionButton: FC<QuickActionButtonProps> = ({
 }) => {
   const { theme } = useTheme();
 
+  // Figma button.quickAction: Vertical-Small is a 70 wide column (48 icon tile, 8 gap, 12/16 label),
+  // Horizontal is a 48 high pill (16/12 padding, 12 radius, 14/18 label).
+  const verticalWidth = verticalTextWidth ?? actuatedNormalize(70);
+
   const styles = StyleSheet.create({
     container: {
       display: "flex",
@@ -73,6 +82,10 @@ export const QuickActionButton: FC<QuickActionButtonProps> = ({
       flexDirection: "row",
       height: sizeXL,
     },
+    btnHorizontalPill: {
+      borderRadius: radiusM,
+      paddingVertical: spacing1XS,
+    },
     btnVertical: {
       flexDirection: "column",
       gap: spacingXS,
@@ -84,20 +97,19 @@ export const QuickActionButton: FC<QuickActionButtonProps> = ({
       zIndex: -1,
     },
     btnTextVertical: {
-      width:
-        verticalTextWidth ??
-        (Platform.OS === "ios" ? actuatedNormalize(80) : actuatedNormalize(75)),
+      width: verticalWidth,
       textAlign: "center",
     },
   });
 
   const buttonText = (
     <Text
-      size={fontSmall}
+      size={type === "horizontal" ? fontMedium : fontSmall}
       loading={loading}
-      textWidth={verticalTextWidth ?? actuatedNormalize(75)}
+      textWidth={verticalWidth}
       overrideStyles={{
         fontWeight: fontWeightRegular,
+        lineHeight: type === "horizontal" ? lineHeightMedium : lineHeightSmall,
         ...(type === "vertical" ? styles.btnTextVertical : {}),
       }}
       variant={textVariant}
@@ -116,7 +128,7 @@ export const QuickActionButton: FC<QuickActionButtonProps> = ({
       {type === "vertical" && badgeProps && !loading && (
         <Badge
           {...badgeProps}
-          containerStyle={{ position: "absolute", left: spacingS }}
+          containerStyle={{ position: "absolute", left: spacingS, top: -actuatedNormalize(5) }}
         />
       )}
       {loading ? (
@@ -132,7 +144,7 @@ export const QuickActionButton: FC<QuickActionButtonProps> = ({
           style={[
             styles.btnGeneral,
             type === "horizontal"
-              ? styles.btnHorizontal
+              ? [styles.btnHorizontal, styles.btnHorizontalPill]
               : styles.btnIconVertical,
               iconContainerStyles,
           ]}

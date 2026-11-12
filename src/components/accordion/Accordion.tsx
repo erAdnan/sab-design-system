@@ -2,7 +2,7 @@ import { StyleSheet,TouchableOpacity, View } from "react-native";
 import React, { FC, ReactNode, useState } from "react";
 import { useTheme } from "../../context/theme/themeContext";
 import { Text } from "../text/Text";
-import { spacingS, spacing1XS, radiusS, fontSmallMedium, spacingXS } from "../../assets/styles/constants/size";
+import { spacingS, spacingM, spacing1XS, radiusS, fontSmallMedium, spacingXS } from "../../assets/styles/constants/size";
 import { AccordionSkeleton } from "./AccordionSkeleton";
 import { ListItem, ListItemActionType, ListItemProps } from "../list/ListItem";
 import { Divider } from "../divider/Divider";
@@ -76,66 +76,40 @@ export const Accordion: FC<AccordionProps> = ({
   const styles = StyleSheet.create({
     container: {
       flexDirection: "column",
-      justifyContent: "flex-start",
-      alignItems: "stretch",
-      alignSelf: "stretch",
+      justifyContent: "space-between",
+      alignItems: "center",
       paddingVertical: spacing1XS,
       paddingHorizontal: spacingS,
       backgroundColor: theme.stylesblockbg,
       borderRadius: radiusS,
-      width: "100%",
+      // Figma accordion: fixed 343dp width (scaled via actuatedNormalize), not canvas-stretch.
+      width: actuatedNormalize(343),
       maxWidth: "100%",
-      minWidth: 0,
+      // Figma open state: 24dp bottom padding below the content / edit action.
+      ...(isOpen ? { paddingBottom: spacingM } : null),
     },
     itemsContainer: {
-      marginTop: spacingS,
+      // Header row bottom padding (12) before the content block.
+      marginTop: spacing1XS,
       width: "100%",
-      maxWidth: "100%",
       minWidth: 0,
-      alignSelf: "stretch",
     },
     editOptionContainer: {
       flexDirection: "row",
       alignItems: "center",
+      justifyContent: "center",
       gap: spacingXS,
-      marginTop: actuatedNormalize(24),
-      alignSelf: "flex-start",
+      // Figma: 16dp gap between detail list and the 48dp tertiary "Edit Section" button.
+      marginTop: spacingS,
+      height: actuatedNormalize(48),
     },
     titleWrapper: {
       flexDirection: "row",
       alignItems: "center",
       gap: spacingXS,
       width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
-      alignSelf: "stretch",
-    },
-    listItemSlot: {
-      flex: 1,
-      width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
     },
   });
-
-  const listItem = (
-    // @ts-ignore
-    <ListItem
-      label={{ children: text, medium: true, numberOfLines: 1 }}
-      actionType={ListItemActionType.chevron}
-      handleAction={handleToggle}
-      overrideStyles={{ paddingHorizontal: 0, paddingVertical: 0, width: "100%" }}
-      showBackground={false}
-      showDivider={false}
-      isOpen={isOpen}
-      chevronUp
-      testID={props.testID ? `${props.testID}-toggle` : undefined}
-      accessibilityLabel={
-        props.accessibilityLabel ? `${props.accessibilityLabel}-toggle` : text
-      }
-      {...props}
-    />
-  );
 
   return loading ? (
     <AccordionSkeleton />
@@ -144,19 +118,67 @@ export const Accordion: FC<AccordionProps> = ({
       style={[styles.container, overrideStyles]}
       {...getAutomationProps(props.testID, props.accessibilityLabel, text)}
     >
-      <View style={styles.titleWrapper}>
-        {showCheckbox && checkboxProps && (
-          <Checkbox
-            {...checkboxProps}
-            overrideStyles={{ padding: 0 }}
-            testID={checkboxProps.testID ?? (props.testID ? `${props.testID}-checkbox` : undefined)}
-            accessibilityLabel={
-              checkboxProps.accessibilityLabel ??
-              (props.accessibilityLabel ? `${props.accessibilityLabel}-checkbox` : "checkbox")
-            }
-          />
-        )}
-        <View style={styles.listItemSlot}>{listItem}</View>
+      <View
+        style={{
+          width: "100%",
+          flexDirection: "column",
+        }}
+        >
+          <View style={styles.titleWrapper}>
+            {showCheckbox && checkboxProps && (
+              <Checkbox
+                {...checkboxProps}
+                overrideStyles={{ padding: 0 }}
+                testID={checkboxProps.testID ?? (props.testID ? `${props.testID}-checkbox` : undefined)}
+                accessibilityLabel={
+                  checkboxProps.accessibilityLabel ??
+                  (props.accessibilityLabel ? `${props.accessibilityLabel}-checkbox` : "checkbox")
+                }
+              />
+            )}
+            {showCheckbox ? (
+              <View style={{ flex: 1, minWidth: 0 }}>
+                {/* @ts-ignore */}
+                <ListItem
+                  label={{ children: text, medium: true, numberOfLines: 1 }}
+                  actionType={ListItemActionType.chevron}
+                  handleAction={handleToggle}
+                  overrideStyles={{ paddingHorizontal: 0, paddingVertical: 0, }}
+                  showBackground={false}
+                  showDivider={false}
+                  isOpen={isOpen}
+                  chevronUp
+                  testID={props.testID ? `${props.testID}-toggle` : undefined}
+                  accessibilityLabel={
+                    props.accessibilityLabel ? `${props.accessibilityLabel}-toggle` : text
+                  }
+                  {...props}
+                />
+              </View>
+            ) : (
+              <>
+                {/* @ts-ignore */}
+                <ListItem
+                  label={{ children: text, medium: true, numberOfLines: 1 }}
+                  actionType={ListItemActionType.chevron}
+                  handleAction={handleToggle}
+                  overrideStyles={{ paddingHorizontal: 0, paddingVertical: 0, }}
+                  showBackground={false}
+                  showDivider={false}
+                  isOpen={isOpen}
+                  chevronUp
+                  addonBodyWrapperStyle={{flex: 1.5}}
+                  actionBadgeStyle={{flex: 0.5}}
+                  testID={props.testID ? `${props.testID}-toggle` : undefined}
+                  accessibilityLabel={
+                    props.accessibilityLabel ? `${props.accessibilityLabel}-toggle` : text
+                  }
+                  {...props}
+                />
+              </>
+            )}
+          </View>  
+        
       </View>
       {showDivider && (
         <Divider overrideStyles={{ marginTop: actuatedNormalize(16) }} />

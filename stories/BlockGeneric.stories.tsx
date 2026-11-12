@@ -1,3 +1,5 @@
+import * as allStories from "./BlockGeneric.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Generic } from "../src/components/block/Generic";
 
 export default {
@@ -43,3 +45,10 @@ export const PatternExtraContent = {
     type: "pattern",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Solid",
+    "Pattern",
+    "SolidExtraContent",
+    "PatternExtraContent",
+]);

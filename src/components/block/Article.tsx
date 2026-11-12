@@ -59,10 +59,7 @@ export const Article: FC<BlockArticleProps> = ({
   return loading ? (
     <View
       style={{
-        width: "100%",
-        maxWidth: "100%",
-        minWidth: 0,
-        alignSelf: "stretch",
+        width: actuatedNormalize(240),
         backgroundColor: theme.stylesblockbg,
         display: "flex",
         flexDirection: "column",
@@ -156,10 +153,7 @@ export const Article: FC<BlockArticleProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
-    width: "100%",
-    maxWidth: "100%",
-    minWidth: 0,
-    alignSelf: "stretch",
+    width: actuatedNormalize(240),
     alignItems:"flex-start",
     borderRadius: radiusS,
     padding: spacingS,

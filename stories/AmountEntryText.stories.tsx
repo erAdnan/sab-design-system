@@ -1,3 +1,5 @@
+import * as allStories from "./AmountEntryText.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { TextInput, View } from "react-native";
 import { AmountEntryText } from "../src/components/amountEntry/AmountEntryText";
 import { useEffect, useRef, useState } from "react";
@@ -5,8 +7,10 @@ import { Dropdown } from "../src/components/dropdown/Dropdown";
 import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
 import { SABLogo } from "../src/components/logos/SABLogo";
 import Icon from "../src/components/icon/Icon";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/AmountEntry",
   component: AmountEntryText,
   argTypes: {
@@ -144,3 +148,8 @@ export const CurrencyExchange = {
     helperText: "Default",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "CurrencyExchange",
+]);

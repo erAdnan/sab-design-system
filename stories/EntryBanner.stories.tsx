@@ -1,6 +1,10 @@
+import * as allStories from "./EntryBanner.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { EntryBanner } from "../src/components/banner/EntryBanner";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/EntryBanner",
   component: EntryBanner,
   argTypes: {
@@ -37,3 +41,9 @@ export const Small = {
     small: true,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Illustration",
+    "Graph",
+    "Small",
+]);

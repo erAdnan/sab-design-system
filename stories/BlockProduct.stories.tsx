@@ -1,3 +1,5 @@
+import * as allStories from "./BlockProduct.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Product } from "../src/components/block/Product";
 import i18n from "i18next";
 import MyAccounts from "../src/components/icons/banking/MyAccounts";
@@ -71,3 +73,10 @@ export const ComplexImage = {
     }
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "BigIcon",
+    "Image",
+    "ImageDefault",
+    "ComplexImage",
+]);

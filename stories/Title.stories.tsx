@@ -1,3 +1,5 @@
+import * as allStories from "./Title.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Title } from "../src/components/text/Title";
 import { TextColor } from "../src/types/TextColor";
 import Home from "../src/components/icons/functionals/Home";
@@ -113,3 +115,13 @@ export const TitleWithActionAndSubtitleWithDivider = {
     showDivider: true,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "SimpleTitle",
+    "TitleWithSubtitle",
+    "TitleWithIconLeft",
+    "TitleWithIconRigth",
+    "TitleWithAction",
+    "TitleWithActionAndSubtitle",
+    "TitleWithActionAndSubtitleWithDivider",
+]);

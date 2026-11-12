@@ -1,3 +1,5 @@
+import * as allStories from "./Toggle.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { useEffect, useState } from "react";
 import { Toggle } from "../src/components/toggle/Toggle";
 
@@ -64,3 +66,10 @@ export const WithLabel = {
         label: "Label comes here",
     },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Interactive",
+    "Static",
+    "Disabled",
+    "WithLabel",
+]);

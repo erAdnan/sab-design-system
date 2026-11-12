@@ -1,8 +1,12 @@
+import * as allStories from "./NotificationList.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
+import { listStoryDecorators } from "../.storybook/listStoryFrame";
 import { NotificationList } from "../src/components/notificationList/NotificationList";
 
 export default {
   title: "Components/NotificationList",
   component: NotificationList,
+  decorators: listStoryDecorators,
   args: {
     loading: false
   }
@@ -31,3 +35,8 @@ export const Read = {
 };
 
 
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Unread",
+    "Read",
+]);

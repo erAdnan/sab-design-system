@@ -1,3 +1,5 @@
+import * as allStories from "./QuickActionButton.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { QuickActionButton } from "../src/components/button/QuickActionButton";
 import MyAccounts from "../src/components/icons/banking/MyAccounts";
 import { useTheme } from "../src/context/theme/themeContext";
@@ -80,3 +82,10 @@ export const HorizontalWithBadge = {
     },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Vertical",
+    "VerticalWithBadge",
+    "Horizontal",
+    "HorizontalWithBadge",
+]);

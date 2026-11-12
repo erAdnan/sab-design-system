@@ -22,7 +22,6 @@ import { LanguageCodes } from "../../localization/languages";
 import i18n from "i18next";
 import BannerSkeleton from "./BannerSkeleton";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 export interface CarouselBannerProps {
   type?: "image" | "default";
@@ -57,7 +56,6 @@ export const CarouselBanner: FC<CarouselBannerProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const isDefault = useMemo(() => type === "default", [type]);
 
   const isRtl = I18nManager.isRTL;
@@ -69,7 +67,7 @@ export const CarouselBanner: FC<CarouselBannerProps> = ({
       flexDirection: "column",
       backgroundColor:"red",
       justifyContent: "center",
-      ...frame.of(343),
+      width: actuatedNormalize(343),
       height: actuatedNormalize(161),
       borderRadius: radiusS,
       paddingHorizontal: spacingS,
@@ -162,7 +160,7 @@ export const CarouselBanner: FC<CarouselBannerProps> = ({
       ) : (
         <ImageThumbnail
           {...backgroundImage}
-          width={frame.span}
+          width={actuatedNormalize(343)}
           height={actuatedNormalize(161)}
           overrideStyles={{ position: "absolute" }}
         >

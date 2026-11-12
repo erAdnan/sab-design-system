@@ -1,3 +1,5 @@
+import * as allStories from "./BlockProductSelection.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { ProductSelection } from "../src/components/block/ProductSelection";
 
 export default {
@@ -31,3 +33,8 @@ export const Selected = {
     selected: true
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Selected",
+]);

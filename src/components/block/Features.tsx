@@ -65,7 +65,7 @@ export const Features: FC < BlockFeaturesProps > = ({
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "flex-start",
-      width: "100%",
+      width: actuatedNormalize(343), // Figma block.features 343
       height: containerHeight,
       borderRadius: radiusS,
       padding: spacingS,
@@ -107,7 +107,7 @@ export const Features: FC < BlockFeaturesProps > = ({
 
   return loading
     ? (<View style={{
-        width: "100%",
+        width: actuatedNormalize(343),
         height: containerHeight,
         backgroundColor: theme.stylesblockbg,
         display: "flex",

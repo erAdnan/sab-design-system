@@ -1,3 +1,5 @@
+import * as allStories from "./PromotionalBanner.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { PromotionalBanner } from "../src/components/banner/PromotionalBanner";
 import CreditCards from "../src/assets/svgs/illustration/CreditCards.svg"
 import OpenAnAccount from "../src/assets/svgs/illustration/opennewaccount.svg"
@@ -45,3 +47,24 @@ export const OpenAccount = {
          linkButtonText: "Apply Now"
      },
  };
+
+
+// Figma promotional.banner: link button is optional (showLinkButton=false is the Figma default).
+export const WithoutLinkButton = {
+    args: {
+        title: "Text",
+        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ",
+        imgProps: {
+            localSvg: CreditCards,
+            width:actuatedNormalize(101),
+            height:actuatedNormalize(55),
+        },
+        linkButtonText: ""
+    },
+};
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "OpenAccount",
+    "WithoutLinkButton",
+]);

@@ -34,7 +34,7 @@ export const StoryBookWrapper: FC<StoryBookWrapperProps> = ({
         minHeight: "100%",
         height: "100%",
         overflow: "visible",
-        alignSelf: "stretch",
+        alignItems: "center",
       }}
     >
       <LanguageWrapper

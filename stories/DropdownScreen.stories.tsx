@@ -2,8 +2,10 @@
 import { ReactElement } from "react";
 import { DropdownScreen } from "../src/components/dropdown/DropdownScreen";
 import Icon from "../src/components/icon/Icon";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/DropdownScreen",
   component: DropdownScreen,
 };

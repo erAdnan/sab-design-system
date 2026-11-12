@@ -2,10 +2,15 @@ import React, {FC, useMemo} from "react";
 import {useTheme} from "../../context/theme/themeContext";
 import {LanguageCodes} from "../../localization/languages";
 import i18n from "i18next";
-import {I18nManager, StyleSheet, View} from "react-native";
-import {spacingS, spacingXS} from "../../assets/styles/constants/size";
+import {I18nManager, Platform, StyleSheet, View} from "react-native";
 import {SkeletonBox} from "../skeleton/SkeletonBox";
 import {actuatedNormalize} from "../../assets/styles/utils/pixelScaling";
+
+// Header-local exact Figma pixels on web (shared scaler subtracts 1 on web); native unchanged.
+const figmaPx = (size: number) => (Platform.OS === "web" ? size : actuatedNormalize(size));
+const spacingXS = figmaPx(8);
+const spacingS = figmaPx(16);
+
 interface HeaderProps {
   type: | "link" | "level0" | "level1" | "level1-intermediate" | "level1-foryou" | "level2" | "authentication" | "search" | "level1services";
   state: "prelogin" | "postlogin";
@@ -42,16 +47,20 @@ export const HeaderSkeleton: FC < HeaderProps > = ({type, state}) => {
       flexDirection: "column",
       gap: spacingXS,
       backgroundColor: theme.stylesblockbg,
-      padding: spacingS
+      padding: spacingS,
+      // Match the live Header: Figma header frame is 375 wide (343 content + 16 px).
+      // Explicit width so the skeleton does not hug its content in centered parents.
+      width: "100%",
+      ...(Platform.OS === "web" ? {maxWidth: 375, alignSelf: "center" as const} : null)
     },
     squareSmall: {
-      width: actuatedNormalize(64)
+      width: figmaPx(64)
     },
     squareMedium: {
-      width: actuatedNormalize(112)
+      width: figmaPx(112)
     },
     squareLarge: {
-      width: actuatedNormalize(162),
+      width: figmaPx(162),
       maxWidth: "100%",
     }
   });

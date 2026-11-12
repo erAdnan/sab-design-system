@@ -1,3 +1,5 @@
+import * as allStories from "./NewFinanceCard.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { NewFinance } from "../src/components/cards/NewFinance";
 import AccountInfo from "../src/components/icons/filled/AccountInfo";
 
@@ -152,3 +154,13 @@ export const FullViewPieGraph = {
   },
 };
 
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "DefaultView",
+    "DefaultViewInactive",
+    "DefaultViewGraph",
+    "DefaultViewUnderReview",
+    "FullViewIcon",
+    "FullViewAvatar",
+    "FullViewPieGraph",
+]);

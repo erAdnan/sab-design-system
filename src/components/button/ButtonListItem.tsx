@@ -4,6 +4,7 @@ import { TextTitle, TextTitleProps } from "../text/TextTitle";
 import { useTheme } from "../../context/theme/themeContext";
 import {
   fontSmallMedium,
+  fontMediumLarge,
   fontWeightMedium,
   radiusS,
   spacingS,
@@ -154,6 +155,7 @@ export const ButtonListItem: FC<ButtonListItemProps> = ({
         )}
         <View style={styles.textWrapper}>
           <TextTitle
+            size={fontMediumLarge}
             {...headline}
             loading={loading}
             loadingStateStyles={{ width: "100%" }}

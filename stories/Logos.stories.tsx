@@ -1,3 +1,6 @@
+import * as allStories from "./Logos.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 import type { ComponentType } from "react";
 import { View } from "react-native";
 import type { SvgProps } from "react-native-svg";
@@ -82,4 +85,14 @@ export const ZakatyLogo = {
 
 export const VisaLogo = {
   render: logoInSlot(Visa),
+};
+
+// Every logo (brand lockups + 48x48 partner slots) as a labelled, top-aligned column at the 343 mobile width.
+export const AllVariants = {
+  ...createAllVariantsStory(
+    allStories,
+    ["SAB", "AbsherLogo", "SimahLogo", "DrahimLogo", "MadaLogo", "SarieLogo", "ZakatyLogo", "VisaLogo"],
+    { gap: 24, itemStyle: { alignItems: "flex-start" } },
+  ),
+  decorators: [centerStoryDecorator],
 };

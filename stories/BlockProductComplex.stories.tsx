@@ -1,3 +1,5 @@
+import * as allStories from "./BlockProductComplex.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
 import { ProductComplex } from "../src/components/block/ProductComplex";
 import CreditCards from "../src/assets/svgs/illustration/CreditCards.svg";
@@ -55,3 +57,8 @@ export const Large = {
     },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Large",
+]);

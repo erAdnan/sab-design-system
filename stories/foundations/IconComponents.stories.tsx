@@ -1,3 +1,6 @@
+import * as allStories from "./IconComponents.stories";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 import React, { useMemo, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import {
@@ -162,4 +165,10 @@ const IconComponentsGallery = () => {
 
 export const All = {
   render: () => <IconComponentsGallery />,
+};
+
+// The full searchable TSX icon component catalog at the 343 mobile content width (3 icon cells per row).
+export const AllVariants = {
+  ...createAllVariantsStory(allStories, ["All"]),
+  decorators: [centerStoryDecorator],
 };

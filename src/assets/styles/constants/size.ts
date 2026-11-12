@@ -3,16 +3,23 @@ import {actuatedNormalize} from "../utils/pixelScaling";
 const convertToString = (num : number) => String(actuatedNormalize(num));
 
 // SPACINGS
+// Figma (Spacing page) -> code token:
+//   spacing.3XS 4 -> spacingXXS   | spacing.2XS 8  -> spacingXS  | spacing.XS 12 -> spacing1XS
+//   spacing.S 16  -> spacingS     | spacing.M 24   -> spacingM   | spacing.L 32  -> spacingL
+//   spacing.XL 40 -> spacing1XL   | spacing.2XL 48 -> spacingXL  | spacing.3XXL 64 -> spacingXXL
+//   spacing.4XXL 72 -> spacing4XXL
+// spacingXXXS (2), spacingSM (18), spacingML (28), spacingSubMenu (21) are code-only legacy values.
 export const spacingXXXS = actuatedNormalize(2);
 export const spacingXXS = actuatedNormalize(4);
 export const spacingXS = actuatedNormalize(8);
-export const spacing1XS = actuatedNormalize(12); // spacing spacing
+export const spacing1XS = actuatedNormalize(12); // Figma spacing.XS
 export const spacingS = actuatedNormalize(16);
 export const spacingSM = actuatedNormalize(18);
 export const spacingM = actuatedNormalize(24);
 export const spacingML = actuatedNormalize(28);
 export const spacingL = actuatedNormalize(32);
-export const spacingXL = actuatedNormalize(48);
+export const spacing1XL = actuatedNormalize(40); // Figma spacing.XL
+export const spacingXL = actuatedNormalize(48); // Figma spacing.2XL
 export const spacingXXL = actuatedNormalize(64);
 export const spacing4XXL = actuatedNormalize(72);
 export const spacingSubMenu = actuatedNormalize(21);
@@ -40,8 +47,12 @@ export const fontXLarge = actuatedNormalize(20);
 export const fontXXLarge = actuatedNormalize(22);
 export const fontLG = actuatedNormalize(24);
 export const fontXLG = actuatedNormalize(26);
+// NOTE: Figma names differ from the legacy code names below:
+//   Figma fontSize-XXLG = 30 -> fontXXLG2 | Figma fontSize-3XLG = 34 -> font3XLG (alias of fontXXLG)
+// fontXXLG keeps its legacy value (34) because existing components depend on it.
 export const fontXXLG = actuatedNormalize(34);
 export const fontXXLG2 = actuatedNormalize(30);
+export const font3XLG = fontXXLG;
 
 // LINE HEIGHT
 export const lineHeightXXSmall = actuatedNormalize(14);

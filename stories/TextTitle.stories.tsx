@@ -1,3 +1,5 @@
+import * as allStories from "./TextTitle.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { TextTitle } from "../src/components/text/TextTitle";
 import en from "../src/localization/locales/en";
 import { useStoryCopy } from "./helpers/useStoryCopy";
@@ -82,3 +84,9 @@ export const TextWithTooltip = {
     badgeNotificationType: "primary",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Text",
+    "TextWithBadge",
+    "TextWithTooltip",
+]);

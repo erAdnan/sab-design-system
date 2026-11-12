@@ -1,3 +1,5 @@
+import * as allStories from "./InfoMarketingBanner.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { InfoMarketingBanner } from "../src/components/banner/InfoMarketingBanner";
 
 export default {
@@ -68,3 +70,9 @@ export const LargeWithHeadline2 = {
     ]
   }
 }
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Medium",
+    "Large",
+    "LargeWithHeadline2",
+]);

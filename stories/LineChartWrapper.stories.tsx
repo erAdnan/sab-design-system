@@ -1,4 +1,7 @@
+import * as allStories from "./LineChartWrapper.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { LineChartWrapper, LineChartDataPoint } from "../src/components/graphs/line-chart";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 // Default story data - has data for all three timeframes (thisMonth, lastMonth, 6Months)
 const defaultThisMonthData: LineChartDataPoint[] = [
@@ -66,6 +69,7 @@ const defaultData = [
 ];
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/LineChartWrapper",
   component: LineChartWrapper,
   argTypes: {
@@ -172,3 +176,11 @@ export const Secondary = {
   },
 };
 
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Loading",
+    "LastMonth",
+    "SixMonths",
+    "Secondary",
+]);

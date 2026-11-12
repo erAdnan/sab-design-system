@@ -1,6 +1,10 @@
+import * as allStories from "./PhoneInput.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { PhoneInput } from "../src/components/input/PhoneInput";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/PhoneInput",
   component: PhoneInput,
   argTypes: {
@@ -102,3 +106,15 @@ export const PhoneInputDisabled = {
     disabled: true,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "DefaultWithHelperTextAndTooltip",
+    "DefaultWithHelperTextAndTooltipAndError",
+    "WithContact",
+    "WithFlag",
+    "WithIcon",
+    "WithFlagAndIcon",
+    "CountyCodeDisabled",
+    "PhoneInputDisabled",
+]);

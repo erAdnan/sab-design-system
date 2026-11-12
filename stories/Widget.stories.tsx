@@ -1,3 +1,5 @@
+import * as allStories from "./Widget.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { useTranslation } from "react-i18next";
 import Gift from "../src/components/icons/other/Gift";
 import { Widget } from "../src/components/widget/Widget";
@@ -192,3 +194,16 @@ export const IconWithImageMedium = {
     icon: <Gift />,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "IconSmall",
+    "IconMedium",
+    "IconLarge",
+    "GraphMedium",
+    "GraphLarge",
+    "ImageMedium",
+    "ImageMediumWithChips",
+    "ImageLarge",
+    "ImageLargeWithChips",
+    "IconWithImageMedium",
+]);

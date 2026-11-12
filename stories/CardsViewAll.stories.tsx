@@ -1,3 +1,5 @@
+import * as allStories from "./CardsViewAll.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { CardsViewAll } from '../src/components/cardsNew/CardsViewAll';
 export default {
     title: "Components/CardsViewAll",
@@ -188,3 +190,19 @@ export const Selection = {
     fourDigits: "7997",
   }
 }
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "DefaultWithSupplementaryTag",
+    "Inactive",
+    "ActivationRequired",
+    "Frozen",
+    "ExpiringSoon",
+    "Blocked",
+    "NewCard",
+    "Carousel",
+    "CarouselInactive",
+    "carouselProcessing",
+    "Description",
+    "Selection",
+]);

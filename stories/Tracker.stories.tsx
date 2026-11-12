@@ -1,8 +1,12 @@
+import * as allStories from "./Tracker.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Tracker } from "../src/components/tracker/Tracker";
 import { RagIconType } from "../src/components/rag/Rag";
 import { View } from "react-native";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/Tracker",
   component: Tracker,
   argTypes: {
@@ -154,3 +158,16 @@ export const Icons = {
     rightText2: "Content",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Success",
+    "SuccessNoBalance",
+    "Error",
+    "Warning",
+    "Info",
+    "Icon",
+    "Number",
+    "Empty",
+    "Spinner",
+    "Icons",
+]);

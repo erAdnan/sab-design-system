@@ -1,8 +1,12 @@
+import * as allStories from "./ChipsInfo.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { ChipsInfo } from "../src/components/chips/ChipsInfo";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
   title: "Components/ChipsInfo",
   component: ChipsInfo,
+  decorators: [centerStoryDecorator],
   argTypes: {
     type: {
       action: "Chips type",
@@ -92,3 +96,15 @@ export const TextWithIconInfo = {
     state: "info",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "DefaultSuccess",
+    "DefaultError",
+    "DefaultWarning",
+    "DefaultInfo",
+    "DefaultNeutral",
+    "TextWithIconSuccess",
+    "TextWithIconError",
+    "TextWithIconWarning",
+    "TextWithIconInfo",
+]);

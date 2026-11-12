@@ -5,7 +5,7 @@ import {
   I18nManager,
 } from "react-native";
 import React, { FC, ReactElement } from "react";
-import { fontMediumLarge, fontWeightBold, spacingXS } from "../../assets/styles/constants/size";
+import { fontMediumLarge, fontWeightBold, spacing1XS, spacingXS, spacingXXS } from "../../assets/styles/constants/size";
 import { useTheme } from "../../context/theme/themeContext";
 import { BulletPoint, BulletPointProps } from "../list/BulletPoint";
 import Copy from "../icons/functionals/Copy";
@@ -102,16 +102,15 @@ export const Text: FC<TextProps> = ({
     />
   ) : (
     <View
-      style={
-        numberOfLines
-          ? { maxWidth: "100%", minWidth: 0, flexShrink: 1 }
-          : undefined
-      }
+      // Always allow the wrapper to shrink inside row parents (RN-web defaults flexShrink to 0,
+      // which makes long copy size to max-content and overflow its container instead of wrapping).
+      style={styles.shrinkable}
     >
       <View
         style={[
           !isRtl ? styles.textContainer : styles.rtlText,
-          numberOfLines ? { maxWidth: "100%", minWidth: 0, flexShrink: 1 } : null,
+          showBulletPoint && bulletPointProps ? styles.bulletContainer : null,
+          styles.shrinkable,
         ]}
       >
         {showBulletPoint && bulletPointProps && (
@@ -138,9 +137,9 @@ export const Text: FC<TextProps> = ({
               // ...(bold && { fontWeight: fontWeightBold }),
               // paddingBottom: needsFix ? actuatedNormalize(3) : 0,
               writingDirection: isRtl ? "rtl" : "ltr",
-              ...(numberOfLines
-                ? { flexShrink: 1, maxWidth: "100%", minWidth: 0 }
-                : null),
+              flexShrink: 1,
+              minWidth: 0,
+              maxWidth: "100%",
             },
             ...(overrideStyles
               ? Array.isArray(overrideStyles)
@@ -179,6 +178,16 @@ export const Text: FC<TextProps> = ({
  */
 
 const styles = StyleSheet.create({
+  shrinkable: {
+    maxWidth: "100%",
+    minWidth: 0,
+    flexShrink: 1,
+  },
+  // Figma text.text with bullet: 12px gap between bullet and text, 4px horizontal padding.
+  bulletContainer: {
+    gap: spacing1XS,
+    paddingHorizontal: spacingXXS,
+  },
   textContainer: {
     display: "flex",
     flexDirection: "row",

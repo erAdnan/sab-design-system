@@ -1,7 +1,7 @@
 import React, { FC, ReactElement, useMemo, useState } from 'react'
-import { Dimensions, I18nManager, Image, ImageBackground, ImageSourcePropType, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Dimensions, I18nManager, Image, ImageBackground, ImageSourcePropType, Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../../context/theme/themeContext";
-import { fontLarge, fontMedium, fontMediumLarge, fontSmall, fontSmallMedium, fontXSmall, fontXXLarge, fontXXSmall, lineHeightLarge, lineHeightMedium, lineHeightMediumLarge, lineHeightSmallMedium, lineHeightXSmall, radiusL, radiusS, spacing1XS, spacingL, spacingM, spacingS, spacingXL, spacingXS, spacingXXS } from "../../assets/styles/constants/size";
+import { fontLarge, fontMedium, fontMediumLarge, fontSmall, fontSmallMedium, fontXSmall, fontXXLarge, fontXXSmall, lineHeightLarge, lineHeightMedium, lineHeightMediumLarge, lineHeightSmallMedium, lineHeightXSmall, radiusS, spacing1XS, spacingL, spacingM, spacingS, spacingXL, spacingXS, spacingXXS } from "../../assets/styles/constants/size";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import { Text } from "../text/Text";
 import { ProgressIndicator } from "../progressIndicator/ProgressIndicator";
@@ -21,9 +21,10 @@ import Mada from "../icons/banking/Mada";
 import { ChipsInfoProps } from "../chips/ChipsInfo";
 import { CreditCardSkeleton } from "./CreditCardSkeleton";
 import { NewChipsInfo } from '../chips/NewChipsInfo';
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 const LIGHT_CARD_CONTENT_OVERLAY = "rgba(21, 21, 21, 0.8)";
+// Figma "Status overlay" fill (Freeze / Inactive / Expiring soon / Blocked): white at 40%.
+const STATUS_OVERLAY_FILL = "rgba(255, 255, 255, 0.4)";
 
 type DebitKey =
   | 'advance' | 'classic' | 'household' | 'premier'
@@ -367,7 +368,7 @@ interface CreditCardProps {
   "Mastercard Platinum" |
   "Premier Top Tier";
   cardHolderName?: string;
-  defaultCardName: string;
+  defaultCardName?: string;
   cardNumber?: string;
   availableLimitLabel?: string;
   availableLimit?: number;
@@ -446,7 +447,6 @@ export const CreditCard: FC<CreditCardProps> = ({
   isLightCardImage = false,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
   const [fallback, setFallback] = useState(false);
 
@@ -698,57 +698,57 @@ export const CreditCard: FC<CreditCardProps> = ({
   }, [cardName]);
 
   const imageDimensions = useMemo(() => {
-    const sized = (designWidth: number, designHeight: number) => {
-      const design = Math.max(1, actuatedNormalize(designWidth));
-      const ratio = frame.span > 0 ? frame.span / design : 1;
-      return {
-        ...frame.of(designWidth),
-        height: Math.round(actuatedNormalize(designHeight) * ratio),
-      };
-    };
     if (isViewAll) {
       return { width: actuatedNormalize(73), height: actuatedNormalize(46) };
     } else {
       switch (view) {
         case "default":
         case "detailed":
-          return sized(342, 172);
+          return { width: actuatedNormalize(343), height: actuatedNormalize(172) };
         case "carousel":
-          return sized(200, 100);
+          return { width: actuatedNormalize(200), height: actuatedNormalize(100) };
         case "selection":
-          return sized(306, 100);
+          return { width: actuatedNormalize(306), height: actuatedNormalize(100) };
         case "virtual":
-          return sized(325, 203);
+          return { width: actuatedNormalize(325), height: actuatedNormalize(205) };
       }
     }
-  }, [view, cardName, frame, isViewAll]);
+  }, [view, cardName]);
 
-  const freezeIconSize = useMemo(() => {
-    if (isCarouselView || isSelectionView) {
-      return { height: 26, width: 24 }
-    }
+  // Figma "Status overlay" (Size x Status): white 40% fill over a backdrop blur, icon centred.
+  // `scale` is relative to the 18px-box outline icons (ErrorCircle / Clock / Lock, glyph ~17.5px):
+  // Default 3x, Carousel 1.5x, Virtual 2.625x, View all 1x. Freeze is a 24px-box glyph at 2x / 1x / 1.75x / 0.67x.
+  const statusOverlaySpec = useMemo(() => {
     if (isViewAll) {
-      return { height: 18, width: 16 }
+      return { scale: 1, freeze: { width: 16, height: 17.4 }, radius: actuatedNormalize(3), blur: 0.5 };
     }
-    else return { height: 52, width: 48 }
-  }, [isCarouselView, isSelectionView, isViewAll])
+    if (isCarouselView || isSelectionView) {
+      return { scale: 1.5, freeze: { width: 24, height: 26 }, radius: radiusS, blur: 1.5 };
+    }
+    if (isVirtualView) {
+      return { scale: 2.625, freeze: { width: 42, height: 46 }, radius: radiusS, blur: 2 };
+    }
+    return { scale: 3, freeze: { width: 48, height: 52 }, radius: radiusS, blur: 2.5 };
+  }, [isCarouselView, isSelectionView, isViewAll, isVirtualView])
+  const cardRadius = statusOverlaySpec.radius;
 
   const styles = StyleSheet.create({
     container: {
       position: 'relative',
       height: imageDimensions.height,
       width: "100%",
-      borderRadius: radiusL,
+      // Figma card + status overlay corner radius is 8 (3 on the View all thumbnail).
+      borderRadius: cardRadius,
       overflow: "hidden",
     },
     cardBackgroundImage: {
       ...StyleSheet.absoluteFillObject,
-      borderRadius: radiusL,
+      borderRadius: cardRadius,
     },
     lightCardOverlay: {
       ...StyleSheet.absoluteFillObject,
       backgroundColor: LIGHT_CARD_CONTENT_OVERLAY,
-      borderRadius: radiusL,
+      borderRadius: cardRadius,
     },
     cardContent: {
       position: "relative",
@@ -766,7 +766,7 @@ export const CreditCard: FC<CreditCardProps> = ({
     cardsBackground: {
       width: imageDimensions.width,
       height: imageDimensions.height,
-      borderRadius: radiusL,
+      borderRadius: cardRadius,
     },
     cardInfo: {
       display: "flex",
@@ -821,12 +821,13 @@ export const CreditCard: FC<CreditCardProps> = ({
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      borderRadius: radiusS,
+      borderRadius: statusOverlaySpec.radius,
       height: imageDimensions.height,
       width: imageDimensions.width,
-      backgroundColor: 'transparent',
-      overflow: 'hidden'
-      
+      // Figma Status overlay: white @ 40% (+ backdrop blur below).
+      backgroundColor: STATUS_OVERLAY_FILL,
+      overflow: 'hidden',
+      ...(Platform.OS === 'web' ? ({ backdropFilter: `blur(${statusOverlaySpec.blur}px)` } as any) : null),
     },
     blurContainer: {
       position: 'absolute',
@@ -834,7 +835,7 @@ export const CreditCard: FC<CreditCardProps> = ({
       right: 0,
       left: 0,
       bottom: 0,
-      borderRadius: radiusS,
+      borderRadius: statusOverlaySpec.radius,
       height: imageDimensions.height,
       width: imageDimensions.width,
     },
@@ -887,16 +888,16 @@ export const CreditCard: FC<CreditCardProps> = ({
     );
   };
 
-   const renderCardContent = () => (
-     (cardNumber && isVirtualView) ?
+   const renderBaseContent = () => (
+     (cardNumber && isVirtualView && !isViewAll) ?
       <View
   style={{
-    position: "absolute",bottom: cardName === "SAB Qatar Airways" ? spacingXL : spacingM,width: imageDimensions.width,paddingHorizontal: spacingS,flexDirection: "row",justifyContent: "flex-start",alignItems: "flex-start",writingDirection: "ltr",transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }]
+    position: "absolute",bottom: cardName === "SAB Qatar Airways" ? spacingXL : spacingM,width: imageDimensions.width,paddingHorizontal: spacingS,flexDirection: "row",justifyContent: "flex-start",alignItems: "flex-start",transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }]
   }}
 >
 <Text
     size={fontLarge}
-    overrideStyles={{ fontFamily: fonts.HSBC_Medium,transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }]}}
+    overrideStyles={{ fontFamily: fonts.HSBC_Medium, writingDirection: "ltr", transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }]}}
     variant="primarycolor4static"
   >
     {cardNumber}
@@ -1023,22 +1024,38 @@ export const CreditCard: FC<CreditCardProps> = ({
 
         
       </View>}
-      { (freeze || statusOverlay) && <View style={styles.freezeCover}>
-          <BlurView
-            style={styles.blurContainer}
-            blurType="light"
-            blurAmount={1} 
-          />
-          {freeze ? (
-            <Freeze height={actuatedNormalize(freezeIconSize.height)} width={actuatedNormalize(freezeIconSize.width)} fill={theme.primarycolor4static} />
-          ) : statusOverlay === "blocked" ? (
-            <Lock width={actuatedNormalize(14)} height={actuatedNormalize(18)} fill={theme.primarycolor4static} />
-          ) : statusOverlay === "inactive" ? (
-            <ErrorCircle width={actuatedNormalize(18)} height={actuatedNormalize(18)} fill={theme.primarycolor4static} />
-          ) : (
-            <Clock width={actuatedNormalize(18)} height={actuatedNormalize(18)} fill={theme.primarycolor4static} />
-          )}
-          </View>}
+    </>
+  );
+
+  // Figma "Status overlay": Freeze / Inactive / Expiring soon / Blocked x Default / Carousel / Virtual / View all.
+  const renderStatusOverlay = () => {
+    if (!freeze && !statusOverlay) return null;
+    const { scale, freeze: freezeSize } = statusOverlaySpec;
+    const iconSize = actuatedNormalize(18 * scale);
+    return (
+      <View style={styles.freezeCover}>
+        <BlurView
+          style={styles.blurContainer}
+          blurType="light"
+          blurAmount={statusOverlaySpec.blur}
+        />
+        {freeze ? (
+          <Freeze height={actuatedNormalize(freezeSize.height)} width={actuatedNormalize(freezeSize.width)} fill={theme.primarycolor4static} />
+        ) : statusOverlay === "blocked" ? (
+          <Lock width={actuatedNormalize(14 * scale)} height={iconSize} fill={theme.primarycolor4static} />
+        ) : statusOverlay === "inactive" ? (
+          <ErrorCircle width={iconSize} height={iconSize} fill={theme.primarycolor4static} />
+        ) : (
+          <Clock width={iconSize} height={iconSize} fill={theme.primarycolor4static} />
+        )}
+      </View>
+    );
+  };
+
+  const renderCardContent = () => (
+    <>
+      {renderBaseContent()}
+      {renderStatusOverlay()}
     </>
   );
 
@@ -1084,7 +1101,7 @@ export const CreditCard: FC<CreditCardProps> = ({
           styles.cardsBackground,
           cardsBackgroundStyles,
         ]}
-        blurRadius={(freeze || statusOverlay) ? 5 : 0}
+        blurRadius={(freeze || statusOverlay) ? Math.round(statusOverlaySpec.blur) : 0}
         onError={() => setFallback(true)}
         resizeMode="cover"
       />

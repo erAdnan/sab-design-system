@@ -1,3 +1,5 @@
+import * as allStories from "./ProductsCards.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import Gift from "../src/components/icons/other/Gift";
 import { LearningProductCard as LearningProductCardComponent } from "../src/components/productsCards/LearningProductCard";
 import { ProductsCards } from "../src/components/productsCards/ProductsCards";
@@ -128,3 +130,15 @@ export const CarouselWithChipsOffers = {
     }
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "ProductPageWithoutIconAndChips",
+    "ProductPageWithChips",
+    "ProductPageWithChipsOffers",
+    "ProductPageWithChipsAndIcon",
+    "Carousel",
+    "CarouselWithIcon",
+    "ProductPageWithFavorite",
+    "LearningProductCard",
+    "CarouselWithChipsOffers",
+]);

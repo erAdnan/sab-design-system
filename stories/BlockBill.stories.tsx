@@ -1,3 +1,5 @@
+import * as allStories from "./BlockBill.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import React, { useState } from "react";
 import { View } from "react-native";
 import { BlockBill } from "../src/components/block/BlockBill";
@@ -211,3 +213,17 @@ const MultiBillList = () => {
 export const MultipleBills = {
   render: () => <MultiBillList />,
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Selected",
+    "SelectedInputActive",
+    "SelectedNonEditable",
+    "SelectedWithEditedAmount",
+    "SelectedWithError",
+    "WithAdditionalContent",
+    "Pending",
+    "Loading",
+    "InteractiveSelection",
+    "MultipleBills",
+]);

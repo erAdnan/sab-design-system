@@ -1,3 +1,5 @@
+import * as allStories from "./BlockFeatures.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Features } from "../src/components/block/Features";
 
 export default {
@@ -47,3 +49,9 @@ export const Insights = {
 		extraContent: "Recommended for you based on your activity",
   	},
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "WithImage",
+    "Insights",
+]);

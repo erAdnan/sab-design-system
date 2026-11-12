@@ -1,9 +1,13 @@
+import * as allStories from "./ChipsSelect.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { BadgeSize, BadgeType } from "../src/components/badge/Badge";
 import { ChipsSelect } from "../src/components/chips/ChipsSelect";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
   title: "Components/ChipsSelect",
   component: ChipsSelect,
+  decorators: [centerStoryDecorator],
   argTypes: {
     showBadge: { action: "Badge", control: "boolean" },
     label: {
@@ -41,3 +45,8 @@ export const WithBadge = {
     showBadge: true,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "WithBadge",
+]);

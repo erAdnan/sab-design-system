@@ -1,3 +1,5 @@
+import * as allStories from "./PersonalFinanceWidget.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { BudgetCard as BudgetCardWidget } from "../src/components/personalFinanceWidgets/BudgetCard";
 import { Expenses as ExpensesWidget } from "../src/components/personalFinanceWidgets/Expenses";
 import { Tag as TagWidget } from "../src/components/personalFinanceWidgets/Tag";
@@ -200,3 +202,15 @@ export const CategoryCardVertical = {
     completed: { action: "Completed", control: "boolean" },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Expenses",
+    "Tag",
+    "MyActivityWeek",
+    "MyActivityMonth",
+    "BudgetCard",
+    "CategoryList",
+    "CategoryCardHorizontal",
+    "CategoryCardHorizontalError",
+    "CategoryCardVertical",
+]);

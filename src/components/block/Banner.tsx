@@ -13,7 +13,6 @@ import { Button } from "../button/Button";
 import Card from "../icons/banking/Card";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface BlockBannerProps {
   label: string;
@@ -36,13 +35,12 @@ export const Banner: FC<BlockBannerProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
 
   return loading ? (
     <View
       style={{
-        ...frame.of(343),
-        height: actuatedNormalize(133),
+        width: actuatedNormalize(343),
+        height: actuatedNormalize(132),
         backgroundColor: theme.stylesblockbg,
         display: "flex",
         flexDirection: "column",
@@ -96,8 +94,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    width: "100%",
-    height: actuatedNormalize(133),
+    width: actuatedNormalize(343), // Figma block.banner 343×132
+    height: actuatedNormalize(132),
     borderRadius: radiusS,
     padding: spacingS,
   },

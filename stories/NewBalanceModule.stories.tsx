@@ -1,3 +1,5 @@
+import * as allStories from "./NewBalanceModule.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import Bolt from "../src/components/icons/filled/Bolt";
 import { ListItemBadgeType } from "../src/components/list/ListItem";
 import { IcsabCashback as IcsabCashbackComponent, IcsabCashbackProps } from "../src/components/newBalanceModule/IcsabCashback";
@@ -9,8 +11,10 @@ import { Animated, FlatList, useWindowDimensions, View } from "react-native";
 import { useCallback, useRef, useState } from "react";
 import { NavigationDots } from "../src/components/navigationDots/NavigationDots";
 import { fontMediumLarge, spacingL } from "../src/assets/styles/constants/size";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/NewBalanceModule",
   components: [IcsabCashbackComponent, FCAndLifeGoalsComponent, PFMComponent]
 };
@@ -179,3 +183,9 @@ export const PFM = {
   //   periodLabel: 'May 2025',
   // }
 }
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "IcsabCashback",
+    "FCAndLifeGoals",
+    "PFM",
+]);

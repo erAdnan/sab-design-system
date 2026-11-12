@@ -1,6 +1,10 @@
+import * as allStories from "./RangeEntryText.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { RangeEntryText } from "../src/components/range/EntryText";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/RangeEntryText",
   component: RangeEntryText,
   argTypes: {
@@ -40,3 +44,12 @@ export const Error = {
 export const Filled = {
   args: { minValue: "500.00", maxValue: "1,000.00", label: "Price range" },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "WithLabel",
+    "MaxOnly",
+    "MinOnly",
+    "Error",
+    "Filled",
+]);

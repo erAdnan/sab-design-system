@@ -1,3 +1,5 @@
+import * as allStories from "./BlockButton.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { BlockButton } from "../src/components/block/Button";
 import LogoImage from "../src/components/icons/sab360/LogoImage";
 
@@ -41,3 +43,8 @@ export const Logo = {
     addonType: "logo",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Action",
+    "Logo",
+]);

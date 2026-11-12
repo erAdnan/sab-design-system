@@ -1,3 +1,5 @@
+import * as allStories from "./NewWidget.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { useTranslation } from "react-i18next";
 import Gift from "../src/components/icons/other/Gift";
 import { NewWidget } from "../src/components/widget/NewWidget";
@@ -58,3 +60,10 @@ export const ExtraLarge = {
     text: "Some text goes here and it can take up to three lines"
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Small",
+    "Medium",
+    "Large",
+    "ExtraLarge",
+]);

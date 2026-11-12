@@ -1,18 +1,23 @@
+import * as allStories from "./Accordion.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { View } from "react-native";
+import { listStoryDecorators } from "../.storybook/listStoryFrame";
 import {
   fontMediumLarge,
   spacingXS,
 } from "../src/assets/styles/constants/size";
 import { Accordion } from "../src/components/accordion/Accordion";
 import { List } from "../src/components/list/List";
-import { ListItemBadgeType } from "../src/components/list/ListItem";
+import { ListItemBadgeType, ListItemProps } from "../src/components/list/ListItem";
 import { Text } from "../src/components/text/Text";
 import { Divider } from "../src/components/divider/Divider";
 import { deepTranslateArgs, tx } from "../src/localization/tx";
+import { TextFieldInput } from "../src/components/input/TextFieldInput";
 
 export default {
   title: "Components/Accordion",
   component: Accordion,
+  decorators: listStoryDecorators,
   argTypes: {},
   args: {
     text: "Beneficiary Personal Details",
@@ -20,17 +25,16 @@ export default {
   },
 };
 
-const listTemplate = [
+const listTemplate: ListItemProps[] = [
   {
     label: { children: "Full Name", variant: "primarycolor2_100static" },
     badgeType: ListItemBadgeType.text,
     badgeText: "Value",
     badgeTextProps: {
+      children: "Value",
       bold: true,
       size: fontMediumLarge,
       variant: "primarytextcolor",
-      margin: 0,
-      padding: 0,
     },
     showDivider: true,
     overrideStyles: {
@@ -38,18 +42,16 @@ const listTemplate = [
       paddingHorizontal: 0,
       justfyContent: "space-between",
     },
-    statusTextState: "active" as "success" | "error" | "warning" | "neutral",
   },
   {
     label: { children: "Address", variant: "primarycolor2_100static" },
     badgeType: ListItemBadgeType.text,
     badgeText: "Value",
     badgeTextProps: {
+      children: "Value",
       bold: true,
       size: fontMediumLarge,
       variant: "primarytextcolor",
-      margin: 0,
-      padding: 0,
     },
     showDivider: true,
     overrideStyles: {
@@ -57,18 +59,16 @@ const listTemplate = [
       paddingHorizontal: 0,
       justfyContent: "space-between",
     },
-    statusTextState: "active" as "success" | "error" | "warning" | "neutral",
   },
   {
     label: { children: "Account Currency", variant: "primarycolor2_100static" },
     badgeType: ListItemBadgeType.text,
     badgeText: "Value",
     badgeTextProps: {
+      children: "Value",
       bold: true,
       size: fontMediumLarge,
       variant: "primarytextcolor",
-      margin: 0,
-      padding: 0,
     },
     showDivider: true,
     onItemPress: () => console.log("Copy pressed"),
@@ -77,7 +77,6 @@ const listTemplate = [
       paddingHorizontal: 0,
       justfyContent: "space-between",
     },
-    statusTextState: "active" as "success" | "error" | "warning" | "neutral",
   },
 ];
 
@@ -168,3 +167,86 @@ export const NewAccordionWithContent = {
     },
   },
 };
+
+// ---- Figma parity (Accordion page 103:637, .list): State = Close / Open / Selection / Content ----
+// `Default` above is the Close state; the stories below render the expanded states.
+export const Open = {
+  render: AccordionWithList,
+  args: {
+    text: "List Title",
+    defaultOpen: true,
+    showEdit: true,
+    editLabel: "Edit Section",
+  },
+};
+
+export const OpenWithoutEdit = {
+  render: AccordionWithList,
+  args: {
+    text: "List Title",
+    defaultOpen: true,
+  },
+};
+
+export const SelectionOpen = {
+  render: AccordionWithList,
+  args: {
+    text: "List Title",
+    defaultOpen: true,
+    showEdit: true,
+    editLabel: "Edit Section",
+    showCheckbox: true,
+    checkboxProps: {
+      isChecked: false,
+      handleCheck: (isChecked: boolean) => {
+        console.log("Checkbox is now: ", isChecked);
+      },
+    },
+  },
+};
+
+export const ContentOpen = {
+  render: AccordionWithContent,
+  args: {
+    text: "List Title",
+    defaultOpen: true,
+    showEdit: true,
+    editLabel: "Edit Section",
+  },
+};
+
+const AccordionWithInputs = (args: any) => (
+  <Accordion
+    {...args}
+    items={
+      <View style={{ gap: 16 }}>
+        <TextFieldInput label="Label" placeholder="Placeholder" textInputInput="" onChange={() => {}} error={false} fetched={false} />
+        <TextFieldInput label="Label" placeholder="Placeholder" textInputInput="" onChange={() => {}} error={false} fetched={false} />
+        <TextFieldInput label="Label" placeholder="Placeholder" textInputInput="" onChange={() => {}} error={false} fetched={false} />
+      </View>
+    }
+  />
+);
+
+// Figma `inputList` field list (Field 1..n inside the open accordion)
+export const OpenWithInputFields = {
+  render: AccordionWithInputs,
+  args: {
+    text: "List Title",
+    defaultOpen: true,
+    showEdit: true,
+    editLabel: "Edit Section",
+  },
+};
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "NewAccordionWithEditOption",
+    "NewAccordionWithCheckbox",
+    "NewAccordionWithContent",
+    "Open",
+    "OpenWithoutEdit",
+    "SelectionOpen",
+    "ContentOpen",
+    "OpenWithInputFields",
+]);

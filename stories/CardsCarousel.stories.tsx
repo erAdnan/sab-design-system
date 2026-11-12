@@ -1,3 +1,5 @@
+import * as allStories from "./CardsCarousel.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { useState } from "react";
 import { LanguageWrapper } from "../src/components/local/LanguageWrapper";
 import { CardsCarousel } from "../src/components/cards/CardsCarousel";
@@ -46,3 +48,10 @@ export const Solid = {
 };
 
 
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Platinum",
+    "Premier",
+    "Signature",
+    "Solid",
+]);

@@ -1,8 +1,12 @@
+import * as allStories from "./FloatingButton.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { FloatingButton } from "../src/components/newButtons/FloatingButton";
 import Prepaid from "../src/components/icons/outline/Prepaid";
 import ChevronEffectUp from "../src/components/icons/arrows/chevron/ChevronEffectUp";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
+  decorators: [centerStoryDecorator],
   title: "Components/FloatingButton",
   component: FloatingButton,
   argTypes: {
@@ -50,3 +54,12 @@ export const TextOnly = {
     text: "Add Card to AlAwwal Pay",
   },
 };
+
+// Gallery at the 343 mobile content width. FloatingButton sizes to its content and is not absolutely
+// positioned itself (the host screen pins it), so stacking only needs a bit of extra spacing; each button is
+// left-aligned in the column like it would sit on a screen.
+export const AllVariants = createAllVariantsStory(
+  allStories,
+  ["RedAccent", "GrayAccent", "IconOnly", "TextOnly"],
+  { gap: 32, itemStyle: { alignItems: "flex-start" } },
+);

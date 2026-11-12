@@ -1,3 +1,5 @@
+import * as allStories from "./ProgressIndicatorCircular.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { ProgressIndicatorCircular } from "../src/components/progressIndicatorCircular/ProgressIndicatorCircular";
 
 export default {
@@ -45,3 +47,10 @@ export const Small = {
     timeInSeconds: 10,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "XL",
+    "Large",
+    "Medium",
+    "Small",
+]);

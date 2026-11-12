@@ -22,7 +22,7 @@ export const NewProductCardSkeleton: FC<NewProductCardSkeletonProps> = ({imageSt
   const styles = StyleSheet.create({
     container: {
       height: actuatedNormalize(143),
-      width: actuatedNormalize(110),
+      width: actuatedNormalize(109),
       backgroundColor: theme.stylesblockbg,
       borderRadius: radiusS,
       display: "flex",

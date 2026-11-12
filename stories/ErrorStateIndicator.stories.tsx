@@ -1,6 +1,10 @@
+import * as allStories from "./ErrorStateIndicator.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { ErrorStateIndicator } from "../src/components/errorStateIndicator/ErrorStateIndicator";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/ErrorStateIndicator",
   component: ErrorStateIndicator,
   argTypes: {
@@ -34,3 +38,10 @@ export const WithoutAction = {
 };
 
 export const Loading = { args: { loading: true } };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "CustomMessage",
+    "WithoutAction",
+    "Loading",
+]);

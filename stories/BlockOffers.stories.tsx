@@ -1,3 +1,5 @@
+import * as allStories from "./BlockOffers.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { BlockOffers } from "../src/components/block/Offers";
 
 export default {
@@ -52,3 +54,10 @@ export const CashbackValidity = {
     showAction: false,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "DiscountAction",
+    "DiscountValidity",
+    "CashbackAction",
+    "CashbackValidity",
+]);

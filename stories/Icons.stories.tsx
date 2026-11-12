@@ -1,3 +1,6 @@
+import * as allStories from "./Icons.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 import Icon from "../src/components/icon/Icon";
 import { View } from "react-native";
 import {
@@ -161,4 +164,14 @@ export const Filled = {
     args: {
         type: "filled",
     },
+};
+
+// Every icon category (Arrows, Banking, ...) as a section at the 343 mobile content width; the icon grids wrap.
+export const AllVariants = {
+  ...createAllVariantsStory(
+    allStories,
+    ["Arrows", "Banking", "Functionals", "Notifications", "Others", "Social", "Sab360", "Filled"],
+    { gap: 32 },
+  ),
+  decorators: [centerStoryDecorator],
 };

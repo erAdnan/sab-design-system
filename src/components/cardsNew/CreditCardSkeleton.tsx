@@ -4,7 +4,6 @@ import { StyleSheet, View } from "react-native";
 import { radiusS, spacingS, spacingXS } from "../../assets/styles/constants/size";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface CreditCardSkeletonProps {
   view: 'default' | 'detailed' | 'carousel' | 'virtual' | 'selection'
@@ -12,7 +11,6 @@ interface CreditCardSkeletonProps {
 
 export const CreditCardSkeleton: React.FC<CreditCardSkeletonProps> = ({ view }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const styles = StyleSheet.create({
     common: {
       backgroundColor: theme.stylesblockbg,
@@ -21,30 +19,30 @@ export const CreditCardSkeleton: React.FC<CreditCardSkeletonProps> = ({ view }) 
     default: {
       padding: spacingS,
       height: actuatedNormalize(172),
-      ...frame.of(343)
+      width: actuatedNormalize(343)
     },
     detailed: {
       padding: spacingS,
       height: actuatedNormalize(172),
-      ...frame.of(343)
+      width: actuatedNormalize(343)
     },
     carousel: {
       paddingTop: actuatedNormalize(13),
       paddingRight: actuatedNormalize(10),
       paddingBottom: actuatedNormalize(9),
       paddingLeft: actuatedNormalize(8),
-      ...frame.of(200),
+      width: actuatedNormalize(200),
       height: actuatedNormalize(100)
     },
     selection: {
       paddingVertical: actuatedNormalize(11),
       paddingHorizontal: actuatedNormalize(12),
-      ...frame.of(306),
+      width: actuatedNormalize(306),
       height: actuatedNormalize(100)
     },
     virtual: {
-      height: actuatedNormalize(203),
-      ...frame.of(325)
+      height: actuatedNormalize(205),
+      width: actuatedNormalize(325)
     },
     elementsWrapper: {
       display: 'flex',
@@ -76,7 +74,7 @@ export const CreditCardSkeleton: React.FC<CreditCardSkeletonProps> = ({ view }) 
       gap: spacingS,
     },
     defaultTopLine: {
-      ...frame.of(201),
+      width: actuatedNormalize(201),
       height: actuatedNormalize(16),
       borderRadius: actuatedNormalize(8),
     },
@@ -86,12 +84,12 @@ export const CreditCardSkeleton: React.FC<CreditCardSkeletonProps> = ({ view }) 
       borderRadius: actuatedNormalize(8),
     },
     defaultMidLine: {
-      ...frame.of(201),
+      width: actuatedNormalize(201),
       height: actuatedNormalize(8),
       borderRadius: actuatedNormalize(8),
     },
     defaultBottomLine: {
-      ...frame.of(201),
+      width: actuatedNormalize(201),
       height: actuatedNormalize(16),
       borderRadius: actuatedNormalize(8),
     },
@@ -146,7 +144,7 @@ export const CreditCardSkeleton: React.FC<CreditCardSkeletonProps> = ({ view }) 
       ...styles.elementsWrapper, height: '100%', gap: 0, justifyContent: 'space-between'
     }}>
       <View style={styles.parallelLines}>
-        <SkeletonBox shape='line' size='small' overrideStyles={{ width: "100%", maxWidth: "100%", flexShrink: 1} }/>
+        <SkeletonBox shape='line' size='small' overrideStyles={{ width: actuatedNormalize(160)} }/>
         <SkeletonBox shape='line' size='small' overrideStyles={{ width: actuatedNormalize(40)} }/>
       </View>
       <SkeletonBox shape='line' size='medium' overrideStyles={{ width: actuatedNormalize(120)} }/>

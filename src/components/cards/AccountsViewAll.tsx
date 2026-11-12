@@ -4,15 +4,16 @@ import { useTheme } from "../../context/theme/themeContext";
 import {
   fontMedium,
   fontMediumLarge,
-  fontSmall,
+  fontXXSmall,
   fontWeightMedium,
   fontXLarge,
   fontXXLarge,
   heightXl,
   lineHeightMediumLarge,
+  lineHeightXXSmall,
   lineHeightXLarge,
   lineHeightXXLarge,
-  radiusS,
+  radiusL,
   spacingS,
   spacingXS,
   spacingXXXS,
@@ -38,7 +39,6 @@ import fonts from "../../assets/styles/constants/fonts";
 import DualUser from "../icons/outline/DualUser";
 import ShieldLock from "../icons/outline/ShieldLock";
 import { NewCurrency } from "../text/NewCurrency";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 type CardVariant =
   | 'portfolio account'
@@ -196,16 +196,16 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
 }) => {
   const { t } = useTranslation();
   const { theme, isDarkTheme } = useTheme();
-  const frame = useFluidWidth();
   const isCarousel = useMemo(() => type === 'carousel', [type]);
   const cardConfig = useMemo(() => getCardConfig(variant, theme, isDarkTheme, accountType, accountName,t), [variant,accountType,accountName, theme, isDarkTheme, t]);
   const styles = StyleSheet.create({
     container: {
-      ...frame.of(isCarousel ? 217 : 343),
+      // Figma accounts.view.all: Default 343×118, Carousel 217×118, p16, radius 16.
+      width: isCarousel ? actuatedNormalize(217) : actuatedNormalize(343),
+      minHeight: actuatedNormalize(118),
       padding: spacingS,
       backgroundColor: cardConfig.bgColor,
-      borderRadius: radiusS,
-      overflow: "hidden",
+      borderRadius: radiusL,
       flexDirection: "column",
       justifyContent: "space-between",
       gap: showLabel? 0 : spacingS,
@@ -215,39 +215,21 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
       fontFamily:fonts.HSBC_Medium,
       textAlign: "left", 
       width:"100%",
-      maxWidth: "100%",
-      flexShrink: 1,
-    },
-    textClamp: {
-      width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
-      flexShrink: 1,
-      overflow: "hidden",
     },
     accountInfo: {
       flexDirection: 'column', 
       alignItems: "flex-start", 
       justifyContent: "space-between",
-      flex: 1,
-      minWidth: 0,
-      maxWidth: "100%",
-      overflow: "hidden",
+      flex: 1
     },
     inlineContent: {
       flexDirection:  "row",
       alignItems: "center",
-      gap: spacingXS,
-      maxWidth: "100%",
-      minWidth: 0,
-      flexShrink: 1,
+      gap: spacingXS,      
     },
     topContainer: {
       width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
       flexDirection: "row",
-      flexWrap: "wrap",
       justifyContent: "space-between",
       alignItems: "flex-start", 
       gap: spacingS
@@ -259,17 +241,12 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
       alignItems: "center",
       borderRadius: actuatedNormalize(100),
       height: heightXl,
-      width: widthXl,
-      flexGrow: 0,
-      flexShrink: 0,
+      width: widthXl, 
     },
     bottomContainer:{
       flexDirection: "column",
       alignItems:"flex-start",
       display:"flex",
-      width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
     },
     balanceWrapper: {
       flexDirection: "row",
@@ -277,8 +254,6 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
       alignItems:"center",
       display:"flex",
       width:"100%",
-      maxWidth: "100%",
-      minWidth: 0,
     },
   });
 
@@ -302,29 +277,25 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
   return loading ? (
     <AccountsViewAllSkeleton type={type} />
   ) : (
-    <TouchableOpacity style={frame.of()} onPress={onIconPress}>
+    <TouchableOpacity onPress={onIconPress}>
       <View style={[styles.container, overrideStyles]}>
         <View style={styles.topContainer}>
           <View style={styles.accountInfo}>
-            <View style={styles.textClamp}>
-              <Text bold size={fontMediumLarge} overrideStyles={styles.accountName} numberOfLines={numberOfLines} variant="primarytextcolor">
-                {accountName || cardConfig.accountName}
-              </Text>
-            </View>
+            <Text bold size={fontMediumLarge} overrideStyles={styles.accountName} numberOfLines={numberOfLines} variant="primarytextcolor">
+              {accountName || cardConfig.accountName} 
+            </Text>
             <View style={styles.inlineContent}>
             {(accountNumber || accountNumberShort) && !hideBalance && (
-                <Text size={fontMediumLarge} variant="primarytextcolor2" numberOfLines={1} overrideStyles={{ flexShrink: 1, minWidth: 0 }}>
+                <Text size={fontMediumLarge} variant="primarytextcolor2">
                     {isCarousel ? accountNumberShort : accountNumber}
                     </Text>
                         )}
               {(!isCarousel && (accountType || cardConfig.accountType)) && 
-                <View style={[styles.inlineContent,{flexShrink:1, minWidth: 0}]}>
+                <View style={[styles.inlineContent,{flexShrink:1}]}>
                   {verticalLine && !hideBalance && <Text size={fontMediumLarge} variant="primarytextcolor2">|</Text>}
-                  <View style={styles.textClamp}>
-                    <Text size={fontMediumLarge} numberOfLines={1} variant="primarytextcolor2" overrideStyles={{ maxWidth: "100%" }}>
-                      {accountType || cardConfig.accountType}
-                    </Text>
-                  </View>
+                  <Text size={fontMediumLarge} numberOfLines={numberOfLines} variant="primarytextcolor2">
+                    {accountType || cardConfig.accountType} 
+                  </Text>
                 </View>
               }
             </View>
@@ -348,7 +319,7 @@ export const AccountViewAll: FC<AccountViewAllProps> = ({
           )}
         </View>
           <View style={styles.bottomContainer}>
-          {showLabel && <Text size={fontSmall} variant="primarytextcolor2" {...labeText}>
+          {showLabel && <Text size={fontXXSmall} variant="primarytextcolor2" overrideStyles={{ lineHeight: lineHeightXXSmall }} {...labeText}>
                     {showLabel} 
                   </Text>}
           <View style={styles.balanceWrapper}>

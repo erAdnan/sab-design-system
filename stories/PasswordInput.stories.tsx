@@ -1,6 +1,10 @@
+import * as allStories from "./PasswordInput.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { PasswordInput } from "../src/components/input/PasswordInput";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/PasswordInput",
   component: PasswordInput,
   argTypes: {
@@ -27,3 +31,8 @@ export const PasswordInputErrorText = {
     helperText: "Must contain at least one numeric character",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "PasswordInputDefault",
+    "PasswordInputErrorText",
+]);

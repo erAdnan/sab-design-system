@@ -1,3 +1,5 @@
+import * as allStories from "./CarouselBanner.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { CarouselBanner } from "../src/components/banner/CarouselBanner";
 
 export default {
@@ -34,3 +36,8 @@ export const Image = {
     },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Image",
+]);

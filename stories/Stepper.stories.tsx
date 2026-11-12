@@ -1,9 +1,13 @@
+import * as allStories from "./Stepper.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { View } from "react-native";
 import { Stepper } from "../src/components/stepper/Stepper";
 import { spacingS } from "../src/assets/styles/constants/size";
 import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
     title: "Components/Stepper",
     component: Stepper,
     argTypes: {
@@ -47,3 +51,8 @@ export const Interactive = {
     },
 };
 
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Interactive",
+]);

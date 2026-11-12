@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC, ReactElement } from "react";
 import { Button, ButtonProps } from "./Button";
 import { StyleSheet, View } from "react-native";
 import { Size } from "../../assets/styles";
-import { widthXl } from "../../assets/styles/constants/size";
+import { spacingXS, widthXl } from "../../assets/styles/constants/size";
 import { useTheme } from "../../context/theme/themeContext";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import { Disclaimer, DisclaimerProps } from "../disclaimer/Disclaimer";
@@ -42,23 +42,32 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
 }) => {
   const { theme } = useTheme();
   const buttonsLayout = type === "stacked" ? styles.stacked : styles.inline;
+  const isInline = type === "inline";
+  const hasTertiary = !!tertiaryButton;
+  // Figma inline group: 343 wide, 16 gap, buttons flex 1 (max 163.5), optional 48x48 icon button.
+  // Stacked group: full width buttons, 16 gap, link button 24 below the last button.
+  const buttonSlot = (children: ReactElement) =>
+    isInline ? <View style={styles.inlineSlot}>{children}</View> : children;
   const content = (
     <>
-      <Button
-        overrideStyles={{ width: type === "stacked" ? "100%" : tertiaryButton ? "auto" : actuatedNormalize(160) }}
-        loading={loading}
-        loadingStyles={type === "stacked" && { width: "100%" }}
-        {...primaryButton}
-      />
-      {secondaryButton && (
+      {buttonSlot(
         <Button
-          overrideStyles={{ width: type === "stacked" ? "100%" : tertiaryButton ? "auto" : actuatedNormalize(160), ...(checkBorder && { borderColor: secondaryBtnBorderColor || theme.primarycolor4static,}),  }}
+          overrideStyles={{ width: "100%" }}
           loading={loading}
-          loadingStyles={type === "stacked" && { width: "100%" }}
-          {...secondaryButton}
+          loadingStyles={{ width: "100%" }}
+          {...primaryButton}
         />
       )}
-      {tertiaryButton && (
+      {secondaryButton &&
+        buttonSlot(
+          <Button
+            overrideStyles={{ width: "100%", ...(checkBorder && { borderColor: secondaryBtnBorderColor || theme.primarycolor4static }) }}
+            loading={loading}
+            loadingStyles={{ width: "100%" }}
+            {...secondaryButton}
+          />
+        )}
+      {hasTertiary && (
         <Button
           overrideStyles={
             type === "stacked"
@@ -101,7 +110,7 @@ const styles = StyleSheet.create({
   },
   stacked: {
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "stretch",
     gap: Size.spacingS,
   },
   inline: {
@@ -110,10 +119,21 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     gap: Size.spacingS,
   },
+  // Figma button.group inline: buttons are flex 1 with max-width 163.5 (2 x 163.5 + 16 gap = 343).
+  inlineSlot: {
+    flex: 1,
+    minWidth: 0,
+    maxWidth: actuatedNormalize(163.5),
+  },
+  // Figma stacked group: 16 between buttons, 24 before the link button (16 gap + 8).
   tertiaryButtonLink: {
     width: "100%",
+    marginTop: spacingXS,
   },
+  // Figma icon button: 48 x 48, 24px icon centered, no horizontal padding.
   tertiaryButtonIcon: {
+    width: widthXl,
     minWidth: widthXl,
+    paddingHorizontal: 0,
   },
 });

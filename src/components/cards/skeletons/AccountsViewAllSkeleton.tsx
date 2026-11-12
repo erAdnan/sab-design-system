@@ -1,10 +1,9 @@
 import React, { useMemo } from 'react'
 import { useTheme } from "../../../context/theme/themeContext";
 import { StyleSheet, View } from "react-native";
-import { radiusS, spacingS, spacingXS } from "../../../assets/styles/constants/size";
+import { radiusL, spacingS, spacingXS } from "../../../assets/styles/constants/size";
 import { actuatedNormalize } from "../../../assets/styles/utils/pixelScaling";
 import { SkeletonBox } from "../../skeleton/SkeletonBox";
-import { useFluidWidth } from "../../../assets/styles/utils/responsive";
 
 interface AccountsViewAllSkeletonProps {
   type: 'carousel' | 'default';
@@ -12,11 +11,10 @@ interface AccountsViewAllSkeletonProps {
 
 export const AccountsViewAllSkeleton: React.FC<AccountsViewAllSkeletonProps> = ({ type }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const styles = StyleSheet.create({
     common: {
       padding: spacingS,
-      borderRadius: radiusS,
+      borderRadius: radiusL,
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
@@ -24,10 +22,10 @@ export const AccountsViewAllSkeleton: React.FC<AccountsViewAllSkeletonProps> = (
       height: actuatedNormalize(118)
     },
     default: {
-      ...frame.of(343),
+      width: actuatedNormalize(343),
     },
     carousel: {
-      ...frame.of(217),
+      width: actuatedNormalize(217),
     },
     parallelLines: {
       display: 'flex',

@@ -1,3 +1,6 @@
+import * as allStories from "./ListItem.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
+import { listStoryDecorators } from "../.storybook/listStoryFrame";
 import {
   ListItem,
   ListItemActionType,
@@ -14,6 +17,7 @@ import { fontMediumLarge } from "../src/assets/styles/constants/size";
 export default {
   title: "Components/ListItem",
   component: ListItem,
+  decorators: listStoryDecorators,
   argTypes: {
     badgeType: {
       action: "Text",
@@ -306,3 +310,32 @@ export const TitleWithInfoTooltip = {
     "titleTooltipProps.text": { control: "text" },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Simple",
+    "Checkbox",
+    "RadioButton",
+    "Chevron",
+    "Checkmark",
+    "Edit",
+    "Delete",
+    "LabelWithValueCopy",
+    "TitleWithBodyAndToggle",
+    "TextWithChevron",
+    "TextWithTextAndCopy",
+    "ValueTextWithLabel",
+    "BadgeWithChevron",
+    "ChipsWithChevron",
+    "Balance",
+    "BalanceWithStatus",
+    "InlineWithBackground",
+    "StackedBody",
+    "StackedBodyWithBackround",
+    "StackedWithBodyText",
+    "StackedWithPieGraph",
+    "StackedWithAvatar",
+    "StackedWithTickCheckmark",
+    "TitleWithBodyAndSpinner",
+    "NumberWithTextBadge",
+    "TitleWithInfoTooltip",
+]);

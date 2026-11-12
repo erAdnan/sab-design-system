@@ -1,5 +1,8 @@
+import * as allStories from "./List.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import React from "react";
 import { View } from "react-native";
+import { listStoryDecorators } from "../.storybook/listStoryFrame";
 import { List } from "../src/components/list/List";
 import {
   ListItemActionType,
@@ -15,6 +18,7 @@ import InfoFrame from "../src/components/icons/status/InfoFrame";
 export default {
   title: "Components/List",
   component: List,
+  decorators: listStoryDecorators,
 };
 
 const TickIcon = (args: any) => {
@@ -220,3 +224,14 @@ export const TransactionListItemList = {
     </View>
   ),
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "ItemsWithCheckbox",
+    "ItemsWithChevron",
+    "ItemsWithChevronAndBadge",
+    "ItemsWithStackedContent",
+    "ItemsWithToggleAndBackground",
+    "TransactionListItemDefault",
+    "TransactionListItemLabelAndAmountOnly",
+    "TransactionListItemList",
+]);

@@ -1,3 +1,5 @@
+import * as allStories from "./NewProductCardLarge.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import Beauty from "../src/components/icons/other/Beauty";
 import { NewProductCardLarge } from "../src/components/productsCards/NewProductCardLarge";
 
@@ -33,3 +35,8 @@ export const Horizontal = {
     iconLabel: "Beauty"
   }  
 }
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Vertical",
+    "Horizontal",
+]);

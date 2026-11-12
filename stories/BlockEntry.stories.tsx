@@ -1,3 +1,5 @@
+import * as allStories from "./BlockEntry.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { View } from "react-native";
 import { Entry } from "../src/components/block/Entry";
 import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
@@ -41,7 +43,7 @@ export const Tile = {
 };
 
 const TilePairTemplate = (args: any) => (
-  <View style={{ flexDirection: "row", flexWrap: "wrap", width: "100%", maxWidth: "100%", gap: actuatedNormalize(8) }}>
+  <View style={{ flexDirection: "row", gap: actuatedNormalize(8) }}>
     <Entry {...args} variant="tile" icon={placeholderIcon} />
     <Entry {...args} variant="tile" icon={placeholderIcon} />
   </View>
@@ -58,3 +60,11 @@ export const WithoutSubtitle = {
 };
 
 export const Loading = { args: { loading: true } };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Row",
+    "Tile",
+    "TilePair",
+    "WithoutSubtitle",
+    "Loading",
+]);

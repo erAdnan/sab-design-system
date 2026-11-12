@@ -1,9 +1,11 @@
 
 
 import { PreloginPageTitle } from "../src/components/preloginPageTitle/PreloginPageTitle";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/PreloginPageTitle",
   component: PreloginPageTitle,
   argTypes: {

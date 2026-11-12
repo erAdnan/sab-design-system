@@ -3,7 +3,7 @@ import { Platform, StyleSheet, TouchableOpacity, View, ViewStyle } from "react-n
 import { useTheme } from "../../context/theme/themeContext";
 import { Text } from "../text/Text";
 import { Size } from "../../assets/styles";
-import { fontMedium, radiusS, spacingS, spacingXS, spacingXXS } from "../../assets/styles/constants/size";
+import { fontMedium, lineHeightMedium, radiusS, spacingS, spacingXS, spacingXXS } from "../../assets/styles/constants/size";
 import { ButtonSkeleton } from "./ButtonSkeleton";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import { AutomationProps, getAutomationProps } from "../automationProps";
@@ -84,13 +84,14 @@ export const SegmentedButton: FC<SegmentedButtonProps> = ({
       alignSelf: "flex-start",
       backgroundColor: theme.stylescolor7,
       borderRadius: cornerRadius,
+      // Figma segmentedButton: 1px inner padding around the cells
+      padding: 1,
     },
     containerFullWidth: {
       width: "100%",
       alignSelf: "stretch",
     },
     btnWrapper: {
-      margin: Size.spacingXXXS,
       borderRadius: cornerRadius,
     },
     btnWrapperFullWidth: {
@@ -101,8 +102,9 @@ export const SegmentedButton: FC<SegmentedButtonProps> = ({
       backgroundColor: theme.primarywhite,
       borderRadius: cornerRadius,
     },
+    // Figma .segmentedButtonCell: hugs its label (px 16 / py 8, 4 gap, 14/18 text), e.g. "Button" = 76 x 34
     btnGeneral: {
-      minWidth: actuatedNormalize(113),
+      minWidth: 0,
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -160,7 +162,7 @@ export const SegmentedButton: FC<SegmentedButtonProps> = ({
         >
           <View style={styles.labelRow}>
             {button.icon ?? (
-              <Text size={fontMedium}>{button.buttonText.toString()}</Text>
+              <Text size={fontMedium} overrideStyles={{ lineHeight: lineHeightMedium }}>{button.buttonText.toString()}</Text>
             )}
             {button.badgeType ? (
               <Badge size={BadgeSize.xs} type={button.badgeType} />

@@ -5,7 +5,9 @@ import { Text } from "../src/components/text/Text";
 import BeneficiaryOutline from "../src/components/icons/users/BeneficiaryOutline";
 
 import { deepTranslateArgs, tx } from "../src/localization/tx";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 export default {
+  decorators: mobileContentDecorators,
     title: "Components/Tabs",
     component: Tabs,
     args: {

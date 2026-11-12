@@ -1,3 +1,5 @@
+import * as allStories from "./LinkIconButton.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { LinkIconButton } from "../src/components/button/LinkIconButton";
 import DocumentEdit from "../src/components/icons/functionals/DocumentEdit";
 
@@ -22,3 +24,8 @@ export const Disabled = {
     loading: false,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Disabled",
+]);

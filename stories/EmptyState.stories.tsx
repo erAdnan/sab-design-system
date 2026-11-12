@@ -1,3 +1,5 @@
+import * as allStories from "./EmptyState.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import React from "react";
 import {
   fontSmall,
@@ -17,8 +19,10 @@ import PointsSummaryIcon from "../src/assets/svgs/dark/sab360/pointsSummary.svg"
 import RedeemIcon from "../src/assets/svgs/dark/sab360/redeem.svg";
 import LearnIllustration from "../src/components/illustrations/Learn";
 import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/EmptyState",
   component: EmptyState,
   argTypes: {
@@ -205,3 +209,22 @@ export const WithSAB360Redeem = {
     image: <RedeemIcon width={actuatedNormalize(48)} height={actuatedNormalize(48)} />,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Warning",
+    "ErrorWithButton",
+    "Success",
+    "Info",
+    "SuccessIconSmall",
+    "WithAbsherLogo",
+    "WithDrahimLogo",
+    "WithSarieLogo",
+    "WithSimahLogo",
+    "WithZakatyLogo",
+    "WithIllustration",
+    "WithSAB360Activity",
+    "WithSAB360Cash",
+    "WithSAB360Pin",
+    "WithSAB360PointsSummary",
+    "WithSAB360Redeem",
+]);

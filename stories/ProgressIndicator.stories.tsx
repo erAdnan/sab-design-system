@@ -1,9 +1,13 @@
+import * as allStories from "./ProgressIndicator.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { ProgressIndicator } from "../src/components/progressIndicator/ProgressIndicator";
 import { PieGraph } from "../src/components/pieGraph/PieGraph";
 import { Text } from "../src/components/text/Text";
 import { fontLarge, fontSmall, fontXLarge, fontXXSmall } from "../src/assets/styles/constants/size";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/ProgressIndicator",
   components: [ProgressIndicator, PieGraph],
   argTypes: {
@@ -89,3 +93,14 @@ export const ProgressIndicatorCircularSmall = {
     content: <Text size={8} variant="primarycolor3">00:25</Text>
   }
 }
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "ProgressIndicator25",
+    "ProgressIndicator50",
+    "ProgressIndicator75",
+    "ProgressIndicator100",
+    "ProgressIndicatorCircularExtraLarge",
+    "ProgressIndicatorCircularLarge",
+    "ProgressIndicatorCircularMedium",
+    "ProgressIndicatorCircularSmall",
+]);

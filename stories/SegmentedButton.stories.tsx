@@ -1,3 +1,6 @@
+import * as allStories from "./SegmentedButton.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 import { SegmentedButton as SegmentedButtonComponent } from "../src/components/button/SegmentedButton";
 import { BadgeType } from "../src/components/badge/Badge";
 import Wallet from "../src/components/icons/filled/Wallet";
@@ -8,6 +11,7 @@ const badgeTypeOptions = Object.keys(BadgeType);
 export default {
   title: "Components/SegmentedButton",
   component: SegmentedButtonComponent,
+  decorators: [centerStoryDecorator],
   argTypes: {
     count: { action: "Count", control: "radio", options: [2, 3] },
     rounded: { control: "boolean" },
@@ -118,3 +122,12 @@ export const Count2IconsRounded = {
     },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Count3",
+    "Count2Rounded",
+    "Count3Rounded",
+    "Count2",
+    "Count2WithBadge",
+    "Count2IconsRounded",
+]);

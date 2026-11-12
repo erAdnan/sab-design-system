@@ -1,3 +1,5 @@
+import * as allStories from "./Rag.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { View } from "react-native";
 import { RagIconType, Rag } from "../src/components/rag/Rag";
 import { spacingS } from "../src/assets/styles/constants/size";
@@ -76,3 +78,9 @@ export const FilledSmall = {
 export const Family = {
   render: InteractiveTemplateFamily
 }
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "FilledSmall",
+    "Family",
+]);

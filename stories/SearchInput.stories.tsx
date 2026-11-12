@@ -1,8 +1,12 @@
+import * as allStories from "./SearchInput.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import React from "react";
 import { View } from "react-native";
 import { SearchInput } from "../src/components/input/SearchInput";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/SearchInput",
   component: SearchInput,
   argTypes: {
@@ -101,3 +105,12 @@ export const AllStates = {
     </View>
   ),
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "WithFilterIcon",
+    "Filled",
+    "WhiteBackground",
+    "Disabled",
+    "AllStates",
+]);

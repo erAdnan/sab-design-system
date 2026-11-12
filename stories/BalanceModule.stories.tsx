@@ -1,3 +1,5 @@
+import * as allStories from "./BalanceModule.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Animated, FlatList, useWindowDimensions, View } from "react-native";
 import {
   BalanceModule,
@@ -424,3 +426,9 @@ export const InteractiveWithDropdown = {
     loading: false
   }
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Interactive",
+    "InteractiveWithDropdown",
+]);

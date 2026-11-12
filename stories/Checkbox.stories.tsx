@@ -1,3 +1,5 @@
+import * as allStories from "./Checkbox.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { useEffect, useState } from "react";
 import { Checkbox } from "../src/components/checkbox/Checkbox";
 import i18n from "i18next";
@@ -58,3 +60,9 @@ export const Disabled = {
         'disabled': true,
     }
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Interactive",
+    "Static",
+    "Disabled",
+]);

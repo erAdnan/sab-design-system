@@ -12,7 +12,6 @@ import {
 import { Text } from "../text/Text";
 import Hash from "../icons/banking/Hash";
 import TagSkeleton from "./TagSkeleton";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface TagWidgetProps {
   mainText: string;
@@ -31,11 +30,10 @@ export const Tag: FC<TagWidgetProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
 
   const styles = StyleSheet.create({
     container: {
-      ...frame.of(230),
+      width: actuatedNormalize(230),
       height: actuatedNormalize(64),
       borderRadius: radiusS,
       backgroundColor: theme.stylesblockbg,

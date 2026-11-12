@@ -1,4 +1,7 @@
+import * as allStories from "./ButtonGroup.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { useState } from "react";
+import { buttonContentStoryDecorators } from "../.storybook/buttonStoryFrame";
 import { ButtonGroup } from "../src/components/button/ButtonGroup";
 import MyAccounts from "../src/components/icons/banking/MyAccounts";
 import { useTheme } from "../src/context/theme/themeContext";
@@ -37,6 +40,8 @@ const CheckboxDisclaimerTemplate = (args: any) => {
 export default {
   title: "Components/ButtonGroup",
   component: ButtonGroup,
+  // Figma mobile content width (343) centered, instead of stretching across the desktop canvas.
+  decorators: buttonContentStoryDecorators,
   argTypes: {
     type: { action: "Type", control: "radio", options: ["stacked", "inline"] },
     tertiaryButton: { action: "Tertiary Button", control: "object" },
@@ -167,3 +172,10 @@ export const StackedWithCheckboxDisclaimer = {
     },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Stacked",
+    "Inline",
+    "StackedWithDisclaimer",
+    "StackedWithCheckboxDisclaimer",
+]);

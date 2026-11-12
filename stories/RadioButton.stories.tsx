@@ -1,3 +1,5 @@
+import * as allStories from "./RadioButton.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { useEffect, useState } from "react";
 import i18n from "i18next";
 import { RadioButton } from "../src/components/radio/Radio";
@@ -84,3 +86,10 @@ export const DisabledStates = {
         </View>
     ),
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Group",
+    "GroupWithText",
+    "GroupWithDisabled",
+    "DisabledStates",
+]);

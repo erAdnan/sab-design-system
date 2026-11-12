@@ -1,6 +1,10 @@
+import * as allStories from "./Balance.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Balance } from "../src/components/balance/Balance";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/Balance",
   component: Balance,
   argTypes: {
@@ -37,3 +41,8 @@ export const WithStatus = {
     },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "WithStatus",
+]);

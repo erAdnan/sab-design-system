@@ -25,7 +25,6 @@ import ProductsCardsSkeleton from "./ProductsCardsSkeleton";
 import { ChipsOffers, ChipsOffersProps } from "../chips/ChipsOffers";
 import { Text } from "../text/Text";
 import { PieGraph } from "../pieGraph/PieGraph";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 export interface LearningProductCardProps {
   subheading: string;
@@ -55,13 +54,12 @@ export const LearningProductCard: FC<LearningProductCardProps> = ({
   loading = false
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
 
   const styles = StyleSheet.create({
     container: {
       borderRadius: radiusS,
       backgroundColor: theme.stylesblockbg,
-      ...frame.of(343),
+      width: actuatedNormalize(343),
       overflow: "hidden",
     },
     textContainer: {
@@ -76,7 +74,7 @@ export const LearningProductCard: FC<LearningProductCardProps> = ({
     },
     bodyText: {
       marginTop: spacingXS,
-      width: actuatedNormalize(210), maxWidth: "100%", flexShrink: 1,
+      width: actuatedNormalize(210),
       textAlign: "left",
     },
     imageThumbnail: {
@@ -105,7 +103,7 @@ export const LearningProductCard: FC<LearningProductCardProps> = ({
     >
       <ImageThumbnail
         {...imageProps}
-        width={frame.span}
+        width={actuatedNormalize(343)}
         height={actuatedNormalize(95)}
         overrideStyles={styles.imageThumbnail}
         overrideImageStyles={{

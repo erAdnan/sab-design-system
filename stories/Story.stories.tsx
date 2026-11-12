@@ -1,6 +1,10 @@
+import * as allStories from "./Story.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Story } from "../src/components/story/Story";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
+  decorators: [centerStoryDecorator],
   title: "Components/Story",
   component: Story,
   argTypes: {
@@ -26,3 +30,8 @@ export const WithExtraContent = {
     extraContent: "Extra content",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "WithText",
+    "WithExtraContent",
+]);

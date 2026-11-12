@@ -1,8 +1,12 @@
+import * as allStories from "./NewChipsInfo.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { NewChipsInfo } from "../src/components/chips/NewChipsInfo";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
   title: "Components/NewChipsInfo",
   component: NewChipsInfo,
+  decorators: [centerStoryDecorator],
   argTypes: {
     state: {
       control: "radio",
@@ -71,3 +75,14 @@ export const Loading = {
     loading: true,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Warning",
+    "Success",
+    "Info",
+    "Error",
+    "Neutral",
+    "Arabic",
+    "Loading",
+]);

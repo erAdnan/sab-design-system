@@ -1,3 +1,5 @@
+import * as allStories from "./Avatar.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { View } from "react-native";
 import { Avatar } from "../src/components/avatar/Avatar";
 import Edit from "../src/components/icons/functionals/Edit";
@@ -97,3 +99,16 @@ export const LogoWithIcon = {
     icon: <IconComponent type="banking" name="card" />,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "InitialsSmall",
+    "InitialsMedium",
+    "InitialsLarge",
+    "ProfilePictureSmall",
+    "ProfilePictureMedium",
+    "ProfilePictureLarge",
+    "ProfilePictureWithStatusIcon",
+    "ProfilePictureWithEditIcon",
+    "Icon",
+    "LogoWithIcon",
+]);

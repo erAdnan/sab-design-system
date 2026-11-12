@@ -1,3 +1,5 @@
+import * as allStories from "./ProductsCardsSummary.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { useState } from "react";
 import { ProductsCardsSummary } from "../src/components/productsCards/ProductsCardsSummary";
 import {
@@ -254,3 +256,16 @@ export const PurchaseHistoryListActionButtonShare = {
     },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "ReviewScreen",
+    "ShoppingCart",
+    "ShoppingCartNoExtraContent",
+    "PurchaseHistorySuccess",
+    "PurchaseHistoryEmpty",
+    "PurchaseHistorySuccessOneActionButton",
+    "PurchaseHistoryActionButtonShare",
+    "PurchaseHistoryOneActionButtonShare",
+    "PurchaseHistoryListActionButtonShare",
+]);

@@ -1,9 +1,13 @@
+import * as allStories from "./Snackbar.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Snackbar } from "../src/components/snackbar/Snackbar";
 import { useTranslation } from "react-i18next";
 import {  Text } from "react-native";
 import React from "react";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/Snackbar",
   component: Snackbar,
   argTypes: {
@@ -64,6 +68,22 @@ export const Toast = {
    // actionAddon: "close",
     headline: true,
   },
+};
+
+// Figma snackBar: Type=Success / Warning / Info / Error (343 wide).
+export const ToastWarning = {
+  render: InteractiveTemplate,
+  args: { usage: "toast", type: "warning", headline: true },
+};
+
+export const ToastInfo = {
+  render: InteractiveTemplate,
+  args: { usage: "toast", type: "info", headline: true },
+};
+
+export const ToastError = {
+  render: InteractiveTemplate,
+  args: { usage: "toast", type: "error", headline: true },
 };
 
 // export const InlineWithButtons = {
@@ -145,3 +165,26 @@ export const Toast = {
 //         ),
 //   },
 // };
+
+// Gallery at the 343 mobile content width. The toast is an absolutely positioned overlay (top offset 54,
+// slide-in animation, auto-dismiss after `duration`), so in the gallery we put it back in normal flow
+// (`position: relative`, no top offset, no zIndex/elevation) so stacked toasts never overlap, and extend the
+// duration so no variant dismisses itself while you are looking at the page.
+export const AllVariants = createAllVariantsStory(
+  allStories,
+  ["Toast", "ToastWarning", "ToastInfo", "ToastError"],
+  {
+    gap: 24,
+    mapArgs: (args) => ({
+      ...args,
+      duration: 2147000000,
+      overrideStyles: {
+        ...(args.overrideStyles ?? {}),
+        position: "relative",
+        top: 0,
+        zIndex: 0,
+        elevation: 0,
+      },
+    }),
+  },
+);

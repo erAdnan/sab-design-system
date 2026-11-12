@@ -1,3 +1,5 @@
+import * as allStories from "./BlockInformation.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import React from "react";
 import { Information } from "../src/components/block/Information";
 import InfoFrame from "../src/components/icons/status/InfoFrame";
@@ -55,3 +57,11 @@ export const WithoutHeadline = {
     avatarProps: { icon: <InfoFrame />}
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "WithIcon",
+    "WithAvatar",
+    "WithAvatarBank",
+    "WithPieGraph",
+    "WithoutHeadline",
+]);

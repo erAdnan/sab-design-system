@@ -18,7 +18,6 @@ import { useTranslation } from "react-i18next";
 import ChevronRight from "../icons/arrows/chevron/ChevronRight";
 import { SarFont } from "../sarFont/SarFont";
 import BarChartSkeleton from "./BarChartSkeleton";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface BarChartItemProps {
   label: string;
@@ -53,12 +52,11 @@ export const BarChart: FC<BarChartWidgetProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const { t } = useTranslation();
 
   const styles = StyleSheet.create({
     container: {
-      ...frame.of(344),
+      width: actuatedNormalize(343), // Figma pf.myActivity 343
       borderRadius: radiusS,
       backgroundColor: theme.stylesblockbg,
       padding: spacingS,

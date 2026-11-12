@@ -1,11 +1,15 @@
+import * as allStories from "./TextDivider.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { TextDivider } from "../src/components/text/TextDivider";
 import en from "../src/localization/locales/en";
 import { useStoryCopy } from "./helpers/useStoryCopy";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 const SAMPLE_HEADLINE = en.stories.pageTitle;
 const SAMPLE_BODY = en.stories.loremIpsum;
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/TextDivider",
   component: TextDivider,
   args: {
@@ -115,3 +119,13 @@ export const InPageOverideStyle = {
     headlineStyle: { alignSelf: "center", textAlign: "center", flex: 1 },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "PageTitle",
+    "Promotional",
+    "Bottomsheet",
+    "InPageDefault",
+    "InPageBadge",
+    "InPageTooltip",
+    "InPageOverideStyle",
+]);

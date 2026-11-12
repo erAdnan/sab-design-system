@@ -1,3 +1,5 @@
+import * as allStories from "./BlockButtonNew.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { BlockButtonNew } from "../src/components/block/BlockButtonNew";
 import Mada from "../src/components/logos/Mada";
 import Drahim from "../src/components/logos/Drahim";
@@ -67,3 +69,11 @@ export const Loading = {
     logos: [<Mada />, <Drahim />, <Sarie />],
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "RemoteUrlLogos",
+    "TwoLogos",
+    "WithoutLogos",
+    "Loading",
+]);

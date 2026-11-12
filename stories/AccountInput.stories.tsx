@@ -1,6 +1,10 @@
+import * as allStories from "./AccountInput.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { AccountInput } from "../src/components/input/AccountInput";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/AccountInput",
   component: AccountInput,
   argTypes: {
@@ -30,3 +34,8 @@ export const AccountInputWithSAAndQR = {
     placeholder: "Enter name",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "AccountInputWithSA",
+    "AccountInputWithSAAndQR",
+]);

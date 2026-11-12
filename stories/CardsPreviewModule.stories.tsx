@@ -1,3 +1,5 @@
+import * as allStories from "./CardsPreviewModule.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { useState } from "react";
 import { PreviewModule } from "../src/components/cards/PreviewModule";
 import { LanguageWrapper } from "../src/components/local/LanguageWrapper";
@@ -65,3 +67,10 @@ export const Cards = {
     accountName: "SAB Signature Visa Credit card",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Account",
+    "Finance",
+    "Portfolio",
+    "Cards",
+]);

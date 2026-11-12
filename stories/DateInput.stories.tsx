@@ -1,6 +1,10 @@
+import * as allStories from "./DateInput.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { DateInput } from "../src/components/input/DateInput";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/DateInput",
   component: DateInput,
   argTypes: {
@@ -27,3 +31,8 @@ export const DateInputWithLabelAndHelperText = {
     placeholder: "Select date...",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "DateInputSimple",
+    "DateInputWithLabelAndHelperText",
+]);

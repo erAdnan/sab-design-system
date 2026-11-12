@@ -1,3 +1,5 @@
+import * as allStories from "./SemiCircleGraph.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { SemiCircleGraph } from '../src/components/graphs/semi-circle-chart/SemiCircleGraph';
 
 export default {
@@ -102,3 +104,12 @@ export const ThickBorder = {
   },
 };
 
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "HighPercentage",
+    "LowPercentage",
+    "FullPercentage",
+    "ThinBorder",
+    "ThickBorder",
+]);

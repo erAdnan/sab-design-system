@@ -1,6 +1,10 @@
+import * as allStories from "./RangeSelector.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Selector } from "../src/components/range/Selector";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/Selector",
   component: Selector,
   argTypes: {
@@ -100,3 +104,12 @@ export const WithAmountHelperText = {
     helperTextRight: "Helper Text",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "WithError",
+    "Single",
+    "SingleWithErrors",
+    "SingleWithHelperText",
+    "WithAmountHelperText",
+]);

@@ -1,3 +1,5 @@
+import * as allStories from "./NewProductCardSmall.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { NewProductCardSmall } from "../src/components/productsCards/NewProductCardSmall";
 
 export default {
@@ -44,3 +46,10 @@ export const WithChipsAndFavorite = {
     }
   }  
 }
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "WithLabel",
+    "WithFavorite",
+    "WithChipsAndFavorite",
+]);

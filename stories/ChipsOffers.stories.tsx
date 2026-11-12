@@ -1,8 +1,12 @@
+import * as allStories from "./ChipsOffers.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { ChipsOffers } from "../src/components/chips/ChipsOffers";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
   title: "Components/ChipsOffers",
   component: ChipsOffers,
+  decorators: [centerStoryDecorator],
   argTypes: {
     type: {
       action: "Chips type",
@@ -44,3 +48,10 @@ export const New = {
     overrideLabelStyles: {color : "#FFFFFF"}
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Centered",
+    "Left",
+    "Right",
+    "New",
+]);

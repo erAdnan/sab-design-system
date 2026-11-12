@@ -1,7 +1,11 @@
+import * as allStories from "./PasswordStrength.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { PasswordStrength } from "../src/components/passwordStrength/PasswordStrength";
 import { useTranslation } from "react-i18next";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/PasswordStrength",
   component: PasswordStrength,
   argTypes: {
@@ -44,3 +48,9 @@ export const Strong = {
     loading: false,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Weak",
+    "Normal",
+    "Strong",
+]);

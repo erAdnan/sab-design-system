@@ -8,7 +8,6 @@ import { fontLarge, fontSmallMedium, radiusS, spacingS, spacingXXS } from "../..
 import { PieGraph } from "../pieGraph/PieGraph";
 import fonts from "../../assets/styles/constants/fonts";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface BlockInformationProps {
   avatarProps: AvatarProps;
@@ -36,11 +35,10 @@ export const Information: React.FC<BlockInformationProps> = ({
   loading
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const styles = StyleSheet.create({
     container: {
-      height: actuatedNormalize(132),
-      ...frame.of(168),
+      height: actuatedNormalize(131), // Figma block.information 167.5×131
+      width: actuatedNormalize(167.5),
       padding: spacingS,
       borderRadius: radiusS,
       backgroundColor: theme.stylesblockbg,

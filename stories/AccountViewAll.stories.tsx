@@ -1,3 +1,5 @@
+import * as allStories from "./AccountViewAll.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import React from 'react';
 import { AccountViewAll } from "../src/components/cards/AccountsViewAll";
 import { useWindowDimensions, View } from "react-native";
@@ -56,24 +58,21 @@ export default {
 };
 
 const RowExample = (args: any) => {
+  // Figma fixed-size cards: keep intrinsic width and center the row (no fluid stretch).
   const { width } = useWindowDimensions();
   const stacked = width < 560;
-  const cell = {
-    width: stacked ? ("100%" as const) : undefined,
-    flexGrow: stacked ? 0 : 1,
-    flexBasis: stacked ? ("100%" as const) : 0,
-    minWidth: 0,
-  };
+  const cell = { minWidth: 0 };
   return (
     <View
       style={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: stacked ? "column" : "row",
         flexWrap: "wrap",
         gap: spacingXS,
-        width: "100%",
         maxWidth: "100%",
-        alignItems: "stretch",
+        alignItems: "center",
+        justifyContent: "center",
+        alignSelf: "center",
       }}
     >
       <View style={cell}>
@@ -219,3 +218,169 @@ export const TwoCardsExample = {
 };
 
 
+
+// ---- Figma parity (Cards & Accounts page 227:2376, accounts.view.all): Type=Carousel (217x118) per Account Type / Status ----
+export const CurrentCarousel = {
+  args: {
+    type: "carousel",
+    variant: "current",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+  },
+};
+
+export const MudarabahCarousel = {
+  args: {
+    type: "carousel",
+    variant: "mudarabah",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+  },
+};
+
+export const GreenDepositCarousel = {
+  args: {
+    type: "carousel",
+    variant: "green deposit",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+  },
+};
+
+export const GreenDepositInProgressCarousel = {
+  args: {
+    type: "carousel",
+    variant: "green deposit",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+    chipsInfoProps: { label: "In Progress", state: "warning" },
+    showChipsInfo: true,
+  },
+};
+
+export const WafferAccountCarousel = {
+  args: {
+    type: "carousel",
+    variant: "waffer account",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+  },
+};
+
+export const IslamicCommodityCarousel = {
+  args: {
+    type: "carousel",
+    variant: "islamic commodity account",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+  },
+};
+
+export const IslamicCommodityInProgressCarousel = {
+  args: {
+    type: "carousel",
+    variant: "islamic commodity account",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+    chipsInfoProps: { label: "In Progress", state: "warning" },
+    showChipsInfo: true,
+  },
+};
+
+export const FamilyAccountCarousel = {
+  args: {
+    type: "carousel",
+    variant: "family account",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+  },
+};
+
+export const HSBCGlobalCarousel = {
+  args: {
+    type: "carousel",
+    variant: "hsbc global account",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+  },
+};
+
+export const CashWalletCarousel = {
+  args: {
+    type: "carousel",
+    variant: "cash wallet",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+  },
+};
+
+export const JointAccountCarousel = {
+  args: {
+    type: "carousel",
+    variant: "joint account",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+  },
+};
+
+export const SafeDepositLockerCarousel = {
+  args: {
+    type: "carousel",
+    variant: "safe deposit locker",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+  },
+};
+
+export const SafeDepositLockerInProgressCarousel = {
+  args: {
+    type: "carousel",
+    variant: "safe deposit locker",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+    chipsInfoProps: { label: "In Progress", state: "warning" },
+    showChipsInfo: true,
+  },
+};
+
+export const SafeDepositLockerInProgress = {
+  args: {
+    type: "default",
+    variant: "safe deposit locker",
+    accountNumber: "124356797977",
+    accountNumberShort: "*1234",
+    chipsInfoProps: { label: "In Progress", state: "warning" },
+    showChipsInfo: true,
+  },
+};
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Current",
+    "Mudarabah",
+    "GreenDeposit",
+    "GreenDepositInProgress",
+    "WafferAccount",
+    "IslamicCommodity",
+    "IslamicCommodityInProgress",
+    "FamilyAccount",
+    "HSBCGlobal",
+    "CashWallet",
+    "PortfolioAccount",
+    "JointAccount",
+    "SafeDepositLocker",
+    "TwoCardsExample",
+    "CurrentCarousel",
+    "MudarabahCarousel",
+    "GreenDepositCarousel",
+    "GreenDepositInProgressCarousel",
+    "WafferAccountCarousel",
+    "IslamicCommodityCarousel",
+    "IslamicCommodityInProgressCarousel",
+    "FamilyAccountCarousel",
+    "HSBCGlobalCarousel",
+    "CashWalletCarousel",
+    "JointAccountCarousel",
+    "SafeDepositLockerCarousel",
+    "SafeDepositLockerInProgressCarousel",
+    "SafeDepositLockerInProgress",
+]);

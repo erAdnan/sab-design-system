@@ -1,6 +1,10 @@
+import * as allStories from "./Pin.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import {Pin} from "../src/components/pinDialPad/Pin";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/PIN",
   component: Pin,
   argTypes: {
@@ -33,3 +37,8 @@ export const WithFaceId = {
 export const NoFaceId = {
   args: {}
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "WithFaceId",
+    "NoFaceId",
+]);

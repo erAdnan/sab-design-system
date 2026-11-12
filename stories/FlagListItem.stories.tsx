@@ -1,8 +1,12 @@
+import * as allStories from "./FlagListItem.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
+import { listStoryDecorators } from "../.storybook/listStoryFrame";
 import { FlagListItem } from "../src/components/list/FlagListItem";
 
 export default {
   title: "Components/FlagListItem",
-  component: FlagListItem
+  component: FlagListItem,
+  decorators: listStoryDecorators,
 }
 
 export const US = {
@@ -32,3 +36,9 @@ export const PlaceholderWithAction = {
     }
   }
 }
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "US",
+    "Placeholder",
+    "PlaceholderWithAction",
+]);

@@ -1,6 +1,10 @@
+import * as allStories from "./PinInput.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { PinInput } from "../src/components/input/PinInput";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/PinInput",
   component: PinInput,
   argTypes: {
@@ -24,3 +28,8 @@ export const OTP = {
     onSubmit: (inputs: string[]) => console.log(inputs), // array of inputs will be logged, e.g. (["1", "2", "3", "4", "5"])
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "PIN",
+    "OTP",
+]);

@@ -1,7 +1,11 @@
+import * as allStories from "./DropdownInput.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import Food from "../src/components/icons/sab360/Food";
 import { DropdownInput } from "../src/components/input/DropdownInput";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
   title: "Components/DropdownInput",
   component: DropdownInput,
   argTypes: {
@@ -59,3 +63,11 @@ export const DropdownInputWithFlagPlaceholder = {
     showFlagPlaceholder: true,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "DropdownInputSimple",
+    "DropdownInputWithLabel",
+    "DropdownInputWithIconFilled",
+    "DropdownInputWithIconFetched",
+    "DropdownInputWithFlagPlaceholder",
+]);

@@ -11,6 +11,7 @@ import {
   spacingM,
   spacingS,
   spacingXS,
+  spacingXXS,
 } from "../../assets/styles/constants/size";
 import { Text } from "../text/Text";
 import ImageThumbnail, { ImageThumbnailProps } from "../imageThumbnail/ImageThumbnail";
@@ -19,7 +20,10 @@ import BannerSkeleton from "./BannerSkeleton";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
 import { Button } from "../button/Button";
 import fonts from "../../assets/styles/constants/fonts";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
+
+// Figma marketing.banner: Size=big 343×284 (radius 24), Size=small 343×143 (radius 16).
+const BIG_HEIGHT = 284;
+const SMALL_HEIGHT = 143;
 
 export interface MarketingBannerProps {
   title: string;
@@ -63,13 +67,12 @@ export const MarketingBanner: FC<MarketingBannerProps> = ({
   linkIconRight,
   underline,
 }) => {
-  const frame = useFluidWidth();
   const isBig = useMemo(() => size === "big", [size]);
 
   return loading ? (
     <BannerSkeleton
-      width={frame.span}
-      height={isBig ? actuatedNormalize(380) : actuatedNormalize(143)}>
+      width={actuatedNormalize(343)}
+      height={isBig ? actuatedNormalize(BIG_HEIGHT) : actuatedNormalize(SMALL_HEIGHT)}>
       <View
         style={{
           display: "flex",
@@ -96,24 +99,24 @@ export const MarketingBanner: FC<MarketingBannerProps> = ({
       disabled={!onBannerPress}
     >
       <ImageThumbnail
-        width={frame.span}
-        height={overrideHeight || (isBig ? actuatedNormalize(380) : actuatedNormalize(143))}
+        width={actuatedNormalize(343)}
+        height={overrideHeight || (isBig ? actuatedNormalize(BIG_HEIGHT) : actuatedNormalize(SMALL_HEIGHT))}
         overrideImageStyles={{ borderRadius: isBig ? radiusXL : radiusL }}
         {...imageThumbnailProps}
       >
-        <View style={styles.textContent}>
+        <View style={isBig ? styles.textContent : styles.textContentSmall}>
           <Text
             size={fontXXLarge}
             medium={true}
             variant="primarycolor4static"
-            overrideStyles={{ flex: 1,lineHeight:lineHeightXXLarge }}
+            overrideStyles={{ lineHeight:lineHeightXXLarge }}
           >
             {title}
           </Text>
           <Text
             size={fontLarge}
             variant="primarycolor4static"
-            overrideStyles={{ width: "100%", maxWidth: "100%", flexShrink: 1,lineHeight: lineHeightLarge }}
+            overrideStyles={{ width: actuatedNormalize(296),lineHeight: lineHeightLarge }}
           >
             {description}
           </Text>
@@ -139,9 +142,20 @@ export const MarketingBanner: FC<MarketingBannerProps> = ({
 };
 
 const styles = StyleSheet.create({
+  // Figma Size=big: text block anchored to the bottom (pb 24, px 16, gap 4).
   textContent: {
     paddingHorizontal: spacingS,
     position: "absolute",
     bottom: spacingM,
+    gap: spacingXXS,
+  },
+  // Figma Size=small: text block vertically centered (px 16, gap 4).
+  textContentSmall: {
+    paddingHorizontal: spacingS,
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    justifyContent: "center",
+    gap: spacingXXS,
   },
 });

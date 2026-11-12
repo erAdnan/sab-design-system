@@ -29,6 +29,10 @@ export const Default = {
 const styles = StyleSheet.create({
   stage: {
     flex: 1,
+    // The Storybook slot centers its children (alignItems: "center"), which
+    // collapses this stage to 0 width. The toast is absolutely positioned
+    // against the stage, so it needs a real width to size correctly.
+    width: "100%",
     minHeight: 200,
   },
 });

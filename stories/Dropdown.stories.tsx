@@ -1,7 +1,9 @@
 
 import { Dropdown } from "../src/components/dropdown/Dropdown";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
+  decorators: mobileContentDecorators,
     title: "Components/Dropdown",
     component: Dropdown,
 };

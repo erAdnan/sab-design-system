@@ -38,9 +38,23 @@ const preview = {
     },
     deepControls: { enabled: true },
     options: {
-      storySort: {
-        method: "alphabetical",
-        order: ["Components", "Foundations", "*"],
+      // Must stay inline and self-contained (Storybook statically analyses it; no outer references).
+      // Sidebar order: Components, Foundations, then everything else; alphabetical by title. Inside each
+      // component the "All variants" story comes first, so opening a component lands on it (Storybook
+      // selects the first story of a component). Remaining stories stay alphabetical.
+      storySort: (a, b) => {
+        if (a.id === b.id) return 0;
+        const top = ["Components", "Foundations"];
+        const rank = (title) => {
+          const i = top.indexOf(String(title).split("/")[0]);
+          return i === -1 ? top.length : i;
+        };
+        const rankDiff = rank(a.title) - rank(b.title);
+        if (rankDiff !== 0) return rankDiff;
+        if (a.title !== b.title) return a.title.localeCompare(b.title, undefined, { numeric: true });
+        const isAll = (name) => /^all\s?variants$/i.test(name);
+        if (isAll(a.name) !== isAll(b.name)) return isAll(a.name) ? -1 : 1;
+        return a.name.localeCompare(b.name, undefined, { numeric: true });
       },
     },
     layout: "fullscreen",
@@ -138,8 +152,7 @@ const storySlotStyle = {
   minWidth: 0,
   minHeight: 0,
   overflow: "visible",
-  alignItems: "stretch",
-  alignSelf: "stretch",
+  alignItems: "center",
   justifyContent: "flex-start",
 };
 

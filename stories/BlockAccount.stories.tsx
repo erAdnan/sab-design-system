@@ -1,3 +1,5 @@
+import * as allStories from "./BlockAccount.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import fonts from "../src/assets/styles/constants/fonts";
 import { Account } from "../src/components/block/Account";
 import i18n from "i18next";
@@ -100,3 +102,14 @@ export const DisabledAccount_NewVariant = {
     isActive: false
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Balance",
+    "BalanceExtraContent",
+    "ChipsInfoStatus",
+    "CardWithAction",
+    "CurrencyWithFlagPlaceholder",
+    "CurrencyWithFlagImage",
+    "EmptyAccount_NewVariant",
+    "DisabledAccount_NewVariant",
+]);

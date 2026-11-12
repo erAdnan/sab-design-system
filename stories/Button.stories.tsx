@@ -1,4 +1,7 @@
+import * as allStories from "./Button.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import {Button} from "../src/components/button/Button";
+import {buttonContentStoryDecorators} from "../.storybook/buttonStoryFrame";
 
 export default {
   title: "Components/Button",
@@ -43,6 +46,8 @@ export const ButtonPrimaryFill = {
 };
 
 export const ButtonPrimaryFullWidth = {
+  // Figma full-width button: 343 wide (375 frame - 2 x 16), centered instead of spanning the desktop canvas.
+  decorators: buttonContentStoryDecorators,
   args: {
     variant: "fill",
     color: "primary",
@@ -230,3 +235,234 @@ export const ButtonPrimaryFillCtaLoading = {
     loadingCta: false,
   }
 };
+
+// ---- Figma parity (Buttons page 7:189): Size (Large / Medium / Small) x Type (Filled / Outline) x State ----
+export const ButtonPrimaryFillMedium = {
+  args: {
+    variant: "fill",
+    color: "primary",
+    size: "medium",
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonPrimaryFillMediumDisabled = {
+  args: {
+    variant: "fill",
+    color: "primary",
+    size: "medium",
+    disabled: true,
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonOutlinedMedium = {
+  args: {
+    variant: "outlined",
+    size: "medium",
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonOutlinedMediumDisabled = {
+  args: {
+    variant: "outlined",
+    size: "medium",
+    disabled: true,
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonBlueAccentMedium = {
+  args: {
+    variant: "fill",
+    color: "blueAccent",
+    size: "medium",
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonRedAccentMedium = {
+  args: {
+    variant: "fill",
+    color: "redAccent",
+    size: "medium",
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonLinkMedium = {
+  args: {
+    variant: "link",
+    size: "medium",
+    buttonText: {
+      children: "Link Button"
+    }
+  }
+};
+export const ButtonLinkMediumIconRight = {
+  args: {
+    variant: "link",
+    size: "medium",
+    linkIconRight: true,
+    buttonText: {
+      children: "Link Button"
+    }
+  }
+};
+export const ButtonPrimaryFillSmall = {
+  args: {
+    variant: "fill",
+    color: "primary",
+    size: "small",
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonPrimaryFillSmallDisabled = {
+  args: {
+    variant: "fill",
+    color: "primary",
+    size: "small",
+    disabled: true,
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonOutlinedSmall = {
+  args: {
+    variant: "outlined",
+    size: "small",
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonOutlinedSmallDisabled = {
+  args: {
+    variant: "outlined",
+    size: "small",
+    disabled: true,
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonBlueAccentSmall = {
+  args: {
+    variant: "fill",
+    color: "blueAccent",
+    size: "small",
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonRedAccentSmall = {
+  args: {
+    variant: "fill",
+    color: "redAccent",
+    size: "small",
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonLinkSmall = {
+  args: {
+    variant: "link",
+    size: "small",
+    buttonText: {
+      children: "Link Button"
+    }
+  }
+};
+export const ButtonLinkSmallIconRight = {
+  args: {
+    variant: "link",
+    size: "small",
+    linkIconRight: true,
+    buttonText: {
+      children: "Link Button"
+    }
+  }
+};
+export const ButtonSecondaryDisabled = {
+  args: {
+    variant: "fill",
+    color: "secondary",
+    disabled: true,
+    buttonText: {
+      children: "Button"
+    }
+  }
+};
+export const ButtonLinkUnderlinedMedium = {
+  args: {
+    variant: "link",
+    size: "medium",
+    underline: true,
+    buttonText: {
+      children: "Link Button"
+    }
+  }
+};
+export const ButtonLinkUnderlinedSmall = {
+  args: {
+    variant: "link",
+    size: "small",
+    underline: true,
+    buttonText: {
+      children: "Link Button"
+    }
+  }
+};
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "ButtonPrimaryFill",
+    "ButtonPrimaryFullWidth",
+    "ButtonSecondaryFill",
+    "ButtonBlueAccentFill",
+    "ButtonBlueAccentDisabled",
+    "ButtonRedAccentFill",
+    "ButtonRedAccentDisabled",
+    "ButtonDisabledFill",
+    "ButtonOutlinedActive",
+    "ButtonOutlinedDisabled",
+    "ButtonLink",
+    "ButtonLinkIconLeft",
+    "ButtonLinkIconRight",
+    "ButtonLinkBoldIconLeft",
+    "ButtonLinkBoldIconRight",
+    "ButtonLinkDisabled",
+    "ButtonLinkIconRightDisabled",
+    "ButtonLinkUnderlined",
+    "ButtonPrimaryFillCtaLoading",
+    "ButtonPrimaryFillMedium",
+    "ButtonPrimaryFillMediumDisabled",
+    "ButtonOutlinedMedium",
+    "ButtonOutlinedMediumDisabled",
+    "ButtonBlueAccentMedium",
+    "ButtonRedAccentMedium",
+    "ButtonLinkMedium",
+    "ButtonLinkMediumIconRight",
+    "ButtonPrimaryFillSmall",
+    "ButtonPrimaryFillSmallDisabled",
+    "ButtonOutlinedSmall",
+    "ButtonOutlinedSmallDisabled",
+    "ButtonBlueAccentSmall",
+    "ButtonRedAccentSmall",
+    "ButtonLinkSmall",
+    "ButtonLinkSmallIconRight",
+    "ButtonSecondaryDisabled",
+    "ButtonLinkUnderlinedMedium",
+    "ButtonLinkUnderlinedSmall",
+]);

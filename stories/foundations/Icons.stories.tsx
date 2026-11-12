@@ -1,3 +1,6 @@
+import * as allStories from "./Icons.stories";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 import React, { useMemo, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import Icon from "../../src/components/icon/Icon";
@@ -251,4 +254,10 @@ const IconsGallery = () => {
 
 export const AllIcons = {
   render: () => <IconsGallery />,
+};
+
+// The full searchable SVG icon catalog at the 343 mobile content width (3 icon cells per row).
+export const AllVariants = {
+  ...createAllVariantsStory(allStories, ["AllIcons"]),
+  decorators: [centerStoryDecorator],
 };

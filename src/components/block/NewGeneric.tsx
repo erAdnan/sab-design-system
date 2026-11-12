@@ -144,8 +144,7 @@ export const NewGeneric: FC < BlockNewGenericProps > = ({
       backgroundColor: theme.stylesblockbg
     },
     categoryContainer: {
-      width: "100%",
-      minWidth: containerWidth,
+      width: containerWidth, // Figma new.block.generic Size=Categories 167×75
       height: containerHeight,
       backgroundColor: theme.tintgolden,
       borderColor: theme.goldentint,

@@ -12,7 +12,6 @@ import {
 } from "../../assets/styles/constants/size";
 import { Text } from "../text/Text";
 import LogoNoText from "../icons/sab360/LogoNoText";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface CardsCarouselUpdatedProps {
   cardName: string;
@@ -30,10 +29,9 @@ const CardsCarouselUpdated: FC<CardsCarouselUpdatedProps> = ({
   accountNumber,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const styles = StyleSheet.create({
     container: {
-      ...frame.of(184),
+      width: actuatedNormalize(184),
     },
     cardContent: {
       paddingHorizontal: spacingXS,

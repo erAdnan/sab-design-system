@@ -4,7 +4,7 @@ import { useTheme } from "../../context/theme/themeContext";
 import { Text } from "../text/Text";
 import Remove from "../icons/functionals/Remove";
 import AddCircle from "../icons/functionals/AddCircle";
-import { radiusS, radiusXS, spacingXS, spacingXXXS } from "../../assets/styles/constants/size";
+import { radiusS, spacingS } from "../../assets/styles/constants/size";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import AddBare from "../icons/functionals/AddBare";
 import { darkTheme } from "../../assets/styles/theme/dark";
@@ -75,7 +75,7 @@ export const ButtonGroupReviewQuantityAddon: FC<ButtonGroupReviewQuantityAddonPr
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            gap: spacingXS
+            gap: spacingS // Figma .addon.review.buttongroup: 16 between minus / value / plus
         },
         btnGeneral: {
             display: "flex",
@@ -90,7 +90,7 @@ export const ButtonGroupReviewQuantityAddon: FC<ButtonGroupReviewQuantityAddonPr
       valueWrapper: {
           height: actuatedNormalize(40),
           width: actuatedNormalize(40),
-          borderRadius: radiusXS,
+          borderRadius: radiusS, // Figma .pinInputCell radius 8
           backgroundColor: bgColor || darkTheme.primarycolor2,
           display: "flex",
           justifyContent: "center",

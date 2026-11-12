@@ -1,8 +1,10 @@
 import { AccountsCarousel } from "../src/components/cards/AccountsCarousel";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
   title: "Components/CardsAccountsCarousel",
   component: AccountsCarousel,
+  decorators: [centerStoryDecorator],
   argTypes: {
     accountName: {
       action: "Account name",

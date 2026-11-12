@@ -1,3 +1,5 @@
+import * as allStories from "./MarketingBanner.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { MarketingBanner } from "../src/components/banner/MarketingBanner";
 
 export default {
@@ -31,3 +33,35 @@ export const Small = {
     onBannerPress: () => console.log("Banner Pressed"),
   },
 };
+
+// Figma marketing.banner: showLinkButton toggle (Big 343×284, Small 343×143).
+export const BigWithLinkButton = {
+  args: {
+    title: "AIFursan",
+    description: "Get a card and unlock a 20% discount.",
+    size: "big",
+    linkButtonText: "Link Button",
+    underline: true,
+    onLinkButtonPress: () => console.log("Link Pressed"),
+    onBannerPress: () => console.log("Banner Pressed"),
+  },
+};
+
+export const SmallWithLinkButton = {
+  args: {
+    title: "AIFursan",
+    description: "Get a card and unlock a 20% discount.",
+    size: "small",
+    linkButtonText: "Link Button",
+    underline: true,
+    onLinkButtonPress: () => console.log("Link Pressed"),
+    onBannerPress: () => console.log("Banner Pressed"),
+  },
+};
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Big",
+    "Small",
+    "BigWithLinkButton",
+    "SmallWithLinkButton",
+]);

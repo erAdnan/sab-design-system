@@ -1,8 +1,12 @@
+import * as allStories from "./ChipInfo.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { ChipInfo } from "../src/components/chips/ChipInfo";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
   title: "Components/ChipInfo",
   component: ChipInfo,
+  decorators: [centerStoryDecorator],
   argTypes: {
     variant: {
       control: "radio",
@@ -54,3 +58,12 @@ export const Neutral = {
     label: "Label",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Success",
+    "Warning",
+    "Error",
+    "Informative",
+    "Neutral",
+]);

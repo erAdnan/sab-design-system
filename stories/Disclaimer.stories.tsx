@@ -1,5 +1,8 @@
+import * as allStories from "./Disclaimer.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { SafeAreaView } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { disclaimerStoryDecorators } from "../.storybook/disclaimerStoryFrame";
 import { Disclaimer } from "../src/components/disclaimer/Disclaimer";
 import { Text } from "../src/components/text/Text";
 import { fontSmall } from "../src/assets/styles/constants/size";
@@ -14,6 +17,7 @@ import Icon from "../src/components/icon/Icon";
 export default {
   title: "Components/Disclaimer",
   component: Disclaimer,
+  decorators: disclaimerStoryDecorators,
   argTypes: {
     type: { control: "select", options: ["tooltip", "checkbox", "image"] },
     size: { control: "select", options: ["default", "small"] },
@@ -140,3 +144,15 @@ export const WithZakatyLogo = {
     text: disclaimerText,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Tooltip",
+    "Checkbox",
+    "ImageType",
+    "WithAbsherLogo",
+    "WithDrahimLogo",
+    "WithSarieLogo",
+    "WithSimahLogo",
+    "Small",
+    "WithZakatyLogo",
+]);
