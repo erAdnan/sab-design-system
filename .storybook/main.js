@@ -23,6 +23,7 @@ module.exports = {
     },
     "storybook-addon-deep-controls",
     "@storybook/addon-docs",
+    "@storybook/addon-a11y",
   ],
 
   framework: {

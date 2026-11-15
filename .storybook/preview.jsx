@@ -30,6 +30,8 @@ function ThemeFromGlobals({ themeKey, children }) {
 
 /** @type{import("@storybook/react-webpack5").Preview} */
 const preview = {
+  // Auto-generate a Docs page for every component (CSF `autodocs`).
+  tags: ["autodocs"],
   parameters: {
     controls: {
       matchers: {
