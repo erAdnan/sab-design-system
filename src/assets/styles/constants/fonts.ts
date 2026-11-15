@@ -59,6 +59,16 @@ export default {
   HSBC_Bold: NATIVE_BOLD,
   HSBC_Light: NATIVE_LIGHT,
 
-  // Unchanged — platform SAR glyph font
-  SAR_Font: Platform.OS === "ios" ? "SaudiRiyalMarch-Medium12" : "SARFont",
+  /**
+   * Saudi Riyal glyph font.
+   * - iOS: PostScript name from the TTF
+   * - Android: linked asset name (filename without extension)
+   * - Web/Storybook: CSS @font-face family registered in .storybook/preview-head.html
+   */
+  SAR_Font: Platform.select({
+    ios: "SaudiRiyalMarch-Medium12",
+    android: "SARFont",
+    web: "SARFont",
+    default: "SARFont",
+  }),
 };

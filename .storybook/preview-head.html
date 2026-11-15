@@ -1,5 +1,27 @@
 <link rel="icon" type="image/png" href="./pulse-favicon.png" />
 <style>
+  /*
+   * SAR riyal glyph font — linked natively on iOS/Android, but browsers need
+   * an explicit @font-face. NewCurrency / SarFont use fontFamily: "SARFont"
+   * on web (see src/assets/styles/constants/fonts.ts).
+   */
+  @font-face {
+    font-family: "SARFont";
+    src: url("/fonts/SARFont.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+
+  /* iOS PostScript name — cover any web path that still resolves to it */
+  @font-face {
+    font-family: "SaudiRiyalMarch-Medium12";
+    src: url("/fonts/SARFont.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+
   :root {
     --sab-red: #db0011;
     --sab-red-tonal: rgba(219, 0, 17, 0.1);

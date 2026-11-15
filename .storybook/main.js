@@ -31,8 +31,11 @@ module.exports = {
     options: {},
   },
 
-  // SAB brand assets (logo mark used by manager theme brandImage).
-  staticDirs: [{ from: "./static", to: "/" }],
+  // SAB brand assets + glyph fonts for web (SAR riyal symbol, etc.).
+  staticDirs: [
+    { from: "./static", to: "/" },
+    { from: "../src/assets/fonts", to: "/fonts" },
+  ],
 
   // Bakes package.json version into the static Hosting build (Release bumps it first).
   env: (config) => ({
