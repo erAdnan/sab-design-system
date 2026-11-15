@@ -25,7 +25,13 @@ export const StoryBookWrapper: FC<StoryBookWrapperProps> = ({
   return (
     <View
       style={{
-        backgroundColor: theme.stylesbackground2,
+        // Transparent so Storybook's Backgrounds toolbar controls the canvas
+        // (see preview.jsx parameters.backgrounds). On-device has no that toolbar,
+        // so fall back to the theme page surface.
+        backgroundColor:
+          Platform.OS === "web"
+            ? "transparent"
+            : (theme.stylesbackground2 ?? "#FFFFFF"),
         padding: 16,
         flex: 1,
         width: "100%",

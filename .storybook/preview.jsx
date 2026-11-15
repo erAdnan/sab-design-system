@@ -7,6 +7,7 @@ import { StoryBookWrapper } from "../src/components/local/StoryBookWrapper.tsx";
 import i18n from "../src/localization/i18n";
 import { deepTranslateArgs } from "../src/localization/tx";
 import { version, versionLabel } from "./version";
+import { createSabTheme } from "./createSabTheme";
 
 /**
  * Web Storybook only (.storybook). On-device Storybook uses `.rnstorybook`
@@ -58,6 +59,23 @@ const preview = {
       },
     },
     layout: "fullscreen",
+    // Canvas fill — switch from the toolbar "Backgrounds" control.
+    // Wrapper is transparent on web so these values show through.
+    backgrounds: {
+      default: "White",
+      values: [
+        { name: "White", value: "#FFFFFF" },
+        { name: "Block gray", value: "#F2F3F4" },
+        { name: "Subtle gray", value: "#FAFAFA" },
+        { name: "Light gray", value: "#EEEEEE" },
+        { name: "Red tonal", value: "#FBE5E7" },
+        { name: "Navy", value: "#1E2E42" },
+        { name: "Black", value: "#000000" },
+      ],
+    },
+    docs: {
+      theme: createSabTheme(`Pulse Design System ${versionLabel}`),
+    },
   },
 
   globalTypes: {
@@ -157,7 +175,7 @@ const storySlotStyle = {
 };
 
 if (typeof document !== "undefined" && document.title) {
-  document.title = `SAB Design System ${versionLabel}`;
+  document.title = `Pulse Design System ${versionLabel}`;
 }
 
 export default preview;

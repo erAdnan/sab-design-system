@@ -30,6 +30,9 @@ module.exports = {
     options: {},
   },
 
+  // SAB brand assets (logo mark used by manager theme brandImage).
+  staticDirs: [{ from: "./static", to: "/" }],
+
   // Bakes package.json version into the static Hosting build (Release bumps it first).
   env: (config) => ({
     ...config,

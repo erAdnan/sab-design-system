@@ -1,4 +1,19 @@
+<link rel="icon" type="image/png" href="./pulse-favicon.png" />
 <style>
+  :root {
+    --sab-red: #db0011;
+    --sab-red-tonal: rgba(219, 0, 17, 0.1);
+    --sab-navy: #1e2e42;
+    --sab-black: #000000;
+    --sab-gray: #767676;
+    --sab-gray-light: #d7d8d6;
+    --sab-block: #f2f3f4;
+    --sab-border: #eeeeee;
+    --sab-white: #ffffff;
+    --sab-bg-subtle: #fafafa;
+    --sab-font: "Helvetica Neue", Helvetica, Arial, "Segoe UI", system-ui, sans-serif;
+  }
+
   /* Full-viewport canvas so light/dark theme backgrounds fill the iframe. */
   html,
   body,
@@ -17,6 +32,9 @@
   body {
     margin: 0 !important;
     padding: 0 !important;
+    font-family: var(--sab-font);
+    background: var(--sab-white);
+    color: var(--sab-black);
   }
 
   #storybook-root *,
@@ -51,6 +69,60 @@
   #storybook-root > div > div {
     align-self: stretch !important;
     min-height: 100% !important;
+  }
+
+  /* Docs page: SAB surfaces + typography */
+  #storybook-docs {
+    background: var(--sab-bg-subtle) !important;
+  }
+
+  #storybook-docs .sbdocs-wrapper {
+    background: transparent !important;
+    font-family: var(--sab-font) !important;
+  }
+
+  #storybook-docs .sbdocs-content {
+    max-width: 920px;
+  }
+
+  #storybook-docs .sbdocs-title,
+  #storybook-docs h1.sbdocs-h1 {
+    color: var(--sab-navy) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em;
+  }
+
+  #storybook-docs .sbdocs-h2,
+  #storybook-docs h2.sbdocs-h2 {
+    color: var(--sab-navy) !important;
+    border-bottom: 1px solid var(--sab-border) !important;
+    padding-bottom: 0.4em;
+  }
+
+  #storybook-docs .sbdocs-preview {
+    border: 1px solid var(--sab-border) !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    overflow: hidden;
+  }
+
+  #storybook-docs .docblock-argstable {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  #storybook-docs .docblock-argstable th {
+    background: var(--sab-block) !important;
+    color: var(--sab-gray) !important;
+    font-weight: 600 !important;
+  }
+
+  #storybook-docs a {
+    color: var(--sab-red);
+  }
+
+  #storybook-docs a:hover {
+    color: #ba1110;
   }
 
   /*

@@ -120,19 +120,35 @@ const expandDottedArgs = (args: Record<string, any>): Record<string, any> => {
 const VariantLabel = ({ children }: { children: string }) => {
   const { theme } = useTheme();
   return (
-    <RNText
+    <View
       style={{
-        fontSize: 11,
-        lineHeight: 14,
-        fontWeight: "600",
-        letterSpacing: 0.2,
-        marginBottom: 6,
-        color: theme?.primarytextcolor ?? "#000000",
-        opacity: 0.55,
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 8,
+        marginBottom: 8,
       }}
     >
-      {children}
-    </RNText>
+      <View
+        style={{
+          width: 3,
+          height: 12,
+          borderRadius: 1,
+          backgroundColor: theme?.primarycolor3 ?? "#DB0011",
+        }}
+      />
+      <RNText
+        style={{
+          fontSize: 11,
+          lineHeight: 14,
+          fontWeight: "600",
+          letterSpacing: 0.3,
+          textTransform: "uppercase",
+          color: theme?.primarytextcolor2 ?? theme?.primarytxtclr ?? "#767676",
+        }}
+      >
+        {children}
+      </RNText>
+    </View>
   );
 };
 
@@ -208,8 +224,8 @@ export const createAllVariantsStory = (module: StoriesModule, order?: string[], 
         style={{
           width: "100%",
           maxWidth: options.maxWidth ?? MOBILE_CONTENT_WIDTH,
-          paddingVertical: 16,
-          gap: options.gap ?? 24,
+          paddingVertical: 8,
+          gap: options.gap ?? 28,
           alignItems: "stretch",
         }}
       >

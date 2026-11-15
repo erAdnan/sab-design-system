@@ -21,8 +21,9 @@ function resolveVersion() {
 }
 
 const version = resolveVersion();
-const versionLabel = `v${version}`;
-const brandTitle = `SAB Design System ${versionLabel}`;
+/** Figma lockup uses "v.2" style (v. + version). */
+const versionLabel = `v.${version}`;
+const brandTitle = `Pulse Design System ${versionLabel}`;
 
 module.exports = {
   name: pkg.name,
