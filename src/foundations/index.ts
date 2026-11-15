@@ -1,5 +1,5 @@
 /**
- * Foundations — design tokens (colors via theme files, spacing, type scale, radius).
+ * Foundations — design tokens (colors via theme files, spacing, type scale, radius, stroke, effects, grid).
  * Stories for these tokens live under design-system/stories/foundations/.
  */
 

@@ -11,6 +11,7 @@ import {
 import { lightTheme } from "../../src/assets/styles/theme/light";
 import { darkTheme } from "../../src/assets/styles/theme/dark";
 import { useTheme } from "../../src/context/theme/themeContext";
+import { ColorsDocsPage } from "./ColorsDocsPage";
 
 import { tx } from "../../src/localization/tx";
 type ThemeMap = Record<string, string>;
@@ -197,7 +198,7 @@ const LABEL_ALIASES: Record<string, string> = {
   primarygray: "gray",
   primarywhite: "white",
   primarywhitestatic: "white-static",
-  primarygrayinvert: "black-invert",
+  primarygrayinvert: "gray-invert",
   primaryredtonal: "red-tonal",
   primarytextcolor: "primary",
   primarytextcolor2: "secondary",
@@ -205,6 +206,9 @@ const LABEL_ALIASES: Record<string, string> = {
   primarytextcolor4: "inverse",
   primarytextcolor3: "link",
   primarytextcolordisabled: "disabled",
+  extrasbottomnav: "bottom-nav-bg",
+  stylesbackgroundendprocess: "bg-end-process",
+  strokeorangetint: "orange-tint",
 };
 
 function toKebab(value: string) {
@@ -465,6 +469,10 @@ export default {
   title: "Foundations/Colors",
   parameters: {
     layout: "fullscreen",
+    docs: {
+      // Keep Figma table layout on the Docs tab; Palette canvas uses swatch cards.
+      page: () => <ColorsDocsPage />,
+    },
   },
 };
 

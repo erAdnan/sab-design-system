@@ -159,6 +159,60 @@ const preview = {
           }
           return a.title.localeCompare(b.title, undefined, { numeric: true });
         }
+        // Foundations/Typography story order matches Figma page 24:2
+        if (
+          String(a.title) === "Foundations/Typography" &&
+          String(b.title) === "Foundations/Typography"
+        ) {
+          const typographyStories = [
+            "Scale",
+            "Font Weight",
+            "Font Size",
+            "Line Height",
+            "English",
+            "Arabic",
+            "Saudi Riyal Symbol",
+          ];
+          const typoRank = (name) => {
+            const i = typographyStories.indexOf(String(name));
+            return i === -1 ? typographyStories.length : i;
+          };
+          const typoDiff = typoRank(a.name) - typoRank(b.name);
+          if (typoDiff !== 0) return typoDiff;
+        }
+        // Foundations/Border Radius — Figma page 69:6599
+        if (
+          String(a.title) === "Foundations/Border Radius" &&
+          String(b.title) === "Foundations/Border Radius"
+        ) {
+          const borderRadiusStories = ["Border Radius", "Border Stroke"];
+          const brRank = (name) => {
+            const i = borderRadiusStories.indexOf(String(name));
+            return i === -1 ? borderRadiusStories.length : i;
+          };
+          const brDiff = brRank(a.name) - brRank(b.name);
+          if (brDiff !== 0) return brDiff;
+        }
+        // Foundations/Responsive Grid — Figma page 69:6658
+        if (
+          String(a.title) === "Foundations/Responsive Grid" &&
+          String(b.title) === "Foundations/Responsive Grid"
+        ) {
+          const responsiveGridStories = [
+            "Grid",
+            "Mobile",
+            "Tablet",
+            "Responsive Device Grid",
+            "Samsung Fold behaviour",
+            "Design-Dev Workspace",
+          ];
+          const rgRank = (name) => {
+            const i = responsiveGridStories.indexOf(String(name));
+            return i === -1 ? responsiveGridStories.length : i;
+          };
+          const rgDiff = rgRank(a.name) - rgRank(b.name);
+          if (rgDiff !== 0) return rgDiff;
+        }
         const isAll = (name) => /^all\s?variants$/i.test(name);
         if (isAll(a.name) !== isAll(b.name)) return isAll(a.name) ? -1 : 1;
         return a.name.localeCompare(b.name, undefined, { numeric: true });

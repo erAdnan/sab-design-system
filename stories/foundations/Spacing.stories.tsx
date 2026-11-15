@@ -1,5 +1,11 @@
 import React from "react";
-import { ScrollView, View, Text, StyleSheet } from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  StyleSheet,
+  useWindowDimensions,
+} from "react-native";
 import {
   spacingXXS,
   spacingXS,
@@ -11,11 +17,6 @@ import {
   spacingXL,
   spacingXXL,
   spacing4XXL,
-  radiusXS,
-  radiusS,
-  radiusM,
-  radiusL,
-  radiusXL,
   fontSmall,
   fontMediumLarge,
   fontXLarge,
@@ -27,19 +28,39 @@ import {
   lineHeightXXLG,
 } from "../../src/assets/styles/constants/size";
 import fonts from "../../src/assets/styles/constants/fonts";
-
+import { canvasTier } from "../../src/assets/styles/utils/responsive";
 import { tx } from "../../src/localization/tx";
-export default {
-  title: "Foundations/Spacing",
-};
 
-// Figma: "Spacing" page (69:6522). Doc-chrome colors mirror the Figma documentation frames.
+/**
+ * Figma: Spacing page (69:6522), frame “Spacing” (69:6524).
+ * Columns: Token | Value | Example | Description
+ */
+
 const BORDER = "rgba(0,0,0,0.1)";
 const TINT_RED = "#F9F2F3";
 const PRIMARY_RED = "#DB0011";
+const COMPLIMENTARY_RED3 = "#730014";
 const TABLE_MAX_WIDTH = 1208;
+const COL_TOKEN = 200;
+const COL_VALUE = 200;
+const COL_EXAMPLE = 199;
+const COL_DESC = 609;
+const TABLE_MIN = COL_TOKEN + COL_VALUE + COL_EXAMPLE + COL_DESC;
 
-const spaces = [
+type SpaceToken = {
+  name: string;
+  code: string;
+  px: number;
+  value: number;
+  /** Optional override for example box size (Figma quirks). */
+  examplePx?: number;
+  tint?: boolean;
+  description: string;
+  /** Trailing phrase styled in complimentary red (spacing.XS exception). */
+  exceptionNote?: string;
+};
+
+const spaces: SpaceToken[] = [
   {
     name: "spacing.3XS",
     code: "spacingXXS",
@@ -61,9 +82,12 @@ const spaces = [
     code: "spacing1XS",
     px: 12,
     value: spacing1XS,
+    examplePx: 12,
     tint: true,
     description:
-      "The 12px spacing value is used for spacing between elements like text, buttons, cards, or input fields. For example, 12px padding inside a button or margin between a label and an input field. This is an exception to the 8px multiple spacing rule, but it’s needed in this design system to ensure visual hierarchy or aligns elements better without breaking harmony.",
+      "The 12px spacing value is used for spacing between elements like text, buttons, cards, or input fields. For example, 12px padding inside a button or margin between a label and an input field.",
+    exceptionNote:
+      "This is an exception to the 8px multiple spacing rule, but it’s needed in this design system to ensure visual hierarchy or aligns elements better without breaking harmony.",
   },
   {
     name: "spacing.S",
@@ -94,6 +118,8 @@ const spaces = [
     code: "spacing1XL",
     px: 40,
     value: spacing1XL,
+    // Figma example box is 38px with label “40”
+    examplePx: 38,
     description:
       "The 40px spacing value is an infrequent but important unit within our design system, reserved for exceptional cases requiring significant separation between elements. While not commonly used, this larger spacing increment is ideal for creating distinct visual breaks and emphasizing major sections or components.",
   },
@@ -118,114 +144,162 @@ const spaces = [
     code: "spacing4XXL",
     px: 72,
     value: spacing4XXL,
+    // Figma example box is 84px with label “72”
+    examplePx: 84,
     description:
       "The 72px spacing value is a seldom-used but significant unit in our design system. While it hasn't been applied yet, it's essential to include it in our range for potential future applications.",
   },
 ];
 
-// Code-only radius tokens (not documented on the Figma Spacing page).
-const radii = [
-  { name: "radiusXS", px: 4, value: radiusXS },
-  { name: "radiusS", px: 8, value: radiusS },
-  { name: "radiusM", px: 12, value: radiusM },
-  { name: "radiusL", px: 16, value: radiusL },
-  { name: "radiusXL", px: 24, value: radiusXL },
-];
+const useDocPad = () => {
+  const { width } = useWindowDimensions();
+  const tier = canvasTier(width);
+  const isMobile = tier === "smallMobile" || tier === "largeMobile";
+  return { pad: isMobile ? spacingS : spacingL };
+};
 
-const HEADER_COLS = ["Token", "Value", "Example", "Description"];
-
-export const Tokens = () => (
-  <ScrollView style={styles.scroll} contentContainerStyle={styles.wrap}>
-    <View style={styles.page}>
-      <Text style={styles.pageTitle}>{tx("The 8 pixel multiple spacing rule")}</Text>
-      <Text style={styles.subtitle}>{tx("Design Principle")}</Text>
-      <Text style={styles.paragraph}>
-        {tx(
-          "The principle of spacing in multiples of 8 pixels emphasises the importance of maintaining a consistent spacing of at least 8 pixels between adjacent elements throughout the interface. This spacing can be applied between buttons, text blocks, images, and other interactive or visual components. The concept of spacing in multiples of 8 pixels offers flexibility to adjust the spacing according to specific design needs. Designers can combine multiples of 8 pixels to achieve different spacing values (e.g. 16px, 24px, 32px), while maintaining consistency with the overall modular system."
-        )}
-      </Text>
-      <Text style={styles.boldParagraph}>{tx("Values outside of the norm")}</Text>
-      <Text style={[styles.paragraph, styles.redText]}>
-        {tx(
-          "There are always exceptions to the rule, but deviating from the spacing scales should be avoided whenever possible."
-        )}
-      </Text>
-
-      <View style={styles.table}>
-        <View style={styles.row}>
-          {HEADER_COLS.map((col, index) => (
-            <View
-              key={col}
-              style={[
-                styles.cell,
-                index === HEADER_COLS.length - 1 ? styles.cellFlex : styles.cellFixed,
-              ]}
-            >
-              <Text style={styles.headerText}>{tx(col)}</Text>
-            </View>
-          ))}
-        </View>
-        {spaces.map((item) => (
-          <View key={item.name} style={[styles.row, item.tint && styles.rowTint]}>
-            <View style={[styles.cell, styles.cellFixed]}>
-              <Text style={styles.cellText}>{item.name}</Text>
-              <Text style={styles.cellSubText}>{item.code}</Text>
-            </View>
-            <View style={[styles.cell, styles.cellFixed]}>
-              <Text style={styles.cellText}>{`${item.px}px`}</Text>
-            </View>
-            <View style={[styles.cell, styles.cellFixed]}>
-              <View
-                style={[
-                  styles.swatch,
-                  { width: item.value, height: item.value },
-                ]}
-              >
-                {item.px >= 32 ? (
-                  <Text style={styles.swatchLabel}>{item.px}</Text>
-                ) : null}
-              </View>
-            </View>
-            <View style={[styles.cell, styles.cellFlex]}>
-              <Text style={styles.cellText}>{tx(item.description)}</Text>
-            </View>
-          </View>
-        ))}
-      </View>
-
-      <Text style={[styles.pageTitle, styles.radiusTitle]}>{tx("Radius")}</Text>
-      <View style={styles.table}>
-        {radii.map((item) => (
-          <View key={item.name} style={styles.row}>
-            <View style={[styles.cell, styles.cellFixed]}>
-              <Text style={styles.cellText}>{item.name}</Text>
-            </View>
-            <View style={[styles.cell, styles.cellFixed]}>
-              <Text style={styles.cellText}>{`${item.px}px`}</Text>
-            </View>
-            <View style={[styles.cell, styles.cellFlex]}>
-              <View
-                style={[styles.radiusPreview, { borderRadius: item.value }]}
-              />
-            </View>
-          </View>
-        ))}
-      </View>
+const SpacingExample = ({ item }: { item: SpaceToken }) => {
+  const size = item.examplePx ?? item.px;
+  const showLabel = item.px >= 32;
+  return (
+    <View
+      style={[
+        styles.swatch,
+        {
+          width: size,
+          height: size,
+        },
+      ]}
+    >
+      {showLabel ? (
+        <Text style={styles.swatchLabel}>{item.px}</Text>
+      ) : null}
     </View>
-  </ScrollView>
-);
+  );
+};
+
+export default {
+  title: "Foundations/Spacing",
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "SAB Pulse spacing foundations from Figma (node 69:6522): the 8px multiple spacing rule and spacing.3XS → spacing.4XXL tokens.",
+      },
+    },
+  },
+};
+
+/** Figma frame “Spacing” (69:6524). */
+export const Spacing = {
+  name: "Spacing",
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Figma “Spacing”: 8px multiple design principle, exception callout for spacing.XS (12px), and the full token table with Value, Example, and Description.",
+      },
+    },
+  },
+  render: () => {
+    const { pad } = useDocPad();
+    return (
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={[styles.wrap, { padding: pad }]}
+      >
+        <View style={styles.page}>
+          <Text style={styles.pageTitle}>{tx("Spacing")}</Text>
+
+          <Text style={styles.sectionTitle}>
+            {tx("The 8 pixel multiple spacing rule")}
+          </Text>
+          <Text style={styles.subtitle}>{tx("Design Principle")}</Text>
+          <Text style={styles.paragraph}>
+            {tx(
+              "The principle of spacing in multiples of 8 pixels emphasises the importance of maintaining a consistent spacing of at least 8 pixels between adjacent elements throughout the interface. This spacing can be applied between buttons, text blocks, images, and other interactive or visual components. The concept of spacing in multiples of 8 pixels offers flexibility to adjust the spacing according to specific design needs. Designers can combine multiples of 8 pixels to achieve different spacing values (e.g. 16px, 24px, 32px), while maintaining consistency with the overall modular system."
+            )}
+          </Text>
+          <Text style={styles.boldParagraph}>{tx("Values outside of the norm")}</Text>
+          <Text style={[styles.paragraph, styles.redText]}>
+            {tx(
+              "There are always exceptions to the rule, but deviating from the spacing scales should be avoided whenever possible."
+            )}
+          </Text>
+
+          <ScrollView horizontal showsHorizontalScrollIndicator>
+            <View style={[styles.table, { minWidth: TABLE_MIN }]}>
+              <View style={[styles.row, styles.headerRow]}>
+                <View style={[styles.cell, { width: COL_TOKEN }]}>
+                  <Text style={styles.headerText}>{tx("Token")}</Text>
+                </View>
+                <View style={[styles.cell, { width: COL_VALUE }]}>
+                  <Text style={styles.headerText}>{tx("Value")}</Text>
+                </View>
+                <View style={[styles.cell, { width: COL_EXAMPLE }]}>
+                  <Text style={styles.headerText}>{tx("Example")}</Text>
+                </View>
+                <View style={[styles.cell, styles.cellLast, { width: COL_DESC }]}>
+                  <Text style={styles.headerText}>{tx("Description")}</Text>
+                </View>
+              </View>
+
+              {spaces.map((item) => (
+                <View
+                  key={item.name}
+                  style={[styles.row, item.tint && styles.rowTint]}
+                >
+                  <View style={[styles.cell, { width: COL_TOKEN }]}>
+                    <Text style={styles.cellText}>{item.name}</Text>
+                    <Text style={styles.cellSubText}>{item.code}</Text>
+                  </View>
+                  <View style={[styles.cell, { width: COL_VALUE }]}>
+                    <Text style={styles.cellText}>{`${item.px}px`}</Text>
+                  </View>
+                  <View style={[styles.cell, { width: COL_EXAMPLE }]}>
+                    <SpacingExample item={item} />
+                  </View>
+                  <View
+                    style={[styles.cell, styles.cellLast, { width: COL_DESC }]}
+                  >
+                    <Text style={styles.cellText}>
+                      {tx(item.description)}
+                      {item.exceptionNote ? " " : ""}
+                      {item.exceptionNote ? (
+                        <Text style={styles.exceptionText}>
+                          {tx(item.exceptionNote)}
+                        </Text>
+                      ) : null}
+                    </Text>
+                  </View>
+                </View>
+              ))}
+            </View>
+          </ScrollView>
+        </View>
+      </ScrollView>
+    );
+  },
+};
 
 const styles = StyleSheet.create({
-  scroll: { width: "100%" },
-  wrap: { alignItems: "center", padding: spacingL },
+  scroll: { flex: 1, backgroundColor: "#FFFFFF", width: "100%" },
+  wrap: { alignItems: "center", width: "100%" },
   page: { width: "100%", maxWidth: TABLE_MAX_WIDTH },
   pageTitle: {
-    fontFamily: fonts.Regular,
+    fontFamily: fonts.HSBC_Bold,
+    fontWeight: "700",
+    fontSize: fontXXLG2,
+    lineHeight: lineHeightXXLG,
+    marginBottom: spacingS,
+  },
+  sectionTitle: {
+    fontFamily: fonts.HSBC_Bold,
     fontWeight: "700",
     fontSize: fontXXLG2,
     lineHeight: lineHeightXXLG,
   },
-  radiusTitle: { marginTop: spacingL },
   subtitle: {
     fontFamily: fonts.HSBC_Medium,
     fontWeight: fontWeightMedium,
@@ -241,16 +315,23 @@ const styles = StyleSheet.create({
     marginBottom: spacingS,
   },
   boldParagraph: {
-    fontFamily: fonts.Regular,
+    fontFamily: fonts.HSBC_Bold,
     fontWeight: "700",
     fontSize: fontMediumLarge,
     lineHeight: lineHeightMediumLarge,
   },
-  redText: { color: "#730014" },
+  redText: { color: COMPLIMENTARY_RED3 },
+  exceptionText: {
+    color: COMPLIMENTARY_RED3,
+    fontFamily: fonts.Regular,
+    fontSize: fontSmall,
+    lineHeight: lineHeightSmall,
+  },
   table: {
     borderWidth: 1,
     borderColor: BORDER,
     marginTop: spacingS,
+    alignSelf: "flex-start",
   },
   row: {
     flexDirection: "row",
@@ -259,6 +340,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: BORDER,
   },
+  headerRow: { backgroundColor: "#FFFFFF" },
   rowTint: { backgroundColor: TINT_RED },
   cell: {
     justifyContent: "center",
@@ -267,12 +349,12 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderRightColor: BORDER,
   },
-  cellFixed: { flex: 1, maxWidth: 200, minWidth: 0 },
-  cellFlex: { flex: 3, minWidth: 0, borderRightWidth: 0 },
+  cellLast: { borderRightWidth: 0 },
   headerText: {
     fontFamily: fonts.HSBC_Medium,
     fontSize: fontSmall,
     lineHeight: lineHeightSmall,
+    fontWeight: "500",
   },
   cellText: {
     fontFamily: fonts.Regular,
@@ -283,7 +365,8 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Regular,
     fontSize: fontSmall,
     lineHeight: lineHeightSmall,
-    opacity: 0.6,
+    opacity: 0.55,
+    marginTop: 2,
   },
   swatch: {
     backgroundColor: PRIMARY_RED,
@@ -295,10 +378,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
     lineHeight: 14,
     color: "#FFFFFF",
-  },
-  radiusPreview: {
-    width: 48,
-    height: 48,
-    backgroundColor: PRIMARY_RED,
+    fontWeight: "500",
   },
 });
