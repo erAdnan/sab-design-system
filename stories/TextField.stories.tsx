@@ -2,6 +2,8 @@ import * as allStories from "./TextField.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
 import { useState } from "react";
 import { View } from "react-native";
+import { expect } from "storybook/test";
+import { spy } from "../.storybook/actions";
 import { TextFieldInput } from "../src/components/input/TextFieldInput";
 import { RagIconType } from "../src/components/rag/Rag";
 import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
@@ -18,17 +20,15 @@ export default {
     ),
   ],
   argTypes: {
-    fetched: {
-      action: "Fetched state",
-      control: "boolean",
-    },
-    error: { action: "Input error", control: "boolean" },
-    disabled: { action: "Input disabled", control: "boolean" },
-    linkButtonLink: { action: "Link button text", control: "text" },
-    hideLinkButton: { action: "Hide link button", control: "boolean" },
-    labelLinkButton: { action: "Label link text", control: "text" },
-    labelMandatory: { action: "Label mandatory", control: "boolean" },
-    labelTooltip: { action: "Label tooltip", control: "boolean" },
+    fetched: { control: "boolean" },
+    error: { control: "boolean" },
+    disabled: { control: "boolean" },
+    linkButtonLink: { control: "text" },
+    hideLinkButton: { control: "boolean" },
+    labelLinkButton: { control: "text" },
+    labelMandatory: { control: "boolean" },
+    labelTooltip: { control: "boolean" },
+    onChange: { action: "onChange" },
   },
   args: {
     fetched: false,
@@ -39,21 +39,35 @@ export default {
     labelTooltip: false,
     "tooltipProps.text": "Some additional information",
     loading: false,
+    onChange: spy("onChange"),
   },
 };
 
 const InputWithText = (args: any) => {
   const [input, setInput] = useState("");
+  const handleChange = (value: string) => {
+    setInput(value);
+    args.onChange?.(value);
+  };
   return (
-    <TextFieldInput textInputInput={input} onChange={setInput} {...args} />
+    <TextFieldInput textInputInput={input} onChange={handleChange} {...args} />
   );
 };
 
 export const TextField = {
+  render: InputWithText,
   args: {
     label: "Label",
     helperText: "Helper text",
     placeholder: "Placeholder",
+  },
+  play: async ({ canvas, userEvent, args }) => {
+    const input =
+      canvas.getByPlaceholderText?.("Placeholder") ||
+      canvas.getByRole("textbox");
+    await userEvent.click(input);
+    await userEvent.type(input, "Hello");
+    await expect(args.onChange).toHaveBeenCalled();
   },
 };
 

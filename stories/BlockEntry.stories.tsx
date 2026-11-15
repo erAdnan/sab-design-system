@@ -1,6 +1,8 @@
 import * as allStories from "./BlockEntry.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
 import { View } from "react-native";
+import { expect } from "storybook/test";
+import { spy } from "../.storybook/actions";
 import { Entry } from "../src/components/block/Entry";
 import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
 import Prepaid from "../src/components/icons/outline/Prepaid";
@@ -13,12 +15,14 @@ export default {
     subtitle: { control: "text" },
     variant: { control: "select", options: ["row", "tile"] },
     loading: { control: "boolean" },
+    onPress: { action: "onPress" },
   },
   args: {
     title: "Title",
     subtitle: "Subtitle",
     variant: "row",
     loading: false,
+    onPress: spy("onPress"),
   },
 };
 
@@ -30,7 +34,10 @@ const placeholderIcon = (
 export const Row = {
   args: {
     icon: placeholderIcon,
-    onPress: () => console.log("entry pressed"),
+  },
+  play: async ({ canvas, userEvent, args }) => {
+    await userEvent.click(canvas.getByText("Title"));
+    await expect(args.onPress).toHaveBeenCalled();
   },
 };
 
@@ -38,7 +45,6 @@ export const Tile = {
   args: {
     variant: "tile",
     icon: placeholderIcon,
-    onPress: () => console.log("entry pressed"),
   },
 };
 

@@ -2,6 +2,8 @@ import * as allStories from "./SearchInput.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
 import React from "react";
 import { View } from "react-native";
+import { expect } from "storybook/test";
+import { spy } from "../.storybook/actions";
 import { SearchInput } from "../src/components/input/SearchInput";
 import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
@@ -15,6 +17,8 @@ export default {
     showFilterIcon:     { control: "boolean" },
     disabled:           { control: "boolean" },
     useWhiteBackground: { control: "boolean" },
+    onChange:           { action: "onChange" },
+    onFilterIconPress:  { action: "onFilterIconPress" },
   },
   args: {
     placeholder: "Search",
@@ -24,7 +28,8 @@ export default {
     error: false,
     fetched: false,
     textInputInput: "",
-    onChange: () => {},
+    onChange: spy("onChange"),
+    onFilterIconPress: spy("onFilterIconPress"),
   },
 };
 
@@ -32,6 +37,14 @@ export default {
 export const Default = {
   args: {
     placeholder: "Search",
+  },
+  play: async ({ canvas, userEvent, args }) => {
+    const input =
+      canvas.getByPlaceholderText?.("Search") ||
+      canvas.getByRole("textbox");
+    await userEvent.click(input);
+    await userEvent.type(input, "sab");
+    await expect(args.onChange).toHaveBeenCalled();
   },
 };
 

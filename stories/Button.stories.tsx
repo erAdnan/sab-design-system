@@ -1,5 +1,7 @@
 import * as allStories from "./Button.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
+import { expect } from "storybook/test";
+import { spy } from "../.storybook/actions";
 import {Button} from "../src/components/button/Button";
 import {buttonContentStoryDecorators} from "../.storybook/buttonStoryFrame";
 
@@ -8,30 +10,28 @@ export default {
   component: Button,
   argTypes: {
     color: {
-      action: "Color",
       control: "radio",
       options: ["primary", "secondary", "blueAccent", "redAccent"]
     },
     size: {
-      action: "Size",
       control: "radio",
       options: ["large", "small", "medium"]
     },
     underline: {
-      action: "Underline",
       control: "boolean",
       defaultValue: false
     },
     bold: {
-      action: "Bold",
       control: "boolean"
-    }
+    },
+    onButtonPress: { action: "onButtonPress" },
   },
   args: {
     size: "large",
     underline: false,
     bold: false,
-    loading: false
+    loading: false,
+    onButtonPress: spy("onButtonPress"),
   }
 };
 
@@ -42,7 +42,11 @@ export const ButtonPrimaryFill = {
     buttonText: {
       children: "Button"
     }
-  }
+  },
+  play: async ({ canvas, userEvent, args }) => {
+    await userEvent.click(canvas.getByText("Button"));
+    await expect(args.onButtonPress).toHaveBeenCalled();
+  },
 };
 
 export const ButtonPrimaryFullWidth = {

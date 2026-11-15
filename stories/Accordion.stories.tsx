@@ -1,6 +1,9 @@
 import * as allStories from "./Accordion.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
+import React, { useState } from "react";
 import { View } from "react-native";
+import { expect } from "storybook/test";
+import { spy } from "../.storybook/actions";
 import { listStoryDecorators } from "../.storybook/listStoryFrame";
 import {
   fontMediumLarge,
@@ -18,7 +21,9 @@ export default {
   title: "Components/Accordion",
   component: Accordion,
   decorators: listStoryDecorators,
-  argTypes: {},
+  argTypes: {
+    handleActionPress: { action: "handleActionPress" },
+  },
   args: {
     text: "Beneficiary Personal Details",
     loading: false,
@@ -127,6 +132,33 @@ export const Default = {
   render: AccordionWithList,
 };
 
+/** Controlled accordion so Actions/Interactions can spy on expand/collapse. */
+const InteractiveAccordion = (args: any) => {
+  const [open, setOpen] = useState(!!args.isOpen);
+  const handleActionPress = () => {
+    setOpen((v) => !v);
+    args.handleActionPress?.();
+  };
+  return (
+    <AccordionWithList
+      {...args}
+      isOpen={open}
+      handleActionPress={handleActionPress}
+    />
+  );
+};
+
+export const Interactive = {
+  render: InteractiveAccordion,
+  args: {
+    handleActionPress: spy("handleActionPress"),
+  },
+  play: async ({ canvas, userEvent, args }) => {
+    await userEvent.click(canvas.getByText("Beneficiary Personal Details"));
+    await expect(args.handleActionPress).toHaveBeenCalled();
+  },
+};
+
 export const NewAccordionWithEditOption = {
   render: AccordionWithList,
   args: {
@@ -145,9 +177,7 @@ export const NewAccordionWithCheckbox = {
     showCheckbox: true,
     checkboxProps: {
       isChecked: false,
-      handleCheck: (isChecked: boolean) => {
-        console.log("Checkbox is now: ", isChecked);
-      },
+      handleCheck: spy("checkbox.handleCheck"),
     },
   },
 };
@@ -161,9 +191,7 @@ export const NewAccordionWithContent = {
     showCheckbox: true,
     checkboxProps: {
       isChecked: false,
-      handleCheck: (isChecked: boolean) => {
-        console.log("Checkbox is now: ", isChecked);
-      },
+      handleCheck: spy("checkbox.handleCheck"),
     },
   },
 };
@@ -241,6 +269,7 @@ export const OpenWithInputFields = {
 
 export const AllVariants = createAllVariantsStory(allStories, [
     "Default",
+    "Interactive",
     "NewAccordionWithEditOption",
     "NewAccordionWithCheckbox",
     "NewAccordionWithContent",

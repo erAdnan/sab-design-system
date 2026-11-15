@@ -1,5 +1,7 @@
 import * as allStories from "./FloatingButton.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
+import { expect } from "storybook/test";
+import { spy } from "../.storybook/actions";
 import { FloatingButton } from "../src/components/newButtons/FloatingButton";
 import Prepaid from "../src/components/icons/outline/Prepaid";
 import ChevronEffectUp from "../src/components/icons/arrows/chevron/ChevronEffectUp";
@@ -12,11 +14,12 @@ export default {
   argTypes: {
     variant: { control: "select", options: ["redAccent", "grayAccent"] },
     text: { control: "text" },
-    onButtonPress: { action: "pressed" },
+    onButtonPress: { action: "onButtonPress" },
   },
   args: {
     variant: "redAccent",
     text: "Add Card to AlAwwal Pay",
+    onButtonPress: spy("onButtonPress"),
   },
 };
 
@@ -26,6 +29,10 @@ export const RedAccent = {
     variant: "redAccent",
     text: "Add Card to AlAwwal Pay",
     icon: <Prepaid />,
+  },
+  play: async ({ canvas, userEvent, args }) => {
+    await userEvent.click(canvas.getByText("Add Card to AlAwwal Pay"));
+    await expect(args.onButtonPress).toHaveBeenCalled();
   },
 };
 
@@ -55,9 +62,6 @@ export const TextOnly = {
   },
 };
 
-// Gallery at the 343 mobile content width. FloatingButton sizes to its content and is not absolutely
-// positioned itself (the host screen pins it), so stacking only needs a bit of extra spacing; each button is
-// left-aligned in the column like it would sit on a screen.
 export const AllVariants = createAllVariantsStory(
   allStories,
   ["RedAccent", "GrayAccent", "IconOnly", "TextOnly"],

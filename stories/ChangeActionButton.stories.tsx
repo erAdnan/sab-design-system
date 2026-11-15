@@ -1,6 +1,7 @@
 import * as allStories from "./ChangeActionButton.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
-import { widthL } from "../src/assets/styles/constants/size";
+import { expect } from "storybook/test";
+import { spy } from "../.storybook/actions";
 import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
 import { ChangeActionButton } from "../src/components/button/ChangeActionButton";
 import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
@@ -10,33 +11,36 @@ export default {
   component: ChangeActionButton,
   decorators: [centerStoryDecorator],
   argTypes: {
-    text: { action: "Checkbox text", control: "text" },
-    extraContent: { action: "Extra content", control: "text" },
+    text: { control: "text" },
+    extraContent: { control: "text" },
+    onButtonPress: { action: "onButtonPress" },
   },
   args: {
     text: "Current Account",
     extraContent: "**** 6234",
-    onButtonPress: () => console.log("Button pressed"),
+    onButtonPress: spy("onButtonPress"),
     loading: false,
   },
 };
 
 export const Default = {
   args: {
-    onButtonPress: () => console.log("Button pressed"),
     overrideStyles: { width: actuatedNormalize(250) },
+  },
+  play: async ({ canvas, userEvent, args }) => {
+    await userEvent.click(canvas.getByText("Current Account"));
+    await expect(args.onButtonPress).toHaveBeenCalled();
   },
 };
 
 export const NoExtraContent = {
   args: {
-    onButtonPress: () => console.log("Button pressed"),
     extraContent: "",
     overrideStyles: { width: actuatedNormalize(180) },
   },
 };
 
 export const AllVariants = createAllVariantsStory(allStories, [
-    "Default",
-    "NoExtraContent",
+  "Default",
+  "NoExtraContent",
 ]);

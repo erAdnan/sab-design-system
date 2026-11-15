@@ -6,7 +6,7 @@ import { ThemeProvider, useTheme } from "../src/context/theme/themeContext.tsx";
 import { StoryBookWrapper } from "../src/components/local/StoryBookWrapper.tsx";
 import i18n from "../src/localization/i18n";
 import { deepTranslateArgs } from "../src/localization/tx";
-import { version, versionLabel } from "./version";
+import { versionLabel } from "./version";
 import { createSabTheme } from "./createSabTheme";
 
 /**
@@ -36,6 +36,11 @@ const preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
+    },
+    // Auto-wire Actions panel for callback props (on*, handle*). Prefer explicit
+    // `fn()` from storybook/test in stories so play() can assert on the same spies.
+    actions: {
+      argTypesRegex: "^(on|handle)[A-Z].*",
     },
     deepControls: { enabled: true },
     options: {
@@ -103,21 +108,11 @@ const preview = {
         dynamicTitle: false,
       },
     },
-    packageVersion: {
-      description: "Published design-system package version for this build",
-      toolbar: {
-        title: versionLabel,
-        icon: "info",
-        items: [{ value: version, title: versionLabel }],
-        dynamicTitle: true,
-      },
-    },
   },
 
   initialGlobals: {
     theme: "light",
     locale: "en",
-    packageVersion: version,
   },
 
   decorators: [

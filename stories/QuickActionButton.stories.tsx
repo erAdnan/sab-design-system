@@ -1,5 +1,7 @@
 import * as allStories from "./QuickActionButton.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
+import { expect } from "storybook/test";
+import { spy } from "../.storybook/actions";
 import { QuickActionButton } from "../src/components/button/QuickActionButton";
 import MyAccounts from "../src/components/icons/banking/MyAccounts";
 import { useTheme } from "../src/context/theme/themeContext";
@@ -9,14 +11,15 @@ export default {
   component: QuickActionButton,
   argTypes: {
     type: {
-      action: "Type",
       control: "radio",
       options: ["vertical", "horizontal"],
     },
+    onButtonPress: { action: "onButtonPress" },
   },
   args: {
     type: "vertical",
     loading: false,
+    onButtonPress: spy("onButtonPress"),
   },
 };
 
@@ -36,9 +39,10 @@ export const Vertical = {
   args: {
     type: "vertical",
     text: "Button",
-    onButtonPress: () => {
-      console.log("Button Pressed");
-    },
+  },
+  play: async ({ canvas, userEvent, args }) => {
+    await userEvent.click(canvas.getByText("Button"));
+    await expect(args.onButtonPress).toHaveBeenCalled();
   },
 };
 
@@ -47,9 +51,6 @@ export const VerticalWithBadge = {
   args: {
     type: "vertical",
     text: "Button",
-    onButtonPress: () => {
-      console.log("Button Pressed");
-    },
     badgeProps: {
       number: 1,
       type: "warning",
@@ -62,9 +63,6 @@ export const Horizontal = {
   args: {
     type: "horizontal",
     text: "Button",
-    onButtonPress: () => {
-      console.log("Button Pressed");
-    },
   },
 };
 
@@ -73,9 +71,6 @@ export const HorizontalWithBadge = {
   args: {
     type: "horizontal",
     text: "Button",
-    onButtonPress: () => {
-      console.log("Button Pressed");
-    },
     badgeProps: {
       number: 1,
       type: "warning",
@@ -84,8 +79,8 @@ export const HorizontalWithBadge = {
 };
 
 export const AllVariants = createAllVariantsStory(allStories, [
-    "Vertical",
-    "VerticalWithBadge",
-    "Horizontal",
-    "HorizontalWithBadge",
+  "Vertical",
+  "VerticalWithBadge",
+  "Horizontal",
+  "HorizontalWithBadge",
 ]);
