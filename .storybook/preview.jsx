@@ -47,19 +47,118 @@ const preview = {
     deepControls: { enabled: true },
     options: {
       // Must stay inline and self-contained (Storybook statically analyses it; no outer references).
-      // Sidebar order: Components, Foundations, then everything else; alphabetical by title. Inside each
+      // Sidebar order: Pulse Design System, Components, Foundations; alphabetical by title. Inside each
       // component the "All variants" story comes first, so opening a component lands on it (Storybook
       // selects the first story of a component). Remaining stories stay alphabetical.
       storySort: (a, b) => {
         if (a.id === b.id) return 0;
-        const top = ["Components", "Foundations"];
+        const top = ["Pulse Design System", "Components", "Foundations"];
+        const pulsePages = [
+          "Pulse Design Ecosystem",
+          "Rules & Patterns",
+          "Guidelines",
+          "Updating Governance",
+        ];
+        const rulesPages = [
+          "Documentation",
+          "Levels of Navigation",
+          "Stories",
+          "Transmission Rules",
+          "Marketing & Engagement",
+          "Rating & Feedback",
+          "Rating & Feedback Variants",
+          "Card Related Alerts & Actions",
+          "Government Service Promotion",
+          "Bottom sheet",
+          "Bottom sheet - Button group Rules",
+        ];
+        const patternPages = [
+          "Prelogin screens",
+          "Postlogin screens",
+          "Login screens",
+          "Sub Hubs",
+          "Authentication",
+          "Status Screen - End of process",
+          "Virtual Card",
+          "Product info",
+          "Product page",
+        ];
+        const guidelinesPages = [
+          "Terminology",
+          "Spacing",
+          "Colours",
+          "Font Size",
+          "Spacing — English & Arabic",
+          "Padding",
+          "Border Radius",
+          "Icon Sizes",
+          "Layout",
+          "Basic Screen Construction",
+        ];
+        const governancePages = [
+          "Governance Model - DS Communication channel",
+          "Changelog",
+        ];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
         };
         const rankDiff = rank(a.title) - rank(b.title);
         if (rankDiff !== 0) return rankDiff;
-        if (a.title !== b.title) return a.title.localeCompare(b.title, undefined, { numeric: true });
+        if (a.title !== b.title) {
+          const aRoot = String(a.title).split("/")[0];
+          if (aRoot === "Pulse Design System") {
+            const parts = (title) => String(title).split("/");
+            const pageRank = (title) => {
+              const page = parts(title)[1] || "";
+              const i = pulsePages.indexOf(page);
+              return i === -1 ? pulsePages.length : i;
+            };
+            const pageDiff = pageRank(a.title) - pageRank(b.title);
+            if (pageDiff !== 0) return pageDiff;
+            // Rules before Patterns under Rules & Patterns
+            if (parts(a.title)[1] === "Rules & Patterns") {
+              const folderOrder = ["Rules", "Patterns"];
+              const folderRank = (title) => {
+                const folder = parts(title)[2] || "";
+                const i = folderOrder.indexOf(folder);
+                return i === -1 ? folderOrder.length : i;
+              };
+              const folderDiff = folderRank(a.title) - folderRank(b.title);
+              if (folderDiff !== 0) return folderDiff;
+              const leafOrder =
+                parts(a.title)[2] === "Patterns" ? patternPages : rulesPages;
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = leafOrder.indexOf(leaf);
+                return i === -1 ? leafOrder.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+            // Guidelines topic order (Figma left → right)
+            if (parts(a.title)[1] === "Guidelines") {
+              const leafRank = (title) => {
+                const leaf = parts(title)[2] || "";
+                const i = guidelinesPages.indexOf(leaf);
+                return i === -1 ? guidelinesPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+            // Updating Governance topic order (Figma top → bottom)
+            if (parts(a.title)[1] === "Updating Governance") {
+              const leafRank = (title) => {
+                const leaf = parts(title)[2] || "";
+                const i = governancePages.indexOf(leaf);
+                return i === -1 ? governancePages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          return a.title.localeCompare(b.title, undefined, { numeric: true });
+        }
         const isAll = (name) => /^all\s?variants$/i.test(name);
         if (isAll(a.name) !== isAll(b.name)) return isAll(a.name) ? -1 : 1;
         return a.name.localeCompare(b.name, undefined, { numeric: true });

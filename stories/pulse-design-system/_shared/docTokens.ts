@@ -1,0 +1,21 @@
+/** Light-theme tokens for Pulse docs pages (from src/assets/styles/theme/light.ts). */
+export const docTokens = {
+  red: "#DB0011",
+  redDeep: "#730014",
+  redTonal: "#FBE5E7",
+  navy: "#1E2E42",
+  black: "#000000",
+  gray: "#767676",
+  graySoft: "#5A6572",
+  border: "#EEEEEE",
+  borderMuted: "rgba(9, 30, 66, 0.14)",
+  block: "#F2F3F4",
+  white: "#FFFFFF",
+  subtle: "#FAFAFA",
+  blueTint: "#F5F9FF",
+  blue: "#305A85",
+  greenTint: "#E5F2F2",
+  green: "#00847F",
+  radius: 8,
+  maxWidth: 920,
+};

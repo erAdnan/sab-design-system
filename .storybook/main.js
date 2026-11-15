@@ -3,6 +3,7 @@ const path = require("path");
 /** Web Storybook. Device Storybook uses `.rnstorybook`. */
 module.exports = {
   stories: [
+    "../stories/pulse-design-system/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/*.stories.@(ts|tsx|js|jsx)",
     "../stories/foundations/**/*.stories.@(ts|tsx|js|jsx)",
   ],
