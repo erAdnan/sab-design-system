@@ -25,26 +25,26 @@ export const RESPONSIVE_GRID_PAGES: DocPage[] = [
   {
     title: "Mobile",
     storyName: "Mobile",
-    images: [img(require("./assets/mobile.png"), 4096, 1579)],
+    images: [img(require("./assets/mobile.webp"), 2880, 1110)],
   },
   {
     title: "Tablet",
     storyName: "Tablet",
-    images: [img(require("./assets/tablet.png"), 4096, 1854)],
+    images: [img(require("./assets/tablet.webp"), 2880, 1304)],
   },
   {
     title: "Responsive Device Grid",
     storyName: "Responsive Device Grid",
-    images: [img(require("./assets/responsive-device-grid.png"), 849, 4096)],
+    images: [img(require("./assets/responsive-device-grid.webp"), 849, 4096)],
   },
   {
     title: "Samsung Fold behaviour",
     storyName: "Samsung Fold behaviour",
-    images: [img(require("./assets/samsung-fold.png"), 3215, 4096)],
+    images: [img(require("./assets/samsung-fold.webp"), 2880, 3669)],
   },
   {
     title: "Design-Dev Workspace",
     storyName: "Design-Dev Workspace",
-    images: [img(require("./assets/design-dev-workspace.png"), 4096, 3911)],
+    images: [img(require("./assets/design-dev-workspace.webp"), 2880, 2750)],
   },
 ];

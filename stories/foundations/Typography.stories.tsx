@@ -902,7 +902,7 @@ const SarAmount = ({
   gap: 0 | 2;
   weight: "regular" | "bold";
 }) => (
-  <View style={[styles.sarRow, { columnGap: gap }]} accessibilityLabel={`SAR ${SAR_AMOUNT}`}>
+  <View style={[styles.sarRow, { columnGap: gap }]}>
     <Text
       style={{
         fontFamily: fonts.SAR_Font,

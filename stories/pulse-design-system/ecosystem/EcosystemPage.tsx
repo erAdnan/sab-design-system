@@ -3,11 +3,11 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import fonts from "../../../src/assets/styles/constants/fonts";
 import { usePulseDocLayout } from "../_shared/usePulseDocLayout";
 
-const pulseMark = require("../assets/ecosystem/pulse-mark.png");
-const heroPhones = require("../assets/ecosystem/hero-phones-visual.png");
-const macbookBase = require("../assets/ecosystem/macbook-base.png");
-const macbookOverlay = require("../assets/ecosystem/macbook-overlay.png");
-const macbookScreen = require("../assets/ecosystem/macbook-screen.png");
+const pulseMark = require("../assets/ecosystem/pulse-mark.webp");
+const heroPhones = require("../assets/ecosystem/hero-phones-visual.webp");
+const macbookBase = require("../assets/ecosystem/macbook-base.webp");
+const macbookOverlay = require("../assets/ecosystem/macbook-overlay.webp");
+const macbookScreen = require("../assets/ecosystem/macbook-screen.webp");
 
 // SVGR (native) — Figma logo assets
 import SabLogoSplash from "../assets/ecosystem/sab-logo-splash.svg";
@@ -124,6 +124,7 @@ export const EcosystemPage: FC = () => {
             <Image
               source={pulseMark}
               style={{ width: markW, maxWidth: "100%", height: markH, resizeMode: "contain" }}
+              accessibilityRole="image"
               accessibilityLabel="Pulse Design"
             />
             <Text
@@ -161,6 +162,7 @@ export const EcosystemPage: FC = () => {
                 width: layout.isMobile ? "100%" : 560,
               },
             ]}
+            accessibilityRole="image"
             accessibilityLabel="Pulse mobile experience"
           />
         </View>

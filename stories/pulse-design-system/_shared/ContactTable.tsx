@@ -14,9 +14,9 @@ export const ContactTable: FC<{ rows: ContactRow[] }> = ({ rows }) => {
 
   if (isMobile) {
     return (
-      <View style={styles.table} accessibilityRole="summary">
+      <View style={styles.table} accessibilityRole="list">
         {rows.map((row) => (
-          <View key={row.name} style={styles.card}>
+          <View key={row.name} style={styles.card} accessibilityRole="listitem">
             <Text style={styles.cardName}>{row.name}</Text>
             <View style={styles.emailStack}>
               {row.emails.map((email) => (
@@ -33,14 +33,14 @@ export const ContactTable: FC<{ rows: ContactRow[] }> = ({ rows }) => {
   }
 
   return (
-    <View style={styles.table} accessibilityRole="summary">
-      <View style={[styles.row, styles.head]}>
+    <View style={styles.table} accessibilityRole="list">
+      <View style={[styles.row, styles.head]} accessibilityRole="listitem">
         <Text style={[styles.cell, styles.headText, styles.colName]}>Name</Text>
         <Text style={[styles.cell, styles.headText, styles.colEmail]}>Email</Text>
         <Text style={[styles.cell, styles.headText, styles.colSlack]}>Slack</Text>
       </View>
       {rows.map((row) => (
-        <View key={row.name} style={styles.row}>
+        <View key={row.name} style={styles.row} accessibilityRole="listitem">
           <Text style={[styles.cell, styles.colName]}>{row.name}</Text>
           <View style={[styles.cell, styles.colEmail, styles.emailStack]}>
             {row.emails.map((email) => (

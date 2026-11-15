@@ -25,7 +25,7 @@ export const UPDATING_GOVERNANCE_PAGES: DocPage[] = [
       "Pulse Design System/Updating Governance/Governance Model - DS Communication channel",
     images: [
       img(
-        require("./assets/governance-model-ds-communication-channel.png"),
+        require("./assets/governance-model-ds-communication-channel.webp"),
         1280,
         992
       ),
@@ -34,6 +34,6 @@ export const UPDATING_GOVERNANCE_PAGES: DocPage[] = [
   {
     title: "Changelog",
     storyTitle: "Pulse Design System/Updating Governance/Changelog",
-    images: [img(require("./assets/changelog.png"), 1280, 716)],
+    images: [img(require("./assets/changelog.webp"), 1280, 716)],
   },
 ];

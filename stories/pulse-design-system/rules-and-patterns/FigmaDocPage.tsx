@@ -88,7 +88,13 @@ export const FigmaDocPage: FC<FigmaDocPageProps> = ({
             source={img.source}
             style={[styles.frame, { aspectRatio: img.aspectRatio }]}
             resizeMode="contain"
+            // role=img so aria-label is allowed (axe aria-allowed-attr on RN-web)
+            accessibilityRole="image"
             accessibilityLabel={`${title} section ${index + 1}`}
+            // Web: defer offscreen Figma frames (no quality change).
+            // @ts-expect-error loading is a DOM <img> attribute honored by RN-web
+            loading="lazy"
+            fadeDuration={0}
           />
         ))}
       </View>

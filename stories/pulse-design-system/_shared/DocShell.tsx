@@ -3,7 +3,7 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { docTokens as t } from "./docTokens";
 import { usePulseDocLayout } from "./usePulseDocLayout";
 
-const pulseBrand = require("../assets/pulse-brand.png");
+const pulseBrand = require("../assets/pulse-brand.webp");
 
 type DocShellProps = {
   title: string;
@@ -23,11 +23,7 @@ export const DocShell: FC<DocShellProps> = ({
   const maxW = Math.min(1100, layout.maxContent);
 
   return (
-    <ScrollView
-      style={styles.scroll}
-      contentContainerStyle={styles.content}
-      accessibilityRole="scrollbar"
-    >
+    <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
       <View
         style={[
           styles.header,
@@ -46,6 +42,7 @@ export const DocShell: FC<DocShellProps> = ({
               styles.brand,
               layout.isMobile && { width: 110, height: 27 },
             ]}
+            accessibilityRole="image"
             accessibilityLabel="Pulse Design"
           />
           <Text
