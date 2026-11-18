@@ -5,7 +5,7 @@ import { useStoryCopy } from "./helpers/useStoryCopy";
 const SAMPLE_TEXT = en.stories.simpleText;
 
 export default {
-  title: "Components/Text Text",
+  title: "Components/Text/Text Text",
   component: TextText,
   argTypes: {
     hierarchy: {

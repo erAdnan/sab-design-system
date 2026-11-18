@@ -10,7 +10,7 @@ const SAMPLE_BODY = en.stories.loremIpsum;
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/TextDivider",
+  title: "Components/Text/Divider",
   component: TextDivider,
   args: {
     headline: SAMPLE_HEADLINE,

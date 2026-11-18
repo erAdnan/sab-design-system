@@ -6,6 +6,8 @@ module.exports = {
     "../stories/pulse-design-system/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/*.stories.@(ts|tsx|js|jsx)",
     "../stories/foundations/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Text/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Divider/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [

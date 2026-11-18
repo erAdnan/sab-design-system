@@ -9,6 +9,7 @@ export default {
   decorators: mobileContentDecorators,
   title: "Components/Divider",
   component: Divider,
+  tags: ["!autodocs"],
 };
 
 const DividerExample = () => {

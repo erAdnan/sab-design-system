@@ -100,6 +100,12 @@ const preview = {
           "Governance Model - DS Communication channel",
           "Changelog",
         ];
+        // Components/Text/Docs — Figma Text canvas 8:3574 left → right
+        const textDocsPages = [
+          "Title Actions",
+          "Text Headline",
+          "Body Text",
+        ];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -153,6 +159,26 @@ const preview = {
                 const leaf = parts(title)[2] || "";
                 const i = governancePages.indexOf(leaf);
                 return i === -1 ? governancePages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Text/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Text" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Text" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = textDocsPages.indexOf(leaf);
+                return i === -1 ? textDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;
