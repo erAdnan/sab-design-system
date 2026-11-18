@@ -167,6 +167,8 @@ const preview = {
         const checkboxDocsPages = ["Check Box"];
         // Components/Radio Button/Docs — Figma Radio Button canvas 8:3487
         const radioButtonDocsPages = ["Radio Button"];
+        // Components/Toggle/Docs — Figma Toggle canvas 8:3497
+        const toggleDocsPages = ["Toggle"];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -413,6 +415,26 @@ const preview = {
                 return i === -1 ? radioButtonDocsPages.length : i;
               };
               const leafDiff = leafRank(aTitle) - leafRank(bTitle);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Toggle/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Toggle" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Toggle" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = toggleDocsPages.indexOf(leaf);
+                return i === -1 ? toggleDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;
             }
           }

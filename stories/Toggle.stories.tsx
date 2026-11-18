@@ -8,6 +8,7 @@ import { Toggle } from "../src/components/toggle/Toggle";
 export default {
   title: "Components/Toggle",
   component: Toggle,
+  tags: ["!autodocs"],
   argTypes: {
     disabled: { control: "boolean" },
     isEnabled: { control: "boolean" },
