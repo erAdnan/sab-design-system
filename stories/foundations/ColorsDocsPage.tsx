@@ -179,7 +179,7 @@ const ColorTable = ({ section }: { section: ColorDocSection }) => (
         {section.rows.map((row, index) => (
           <View
             key={`${section.id}-${row.token}-${row.code}-${index}`}
-            style={[styles.row, index % 2 === 1 && styles.rowTint]}
+            style={styles.row}
           >
             <View style={[styles.cell, { width: COL.token }]}>
               <TokenCell row={row} />
@@ -297,7 +297,6 @@ const styles = StyleSheet.create({
     borderBottomColor: BORDER,
   },
   headerRow: { backgroundColor: PAGE_BG },
-  rowTint: { backgroundColor: TINT_RED },
   cell: {
     justifyContent: "center",
     paddingHorizontal: spacingS,

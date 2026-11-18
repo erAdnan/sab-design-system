@@ -6,6 +6,7 @@ import {
   StyleSheet,
   useWindowDimensions,
 } from "react-native";
+import { Description, Stories, Title } from "@storybook/addon-docs/blocks";
 import {
   spacingXS,
   spacingS,
@@ -41,6 +42,18 @@ import { tx } from "../../src/localization/tx";
  * Frames: “Border radius” (69:6600), “Border stroke” (1346:3437)
  */
 
+/**
+ * Default autodocs renders Primary + Stories (includePrimary), so Border radius
+ * appears twice. Stories alone lists both frames once.
+ */
+const BorderRadiusDocsPage = () => (
+  <>
+    <Title />
+    <Description />
+    <Stories />
+  </>
+);
+
 const BORDER = "rgba(0,0,0,0.1)";
 const PRIMARY_RED = "#DB0011";
 const COMPLIMENTARY_RED3 = "#730014";
@@ -56,7 +69,6 @@ const TABLE_MIN = COL_TOKEN + COL_VALUE + COL_EXAMPLE + COL_DESC;
 const radii = [
   {
     name: "radius.XS",
-    code: "radiusXS",
     px: 4,
     value: radiusXS,
     description:
@@ -64,7 +76,6 @@ const radii = [
   },
   {
     name: "radius.S",
-    code: "radiusS",
     px: 8,
     value: radiusS,
     description:
@@ -72,7 +83,6 @@ const radii = [
   },
   {
     name: "radius.M",
-    code: "radiusM",
     px: 12,
     value: radiusM,
     description:
@@ -80,7 +90,6 @@ const radii = [
   },
   {
     name: "radius.L",
-    code: "radiusL",
     px: 16,
     value: radiusL,
     description:
@@ -88,42 +97,39 @@ const radii = [
   },
   {
     name: "radius.XL",
-    code: "radiusXL",
     px: 24,
     value: radiusXL,
+    // Figma copy starts with “16px” (doc quirk); keep as published.
     description:
       "The 16px round corner value is a notable option within our design system, though it is not currently in use. While not yet applied, having the 24px option available ensures flexibility for future designs, allowing for a distinctive and cohesive appearance when needed.",
   },
 ];
 
+/** Figma stroke table Description cells are the placeholder string “Description”. */
 const strokes = [
   {
     name: "stroke.none",
-    code: "strokeNone",
     pxLabel: "0px",
     value: strokeNone,
-    description: "No border stroke.",
+    description: "Description",
   },
   {
     name: "stroke.XS",
-    code: "strokeXS",
     pxLabel: "0.5px",
     value: strokeXS,
-    description: "Hairline stroke for subtle outlines.",
+    description: "Description",
   },
   {
     name: "stroke.S",
-    code: "strokeS",
     pxLabel: "1px",
     value: strokeS,
-    description: "Default stroke width for borders and dividers.",
+    description: "Description",
   },
   {
     name: "stroke.M",
-    code: "strokeM",
     pxLabel: "2px",
     value: strokeM,
-    description: "Emphasized stroke for stronger borders and focus states.",
+    description: "Description",
   },
 ];
 
@@ -211,6 +217,7 @@ export default {
   parameters: {
     layout: "fullscreen",
     docs: {
+      page: BorderRadiusDocsPage,
       description: {
         component:
           "SAB Pulse border radius and stroke foundations from Figma (node 69:6599): radius.XS→XL tokens, nested corner principle, and stroke.none→M widths.",
@@ -221,12 +228,12 @@ export default {
 
 /** Figma frame “Border radius” (69:6600). */
 export const BorderRadius = {
-  name: "Border Radius",
+  name: "Border radius",
   parameters: {
     docs: {
       description: {
         story:
-          "Figma “Border radius”: radius.XS 4px → radius.S 8px → radius.M 12px → radius.L 16px → radius.XL 24px, with example swatches and usage notes.",
+          "Figma “Border radius” (69:6600): radius.XS 4px → S 8px → M 12px → L 16px → XL 24px.",
       },
     },
   },
@@ -239,7 +246,6 @@ export const BorderRadius = {
             <View key={item.name} style={styles.row}>
               <View style={[styles.cell, { width: COL_TOKEN }]}>
                 <Text style={styles.cellText}>{item.name}</Text>
-                <Text style={styles.cellSubText}>{item.code}</Text>
               </View>
               <View style={[styles.cell, { width: COL_VALUE }]}>
                 <Text style={styles.cellText}>{`${item.px}px`}</Text>
@@ -265,12 +271,12 @@ export const BorderRadius = {
 
 /** Figma frame “Border stroke” (1346:3437). */
 export const BorderStroke = {
-  name: "Border Stroke",
+  name: "Border stroke",
   parameters: {
     docs: {
       description: {
         story:
-          "Figma “Border stroke”: nested rounded-corners principle (outer r = inner r + padding), Don’t example, and stroke.none / XS / S / M widths.",
+          "Figma “Border stroke” (1346:3437): nested corners (outer r = inner r + padding), Don’t example, stroke.none → M.",
       },
     },
   },
@@ -293,7 +299,6 @@ export const BorderStroke = {
             <View key={item.name} style={styles.row}>
               <View style={[styles.cell, { width: COL_TOKEN }]}>
                 <Text style={styles.cellText}>{item.name}</Text>
-                <Text style={styles.cellSubText}>{item.code}</Text>
               </View>
               <View style={[styles.cell, { width: COL_VALUE }]}>
                 <Text style={styles.cellText}>{item.pxLabel}</Text>
@@ -362,6 +367,7 @@ const styles = StyleSheet.create({
     minHeight: 64,
     borderBottomWidth: 1,
     borderBottomColor: BORDER,
+    backgroundColor: "#FFFFFF",
   },
   headerRow: { minHeight: 50, backgroundColor: "#FFFFFF" },
   cell: {
@@ -382,13 +388,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Regular,
     fontSize: fontSmall,
     lineHeight: lineHeightSmall,
-  },
-  cellSubText: {
-    fontFamily: fonts.Regular,
-    fontSize: fontSmall,
-    lineHeight: lineHeightSmall,
-    opacity: 0.55,
-    marginTop: 2,
   },
   radiusBox: {
     width: 80,

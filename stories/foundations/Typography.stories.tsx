@@ -40,11 +40,13 @@ import fonts from "../../src/assets/styles/constants/fonts";
 import { canvasTier } from "../../src/assets/styles/utils/responsive";
 
 import { tx } from "../../src/localization/tx";
+import { FigmaDocPage } from "../pulse-design-system/rules-and-patterns/FigmaDocPage";
+import { PLATFORM_AGNOSTIC_IMAGES } from "./typography/catalog";
 
 /**
  * Figma: Typography page (24:2)
- * Frames: Font Weight · Font Size · Line height · Typography-English ·
- * Typography-Arabic · Saudi Riyal Symbol SAR
+ * Frames (L→R): Typography · Platform agnostic · Font Weight · Font Size ·
+ * Line height · Typography-English · Typography-Arabic · Saudi Riyal Symbol SAR
  */
 export default {
   title: "Foundations/Typography",
@@ -52,7 +54,7 @@ export default {
     docs: {
       description: {
         component:
-          "SAB Pulse typography foundations from Figma (node 24:2): font weight, size, line height, English and Arabic text styles, and the Saudi Riyal (SAR) symbol scale. Token names nest weight + size + line height.",
+          "SAB Pulse typography foundations from Figma (node 24:2): platform-agnostic system fonts, font weight, size, line height, English and Arabic text styles, and the Saudi Riyal (SAR) symbol scale.",
       },
     },
   },
@@ -232,12 +234,13 @@ const englishStyles: TextStyleRow[] = [
     usage: { regular: FUTURE, medium: FUTURE, bold: FUTURE },
   },
   {
-    // Figma text style binds to fontSize-XXLarge (22). Docs table cells sometimes mislabel as XLarge.
+    // Figma English/Arabic/SAR docs label Title 2 as fontSize-XLarge / lineHeight-XLarge,
+    // while the example glyph is 22 (fontSize-XXLarge). Match the doc labels; keep px = 22.
     name: "Title 2",
     size: fontXXLarge,
     lineHeight: lineHeightXXLarge,
-    sizeToken: "fontSize-XXLarge",
-    lineToken: "lineHeight-XXLarge",
+    sizeToken: "fontSize-XLarge",
+    lineToken: "lineHeight-XLarge",
     usage: { regular: FUTURE, medium: FUTURE, bold: FUTURE },
   },
   {
@@ -266,11 +269,11 @@ const englishStyles: TextStyleRow[] = [
     },
   },
   {
-    // Docs table may say fontSize-2XXLG; Font Size frame + variables use fontSize-3XLG = 34
+    // English docs token: fontSize-2XXLG; Font Size frame variable is fontSize-3XLG = 34
     name: "ExtraLargeTitle",
     size: font3XLG,
     lineHeight: lineHeightXXLG,
-    sizeToken: "fontSize-3XLG",
+    sizeToken: "fontSize-2XXLG",
     lineToken: "lineHeight-XXLG",
     usage: {
       regular: "Text style to be used in accounts balance among other uses",
@@ -282,7 +285,7 @@ const englishStyles: TextStyleRow[] = [
 
 /**
  * Arabic scale (Typography-Arabic). Ends at LargeTitle (no ExtraLargeTitle).
- * Figma text styles bind Arabic LargeTitle to fontSize-3XLG (34), not XXLG (30).
+ * Docs label LargeTitle as fontSize-XXLG; example glyph is 34 (same as English ExtraLargeTitle).
  */
 const arabicStyles: TextStyleRow[] = englishStyles
   .filter((s) => s.name !== "ExtraLargeTitle")
@@ -291,7 +294,7 @@ const arabicStyles: TextStyleRow[] = englishStyles
       return {
         ...s,
         size: font3XLG,
-        sizeToken: "fontSize-3XLG",
+        sizeToken: "fontSize-XXLG",
         lineToken: "lineHeight-XXLG",
         usage: { regular: FUTURE, medium: FUTURE, bold: FUTURE },
       };
@@ -392,11 +395,12 @@ const sarStyles: SarRow[] = [
     description: "The symbol is applied to any Regular or Bold English or Arabic Title3 style.",
   },
   {
+    // SAR docs label Title 2 as fontSize-XLarge; example amount is 22
     name: "Title 2",
     size: fontXXLarge,
     lineHeight: lineHeightXXLarge,
-    sizeToken: "fontSize-XXLarge",
-    lineToken: "lineHeight-XXLarge",
+    sizeToken: "fontSize-XLarge",
+    lineToken: "lineHeight-XLarge",
     gap: 2,
     description: "The symbol is applied to any Regular or Bold English or Arabic Title2 style.",
   },
@@ -419,11 +423,11 @@ const sarStyles: SarRow[] = [
     description: "The symbol is applied to any Regular or Bold English or Arabic LargeTitle style.",
   },
   {
-    // Figma SAR ExtraLargeTitle binds to fontSize-3XLG (34)
+    // SAR docs label ExtraLargeTitle as fontSize-XXLG; example amount is 34
     name: "ExtraLargeTitle",
     size: font3XLG,
     lineHeight: lineHeightXXLG,
-    sizeToken: "fontSize-3XLG",
+    sizeToken: "fontSize-XXLG",
     lineToken: "lineHeight-XXLG",
     gap: 2,
     description: "The symbol is applied to any Regular or Bold English or Arabic LargeTitle style.",
@@ -557,26 +561,33 @@ const tokenPath = (
   lineToken: string
 ) => `${locale}/${weight}/${sizeToken}/${lineToken}`;
 
-/** Combined overview — Font Weight, Size, Line Height (Figma first three frames). */
-export const Scale = {
-  name: "Scale",
+/** Figma intro copy (line break preserved). */
+const EN_INTRO =
+  "Below is a list of all token names associated with the English Typo Scale.\nThese token names are constructed using three nested values, which together define the typography properties for weight, size, and line height.";
+const AR_INTRO =
+  "Below is a list of all token names associated with the Arabic Typo Scale.\nThese token names are constructed using three nested values, which together define the typography properties for weight, size, and line height.";
+const SAR_INTRO =
+  "Below is a list of all token names associated with the SAR Typo Scale.\nThese token names are constructed using three nested values, which together define the typography properties for weight, size, and line height.";
+
+/** Figma frame “Typography · Platform agnostic” (22374:812) — first frame under 24:2. */
+export const PlatformAgnostic = {
+  name: "Platform agnostic",
   parameters: {
+    controls: { disable: true },
+    a11y: { disable: true },
     docs: {
       description: {
         story:
-          "Overview of nested typography tokens: font weight, font size, and line height from Figma Typography (24:2).",
+          "Figma “Typography · Platform agnostic” (22374:812): one semantic typography system; SF Pro is the design reference, native system fonts at runtime (iOS / Android).",
       },
     },
   },
   render: () => (
-    <PageChrome title="Typography">
-      <Text style={styles.paragraph}>
-        {tx("Font family: Univers Next for HSBC (native system fonts in the app).")}
-      </Text>
-      <FontWeightTable />
-      <FontSizeTable />
-      <LineHeightTable />
-    </PageChrome>
+    <FigmaDocPage
+      title="Platform agnostic"
+      eyebrow="Foundations"
+      images={PLATFORM_AGNOSTIC_IMAGES}
+    />
   ),
 };
 
@@ -586,7 +597,7 @@ export const FontWeight = {
     docs: {
       description: {
         story:
-          "Figma “Font Weight”: light=200, regular=400, medium=500, bold=700. Medium row highlighted in Figma.",
+          "Figma “Font Weight” (7048:20745): light 200, regular 400, medium 500, bold 700. Design Principle + token table (white rows).",
       },
     },
   },
@@ -603,7 +614,7 @@ export const FontSize = {
     docs: {
       description: {
         story:
-          "Figma “Font Size”: XXSmall 10 → XSmall 11 → Small 12 → SmallMedium 13 → Medium 14 → MediumLarge 15 → Large 17 → XLarge 20 → XXLarge 22 → XLG 26 → XXLG 30 → 3XLG 34.",
+          "Figma “Font Size” (7048:20788): XXSmall 10 → 3XLG 34. Design Principle + token table (white rows).",
       },
     },
   },
@@ -620,7 +631,7 @@ export const LineHeight = {
     docs: {
       description: {
         story:
-          "Figma “Line height”: XXSmall 14 → XSmall 15 → Small 16 → SmallMedium 17 → Medium 18 → MediumLarge 20 → Large 22 → XLarge 25 → XXLarge 28 → lineHeightXLG 32 → XXLG 41.",
+          "Figma “Line height” (7048:20903): XXSmall 14 → XXLG 41. Design Principle + token table (white rows).",
       },
     },
   },
@@ -637,7 +648,7 @@ export const English = {
     docs: {
       description: {
         story:
-          "Figma frame “Typography-English”. SAB English text styles (Caption 2 → ExtraLargeTitle) with Regular, Medium, and Bold weights. Font: Univers Next for HSBC.",
+          "Figma “Typography-English” (7048:21029): Caption 2 → ExtraLargeTitle × Regular / Medium / Bold. Font pill matches Figma (Font TFF | Univers Next for HSBC).",
       },
     },
   },
@@ -645,9 +656,9 @@ export const English = {
     <PageChrome title="Typography">
       <Section
         title="English Typography Scale"
-        intro="Below is a list of all token names associated with the English Typo Scale. These token names are constructed using three nested values, which together define the typography properties for weight, size, and line height."
+        intro={EN_INTRO}
       >
-        <FontPill label="Font TTF | Univers Next for HSBC" />
+        <FontPill label="Font TFF | Univers Next for HSBC" />
         <Table>
           <Header
             cols={[
@@ -660,11 +671,8 @@ export const English = {
             ]}
           />
           {englishStyles.map((style) =>
-            styleWeights.map((weight, weightIndex) => (
-              <View
-                key={`${style.name}-${weight.key}`}
-                style={[styles.row, weightIndex === 1 && styles.rowTint]}
-              >
+            styleWeights.map((weight) => (
+              <View key={`${style.name}-${weight.key}`} style={styles.row}>
                 <View style={[styles.cell, styles.cellFixed]}>
                   <Text style={styles.cellText}>{style.name}</Text>
                 </View>
@@ -709,17 +717,14 @@ export const Arabic = {
     docs: {
       description: {
         story:
-          "Figma frame “Typography-Arabic”. SAB Arabic text styles (Caption 2 → LargeTitle) with Regular, Medium, and Bold. Font: Univers Arabic for HSBC. Switch Storybook locale/RTL to preview journeys in Arabic.",
+          "Figma “Typography-Arabic” (1402:4636): Caption 2 → LargeTitle × Regular / Medium / Bold. Font pill matches Figma (Font TFF | Univers arabica for HSBC).",
       },
     },
   },
   render: () => (
     <PageChrome title="Typography">
-      <Section
-        title="Arabic Typography Scale"
-        intro="Below is a list of all token names associated with the Arabic Typo Scale. These token names are constructed using three nested values, which together define the typography properties for weight, size, and line height."
-      >
-        <FontPill label="Font TTF | Univers Arabic for HSBC" />
+      <Section title="Arabic Typography Scale" intro={AR_INTRO}>
+        <FontPill label="Font TFF | Univers arabica for HSBC" />
         <Table>
           <Header
             cols={[
@@ -732,11 +737,8 @@ export const Arabic = {
             ]}
           />
           {arabicStyles.map((style) =>
-            styleWeights.map((weight, weightIndex) => (
-              <View
-                key={`${style.name}-${weight.key}`}
-                style={[styles.row, weightIndex === 1 && styles.rowTint]}
-              >
+            styleWeights.map((weight) => (
+              <View key={`${style.name}-${weight.key}`} style={styles.row}>
                 <View style={[styles.cell, styles.cellFixed]}>
                   <Text style={styles.cellText}>{style.name}</Text>
                 </View>
@@ -784,18 +786,16 @@ export const SaudiRiyalSymbol = {
     docs: {
       description: {
         story:
-          "Figma frame “Saudi Riyal Symbol SAR”. SAR glyph (`SarFont` / Saudi Riyal March12) pairs with Regular or Bold English/Arabic styles. No gap for Caption→Callout; 2px gap for Body→ExtraLargeTitle.",
+          "Figma “Saudi Riyal Symbol SAR” (5553:5012): Regular/Bold × Caption 2 → ExtraLargeTitle. Font TFF | Saudi Riyal March12. No gap Caption→Callout; 2px Body→ExtraLargeTitle.",
       },
     },
   },
   render: () => (
     <PageChrome title="Typography SAR">
-      <Section
-        title="Saudi Riyal Symbol"
-        intro="Below is a list of all token names associated with the SAR Typo Scale. These token names are constructed using three nested values, which together define the typography properties for weight, size, and line height."
-      >
-        <FontPill label="Font TTF | Saudi Riyal March12" />
+      <Section title="Saudi Riyal Symbol SAR" intro={SAR_INTRO}>
+        <FontPill label="Font TFF | Saudi Riyal March12" />
         <View style={styles.gapRules}>
+          <Text style={styles.gapRuleHeading}>{tx("Spacing Rule")}</Text>
           <View style={styles.gapRuleRow}>
             <Text style={styles.gapRuleLabel}>{tx("NO GAP SPACING")}</Text>
             <Text style={styles.gapRuleValues}>
@@ -835,16 +835,11 @@ export const SaudiRiyalSymbol = {
               </Text>
             </View>
           </View>
-          {sarStyles.map((style, index) =>
-            (["regular", "bold"] as const).map((weightKey, weightIndex) => (
+          {sarStyles.map((style) =>
+            (["regular", "bold"] as const).map((weightKey) => (
               <View
                 key={`${style.name}-${weightKey}`}
-                style={[
-                  styles.row,
-                  styles.sarRowHug,
-                  (index === sarStyles.length - 1 || weightIndex === 1) &&
-                    styles.rowTint,
-                ]}
+                style={[styles.row, styles.sarRowHug]}
               >
                 <View style={[styles.cell, styles.sarColToken]}>
                   <Text style={styles.cellText}>{style.name}</Text>
@@ -937,11 +932,8 @@ const FontWeightTable = () => (
     <Text style={styles.paragraph}>{tx(PRINCIPLE)}</Text>
     <Table>
       <Header cols={["Token", "Value", "Example", "Description"]} />
-      {weights.map((item, index) => (
-        <View
-          key={item.token}
-          style={[styles.row, item.token === "medium" && styles.rowTint]}
-        >
+      {weights.map((item) => (
+        <View key={item.token} style={styles.row}>
           <View style={[styles.cell, styles.cellFixed]}>
             <Text style={styles.cellText}>{item.token}</Text>
           </View>
@@ -973,8 +965,8 @@ const FontSizeTable = () => (
     <Text style={styles.paragraph}>{tx(PRINCIPLE)}</Text>
     <Table>
       <Header cols={["Token", "Value", "Example", "Description"]} />
-      {fontSizes.map((item, index) => (
-        <View key={item.token} style={[styles.row, index % 2 === 1 && styles.rowTint]}>
+      {fontSizes.map((item) => (
+        <View key={item.token} style={styles.row}>
           <View style={[styles.cell, styles.cellFixed]}>
             <Text style={styles.cellText}>{item.token}</Text>
           </View>
@@ -1007,8 +999,8 @@ const LineHeightTable = () => (
     <Text style={styles.paragraph}>{tx(PRINCIPLE)}</Text>
     <Table>
       <Header cols={["Token", "Value", "Example", "Description"]} />
-      {lineHeights.map((item, index) => (
-        <View key={item.token} style={[styles.row, index % 2 === 1 && styles.rowTint]}>
+      {lineHeights.map((item) => (
+        <View key={item.token} style={styles.row}>
           <View style={[styles.cell, styles.cellFixed]}>
             <Text style={styles.cellText}>{item.token}</Text>
           </View>
@@ -1016,7 +1008,7 @@ const LineHeightTable = () => (
             <Text style={styles.cellText}>{String(item.designPx)}</Text>
           </View>
           <View style={[styles.cell, styles.cellFixed]}>
-            <View style={styles.lhExample}>
+            <View style={[styles.lhExample, { height: item.designPx }]}>
               <Text style={styles.lhExampleText}>{String(item.designPx)}</Text>
             </View>
           </View>
@@ -1098,9 +1090,16 @@ const styles = StyleSheet.create({
     minHeight: 50,
     borderBottomWidth: 1,
     borderBottomColor: BORDER,
+    backgroundColor: "#FFFFFF",
   },
-  rowTint: { backgroundColor: TINT_RED },
   headerRow: { backgroundColor: "#FFFFFF" },
+  gapRuleHeading: {
+    fontFamily: fonts.HSBC_Medium,
+    fontSize: fontLarge,
+    lineHeight: lineHeightLarge,
+    fontWeight: "500",
+    marginBottom: spacingXS,
+  },
   cell: {
     justifyContent: "center",
     paddingHorizontal: spacingS,

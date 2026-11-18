@@ -166,7 +166,7 @@ const preview = {
           String(b.title) === "Foundations/Typography"
         ) {
           const typographyStories = [
-            "Scale",
+            "Platform agnostic",
             "Font Weight",
             "Font Size",
             "Line Height",
@@ -186,7 +186,7 @@ const preview = {
           String(a.title) === "Foundations/Border Radius" &&
           String(b.title) === "Foundations/Border Radius"
         ) {
-          const borderRadiusStories = ["Border Radius", "Border Stroke"];
+          const borderRadiusStories = ["Border radius", "Border stroke"];
           const brRank = (name) => {
             const i = borderRadiusStories.indexOf(String(name));
             return i === -1 ? borderRadiusStories.length : i;
