@@ -129,6 +129,16 @@ const preview = {
           "Global Search",
           "Levels of Navigation",
         ];
+        // Components/List/Docs — Figma List canvas 257:2186 left → right
+        const listDocsPages = [
+          "List",
+          "List — Usage guide",
+          "List — Combinations",
+          "List — Option catalogue",
+          "List New — Usage guide",
+        ];
+        // Components/Stepper/Docs — Figma Stepper canvas 13:3737 left → right
+        const stepperDocsPages = ["Stepper"];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -242,6 +252,46 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = headerDocsPages.indexOf(leaf);
                 return i === -1 ? headerDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/List/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "List" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "List" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = listDocsPages.indexOf(leaf);
+                return i === -1 ? listDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Stepper/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Stepper" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Stepper" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = stepperDocsPages.indexOf(leaf);
+                return i === -1 ? stepperDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

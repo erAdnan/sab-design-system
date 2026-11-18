@@ -7,9 +7,10 @@ import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
 import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
-  decorators: mobileContentDecorators,
+    decorators: mobileContentDecorators,
     title: "Components/Stepper",
     component: Stepper,
+    tags: ["!autodocs"],
     argTypes: {
         currentStep: {
             action: "Current Step",

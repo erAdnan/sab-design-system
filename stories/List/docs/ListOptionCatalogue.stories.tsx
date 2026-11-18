@@ -1,0 +1,27 @@
+import React from "react";
+import { FigmaDocPage } from "../../pulse-design-system/rules-and-patterns/FigmaDocPage";
+import { LIST_DOCS_PAGES } from "./catalog";
+
+const page = LIST_DOCS_PAGES.find((p) => p.title === "List \u2014 Option catalogue")!;
+
+export default {
+  title: "Components/List/Docs/List \u2014 Option catalogue",
+  tags: ["!autodocs"],
+  parameters: {
+    layout: "fullscreen",
+    controls: { disable: true },
+    a11y: { disable: true },
+  },
+};
+
+/** Figma Final Pulse → List canvas (257:2186) → List — Option catalogue. */
+export const Overview = {
+  name: "Overview",
+  render: () => (
+    <FigmaDocPage
+      title={page.title}
+      eyebrow="Components · List"
+      images={page.images}
+    />
+  ),
+};

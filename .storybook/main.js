@@ -10,6 +10,8 @@ module.exports = {
     "../stories/Divider/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Button/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Header/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/List/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Stepper/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [

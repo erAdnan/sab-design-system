@@ -18,6 +18,7 @@ import InfoFrame from "../src/components/icons/status/InfoFrame";
 export default {
   title: "Components/List",
   component: List,
+  tags: ["!autodocs"],
   decorators: listStoryDecorators,
 };
 
