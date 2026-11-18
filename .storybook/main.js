@@ -26,6 +26,8 @@ module.exports = {
     "../stories/Blocks/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Accordion/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Dropdown/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Avatar/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Badge/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [

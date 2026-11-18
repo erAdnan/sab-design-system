@@ -9,6 +9,7 @@ import IconComponent from "../src/components/icon/Icon";
 export default {
   title: "Components/Avatar",
   component: Avatar,
+  tags: ["!autodocs"],
   argTypes: {
     initials: { action: "Initials", control: "text" },
     size: { action: "Size", control: "radio", options: ["small", "medium", "large"] },

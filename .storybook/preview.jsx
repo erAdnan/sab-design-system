@@ -173,6 +173,13 @@ const preview = {
         const accordionDocsPages = ["Accordion"];
         // Components/Dropdown/Docs — Figma Dropdown canvas 2096:12300
         const dropdownDocsPages = ["Dropdown- Home Page"];
+        // Components/Avatar/Docs — Figma Avatar canvas 87:532 left → right
+        const avatarDocsPages = [
+          "Avatar — Documentation",
+          "User profile — Documentation",
+        ];
+        // Components/Badge/Docs — Figma Badge canvas 215:1827
+        const badgeDocsPages = ["Badge"];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -513,6 +520,46 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = dropdownDocsPages.indexOf(leaf);
                 return i === -1 ? dropdownDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Avatar/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Avatar" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Avatar" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = avatarDocsPages.indexOf(leaf);
+                return i === -1 ? avatarDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Badge/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Badge" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Badge" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = badgeDocsPages.indexOf(leaf);
+                return i === -1 ? badgeDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;
