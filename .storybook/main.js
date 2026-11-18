@@ -24,6 +24,7 @@ module.exports = {
     "../stories/Tabs/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Banners/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Blocks/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Accordion/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [

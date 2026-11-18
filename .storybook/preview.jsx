@@ -169,6 +169,8 @@ const preview = {
         const radioButtonDocsPages = ["Radio Button"];
         // Components/Toggle/Docs — Figma Toggle canvas 8:3497
         const toggleDocsPages = ["Toggle"];
+        // Components/Accordion/Docs — Figma Accordion canvas 103:637
+        const accordionDocsPages = ["Accordion"];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -469,6 +471,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = toggleDocsPages.indexOf(leaf);
                 return i === -1 ? toggleDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Accordion/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Accordion" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Accordion" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = accordionDocsPages.indexOf(leaf);
+                return i === -1 ? accordionDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

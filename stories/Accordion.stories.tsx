@@ -20,6 +20,7 @@ import { TextFieldInput } from "../src/components/input/TextFieldInput";
 export default {
   title: "Components/Accordion",
   component: Accordion,
+  tags: ["!autodocs"],
   decorators: listStoryDecorators,
   argTypes: {
     handleActionPress: { action: "handleActionPress" },
