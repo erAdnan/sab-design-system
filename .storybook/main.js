@@ -18,6 +18,7 @@ module.exports = {
     "../stories/Checkbox/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/RadioButton/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Toggle/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Range/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [
