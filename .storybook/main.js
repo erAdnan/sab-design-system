@@ -13,6 +13,7 @@ module.exports = {
     "../stories/List/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Stepper/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/NavigationDots/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/BottomNavigation/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [

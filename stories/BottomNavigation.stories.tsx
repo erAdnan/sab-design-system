@@ -16,6 +16,7 @@ import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 export default {
   title: "Components/Bottom Navigation",
   component: BottomNavigation,
+  tags: ["!autodocs"],
   decorators: [centerStoryDecorator],
   argTypes: {
     preLogin: { control: "boolean" },

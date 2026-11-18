@@ -141,6 +141,12 @@ const preview = {
         const stepperDocsPages = ["Stepper"];
         // Components/NavigationDots/Docs — Figma Navigation Dots canvas 7279:49903
         const navigationDotsDocsPages = ["Navigation Dots"];
+        // Components/Bottom Navigation/Docs — Figma Bottom Navigation canvas 7:237
+        const bottomNavigationDocsPages = [
+          "Bottom Navigation",
+          "Bottom navigation / 03 · iOS guidelines",
+          "Bottom navigation / 04 · Android guidelines",
+        ];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -316,6 +322,22 @@ const preview = {
                 return i === -1 ? navigationDotsDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Bottom Navigation/Docs topic order (Figma left → right)
+          // Titles may contain "/" (e.g. iOS guidelines); match by prefix, rank by full leaf after Docs/
+          {
+            const aTitle = String(a.title);
+            const bTitle = String(b.title);
+            const bnPrefix = "Components/Bottom Navigation/Docs/";
+            if (aTitle.startsWith(bnPrefix) && bTitle.startsWith(bnPrefix)) {
+              const leafRank = (title) => {
+                const leaf = title.slice(bnPrefix.length);
+                const i = bottomNavigationDocsPages.indexOf(leaf);
+                return i === -1 ? bottomNavigationDocsPages.length : i;
+              };
+              const leafDiff = leafRank(aTitle) - leafRank(bTitle);
               if (leafDiff !== 0) return leafDiff;
             }
           }
