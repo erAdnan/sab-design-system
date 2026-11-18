@@ -1,6 +1,7 @@
 export const lightTheme = {
   // PRIMARY
-  primarybackground: "#1E2E42",
+  // TODO: need to confirm with IT
+  // primarybackground: "#1E2E42",
   primarycolor: "#000000",
   primarycolorstatic: "#000000",
   primarycolor2: "#D7D8D6",

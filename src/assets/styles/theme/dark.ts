@@ -1,6 +1,7 @@
 export const darkTheme = {
   // PRIMARY
-  primarybackground: "#1C1C1E",
+  // TODO: need to confirm with IT
+  // primarybackground: "#1C1C1E",
   primarycolor: "#FFFFFF",
   primarycolorstatic: "#000000",
   primarycolor2: "rgba(255, 255, 255, 0.15)",

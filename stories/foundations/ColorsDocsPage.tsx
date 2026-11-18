@@ -1,5 +1,6 @@
-import React from "react";
+import React, { FC, ReactNode, useEffect, useRef } from "react";
 import {
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,14 +10,11 @@ import {
 import fonts from "../../src/assets/styles/constants/fonts";
 import {
   fontSmall,
-  fontMedium,
   fontXLarge,
   lineHeightSmall,
-  lineHeightMedium,
   lineHeightXLarge,
   spacingXS,
   spacingS,
-  spacingM,
   spacingL,
 } from "../../src/assets/styles/constants/size";
 import { canvasTier } from "../../src/assets/styles/utils/responsive";
@@ -27,14 +25,13 @@ import {
   type ColorDocSection,
 } from "./colorsCatalog";
 
-/** Figma Colors docs tables — Docs tab only (Palette canvas uses swatch cards). */
+/** Figma Colours tables (4110:3851) — Palette2. */
 
 const BORDER = "#E5E6E5";
 const HEADER_BG = "#F2F3F4";
 const PAGE_BG = "#FFFFFF";
-const TINT_RED = "#F9F2F3";
 const RED = "#DB0011";
-const TABLE_MIN = 300 + 300 + 300 + 300 + 520;
+const TABLE_WIDTH = 300 + 300 + 300 + 300 + 520;
 
 const COL = {
   token: 300,
@@ -100,6 +97,37 @@ function isLightFill(value: string) {
   return false;
 }
 
+const OpacityPill = ({ opacity }: { opacity?: string }) => {
+  if (!opacity) return null;
+  return (
+    <View style={styles.opacityPill}>
+      <Text style={styles.opacityPillText}>{opacity}</Text>
+    </View>
+  );
+};
+
+const NewBadge = () => (
+  <View style={styles.newBadge}>
+    <Text style={styles.newBadgeText}>{tx("New")}</Text>
+  </View>
+);
+
+const Swatch = ({ fill }: { fill: string }) => {
+  const border = isLightFill(fill);
+  return (
+    <View
+      style={[
+        styles.swatch,
+        {
+          backgroundColor: fill,
+          borderWidth: border ? 1 : 0,
+          borderColor: BORDER,
+        },
+      ]}
+    />
+  );
+};
+
 const ColorValue = ({
   color,
   opacity,
@@ -109,46 +137,75 @@ const ColorValue = ({
 }) => {
   if (!color) return <Text style={styles.cellText}>—</Text>;
   const fill = resolveFill(color, opacity);
-  const border = isLightFill(fill);
   return (
     <View style={styles.valueRow}>
-      <View
-        style={[
-          styles.swatch,
-          {
-            backgroundColor: fill,
-            borderWidth: border ? 1 : 0,
-            borderColor: BORDER,
-          },
-        ]}
-      />
+      <Swatch fill={fill} />
       <Text style={styles.cellText} numberOfLines={1}>
         {color}
-        {opacity ? `  ${opacity}` : ""}
       </Text>
+      <OpacityPill opacity={opacity} />
     </View>
   );
 };
 
 const TokenCell = ({ row }: { row: ColorDocRow }) => {
   const fill = resolveFill(row.light, row.lightOpacity);
-  const border = isLightFill(fill);
+  const onDark = !isLightFill(fill);
   return (
-    <View style={styles.valueRow}>
-      <View
-        style={[
-          styles.swatch,
-          {
-            backgroundColor: fill,
-            borderWidth: border ? 1 : 0,
-            borderColor: BORDER,
-          },
-        ]}
-      />
-      <Text style={styles.tokenText} numberOfLines={2}>
+    <View style={[styles.tokenCell, { backgroundColor: fill }]}>
+      <Text
+        style={[styles.tokenText, onDark && styles.tokenTextOnDark]}
+        numberOfLines={2}
+      >
         {row.token}
       </Text>
+      {row.isNew ? <NewBadge /> : null}
     </View>
+  );
+};
+
+/**
+ * Horizontal table scroller.
+ * On web: plain div with overflow-x — RN-web vertical ScrollView expands to
+ * child width and clips the Token column unless the page is capped at 100vw.
+ */
+const TableScroll: FC<{ children: ReactNode }> = ({ children }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (Platform.OS !== "web") return;
+    const el = ref.current;
+    if (el) el.scrollLeft = 0;
+  }, []);
+
+  if (Platform.OS === "web") {
+    return (
+      <div
+        ref={ref}
+        style={{
+          width: "100%",
+          maxWidth: "100%",
+          overflowX: "scroll",
+          overflowY: "hidden",
+          WebkitOverflowScrolling: "touch",
+          overscrollBehaviorX: "contain",
+        }}
+      >
+        {children}
+      </div>
+    );
+  }
+
+  return (
+    <ScrollView
+      horizontal
+      nestedScrollEnabled
+      showsHorizontalScrollIndicator
+      style={styles.tableScrollNative}
+      contentContainerStyle={styles.tableScrollContent}
+    >
+      {children}
+    </ScrollView>
   );
 };
 
@@ -157,8 +214,8 @@ const ColorTable = ({ section }: { section: ColorDocSection }) => (
     <View style={styles.sectionHeader}>
       <Text style={styles.sectionTitle}>{tx(section.title)}</Text>
     </View>
-    <ScrollView horizontal showsHorizontalScrollIndicator>
-      <View style={{ minWidth: TABLE_MIN }}>
+    <TableScroll>
+      <View style={styles.tableInner}>
         <View style={[styles.row, styles.headerRow]}>
           <View style={[styles.cell, { width: COL.token }]}>
             <Text style={styles.headerText}>{tx("Token")}</Text>
@@ -179,9 +236,12 @@ const ColorTable = ({ section }: { section: ColorDocSection }) => (
         {section.rows.map((row, index) => (
           <View
             key={`${section.id}-${row.token}-${row.code}-${index}`}
-            style={styles.row}
+            style={[
+              styles.row,
+              index === section.rows.length - 1 && styles.rowLast,
+            ]}
           >
-            <View style={[styles.cell, { width: COL.token }]}>
+            <View style={[styles.cell, styles.tokenCellWrap, { width: COL.token }]}>
               <TokenCell row={row} />
             </View>
             <View style={[styles.cell, { width: COL.light }]}>
@@ -201,26 +261,40 @@ const ColorTable = ({ section }: { section: ColorDocSection }) => (
           </View>
         ))}
       </View>
-    </ScrollView>
+    </TableScroll>
   </View>
 );
 
 export const ColorsDocsPage = () => {
   const { pad } = useDocPad();
+
+  // Web: avoid RN ScrollView width expansion — use document flow + overflow.
+  if (Platform.OS === "web") {
+    return (
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "100%",
+          height: "100%",
+          overflowX: "hidden",
+          overflowY: "auto",
+          backgroundColor: PAGE_BG,
+          boxSizing: "border-box",
+          padding: pad,
+        }}
+      >
+        {colorDocSections.map((section) => (
+          <ColorTable key={section.id} section={section} />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <ScrollView
       style={styles.scroll}
       contentContainerStyle={[styles.wrap, { padding: pad }]}
     >
-      <View style={styles.hero}>
-        <Text style={styles.heroTitle}>{tx("Colors")}</Text>
-        <Text style={styles.heroEyebrow}>{tx("Foundations")}</Text>
-      </View>
-      <Text style={styles.intro}>
-        {tx(
-          "Below is the Pulse colour scale from Figma (Colors ✅). Each token lists Light Mode, Dark mode, the Code.name / Dev key used in theme files, and usage guidance."
-        )}
-      </Text>
       {colorDocSections.map((section) => (
         <ColorTable key={section.id} section={section} />
       ))}
@@ -229,50 +303,32 @@ export const ColorsDocsPage = () => {
 };
 
 const styles = StyleSheet.create({
-  scroll: { flex: 1, backgroundColor: PAGE_BG },
+  scroll: { flex: 1, width: "100%", backgroundColor: PAGE_BG },
   wrap: {
     width: "100%",
-    maxWidth: 1400,
-    alignSelf: "center",
+    maxWidth: "100%",
+    alignSelf: "stretch",
     paddingBottom: spacingL,
-    gap: spacingM,
-  },
-  hero: {
-    backgroundColor: TINT_RED,
-    borderRadius: 12,
-    paddingHorizontal: spacingM,
-    paddingVertical: spacingL,
-    flexDirection: "row",
-    alignItems: "flex-end",
-    justifyContent: "space-between",
-    gap: spacingS,
-  },
-  heroTitle: {
-    fontFamily: fonts.HSBC_Bold,
-    fontSize: 40,
-    lineHeight: 48,
-    color: RED,
-    fontWeight: "700",
-  },
-  heroEyebrow: {
-    fontFamily: fonts.HSBC_Medium,
-    fontSize: fontMedium,
-    lineHeight: lineHeightMedium,
-    color: RED,
-    fontWeight: "500",
-  },
-  intro: {
-    fontFamily: fonts.Regular,
-    fontSize: fontMedium,
-    lineHeight: lineHeightMedium,
-    color: "#626469",
-    maxWidth: 900,
   },
   section: {
+    width: "100%",
+    maxWidth: "100%",
     borderWidth: 1,
     borderColor: BORDER,
-    marginBottom: spacingS,
-    overflow: "hidden",
+    marginBottom: -1,
+    backgroundColor: PAGE_BG,
+    alignSelf: "stretch",
+  },
+  tableInner: {
+    width: TABLE_WIDTH,
+    minWidth: TABLE_WIDTH,
+  },
+  tableScrollNative: {
+    width: "100%",
+    flexGrow: 0,
+  },
+  tableScrollContent: {
+    flexGrow: 0,
   },
   sectionHeader: {
     backgroundColor: HEADER_BG,
@@ -288,13 +344,19 @@ const styles = StyleSheet.create({
     fontSize: fontXLarge,
     lineHeight: lineHeightXLarge,
     fontWeight: "500",
+    color: "#000000",
   },
   row: {
     flexDirection: "row",
     alignItems: "stretch",
+    width: TABLE_WIDTH,
     minHeight: 50,
     borderBottomWidth: 1,
     borderBottomColor: BORDER,
+    backgroundColor: PAGE_BG,
+  },
+  rowLast: {
+    borderBottomWidth: 1,
   },
   headerRow: { backgroundColor: PAGE_BG },
   cell: {
@@ -303,6 +365,23 @@ const styles = StyleSheet.create({
     paddingVertical: spacingXS,
     borderRightWidth: 1,
     borderRightColor: BORDER,
+    flexShrink: 0,
+  },
+  /** Token column: fill edge-to-edge (no inner padding) — color is the cell bg. */
+  tokenCellWrap: {
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+  },
+  tokenCell: {
+    flex: 1,
+    alignSelf: "stretch",
+    minHeight: 50,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 8,
+    paddingHorizontal: spacingS,
+    paddingVertical: spacingXS,
   },
   cellLast: { borderRightWidth: 0 },
   headerText: {
@@ -310,40 +389,77 @@ const styles = StyleSheet.create({
     fontSize: fontSmall,
     lineHeight: lineHeightSmall,
     fontWeight: "500",
+    color: "#000000",
   },
   cellText: {
     fontFamily: fonts.Regular,
     fontSize: fontSmall,
     lineHeight: lineHeightSmall,
+    color: "#000000",
     flexShrink: 1,
   },
   tokenText: {
-    fontFamily: fonts.HSBC_Medium,
+    fontFamily: fonts.Regular,
     fontSize: fontSmall,
     lineHeight: lineHeightSmall,
-    fontWeight: "500",
+    color: "#000000",
     flexShrink: 1,
+  },
+  tokenTextOnDark: {
+    color: "#FFFFFF",
   },
   codeText: {
     fontFamily: fonts.Regular,
     fontSize: fontSmall,
     lineHeight: lineHeightSmall,
+    color: "#000000",
   },
   descText: {
     fontFamily: fonts.Regular,
     fontSize: fontSmall,
     lineHeight: lineHeightSmall,
+    color: "#000000",
   },
   valueRow: {
     flexDirection: "row",
     alignItems: "center",
     gap: 12,
     flexShrink: 1,
+    flexWrap: "nowrap",
   },
   swatch: {
     width: 30,
     height: 30,
     borderRadius: 4,
     flexShrink: 0,
+  },
+  opacityPill: {
+    borderWidth: 1,
+    borderColor: BORDER,
+    borderRadius: 4,
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    backgroundColor: PAGE_BG,
+    flexShrink: 0,
+  },
+  opacityPillText: {
+    fontFamily: fonts.Regular,
+    fontSize: fontSmall,
+    lineHeight: lineHeightSmall,
+    color: "#000000",
+  },
+  newBadge: {
+    backgroundColor: RED,
+    borderRadius: 4,
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    flexShrink: 0,
+  },
+  newBadgeText: {
+    fontFamily: fonts.HSBC_Medium,
+    fontSize: 10,
+    lineHeight: 14,
+    color: PAGE_BG,
+    fontWeight: "500",
   },
 });

@@ -1,5 +1,5 @@
-// Generated from stories/foundations/_figma_colors_extract.json (Figma page 0:1, frame "Colours" 4110:3851).
-// `code` is the Figma "Code.name / Dev" value (cleaned); `themeKey` is the actual key in src/assets/styles/theme/{light,dark}.ts.
+// Synced to Final Pulse Colours frame 4110:3851 (page 0:1).
+// `code` is the Figma "Code.name / Dev" value (cleaned); `themeKey` is the key in src/assets/styles/theme/{light,dark}.ts.
 
 export type ColorDocRow = {
   token: string;
@@ -10,6 +10,8 @@ export type ColorDocRow = {
   code: string;
   themeKey: string;
   description: string;
+  /** Red "New" badge as in Figma Colours tables */
+  isNew?: boolean;
 };
 
 export type ColorDocSection = {
@@ -26,8 +28,8 @@ export const colorDocSections: ColorDocSection[] = [
       { token: "primary/black", light: "#000000", dark: "#FFFFFF", code: "primarycolor", themeKey: "primarycolor", description: "Primary Black will be the predominant color in our UI, used extensively for backgrounds, borders, icons, and tab navigation elements." },
       { token: "primary/black-static", light: "#000000", dark: "#000000", code: "primarycolorstatic", themeKey: "primarycolorstatic", description: "Primary Black Static will be used for the same elements mentioned for Primary Black, but exclusively for those that need to remain black across all themes." },
       { token: "primary/gray", light: "#D7D8D6", dark: "#FFFFFF", darkOpacity: "15%", code: "primarycolor2", themeKey: "primarycolor2", description: "Use this color for secondary actions and any visual elements that add emphasis to the main component and guide the user." },
-      { token: "primary/gray-invert", light: "#F4F4F4", dark: "#2C2C2E", darkOpacity: "80%", code: "primarycolor2invert", themeKey: "primarygrayinvert", description: "Use this color for secondary actions and any visual elements that add emphasis to the main component and guide the user. This colour changes to a comparable one in dark mode with 100% opacity" },
-      { token: "primary/gray-static", light: "#767676", dark: "#767676", code: "primarycolor2static", themeKey: "primarycolor2static", description: "Use this color for secondary actions and any visual elements that add emphasis to the main component and guide the user. This colour stays static in dark mode" },
+      { token: "primary/gray-invert", light: "#F4F4F4", dark: "#2C2C2E", darkOpacity: "80%", code: "primarycolor2invert", themeKey: "primarygrayinvert", description: "Use this color for secondary actions and any visual elements that add emphasis to the main component and guide the user. This colour changes to a comparable one in dark mode with 100% opacity", isNew: true },
+      { token: "primary/gray-static", light: "#767676", dark: "#767676", code: "primarycolor2static", themeKey: "primarycolor2static", description: "Use this color for secondary actions and any visual elements that add emphasis to the main component and guide the user. This colour stays static in dark mode", isNew: true },
       { token: "primary/red", light: "#DB0011", dark: "#FFFFFF", code: "primarycolor3", themeKey: "primarycolor3", description: "This is the brand color. Use it for primary actions, buttons, links, and key visual elements to draw attention and guide the user. It represents the brand's main identity." },
       { token: "primary/red-static", light: "#DB0011", dark: "#DB0011", code: "primarycolor3static", themeKey: "primarycolor3static", description: "Use this color for primary actions, buttons, links, and key visual elements. This remain red in all themes level because it's a static colour" },
       { token: "primary/red-tonal", light: "#DB0011", lightOpacity: "10%", dark: "#580007", darkOpacity: "40%", code: "primarycolor3tonal", themeKey: "primarycolor3tonal", description: "This is the brand color in a softer palette. Use it for backgrounds and secondary actions." },
@@ -108,9 +110,9 @@ export const colorDocSections: ColorDocSection[] = [
       { token: "tint/neutral-shade", light: "#F8FAFD", dark: "#2C2C2E", code: "strokeneutraltint", themeKey: "tintneutralshade", description: "Use this color for the container stroke for general information and non-critical elements." },
       { token: "tint/purple", light: "#EFECF4", dark: "#2C2C2E", code: "ragneutraltint", themeKey: "tintpurple", description: "Use this color for the container background for general information and non-critical elements." },
       { token: "tint/purple-shade", light: "#F9F6FF", dark: "#2C2C2E", code: "strokeneutraltint", themeKey: "tintpurpleshade", description: "Use this color for the container stroke for general information and non-critical elements." },
-      { token: "tint/orange", light: "#FFEED9", dark: "#2C2C2E", code: "ragorangetint", themeKey: "orangetint", description: "Use this color for the container background for general information and non-critical elements." },
-      { token: "tint/orange-shade", light: "#FDF9F4", dark: "#2C2C2E", code: "strokeoragetint", themeKey: "orangetintshade", description: "Use this color for the container stroke for general information and non-critical elements." },
-      { token: "tint/golden", light: "#F7F7F4", dark: "#2C2C2E", code: "raggoldentint", themeKey: "tintgolden", description: "Use this color for the container background for general information and non-critical elements." },
+      { token: "tint/orange", light: "#FFEED9", dark: "#2C2C2E", code: "ragorangetint", themeKey: "orangetint", description: "Use this color for the container background for general information and non-critical elements.", isNew: true },
+      { token: "tint/orange-shade", light: "#FDF9F4", dark: "#2C2C2E", code: "strokeoragetint", themeKey: "orangetintshade", description: "Use this color for the container stroke for general information and non-critical elements.", isNew: true },
+      { token: "tint/golden", light: "#F7F7F4", dark: "#2C2C2E", code: "raggoldentint", themeKey: "tintgolden", description: "Use this color for the container background for general information and non-critical elements.", isNew: true },
     ],
   },
   {
@@ -122,7 +124,7 @@ export const colorDocSections: ColorDocSection[] = [
       { token: "tint/green", light: "#E5F2F2", dark: "#E5F2F2", code: "ragcolor6tint", themeKey: "tintstaticgreen", description: "Use this color for the container background on positive actions, or confirmation blocks. It conveys a sense of approval and completeness, providing clear feedback and reinforcing positive outcomes." },
       { token: "tint/neutral", light: "#EBEFF4", dark: "#EBEFF4", code: "ragneutraltint", themeKey: "tintstaticneutral", description: "Use this color for the container background for general information and non-critical elements." },
       { token: "tint/purple", light: "#EFECF4", dark: "#EFECF4", code: "ragneutraltint", themeKey: "tintstaticpurple", description: "Use this color for the container background for general information and non-critical elements." },
-      { token: "tint/orange", light: "#FFEED9", dark: "#FFEED9", code: "ragorangetint", themeKey: "tintstaticOrange", description: "Use this color for the container background for general information and non-critical elements." },
+      { token: "tint/orange", light: "#FFEED9", dark: "#FFEED9", code: "ragorangetint", themeKey: "tintstaticOrange", description: "Use this color for the container background for general information and non-critical elements.", isNew: true },
     ],
   },
   {
@@ -134,8 +136,8 @@ export const colorDocSections: ColorDocSection[] = [
       { token: "stroke/green-tint", light: "#99CECC", dark: "#99CECC", code: "strokecolor6tint", themeKey: "greentint", description: "Use this color for the container stroke for positive actions, or confirmation blocks. It conveys a sense of approval and completeness, providing clear feedback and reinforcing positive outcomes." },
       { token: "stroke/neutral-tint", light: "#ACBDCE", dark: "#ACBDCE", code: "strokeneutraltint", themeKey: "strokeneutraltint", description: "Use this color for the container stroke for general information and non-critical elements." },
       { token: "stroke/purple-tint", light: "#A0A0C4", dark: "#F9F6FF", code: "strokeneutraltint", themeKey: "purpletint", description: "Use this color for the container stroke for general information and non-critical elements." },
-      { token: "stroke/orange-tint", light: "#FBAE4D", dark: "#FFC070", code: "ragorangetint", themeKey: "strokeorangetint", description: "Use this color for the container background for general information and non-critical elements." },
-      { token: "stroke/golden-tint", light: "#F2EDDE", dark: "#4B4B4D", code: "ragorangetint", themeKey: "goldentint", description: "Use this color for the container background for general information and non-critical elements." },
+      { token: "stroke/orange-tint", light: "#FBAE4D", dark: "#FFC070", code: "ragorangetint", themeKey: "strokeorangetint", description: "Use this color for the container background for general information and non-critical elements.", isNew: true },
+      { token: "stroke/golden-tint", light: "#F2EDDE", dark: "#4B4B4D", code: "ragorangetint", themeKey: "goldentint", description: "Use this color for the container background for general information and non-critical elements.", isNew: true },
     ],
   },
   {
@@ -166,19 +168,6 @@ export const colorDocSections: ColorDocSection[] = [
     ],
   },
   {
-    id: "secondary",
-    title: "Secondary",
-    rows: [
-      { token: "secondary/yellow", light: "#E8E012", dark: "#E8E012", code: "secondarycolor8", themeKey: "secondarycolor8", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
-      { token: "secondary/orange", light: "#E6B012", dark: "#E6B012", code: "secondarycolor9", themeKey: "secondarycolor9", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
-      { token: "secondary/blue-green", light: "#00847F", dark: "#00847F", code: "secondarycolor10", themeKey: "secondarycolor10", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
-      { token: "secondary/blue", light: "#6699C2", dark: "#6699C2", code: "secondarycolor11", themeKey: "secondarycolor11", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
-      { token: "secondary/purple", light: "#7878B0", dark: "#7878B0", code: "secondarycolor12", themeKey: "secondarycolor12", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
-      { token: "secondary/cold-green", light: "#A3BDAD", dark: "#A3BDAD", code: "secondarycolor13", themeKey: "secondarycolor13", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
-      { token: "secondary/light-green", light: "#A3D963", lightOpacity: "80%", dark: "#A3D963", darkOpacity: "80%", code: "secondarycolor14", themeKey: "secondarycolor14", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
-    ],
-  },
-  {
     id: "secondary-button-accent",
     title: "Secondary button-accent",
     rows: [
@@ -201,6 +190,19 @@ export const colorDocSections: ColorDocSection[] = [
       { token: "mass/bg", light: "#FFFFFF", dark: "#7C7C7C", code: "massbg", themeKey: "massbg", description: "-" },
       { token: "mass/blocks-bg", light: "#7C7C7C", dark: "#BBBABA", code: "massblocksbg", themeKey: "massblocksbg", description: "-" },
       { token: "mass/element-bg", light: "#F6F6F6", dark: "#8C8C8C", code: "masselementbg", themeKey: "masselementbg", description: "-" },
+    ],
+  },
+  {
+    id: "secondary",
+    title: "Secondary",
+    rows: [
+      { token: "secondary/yellow", light: "#E8E012", dark: "#E8E012", code: "secondarycolor8", themeKey: "secondarycolor8", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
+      { token: "secondary/orange", light: "#E6B012", dark: "#E6B012", code: "secondarycolor9", themeKey: "secondarycolor9", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
+      { token: "secondary/blue-green", light: "#00847F", dark: "#00847F", code: "secondarycolor10", themeKey: "secondarycolor10", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
+      { token: "secondary/blue", light: "#6699C2", dark: "#6699C2", code: "secondarycolor11", themeKey: "secondarycolor11", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
+      { token: "secondary/purple", light: "#7878B0", dark: "#7878B0", code: "secondarycolor12", themeKey: "secondarycolor12", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
+      { token: "secondary/cold-green", light: "#A3BDAD", dark: "#A3BDAD", code: "secondarycolor13", themeKey: "secondarycolor13", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
+      { token: "secondary/light-green", light: "#A3D963", lightOpacity: "80%", dark: "#A3D963", darkOpacity: "80%", code: "secondarycolor14", themeKey: "secondarycolor14", description: "Secondary and complimentary colour. Use these colors to complement the primary palette and add variety to the design." },
     ],
   },
   {

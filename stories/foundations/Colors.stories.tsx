@@ -12,6 +12,8 @@ import { lightTheme } from "../../src/assets/styles/theme/light";
 import { darkTheme } from "../../src/assets/styles/theme/dark";
 import { useTheme } from "../../src/context/theme/themeContext";
 import { ColorsDocsPage } from "./ColorsDocsPage";
+import { FigmaDocPage } from "../pulse-design-system/rules-and-patterns/FigmaDocPage";
+import { COLOUR_USAGE_IMAGES } from "./colors/catalog";
 
 import { tx } from "../../src/localization/tx";
 type ThemeMap = Record<string, string>;
@@ -38,7 +40,7 @@ const GROUP_RULES: {
     id: "primary",
     title: "primary",
     test: (k) =>
-      /^(primarybackground|primarycolor(?!2_|text)|primaryinvert|inverttransparent|whiteinvert|primarycolornav|primarybg|primarytxt|primaryinput|primarygray|primarywhite|primaryred)/i.test(
+      /^(primarycolor(?!2_|text)|primaryinvert|inverttransparent|whiteinvert|primarycolornav|primarybg|primarytxt|primaryinput|primarygray|primarywhite|primaryred)/i.test(
         k
       ),
   },
@@ -183,7 +185,6 @@ const GROUP_RULES: {
 
 /** Friendly labels that mirror the reference palette naming where possible. */
 const LABEL_ALIASES: Record<string, string> = {
-  primarybackground: "background",
   primarycolor: "black",
   primarycolorstatic: "black-static",
   primarycolor2: "gray",
@@ -467,18 +468,33 @@ const ColorPalette = () => {
 
 export default {
   title: "Foundations/Colors",
+  tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
-    docs: {
-      // Keep Figma table layout on the Docs tab; Palette canvas uses swatch cards.
-      page: () => <ColorsDocsPage />,
-    },
   },
 };
 
 export const Palette = {
   name: "Palette",
   render: () => <ColorPalette />,
+};
+
+/** Figma Colours frame 4110:3851 — Token / Light / Dark / Code / Description tables. */
+export const Palette2 = {
+  name: "Palette2",
+  render: () => <ColorsDocsPage />,
+};
+
+/** Colour usage · Light & dark — Figma pixel docs under Colors. */
+export const ColourUsage = {
+  name: "Colour Usage",
+  render: () => (
+    <FigmaDocPage
+      title="Colour usage"
+      eyebrow="Foundations"
+      images={COLOUR_USAGE_IMAGES}
+    />
+  ),
 };
 
 const styles = StyleSheet.create({

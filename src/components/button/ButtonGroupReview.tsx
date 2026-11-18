@@ -95,7 +95,11 @@ export const ButtonGroupReview: FC<ButtonGroupReviewProps> = ({
   const styles = StyleSheet.create({
     container: {
       // Holds the entire component
-      backgroundColor: loading ? "transparent" : (lightVariant? theme.stylesbackground2 : theme.primarybackground),
+      backgroundColor: loading
+        ? "transparent"
+        : lightVariant
+          ? theme.stylesbackground2
+          : theme.whiteinvert,
     },
     detailsContainer: {
       marginBottom: lightVariant ? spacingM : spacingM + spacing1XS,
