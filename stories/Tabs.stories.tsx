@@ -10,6 +10,7 @@ export default {
   decorators: mobileContentDecorators,
     title: "Components/Tabs",
     component: Tabs,
+    tags: ["!autodocs"],
     args: {
         loading: false
     }

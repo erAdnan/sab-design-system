@@ -183,6 +183,8 @@ const preview = {
           "Accounts",
           "accounts.view",
         ];
+        // Components/Tabs/Docs — Figma Tabs canvas 8:3521
+        const tabsDocsPages = ["Tabs"];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -507,6 +509,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = creditAccountFinanceDocsPages.indexOf(leaf);
                 return i === -1 ? creditAccountFinanceDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Tabs/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Tabs" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Tabs" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = tabsDocsPages.indexOf(leaf);
+                return i === -1 ? tabsDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;
