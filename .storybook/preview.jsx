@@ -106,6 +106,19 @@ const preview = {
           "Text Headline",
           "Body Text",
         ];
+        // Components/Button/Docs — Figma Buttons canvas 7:189 left → right
+        const buttonDocsPages = [
+          "Standalone Button",
+          "Link Button",
+          "Link Icons",
+          "Button Group",
+          "Button Group Review",
+          "Bottom sheet - Button group Rules",
+          "Button List Item",
+          "Quick Action",
+          "New Hubs Button List Item",
+          "Segmented Button",
+        ];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -179,6 +192,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = textDocsPages.indexOf(leaf);
                 return i === -1 ? textDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Button/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Button" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Button" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = buttonDocsPages.indexOf(leaf);
+                return i === -1 ? buttonDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

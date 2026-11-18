@@ -8,6 +8,7 @@ import {buttonContentStoryDecorators} from "../.storybook/buttonStoryFrame";
 export default {
   title: "Components/Button",
   component: Button,
+  tags: ["!autodocs"],
   argTypes: {
     color: {
       control: "radio",
