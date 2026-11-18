@@ -27,7 +27,14 @@ export const GUIDELINES_PAGES: DocPage[] = [
   {
     title: "Spacing",
     storyTitle: "Pulse Design System/Guidelines/Spacing",
-    images: [img(require("./assets/spacing.webp"), 1400, 9705)],
+    images: [
+      img(require("./assets/spacing-01-rules.webp"), 2800, 3675),
+      img(require("./assets/spacing-02-xs.webp"), 2800, 3026),
+      img(require("./assets/spacing-03-s.webp"), 2800, 2952),
+      img(require("./assets/spacing-04-m.webp"), 2800, 2952),
+      img(require("./assets/spacing-05-l.webp"), 2800, 2952),
+      img(require("./assets/spacing-06-general.webp"), 2800, 3026),
+    ],
   },
   {
     title: "Colours",
@@ -37,7 +44,13 @@ export const GUIDELINES_PAGES: DocPage[] = [
   {
     title: "Font Size",
     storyTitle: "Pulse Design System/Guidelines/Font Size",
-    images: [img(require("./assets/font-size.webp"), 1400, 9730)],
+    images: [
+      img(require("./assets/font-size-01-rules.webp"), 2800, 3629),
+      img(require("./assets/font-size-02-title3.webp"), 2800, 2930),
+      img(require("./assets/font-size-03-headline.webp"), 2800, 2930),
+      img(require("./assets/font-size-04-body.webp"), 2800, 2930),
+      img(require("./assets/font-size-05-general.webp"), 2800, 2798),
+    ],
   },
   {
     title: "Spacing — English & Arabic",
