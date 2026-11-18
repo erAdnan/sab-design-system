@@ -119,6 +119,16 @@ const preview = {
           "New Hubs Button List Item",
           "Segmented Button",
         ];
+        // Components/Header/Docs — Figma Header canvas 8:2922 left → right
+        const headerDocsPages = [
+          "Header",
+          "Supporting Actions",
+          "Level 1 Add-on",
+          "Pre-login Add-on",
+          "Segment Add-on",
+          "Global Search",
+          "Levels of Navigation",
+        ];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -212,6 +222,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = buttonDocsPages.indexOf(leaf);
                 return i === -1 ? buttonDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Header/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Header" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Header" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = headerDocsPages.indexOf(leaf);
+                return i === -1 ? headerDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

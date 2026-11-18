@@ -15,6 +15,7 @@ import {actuatedNormalize} from "../src/assets/styles/utils/pixelScaling";
 export default {
   title: "Components/Header",
   component: Header,
+  tags: ["!autodocs"],
   argTypes: {
     state: {
       action: "State",
