@@ -12,6 +12,7 @@ module.exports = {
     "../stories/Header/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/List/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Stepper/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/NavigationDots/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [

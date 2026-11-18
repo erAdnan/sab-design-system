@@ -5,6 +5,7 @@ import { NavigationDots } from "../src/components/navigationDots/NavigationDots"
 export default {
     title: "Components/NavigationDots",
     component: NavigationDots,
+    tags: ["!autodocs"],
 };
 
 export const FiveOrMore = {
