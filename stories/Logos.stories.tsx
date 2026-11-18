@@ -14,7 +14,7 @@ import Zakaty from "../src/components/logos/Zakaty";
 import Visa from "../src/components/logos/Visa";
 
 export default {
-  title: "Components/Logos",
+  title: "Foundations/Assets/Logos",
   components: [SABLogo, Absher, Drahim, Mada, Sarie, SimahNew, Zakaty, Visa],
 };
 

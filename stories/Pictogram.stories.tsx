@@ -8,7 +8,7 @@ import Bolt from "../src/components/icons/filled/Bolt";
 
 import { tx } from "../src/localization/tx";
 export default {
-    title: "Components/Pictograms",
+    title: "Foundations/Assets/Pictograms",
     component: Pictogram,
 };
 
@@ -37,6 +37,9 @@ const InteractiveTemplate = (args: any) => {
                 <Pictogram {...args} type="link" />
                 <Pictogram {...args} type="loginLocked" />
                 <Pictogram {...args} type="achievement" />
+                <Pictogram {...args} type="default" />
+                <Pictogram {...args} type="success-new" />
+                <Pictogram {...args} type="failure-new" />
             </View>
             <Text bold size={fontXLarge}>{tx("Number and Loader")}</Text>
             <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacingXS, marginVertical: spacingSM }}>

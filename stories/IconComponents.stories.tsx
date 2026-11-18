@@ -1,12 +1,12 @@
 import * as allStories from "./IconComponents.stories";
-import { createAllVariantsStory } from "../../.storybook/allVariants";
-import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
+import { createAllVariantsStory } from "../.storybook/allVariants";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 import React, { useMemo, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import {
   ICON_COMPONENT_CATALOG,
   type IconComponentEntry,
-} from "../../src/components/icons/iconComponentsCatalog";
+} from "../src/components/icons/iconComponentsCatalog";
 import {
   fontLarge,
   fontMedium,
@@ -15,18 +15,18 @@ import {
   spacingM,
   spacingS,
   spacingXS,
-} from "../../src/assets/styles/constants/size";
-import { Text } from "../../src/components/text/Text";
-import { SearchInput } from "../../src/components/input/SearchInput";
-import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
-import { useTheme } from "../../src/context/theme/themeContext";
+} from "../src/assets/styles/constants/size";
+import { Text } from "../src/components/text/Text";
+import { SearchInput } from "../src/components/input/SearchInput";
+import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
+import { useTheme } from "../src/context/theme/themeContext";
 
 /**
  * Gallery of every TSX SVG under `src/components/icons`.
- * Distinct from Foundations/Icons (asset map via `Icon` + IconList).
+ * Distinct from Foundations/Assets (asset map via `Icon` + IconList).
  */
 export default {
-  title: "Foundations/Icon Components",
+  title: "Components/Icon Components",
   component: View,
 };
 

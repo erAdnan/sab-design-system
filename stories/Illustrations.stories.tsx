@@ -55,7 +55,7 @@ import { SmartMoney as SmartMoneyIllustration } from "../src/components/illustra
 import { TransferMoney as TransferMoneyIllustration } from "../src/components/illustrations/TransferMoney";
 
 export default {
-  title: "Components/Illustrations",
+  title: "Foundations/Assets/Illustrations",
   components: [
     Pin,
     Lock,

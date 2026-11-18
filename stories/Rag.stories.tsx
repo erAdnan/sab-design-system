@@ -9,7 +9,7 @@ import RagFilledWarning from "../src/components/icons/ragFilled/RagFilledWarning
 import RagFilledInfo from "../src/components/icons/ragFilled/RagFilledInfo";
 
 export default {
-  title: "Components/Rag",
+  title: "Foundations/Assets/RAG",
   component: Rag,
 };
 

@@ -126,6 +126,18 @@ import calculator from "../../assets/svgs/light/banking/calculator.svg";
 import snowflake from "../../assets/svgs/light/banking/snowflake.svg";
 import leaf from "../../assets/svgs/light/banking/leaf.svg";
 import watch from "../../assets/svgs/light/banking/watch.svg";
+import placeholder from "../../assets/svgs/light/banking/placeholder.svg";
+import household from "../../assets/svgs/light/banking/household.svg";
+import alawwal_pay from "../../assets/svgs/light/banking/alawwal_pay.svg";
+import dual_user from "../../assets/svgs/light/banking/dual_user.svg";
+import shield_lock from "../../assets/svgs/light/banking/shield_lock.svg";
+import tag from "../../assets/svgs/light/banking/tag.svg";
+import card_info from "../../assets/svgs/light/banking/card_info.svg";
+import transfers from "../../assets/svgs/light/banking/transfers.svg";
+import growth from "../../assets/svgs/light/banking/growth.svg";
+import savings_jar from "../../assets/svgs/light/banking/savings_jar.svg";
+import bank_vault from "../../assets/svgs/light/banking/bank_vault.svg";
+import family from "../../assets/svgs/light/banking/family.svg";
 
 
 // ---- Dark Banking SVG Imports ----
@@ -254,6 +266,16 @@ import gaming_dark from "../../assets/svgs/dark/banking/gaming.svg";
 import snowflake_dark from "../../assets/svgs/dark/banking/snowflake.svg";
 import leaf_dark from "../../assets/svgs/dark/banking/leaf.svg";
 import watch_dark from "../../assets/svgs/dark/banking/watch.svg";
+import placeholder_dark from "../../assets/svgs/dark/banking/placeholder.svg";
+import household_dark from "../../assets/svgs/dark/banking/household.svg";
+import alawwal_pay_dark from "../../assets/svgs/dark/banking/alawwal_pay.svg";
+import dual_user_dark from "../../assets/svgs/dark/banking/dual_user.svg";
+import shield_lock_dark from "../../assets/svgs/dark/banking/shield_lock.svg";
+import transfers_dark from "../../assets/svgs/dark/banking/transfers.svg";
+import growth_dark from "../../assets/svgs/dark/banking/growth.svg";
+import savings_jar_dark from "../../assets/svgs/dark/banking/savings_jar.svg";
+import bank_vault_dark from "../../assets/svgs/dark/banking/bank_vault.svg";
+import family_dark from "../../assets/svgs/dark/banking/family.svg";
 
 
 import arrow_down_light from "../../assets/svgs/light/arrows/arrow_down.svg";
@@ -346,6 +368,8 @@ import minus from "../../assets/svgs/light/functionals/minus.svg";
 import more from "../../assets/svgs/light/functionals/more.svg";
 import more_vert from "../../assets/svgs/light/functionals/more_vert.svg";
 import money_limit from "../../assets/svgs/light/functionals/money_limit.svg";
+import ellipsis from "../../assets/svgs/light/functionals/ellipsis.svg";
+import push_pin from "../../assets/svgs/light/functionals/push_pin.svg";
 import password_off from "../../assets/svgs/light/functionals/password_off.svg";
 import password from "../../assets/svgs/light/functionals/password.svg";
 import pdf from "../../assets/svgs/light/functionals/pdf.svg";
@@ -406,6 +430,8 @@ import minusDark from "../../assets/svgs/dark/functionals/minus.svg";
 import moreDark from "../../assets/svgs/dark/functionals/more.svg";
 import more_vertDark from "../../assets/svgs/dark/functionals/more_vert.svg";
 import money_limitDark from "../../assets/svgs/dark/functionals/money_limit.svg";
+import ellipsisDark from "../../assets/svgs/dark/functionals/ellipsis.svg";
+import push_pinDark from "../../assets/svgs/dark/functionals/push_pin.svg";
 import password_offDark from "../../assets/svgs/dark/functionals/password_off.svg";
 import passwordDark from "../../assets/svgs/dark/functionals/password.svg";
 import pdfDark from "../../assets/svgs/dark/functionals/pdf.svg";
@@ -475,6 +501,10 @@ import redeempoints from "../../assets/svgs/light/other/redeempoints.svg";
 import icsabcash from "../../assets/svgs/light/other/icsabcash.svg";
 import pointssummary from "../../assets/svgs/light/other/pointssummary.svg";
 import activity from "../../assets/svgs/light/other/activity.svg";
+import bag from "../../assets/svgs/light/other/bag.svg";
+import lipstick from "../../assets/svgs/light/other/lipstick.svg";
+import puzzle from "../../assets/svgs/light/other/puzzle.svg";
+import appliances from "../../assets/svgs/light/other/appliances.svg";
 import stackLight from "../../assets/svgs/light/functionals/stack.svg";
 
 
@@ -500,6 +530,10 @@ import welcomeDark from "../../assets/svgs/dark/other/welcome.svg";
 import targetDark from "../../assets/svgs/dark/other/target.svg";
 import esimDark from "../../assets/svgs/dark/other/eSIM.svg";
 import activityDark from "../../assets/svgs/dark/other/activity.svg";
+import bagDark from "../../assets/svgs/dark/other/bag.svg";
+import lipstickDark from "../../assets/svgs/dark/other/lipstick.svg";
+import puzzleDark from "../../assets/svgs/dark/other/puzzle.svg";
+import appliancesDark from "../../assets/svgs/dark/other/appliances.svg";
 import icsabcashDark from "../../assets/svgs/dark/other/icsabcash.svg";
 import pointssummaryDark from "../../assets/svgs/dark/other/pointssummary.svg";
 import redeempointsDark from "../../assets/svgs/dark/other/redeempoints.svg";
@@ -676,6 +710,9 @@ import voucherfilled from "../../assets/svgs/light/filled/voucher.svg";
 import vector_logofilled from "../../assets/svgs/light/filled/vector-logo.svg";
 import cash_backfilled from "../../assets/svgs/light/filled/cash_back.svg";
 import bolt from "../../assets/svgs/light/filled/bolt.svg";
+import offerfilled from "../../assets/svgs/light/filled/offer.svg";
+import walletfilled from "../../assets/svgs/light/filled/wallet.svg";
+import push_pinfilled from "../../assets/svgs/light/filled/push_pin.svg";
 
 import account_actionsfilledDark from "../../assets/svgs/dark/filled/account_actions.svg";
 import account_infofilledDark from "../../assets/svgs/dark/filled/account_info.svg";
@@ -772,6 +809,33 @@ import voucherfilledDark from "../../assets/svgs/dark/filled/voucher.svg";
 import vector_logofilledDark from "../../assets/svgs/dark/filled/vector-logo.svg";
 import cash_backfilledDark from "../../assets/svgs/dark/filled/cash_back.svg";
 import boltDark from "../../assets/svgs/dark/filled/bolt.svg";
+import offerfilledDark from "../../assets/svgs/dark/filled/offer.svg";
+import walletfilledDark from "../../assets/svgs/dark/filled/wallet.svg";
+import push_pinfilledDark from "../../assets/svgs/dark/filled/push_pin.svg";
+
+// ---- Users SVG Imports ----
+import people_users from "../../assets/svgs/light/users/people.svg";
+import profile_add_users from "../../assets/svgs/light/users/profile_add.svg";
+import profile_edit_users from "../../assets/svgs/light/users/profile_edit.svg";
+import local_users from "../../assets/svgs/light/users/local.svg";
+import profile_users from "../../assets/svgs/light/users/profile.svg";
+import hsbc_services_users from "../../assets/svgs/light/users/hsbc_services.svg";
+import add_beneficiary_users from "../../assets/svgs/light/users/add_beneficiary.svg";
+import beneficiary_users from "../../assets/svgs/light/users/beneficiary.svg";
+import smiley_users from "../../assets/svgs/light/users/smiley.svg";
+import dissatisfied_users from "../../assets/svgs/light/users/dissatisfied.svg";
+import neutral_users from "../../assets/svgs/light/users/neutral.svg";
+import people_users_dark from "../../assets/svgs/dark/users/people.svg";
+import profile_add_users_dark from "../../assets/svgs/dark/users/profile_add.svg";
+import profile_edit_users_dark from "../../assets/svgs/dark/users/profile_edit.svg";
+import local_users_dark from "../../assets/svgs/dark/users/local.svg";
+import profile_users_dark from "../../assets/svgs/dark/users/profile.svg";
+import hsbc_services_users_dark from "../../assets/svgs/dark/users/hsbc_services.svg";
+import add_beneficiary_users_dark from "../../assets/svgs/dark/users/add_beneficiary.svg";
+import beneficiary_users_dark from "../../assets/svgs/dark/users/beneficiary.svg";
+import smiley_users_dark from "../../assets/svgs/dark/users/smiley.svg";
+import dissatisfied_users_dark from "../../assets/svgs/dark/users/dissatisfied.svg";
+import neutral_users_dark from "../../assets/svgs/dark/users/neutral.svg";
 
 type IconProps = { [key: string]: FC<SvgProps> };
 
@@ -899,6 +963,20 @@ export const BankingSvgsLight: IconProps = {
   snowflake,
   leaf,
   watch,
+  placeholder,
+  household,
+  alawwal_pay,
+  dual_user,
+  shield_lock,
+  tag,
+  card_info,
+  transfers,
+  growth,
+  savings_jar,
+  bank_vault,
+  family,
+  money_limit,
+  "apply-finance": apply_finance,
 };
 
 export const BankingSvgsDark: IconProps = {
@@ -1027,6 +1105,18 @@ export const BankingSvgsDark: IconProps = {
   snowflake: snowflake_dark,
   leaf: leaf_dark,
   watch:watch_dark,
+  placeholder: placeholder_dark,
+  household: household_dark,
+  alawwal_pay: alawwal_pay_dark,
+  dual_user: dual_user_dark,
+  shield_lock: shield_lock_dark,
+  transfers: transfers_dark,
+  growth: growth_dark,
+  savings_jar: savings_jar_dark,
+  bank_vault: bank_vault_dark,
+  family: family_dark,
+  money_limit: money_limitDark,
+  "apply-finance": apply_financeDark,
 };
 
 
@@ -1088,6 +1178,8 @@ export const FunctionalsSvgsLight: IconProps = {
   customer_service,
   logout:exit,
   stack: stackLight,
+  ellipsis,
+  push_pin,
 };
 
 export const FunctionalsSvgsDark: IconProps = {
@@ -1148,6 +1240,8 @@ export const FunctionalsSvgsDark: IconProps = {
   customer_service:customer_serviceDark,
   logout: exitDark,
   stack: stackDark,
+  ellipsis: ellipsisDark,
+  push_pin: push_pinDark,
 };
 
 export const NotificationsSvgsLight: IconProps = {
@@ -1253,6 +1347,10 @@ export const OthersSvgsLight: IconProps = {
   icsab_cash: icsabcash,
   activity: activity,
   points_summary: pointssummary,
+  bag,
+  lipstick,
+  puzzle,
+  appliances,
 };
 
 export const OthersSvgsDark: IconProps = {
@@ -1280,6 +1378,10 @@ export const OthersSvgsDark: IconProps = {
   icsab_cash: icsabcashDark,
   activity: activityDark,
   points_summary: pointssummaryDark,
+  bag: bagDark,
+  lipstick: lipstickDark,
+  puzzle: puzzleDark,
+  appliances: appliancesDark,
 };
 
 export const Sab360SvgsLight: IconProps = {
@@ -1453,7 +1555,10 @@ export const FilledSvgsLight: IconProps = {
   voucher: voucherfilled,
   vector_logo: vector_logofilled,
   cash_back: cash_backfilled,
-  bolt: bolt
+  bolt: bolt,
+  offer: offerfilled,
+  wallet: walletfilled,
+  push_pin: push_pinfilled,
 };
 
 export const FilledSvgsDark: IconProps = {
@@ -1551,5 +1656,36 @@ export const FilledSvgsDark: IconProps = {
   voucher: voucherfilledDark,
   vector_logo: vector_logofilledDark,
   cash_back: cash_backfilledDark,
-  bolt: boltDark
+  bolt: boltDark,
+  offer: offerfilledDark,
+  wallet: walletfilledDark,
+  push_pin: push_pinfilledDark,
+};
+
+export const UsersSvgsLight: IconProps = {
+  people: people_users,
+  profile_add: profile_add_users,
+  profile_edit: profile_edit_users,
+  local: local_users,
+  profile: profile_users,
+  hsbc_services: hsbc_services_users,
+  add_beneficiary: add_beneficiary_users,
+  beneficiary: beneficiary_users,
+  smiley: smiley_users,
+  dissatisfied: dissatisfied_users,
+  neutral: neutral_users,
+};
+
+export const UsersSvgsDark: IconProps = {
+  people: people_users_dark,
+  profile_add: profile_add_users_dark,
+  profile_edit: profile_edit_users_dark,
+  local: local_users_dark,
+  profile: profile_users_dark,
+  hsbc_services: hsbc_services_users_dark,
+  add_beneficiary: add_beneficiary_users_dark,
+  beneficiary: beneficiary_users_dark,
+  smiley: smiley_users_dark,
+  dissatisfied: dissatisfied_users_dark,
+  neutral: neutral_users_dark,
 };

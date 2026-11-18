@@ -22,9 +22,31 @@ import { Text } from "../text/Text";
 import { Spinner } from "../spinner/Spinner";
 import Achievement from "../icons/pictogram/Achievement";
 import Footprint from "../icons/other/Footprint";
+import DefaultPictogram from "../icons/pictogram/Default";
+import SuccessNew from "../icons/pictogram/SuccessNew";
+import FailureNew from "../icons/pictogram/FailureNew";
 
 export interface PictogramProps {
-    type: "success" | "error" | "warning" | "info" | "number" | "fingerprint" | "faceId" | "lock" | "thumb" | "mailbox" | "nfc" | "loader" | "link" | "loginLocked" | "achievement" | "carbon-footprint";
+    type:
+        | "success"
+        | "error"
+        | "warning"
+        | "info"
+        | "number"
+        | "fingerprint"
+        | "faceId"
+        | "lock"
+        | "thumb"
+        | "mailbox"
+        | "nfc"
+        | "loader"
+        | "link"
+        | "loginLocked"
+        | "achievement"
+        | "carbon-footprint"
+        | "default"
+        | "success-new"
+        | "failure-new";
     number?: number;
     loading?: boolean;
     overrideStyles?: any;
@@ -102,7 +124,23 @@ export const Pictogram: FC<PictogramProps> = ({ type, number, loading = false,ov
                     <View style={{...styles.iconWrapper, backgroundColor: "rgba(0, 132, 127, 0.10)"}}>
                         <Footprint width={actuatedNormalize(32)} height={actuatedNormalize(32)} fill={theme.secondarycolor10} />
                     </View>
-                )
+                );
+            case "default":
+                return <DefaultPictogram {...iconProps} />;
+            case "success-new":
+                return (
+                    <SuccessNew
+                        width={pictogramSizeMapping.large}
+                        height={pictogramSizeMapping.large}
+                    />
+                );
+            case "failure-new":
+                return (
+                    <FailureNew
+                        width={pictogramSizeMapping.large}
+                        height={pictogramSizeMapping.large}
+                    />
+                );
             default:
                 return <Info {...iconProps} />;
         }

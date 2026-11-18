@@ -6,18 +6,18 @@ import {
   CircularFlags,
   RoundedFlagMeta,
   RoundedFlags,
-} from "../../src/assets/svgs/flags/FlagList";
+} from "../src/assets/svgs/flags/FlagList";
 import {
   fontLarge,
   fontSmall,
   spacingS,
   spacingXS,
-} from "../../src/assets/styles/constants/size";
-import { Text } from "../../src/components/text/Text";
-import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
+} from "../src/assets/styles/constants/size";
+import { Text } from "../src/components/text/Text";
+import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
 
 export default {
-  title: "Foundations/Icons/Flags",
+  title: "Foundations/Assets/Flags",
 };
 
 type FlagGalleryProps = {
