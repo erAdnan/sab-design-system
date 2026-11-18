@@ -11,6 +11,7 @@ import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
 export default {
   title: "Components/Radio Button",
   component: RadioButton,
+  tags: ["!autodocs"],
   argTypes: {
     disabled: { control: "boolean" },
     checked: { control: "boolean" },

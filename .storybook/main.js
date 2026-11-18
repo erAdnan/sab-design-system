@@ -16,6 +16,7 @@ module.exports = {
     "../stories/BottomNavigation/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/InputField/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Checkbox/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/RadioButton/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [
