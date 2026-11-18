@@ -147,6 +147,22 @@ const preview = {
           "Bottom navigation / 03 · iOS guidelines",
           "Bottom navigation / 04 · Android guidelines",
         ];
+        // Components/InputField/Docs — Figma Input Field canvas 8:2669 left → right
+        const inputFieldDocsPages = [
+          "Input Field",
+          "Text Field Documentation",
+          "Dropdown Documentation",
+          "Date Documentation",
+          "Password Documentation",
+          "Amount Documentation",
+          "Account Documentation",
+          "Text Area Documentation",
+          "Phone Number Documentation",
+          "Search Documentation",
+          "Segmented Input Documentation",
+          "Message Input Documentation",
+          "amount.entryText Documentation",
+        ];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -338,6 +354,26 @@ const preview = {
                 return i === -1 ? bottomNavigationDocsPages.length : i;
               };
               const leafDiff = leafRank(aTitle) - leafRank(bTitle);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/InputField/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "InputField" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "InputField" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = inputFieldDocsPages.indexOf(leaf);
+                return i === -1 ? inputFieldDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;
             }
           }

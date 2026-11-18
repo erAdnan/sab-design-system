@@ -14,6 +14,7 @@ module.exports = {
     "../stories/Stepper/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/NavigationDots/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/BottomNavigation/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/InputField/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [
