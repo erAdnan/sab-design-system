@@ -4,8 +4,9 @@ import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-    title: "Components/Dropdown",
-    component: Dropdown,
+  title: "Components/Dropdown",
+  component: Dropdown,
+  tags: ["!autodocs"],
 };
 
 const InteractiveTemplate = (args: any) => {
