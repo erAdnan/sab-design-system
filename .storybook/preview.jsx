@@ -180,6 +180,14 @@ const preview = {
         ];
         // Components/Badge/Docs — Figma Badge canvas 215:1827
         const badgeDocsPages = ["Badge"];
+        // Components/Chips/Docs — Figma Chips canvas 146:2195 left → right
+        const chipsDocsPages = [
+          "Chips->Filter — Documentation",
+          "Chips → Info — Documentation",
+          "Chips → New — Documentation",
+          "Tags/Chips",
+          "Chips Select",
+        ];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -560,6 +568,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = badgeDocsPages.indexOf(leaf);
                 return i === -1 ? badgeDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Chips/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Chips" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Chips" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title).slice(3).join("/") || "";
+                const i = chipsDocsPages.indexOf(leaf);
+                return i === -1 ? chipsDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;
