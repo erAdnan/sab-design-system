@@ -171,6 +171,8 @@ const preview = {
         const toggleDocsPages = ["Toggle"];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
+        // Components/Uploader/Docs — Figma Upload canvas 4120:21000
+        const uploaderDocsPages = ["Upload"];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -455,6 +457,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = rangeDocsPages.indexOf(leaf);
                 return i === -1 ? rangeDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Uploader/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Uploader" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Uploader" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = uploaderDocsPages.indexOf(leaf);
+                return i === -1 ? uploaderDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

@@ -19,6 +19,7 @@ module.exports = {
     "../stories/RadioButton/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Toggle/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Range/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Uploader/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [

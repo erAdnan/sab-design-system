@@ -8,6 +8,7 @@ export default {
   decorators: mobileContentDecorators,
     title: "Components/Uploader",
     component: Uploader,
+    tags: ["!autodocs"],
     argTypes: {
         title:        { control: "text" },
         subTitle:     { control: "text" },
