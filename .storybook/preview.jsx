@@ -191,6 +191,20 @@ const preview = {
           "Promotional Banner — Documentation",
           "Entry Banner — Documentation",
         ];
+        // Components/Blocks/Docs — Figma Blocks canvas 2243:10445 left → right
+        const blocksDocsPages = [
+          "new_block.generic Documentation",
+          "New_block.product-complex Documentation",
+          "block.features Documentation",
+          "Block.Article Documentation",
+          "block.product-selection Documentation",
+          "block.accounts Documentation",
+          "block.button Documentation",
+          "Block.Entry Documentation",
+          "block.offers Documentation",
+          "block.apply Documentation",
+          "block.beneficiary Documentation",
+        ];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -555,6 +569,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = bannersDocsPages.indexOf(leaf);
                 return i === -1 ? bannersDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Blocks/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Blocks" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Blocks" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = blocksDocsPages.indexOf(leaf);
+                return i === -1 ? blocksDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

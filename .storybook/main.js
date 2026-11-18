@@ -23,6 +23,7 @@ module.exports = {
     "../stories/creditAccountFinance/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Tabs/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Banners/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Blocks/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [
