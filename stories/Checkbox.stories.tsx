@@ -9,6 +9,7 @@ import i18n from "i18next";
 export default {
   title: "Components/Checkbox",
   component: Checkbox,
+  tags: ["!autodocs"],
   argTypes: {
     disabled: { control: "boolean" },
     isChecked: { control: "boolean" },

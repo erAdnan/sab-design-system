@@ -163,6 +163,8 @@ const preview = {
           "Message Input Documentation",
           "amount.entryText Documentation",
         ];
+        // Components/Checkbox/Docs — Figma Check Box canvas 8:3476
+        const checkboxDocsPages = ["Check Box"];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -372,6 +374,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = inputFieldDocsPages.indexOf(leaf);
                 return i === -1 ? inputFieldDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Checkbox/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Checkbox" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Checkbox" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = checkboxDocsPages.indexOf(leaf);
+                return i === -1 ? checkboxDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;
