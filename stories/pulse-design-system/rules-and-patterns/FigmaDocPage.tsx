@@ -21,12 +21,21 @@ type FrameImage = {
   source: ImageSourcePropType;
   /** width / height — React Native aspectRatio */
   aspectRatio: number;
+  /** Pixel width when panHorizontal (wide IA / journey maps). */
+  width?: number;
+  /** Pixel height when panHorizontal. */
+  height?: number;
 };
 
 type FigmaDocPageProps = {
   title: string;
   eyebrow?: string;
   images: FrameImage[];
+  /**
+   * Wide Figma canvases (e.g. Journey IA): keep export pixel size and pan
+   * horizontally so labels stay readable instead of shrinking to content width.
+   */
+  panHorizontal?: boolean;
 };
 
 /** Pixel-faithful docs page: tint header + stacked Figma frame exports (responsive). */
@@ -34,6 +43,7 @@ export const FigmaDocPage: FC<FigmaDocPageProps> = ({
   title,
   eyebrow = "Rules and Patterns",
   images,
+  panHorizontal = false,
 }) => {
   const layout = usePulseDocLayout();
 
@@ -80,24 +90,52 @@ export const FigmaDocPage: FC<FigmaDocPageProps> = ({
           {eyebrow}
         </Text>
       </View>
-      <View style={[styles.frames, { maxWidth: layout.maxContent }]}>
-        {images.map((img, index) => (
-          <Image
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            source={img.source}
-            style={[styles.frame, { aspectRatio: img.aspectRatio }]}
-            resizeMode="contain"
-            // role=img so aria-label is allowed (axe aria-allowed-attr on RN-web)
-            accessibilityRole="image"
-            accessibilityLabel={`${title} section ${index + 1}`}
-            // Web: defer offscreen Figma frames (no quality change).
-            // @ts-expect-error loading is a DOM <img> attribute honored by RN-web
-            loading="lazy"
-            fadeDuration={0}
-          />
-        ))}
-      </View>
+      {panHorizontal ? (
+        <ScrollView
+          horizontal
+          style={styles.panScroll}
+          contentContainerStyle={styles.panContent}
+          showsHorizontalScrollIndicator
+        >
+          {images.map((img, index) => {
+            const h = img.height ?? Math.round(1200 / img.aspectRatio);
+            const w = img.width ?? Math.round(h * img.aspectRatio);
+            return (
+              <Image
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                source={img.source}
+                style={{ width: w, height: h }}
+                resizeMode="contain"
+                accessibilityRole="image"
+                accessibilityLabel={`${title} section ${index + 1}`}
+                // @ts-expect-error loading is a DOM <img> attribute honored by RN-web
+                loading="lazy"
+                fadeDuration={0}
+              />
+            );
+          })}
+        </ScrollView>
+      ) : (
+        <View style={[styles.frames, { maxWidth: layout.maxContent }]}>
+          {images.map((img, index) => (
+            <Image
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              source={img.source}
+              style={[styles.frame, { aspectRatio: img.aspectRatio }]}
+              resizeMode="contain"
+              // role=img so aria-label is allowed (axe aria-allowed-attr on RN-web)
+              accessibilityRole="image"
+              accessibilityLabel={`${title} section ${index + 1}`}
+              // Web: defer offscreen Figma frames (no quality change).
+              // @ts-expect-error loading is a DOM <img> attribute honored by RN-web
+              loading="lazy"
+              fadeDuration={0}
+            />
+          ))}
+        </View>
+      )}
     </ScrollView>
   );
 };
@@ -142,5 +180,13 @@ const styles = StyleSheet.create({
     width: "100%",
     maxWidth: "100%",
     height: undefined,
+  },
+  panScroll: {
+    width: "100%",
+    backgroundColor: C.white,
+  },
+  panContent: {
+    paddingBottom: 24,
+    alignItems: "flex-start",
   },
 });

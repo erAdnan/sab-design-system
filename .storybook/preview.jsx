@@ -57,6 +57,7 @@ const preview = {
           "Pulse Design Ecosystem",
           "Rules & Patterns",
           "Guidelines",
+          "Journey",
           "Updating Governance",
         ];
         const rulesPages = [
