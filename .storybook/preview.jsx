@@ -185,6 +185,12 @@ const preview = {
         ];
         // Components/Tabs/Docs — Figma Tabs canvas 8:3521
         const tabsDocsPages = ["Tabs"];
+        // Components/Banners/Docs — Figma Banners canvas 1314:9025 left → right
+        const bannersDocsPages = [
+          "Marketing Banner",
+          "Promotional Banner — Documentation",
+          "Entry Banner — Documentation",
+        ];
         const rank = (title) => {
           const i = top.indexOf(String(title).split("/")[0]);
           return i === -1 ? top.length : i;
@@ -529,6 +535,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = tabsDocsPages.indexOf(leaf);
                 return i === -1 ? tabsDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Banners/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Banners" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Banners" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = bannersDocsPages.indexOf(leaf);
+                return i === -1 ? bannersDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;
