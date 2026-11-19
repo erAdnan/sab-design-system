@@ -115,7 +115,7 @@ export const LearningProductCard: FC<LearningProductCardProps> = ({
             <Text
               size={fontMedium}
               bold
-              variant="primarycolorstatic"
+              variant="primarycolor"
               numberOfLines={1}
               overrideStyles={{
                 lineHeight: lineHeightMedium,
@@ -156,7 +156,7 @@ export const LearningProductCard: FC<LearningProductCardProps> = ({
                     key={line}
                     size={fontXXSmall}
                     bold
-                    variant="primarycolorstatic"
+                    variant="primarycolor"
                     overrideStyles={{
                       lineHeight: lineHeightXXSmall,
                       textAlign: "center",

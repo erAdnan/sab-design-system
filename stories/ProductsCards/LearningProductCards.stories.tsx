@@ -53,15 +53,15 @@ export const NotStarted = {
   },
 };
 
-export const Loading = {
-  args: {
-    loading: true,
-  },
-};
+// export const Loading = {
+//   args: {
+//     loading: true,
+//   },
+// };
 
 export const AllVariants = createAllVariantsStory(allStories, [
   "Default",
   "AlmostDone",
   "NotStarted",
-  "Loading",
+  // "Loading",
 ]);

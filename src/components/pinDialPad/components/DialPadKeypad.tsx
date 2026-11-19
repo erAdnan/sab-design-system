@@ -7,6 +7,8 @@ import { actuatedNormalize } from "../../../assets/styles/utils/pixelScaling";
 import { Text } from "../../text/Text";
 import Backspace from "../../icons/functionals/Backspace";
 
+export type PinBiometricType = "faceId" | "fingerprint" | "none";
+
 interface DialPadKeypadProps {
   dialPadContent: (string | number)[];
   pinLength: number;
@@ -14,6 +16,7 @@ interface DialPadKeypadProps {
   setCode: React.Dispatch<React.SetStateAction<(string | number)[]>>;
   onFaceIdPress?: () => void;
   onPinCompleted?: (code: string) => void;
+  biometricType?: PinBiometricType;
 }
 
 export const DialPadKeypad: FC<DialPadKeypadProps> = ({
@@ -23,6 +26,7 @@ export const DialPadKeypad: FC<DialPadKeypadProps> = ({
   setCode,
   onFaceIdPress,
   onPinCompleted,
+  biometricType = "none",
 }) => {
   const { theme } = useTheme();
 
@@ -64,7 +68,9 @@ export const DialPadKeypad: FC<DialPadKeypadProps> = ({
         <TouchableOpacity
           onPress={() => {
             if (item === "") {
-              onFaceIdPress && onFaceIdPress();
+              if (biometricType !== "none") {
+                onFaceIdPress?.();
+              }
               return;
             }
 
@@ -92,9 +98,11 @@ export const DialPadKeypad: FC<DialPadKeypadProps> = ({
       height={iconS}
     />
   ) : item === "" ? (
-    onFaceIdPress && (
+    biometricType === "faceId" ? (
       <Icon name="face_id" width={iconS} height={iconS} type="functionals" />
-    )
+    ) : biometricType === "fingerprint" ? (
+      <Icon name="fingerprint" width={iconS} height={iconS} type="functionals" />
+    ) : null
   ) : (
     <Text variant="primarytextcolor" size={fontLG}>
       {item}
