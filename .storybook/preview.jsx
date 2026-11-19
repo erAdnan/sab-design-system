@@ -212,6 +212,8 @@ const preview = {
           "Disclaimer",
           "Notification",
         ];
+        // Components/EmptyState/Docs — Figma Empty State Note canvas 36:576
+        const emptyStateDocsPages = ["Empty State"];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -712,6 +714,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = notificationsDocsPages.indexOf(leaf);
                 return i === -1 ? notificationsDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/EmptyState/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "EmptyState" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "EmptyState" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = emptyStateDocsPages.indexOf(leaf);
+                return i === -1 ? emptyStateDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

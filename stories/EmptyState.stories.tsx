@@ -25,6 +25,7 @@ export default {
   decorators: mobileContentDecorators,
   title: "Components/EmptyState",
   component: EmptyState,
+  tags: ["!autodocs"],
   argTypes: {
     "iconProps.size": {
       action: "Icon size",
