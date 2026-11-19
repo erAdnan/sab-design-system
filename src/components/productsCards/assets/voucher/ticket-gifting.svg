@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="310" height="548.002" viewBox="0 0 310 548.002" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="Subtract" d="M310 241.557C293.984 241.557 281 254.54 281 270.557V271.216C281 286.982 293.582 299.809 309.252 300.206L310 300.216V548.002H0V300.216C16.0161 300.216 28.9997 287.232 29 271.216V270.557C29 254.79 16.4186 241.962 0.748047 241.565L0 241.557V0H310V241.557Z" fill="url(#paint0_linear_0_4)"/>
+<defs>
+<linearGradient id="paint0_linear_0_4" x1="155" y1="40.2895" x2="155" y2="548.002" gradientUnits="userSpaceOnUse">
+<stop offset="0.45" stop-color="#FBFBFB"/>
+<stop offset="0.45" stop-color="#F2F3F4"/>
+</linearGradient>
+</defs>
+</svg>

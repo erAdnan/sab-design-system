@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="298.582" height="208.92" viewBox="0 0 298.582 208.92" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Pattern" opacity="0.5">
+<mask id="mask0_0_6" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="299" height="209">
+<rect id="Mask" x="9.15527e-05" y="6.02879e-05" width="298.582" height="208.92" rx="6.96401" fill="white"/>
+</mask>
+<g mask="url(#mask0_0_6)">
+<path id="Path 3" opacity="0.08" d="M-126.216 91.6086L330.797 -22.2734L178.46 209.418L-126.216 91.6086Z" fill-rule="evenodd" clip-rule="evenodd" fill="#767676" fill-opacity="0.7"/>
+<path id="Path 2" opacity="0.08" d="M-18.2799 -7.85156V212.059H260.281L-18.2799 -7.85156Z" fill-rule="evenodd" clip-rule="evenodd" fill="#767676" fill-opacity="0.9"/>
+<path id="Path 1" opacity="0.08" d="M18.2826 198.254L395.837 -35.5195L706.765 258.367L18.2826 198.254Z" fill-rule="evenodd" clip-rule="evenodd" fill="#767676" fill-opacity="0.9"/>
+</g>
+</g>
+</svg>
