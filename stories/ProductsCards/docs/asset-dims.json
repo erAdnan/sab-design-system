@@ -1,4 +1,84 @@
 {
+  "category-card-00": {
+    "w": 2800,
+    "h": 332
+  },
+  "category-card-01": {
+    "w": 2400,
+    "h": 1666
+  },
+  "category-card-02": {
+    "w": 2400,
+    "h": 852
+  },
+  "category-card-03": {
+    "w": 2400,
+    "h": 1278
+  },
+  "category-card-04": {
+    "w": 2400,
+    "h": 1526
+  },
+  "category-card-05": {
+    "w": 2400,
+    "h": 960
+  },
+  "category-card-06": {
+    "w": 2400,
+    "h": 2076
+  },
+  "category-card-07": {
+    "w": 2400,
+    "h": 1056
+  },
+  "category-card-08": {
+    "w": 2400,
+    "h": 794
+  },
+  "category-card-09": {
+    "w": 2400,
+    "h": 648
+  },
+  "image-thumbnail-00": {
+    "w": 2800,
+    "h": 332
+  },
+  "image-thumbnail-01": {
+    "w": 2400,
+    "h": 1666
+  },
+  "image-thumbnail-02": {
+    "w": 2400,
+    "h": 966
+  },
+  "image-thumbnail-03": {
+    "w": 2400,
+    "h": 1450
+  },
+  "image-thumbnail-04": {
+    "w": 2400,
+    "h": 1754
+  },
+  "image-thumbnail-05": {
+    "w": 2400,
+    "h": 962
+  },
+  "image-thumbnail-06": {
+    "w": 2400,
+    "h": 1722
+  },
+  "image-thumbnail-07": {
+    "w": 2400,
+    "h": 1114
+  },
+  "image-thumbnail-08": {
+    "w": 2400,
+    "h": 682
+  },
+  "image-thumbnail-09": {
+    "w": 2400,
+    "h": 690
+  },
   "learning-product-cards-00": {
     "w": 2800,
     "h": 331
@@ -38,6 +118,46 @@
   "learning-product-cards-09": {
     "w": 2400,
     "h": 776
+  },
+  "product-card-00": {
+    "w": 2800,
+    "h": 332
+  },
+  "product-card-01": {
+    "w": 2400,
+    "h": 1666
+  },
+  "product-card-02": {
+    "w": 2400,
+    "h": 852
+  },
+  "product-card-03": {
+    "w": 2400,
+    "h": 1850
+  },
+  "product-card-04": {
+    "w": 2400,
+    "h": 2098
+  },
+  "product-card-05": {
+    "w": 1200,
+    "h": 2550
+  },
+  "product-card-06": {
+    "w": 2400,
+    "h": 944
+  },
+  "product-card-07": {
+    "w": 2400,
+    "h": 1056
+  },
+  "product-card-08": {
+    "w": 2400,
+    "h": 626
+  },
+  "product-card-09": {
+    "w": 1200,
+    "h": 1680
   },
   "product-card-summary-00": {
     "w": 2800,

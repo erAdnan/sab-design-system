@@ -1,5 +1,9 @@
+import "react-native-gesture-handler";
+import "react-native-reanimated";
+
 import { useEffect } from "react";
 import { View } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { I18nextProvider } from "react-i18next";
 import { ThemeProvider, useTheme } from "../src/context/theme/themeContext.tsx";
@@ -238,6 +242,12 @@ const preview = {
         const calendarDocsPages = ["Calendar"];
         // Components/ThemeSelector/Docs — Figma Theme selector canvas 15234:56750
         const themeSelectorDocsPages = ["Theme selector"];
+        // Components/Bottomsheet/Docs — Figma Bottomsheet canvas 17468:13574 left → right
+        const bottomsheetDocsPages = [
+          "Bottomsheet - drawer",
+          "Bottom sheet - Button group Rules",
+          "Bottom sheet Basic Rules",
+        ];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -863,6 +873,26 @@ const preview = {
               if (leafDiff !== 0) return leafDiff;
             }
           }
+          // Components/Bottomsheet/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Bottomsheet" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Bottomsheet" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = bottomsheetDocsPages.indexOf(leaf);
+                return i === -1 ? bottomsheetDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
           // Components/Range/Docs topic order (Figma left → right)
           {
             const parts = (title) => String(title).split("/");
@@ -1109,24 +1139,32 @@ const preview = {
       const translatedArgs = deepTranslateArgs(context.args, locale);
 
       return (
-        <SafeAreaProvider>
-          <I18nextProvider i18n={i18n}>
-            <View style={canvasRootStyle}>
-              <ThemeProvider>
-                <ThemeFromGlobals themeKey={themeKey}>
-                  <StoryBookWrapper locale={locale} showLanguageSwitcher={false}>
-                    <View style={storySlotStyle} key={locale}>
-                      <Story args={translatedArgs} />
-                    </View>
-                  </StoryBookWrapper>
-                </ThemeFromGlobals>
-              </ThemeProvider>
-            </View>
-          </I18nextProvider>
-        </SafeAreaProvider>
+        <GestureHandlerRootView style={gestureRootStyle}>
+          <SafeAreaProvider>
+            <I18nextProvider i18n={i18n}>
+              <View style={canvasRootStyle}>
+                <ThemeProvider>
+                  <ThemeFromGlobals themeKey={themeKey}>
+                    <StoryBookWrapper locale={locale} showLanguageSwitcher={false}>
+                      <View style={storySlotStyle} key={locale}>
+                        <Story args={translatedArgs} />
+                      </View>
+                    </StoryBookWrapper>
+                  </ThemeFromGlobals>
+                </ThemeProvider>
+              </View>
+            </I18nextProvider>
+          </SafeAreaProvider>
+        </GestureHandlerRootView>
       );
     },
   ],
+};
+
+const gestureRootStyle = {
+  flex: 1,
+  width: "100%",
+  minHeight: "100%",
 };
 
 const canvasRootStyle = {
