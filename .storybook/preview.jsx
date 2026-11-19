@@ -156,7 +156,7 @@ const preview = {
           "Bottom navigation / 03 · iOS guidelines",
           "Bottom navigation / 04 · Android guidelines",
         ];
-        // Components/InputField/Docs — Figma Input Field canvas 8:2669 left → right
+        // Components/Input Field/Docs — Figma Input Field canvas 8:2669 left → right
         const inputFieldDocsPages = [
           "Input Field",
           "Text Field Documentation",
@@ -205,7 +205,7 @@ const preview = {
         ];
         // Components/Tracker/Docs — Figma Tracker canvas 4391:37792
         const trackerDocsPages = ["Tracker"];
-        // Components/Graph/Docs — Figma Graphs canvas 11572:15448 left → right
+        // Components/Graphs/Docs — Figma Graphs canvas 11572:15448 left → right
         const graphDocsPages = [
           "Line Graph",
           "Circle Graph",
@@ -485,15 +485,15 @@ const preview = {
               if (leafDiff !== 0) return leafDiff;
             }
           }
-          // Components/InputField/Docs topic order (Figma left → right)
+          // Components/Input Field/Docs topic order (Figma left → right)
           {
             const parts = (title) => String(title).split("/");
             if (
               parts(a.title)[0] === "Components" &&
-              parts(a.title)[1] === "InputField" &&
+              parts(a.title)[1] === "Input Field" &&
               parts(a.title)[2] === "Docs" &&
               parts(b.title)[0] === "Components" &&
-              parts(b.title)[1] === "InputField" &&
+              parts(b.title)[1] === "Input Field" &&
               parts(b.title)[2] === "Docs"
             ) {
               const leafRank = (title) => {
@@ -700,15 +700,15 @@ const preview = {
               if (leafDiff !== 0) return leafDiff;
             }
           }
-          // Components/Graph/Docs topic order (Figma left → right)
+          // Components/Graphs/Docs topic order (Figma left → right)
           {
             const parts = (title) => String(title).split("/");
             if (
               parts(a.title)[0] === "Components" &&
-              parts(a.title)[1] === "Graph" &&
+              parts(a.title)[1] === "Graphs" &&
               parts(a.title)[2] === "Docs" &&
               parts(b.title)[0] === "Components" &&
-              parts(b.title)[1] === "Graph" &&
+              parts(b.title)[1] === "Graphs" &&
               parts(b.title)[2] === "Docs"
             ) {
               const leafRank = (title) => {

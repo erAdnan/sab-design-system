@@ -29,7 +29,13 @@ const HIDDEN_SIDEBAR_COMPONENTS = new Set([
 ]);
 
 /** Leaf name for hide matching: Components/<name> or Components/<Group>/<name> */
-const SIDEBAR_COMPONENT_GROUPS = new Set(["Banners", "Buttons", "Chips"]);
+const SIDEBAR_COMPONENT_GROUPS = new Set([
+  "Banners",
+  "Buttons",
+  "Chips",
+  "Graphs",
+  "Input Field",
+]);
 
 const sidebarComponentLeaf = (parts) => {
   if (parts[0] !== "Components") return null;
