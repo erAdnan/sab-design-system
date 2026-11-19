@@ -1,7 +1,6 @@
 import * as allStories from "./PersonalFinanceWidget.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
 import { BudgetCard as BudgetCardWidget } from "../src/components/personalFinanceWidgets/BudgetCard";
-import { Expenses as ExpensesWidget } from "../src/components/personalFinanceWidgets/Expenses";
 import { Tag as TagWidget } from "../src/components/personalFinanceWidgets/Tag";
 import { BarChart } from "../src/components/personalFinanceWidgets/BarChart";
 import { CategoryList as CategoryListWidget } from "../src/components/personalFinanceWidgets/CategoryList";
@@ -19,23 +18,12 @@ export default {
   title: "Components/Data Display/PersonalFinanceWidgets",
   tags: ["!autodocs"],
   components: [
-    ExpensesWidget,
     TagWidget,
     BudgetCardWidget,
     BarChart,
     CategoryListWidget,
     CategoryCardWidget,
   ],
-};
-
-export const Expenses = {
-  render: ExpensesWidget,
-  args: {
-    label: "My Spend",
-    description: "For November",
-    amount: "28,450.00",
-    loading: false,
-  },
 };
 
 export const Tag = {
@@ -205,7 +193,6 @@ export const CategoryCardVertical = {
 };
 
 export const AllVariants = createAllVariantsStory(allStories, [
-    "Expenses",
     "Tag",
     "MyActivityWeek",
     "MyActivityMonth",
