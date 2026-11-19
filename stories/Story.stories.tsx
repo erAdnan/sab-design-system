@@ -7,6 +7,7 @@ export default {
   decorators: [centerStoryDecorator],
   title: "Components/Story",
   component: Story,
+  tags: ["!autodocs"],
   argTypes: {
     seen: { action: "Seen", control: "boolean" },
   },

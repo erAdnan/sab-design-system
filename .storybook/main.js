@@ -35,6 +35,7 @@ module.exports = {
     "../stories/PasswordStrength/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Notifications/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/EmptyState/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Story/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [
