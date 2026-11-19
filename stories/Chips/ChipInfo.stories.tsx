@@ -1,10 +1,10 @@
 import * as allStories from "./ChipInfo.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { ChipInfo } from "../src/components/chips/ChipInfo";
-import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { ChipInfo } from "../../src/components/chips/ChipInfo";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/ChipInfo",
+  title: "Components/Chips/ChipInfo",
   component: ChipInfo,
   decorators: [centerStoryDecorator],
   argTypes: {

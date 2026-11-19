@@ -1,9 +1,9 @@
 import { View } from "react-native";
-import { ChipsFilterTag } from "../src/components/chips/ChipsFilterTag";
-import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
+import { ChipsFilterTag } from "../../src/components/chips/ChipsFilterTag";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/ChipsFilterTag",
+  title: "Components/Chips/ChipsFilterTag",
   component: ChipsFilterTag,
   decorators: [centerStoryDecorator],
   argTypes: {

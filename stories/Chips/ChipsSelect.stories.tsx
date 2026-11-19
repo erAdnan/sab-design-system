@@ -1,13 +1,13 @@
 import * as allStories from "./ChipsSelect.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { expect } from "storybook/test";
-import { spy } from "../.storybook/actions";
-import { BadgeSize, BadgeType } from "../src/components/badge/Badge";
-import { ChipsSelect } from "../src/components/chips/ChipsSelect";
-import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
+import { spy } from "../../.storybook/actions";
+import { BadgeSize, BadgeType } from "../../src/components/badge/Badge";
+import { ChipsSelect } from "../../src/components/chips/ChipsSelect";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/ChipsSelect",
+  title: "Components/Chips/ChipsSelect",
   component: ChipsSelect,
   decorators: [centerStoryDecorator],
   argTypes: {

@@ -1,12 +1,12 @@
 import * as allStories from "./ChipsFilter.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { useState } from "react";
-import { ChipsFilter } from "../src/components/chips/ChipsFilter";
+import { ChipsFilter } from "../../src/components/chips/ChipsFilter";
 import { View } from "react-native";
-import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/ChipsFilter",
+  title: "Components/Chips/ChipsFilter",
   component: ChipsFilter,
   decorators: [centerStoryDecorator],
   argTypes: {

@@ -1,10 +1,10 @@
 import * as allStories from "./NewChipsInfo.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { NewChipsInfo } from "../src/components/chips/NewChipsInfo";
-import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { NewChipsInfo } from "../../src/components/chips/NewChipsInfo";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/NewChipsInfo",
+  title: "Components/Chips/NewChipsInfo",
   component: NewChipsInfo,
   decorators: [centerStoryDecorator],
   argTypes: {

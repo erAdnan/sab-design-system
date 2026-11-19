@@ -1,10 +1,10 @@
 import * as allStories from "./ChipsOffers.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { ChipsOffers } from "../src/components/chips/ChipsOffers";
-import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { ChipsOffers } from "../../src/components/chips/ChipsOffers";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/ChipsOffers",
+  title: "Components/Chips/ChipsOffers",
   component: ChipsOffers,
   decorators: [centerStoryDecorator],
   argTypes: {
