@@ -1,15 +1,15 @@
 import * as allStories from "./NewButtons.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import ChevronEffectUp from '../src/components/icons/arrows/chevron/ChevronEffectUp';
-import Prepaid from "../src/components/icons/outline/Prepaid";
-import { ButtonAddWallet } from "../src/components/newButtons/ButtonAddWallet";
-import { ButtonWallet } from "../src/components/newButtons/ButtonWallet";
-import { FloatingButton } from "../src/components/newButtons/FloatingButton";
-import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import ChevronEffectUp from '../../src/components/icons/arrows/chevron/ChevronEffectUp';
+import Prepaid from "../../src/components/icons/outline/Prepaid";
+import { ButtonAddWallet } from "../../src/components/newButtons/ButtonAddWallet";
+import { ButtonWallet } from "../../src/components/newButtons/ButtonWallet";
+import { FloatingButton } from "../../src/components/newButtons/FloatingButton";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
   decorators: [centerStoryDecorator],
-  title: "Components/New Buttons"
+  title: "Components/Buttons/New Buttons"
 };
 
 export const FloatingButtonWithIconRedAccent = {

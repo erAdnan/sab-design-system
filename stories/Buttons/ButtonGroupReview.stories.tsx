@@ -1,11 +1,11 @@
 import * as allStories from "./ButtonGroupReview.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { View } from "react-native";
-import { buttonFrameStoryDecorators } from "../.storybook/buttonStoryFrame";
-import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
-import { ButtonGroupReview } from "../src/components/button/ButtonGroupReview";
-import MyAccounts from "../src/components/icons/banking/MyAccounts";
-import { useTheme } from "../src/context/theme/themeContext";
+import { buttonFrameStoryDecorators } from "../../.storybook/buttonStoryFrame";
+import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
+import { ButtonGroupReview } from "../../src/components/button/ButtonGroupReview";
+import MyAccounts from "../../src/components/icons/banking/MyAccounts";
+import { useTheme } from "../../src/context/theme/themeContext";
 
 // Figma `button.group-review` (Buttons page 7:189) is a 375 wide bottom sheet. The component itself has no outer
 // padding (consumers supply it through `overrideStyles`), so the stories pass the Figma sheet frame here.
@@ -32,7 +32,7 @@ const LIGHT_SHEET = {
 };
 
 export default {
-  title: "Components/ButtonGroupReview",
+  title: "Components/Buttons/ButtonGroupReview",
   component: ButtonGroupReview,
   // 375 mobile frame centered on the canvas instead of shrinking/stretching with the desktop width.
   decorators: buttonFrameStoryDecorators,

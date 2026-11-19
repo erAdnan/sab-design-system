@@ -1,10 +1,10 @@
 import * as allStories from "./BlockButton.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { BlockButton } from "../src/components/block/Button";
-import LogoImage from "../src/components/icons/sab360/LogoImage";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { BlockButton } from "../../src/components/block/Button";
+import LogoImage from "../../src/components/icons/sab360/LogoImage";
 
 export default {
-  title: "Components/BlockButton",
+  title: "Components/Buttons/BlockButton",
   component: BlockButton,
   argTypes: {
     caption: { action: "Caption", control: "text" },

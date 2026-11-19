@@ -1,13 +1,13 @@
 import * as allStories from "./QuickActionButton.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { expect } from "storybook/test";
-import { spy } from "../.storybook/actions";
-import { QuickActionButton } from "../src/components/button/QuickActionButton";
-import MyAccounts from "../src/components/icons/banking/MyAccounts";
-import { useTheme } from "../src/context/theme/themeContext";
+import { spy } from "../../.storybook/actions";
+import { QuickActionButton } from "../../src/components/button/QuickActionButton";
+import MyAccounts from "../../src/components/icons/banking/MyAccounts";
+import { useTheme } from "../../src/context/theme/themeContext";
 
 export default {
-  title: "Components/QuickActionButton",
+  title: "Components/Buttons/QuickActionButton",
   component: QuickActionButton,
   argTypes: {
     type: {

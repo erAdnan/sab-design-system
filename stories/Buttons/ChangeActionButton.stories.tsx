@@ -1,13 +1,13 @@
 import * as allStories from "./ChangeActionButton.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { expect } from "storybook/test";
-import { spy } from "../.storybook/actions";
-import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
-import { ChangeActionButton } from "../src/components/button/ChangeActionButton";
-import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
+import { spy } from "../../.storybook/actions";
+import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
+import { ChangeActionButton } from "../../src/components/button/ChangeActionButton";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/ChangeActionButton",
+  title: "Components/Buttons/ChangeActionButton",
   component: ChangeActionButton,
   decorators: [centerStoryDecorator],
   argTypes: {

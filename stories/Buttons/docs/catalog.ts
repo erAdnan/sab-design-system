@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const BUTTON_DOCS_PAGES: DocPage[] = [
   {
     title: "Standalone Button",
-    storyTitle: "Components/Button/Docs/Standalone Button",
+    storyTitle: "Components/Buttons/Docs/Standalone Button",
     images: [
       img(require("./assets/standalone-button-00.webp"), 2400, 360),
       img(require("./assets/standalone-button-01.webp"), 2400, 1000),
@@ -45,7 +45,7 @@ export const BUTTON_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Link Button",
-    storyTitle: "Components/Button/Docs/Link Button",
+    storyTitle: "Components/Buttons/Docs/Link Button",
     images: [
       img(require("./assets/link-button-00.webp"), 2400, 360),
       img(require("./assets/link-button-01.webp"), 2400, 1000),
@@ -65,7 +65,7 @@ export const BUTTON_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Link Icons",
-    storyTitle: "Components/Button/Docs/Link Icons",
+    storyTitle: "Components/Buttons/Docs/Link Icons",
     images: [
       img(require("./assets/link-icons-00.webp"), 2400, 360),
       img(require("./assets/link-icons-01.webp"), 2400, 1000),
@@ -81,7 +81,7 @@ export const BUTTON_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Button Group",
-    storyTitle: "Components/Button/Docs/Button Group",
+    storyTitle: "Components/Buttons/Docs/Button Group",
     images: [
       img(require("./assets/button-group-00.webp"), 2400, 360),
       img(require("./assets/button-group-01.webp"), 2400, 1000),
@@ -100,7 +100,7 @@ export const BUTTON_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Button Group Review",
-    storyTitle: "Components/Button/Docs/Button Group Review",
+    storyTitle: "Components/Buttons/Docs/Button Group Review",
     images: [
       img(require("./assets/button-group-review-00.webp"), 2400, 360),
       img(require("./assets/button-group-review-01.webp"), 2400, 1000),
@@ -120,7 +120,7 @@ export const BUTTON_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Bottom sheet - Button group Rules",
-    storyTitle: "Components/Button/Docs/Bottom sheet - Button group Rules",
+    storyTitle: "Components/Buttons/Docs/Bottom sheet - Button group Rules",
     images: [
       img(require("./assets/bottom-sheet-button-group-rules-00.webp"), 2400, 1914),
       img(require("./assets/bottom-sheet-button-group-rules-01.webp"), 2400, 1180),
@@ -132,7 +132,7 @@ export const BUTTON_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Button List Item",
-    storyTitle: "Components/Button/Docs/Button List Item",
+    storyTitle: "Components/Buttons/Docs/Button List Item",
     images: [
       img(require("./assets/button-list-item-00.webp"), 2400, 360),
       img(require("./assets/button-list-item-01.webp"), 2400, 1000),
@@ -150,7 +150,7 @@ export const BUTTON_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Quick Action",
-    storyTitle: "Components/Button/Docs/Quick Action",
+    storyTitle: "Components/Buttons/Docs/Quick Action",
     images: [
       img(require("./assets/button-quick-action-00.webp"), 2400, 360),
       img(require("./assets/button-quick-action-01.webp"), 2400, 1000),
@@ -169,7 +169,7 @@ export const BUTTON_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "New Hubs Button List Item",
-    storyTitle: "Components/Button/Docs/New Hubs Button List Item",
+    storyTitle: "Components/Buttons/Docs/New Hubs Button List Item",
     images: [
       img(require("./assets/new-hubs-button-list-item-00.webp"), 2400, 360),
       img(require("./assets/new-hubs-button-list-item-01.webp"), 2400, 1000),
@@ -185,7 +185,7 @@ export const BUTTON_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Segmented Button",
-    storyTitle: "Components/Button/Docs/Segmented Button",
+    storyTitle: "Components/Buttons/Docs/Segmented Button",
     images: [
       img(require("./assets/segmented-button-00.webp"), 2400, 360),
       img(require("./assets/segmented-button-01.webp"), 2400, 1000),

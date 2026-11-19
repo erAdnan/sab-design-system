@@ -1,12 +1,12 @@
 import * as allStories from "./LinkIconButton.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { expect } from "storybook/test";
-import { spy } from "../.storybook/actions";
-import { LinkIconButton } from "../src/components/button/LinkIconButton";
-import DocumentEdit from "../src/components/icons/functionals/DocumentEdit";
+import { spy } from "../../.storybook/actions";
+import { LinkIconButton } from "../../src/components/button/LinkIconButton";
+import DocumentEdit from "../../src/components/icons/functionals/DocumentEdit";
 
 export default {
-  title: "Components/Link Icon Button",
+  title: "Components/Buttons/Link Icon Button",
   component: LinkIconButton,
   argTypes: {
     onButtonPress: { action: "onButtonPress" },

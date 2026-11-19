@@ -115,7 +115,7 @@ const preview = {
           "Text Headline",
           "Body Text",
         ];
-        // Components/Button/Docs — Figma Buttons canvas 7:189 left → right
+        // Components/Buttons/Docs — Figma Buttons canvas 7:189 left → right
         const buttonDocsPages = [
           "Standalone Button",
           "Link Button",
@@ -369,15 +369,15 @@ const preview = {
               if (leafDiff !== 0) return leafDiff;
             }
           }
-          // Components/Button/Docs topic order (Figma left → right)
+          // Components/Buttons/Docs topic order (Figma left → right)
           {
             const parts = (title) => String(title).split("/");
             if (
               parts(a.title)[0] === "Components" &&
-              parts(a.title)[1] === "Button" &&
+              parts(a.title)[1] === "Buttons" &&
               parts(a.title)[2] === "Docs" &&
               parts(b.title)[0] === "Components" &&
-              parts(b.title)[1] === "Button" &&
+              parts(b.title)[1] === "Buttons" &&
               parts(b.title)[2] === "Docs"
             ) {
               const leafRank = (title) => {

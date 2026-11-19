@@ -2,10 +2,10 @@ import React from "react";
 import { FigmaDocPage } from "../../pulse-design-system/rules-and-patterns/FigmaDocPage";
 import { BUTTON_DOCS_PAGES } from "./catalog";
 
-const page = BUTTON_DOCS_PAGES.find((p) => p.title === "Button Group")!;
+const page = BUTTON_DOCS_PAGES.find((p) => p.title === "Standalone Button")!;
 
 export default {
-  title: "Components/Button/Docs/Button Group",
+  title: "Components/Buttons/Docs/Standalone Button",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -14,13 +14,13 @@ export default {
   },
 };
 
-/** Figma Final Pulse → Buttons canvas (7:189) → Button Group. */
+/** Figma Final Pulse → Buttons canvas (7:189) → Standalone Button. */
 export const Overview = {
   name: "Overview",
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Button"
+      eyebrow="Components · Buttons"
       images={page.images}
     />
   ),

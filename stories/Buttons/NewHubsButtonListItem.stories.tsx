@@ -1,12 +1,12 @@
 import * as allStories from "./NewHubsButtonListItem.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { listStoryDecorators } from "../.storybook/listStoryFrame";
-import { NewHubsButtonListItem } from "../src/components/button/NewHubsButtonListItem";
-import Filter from "../src/components/icons/functionals/Filter";
-import Home from "../src/components/icons/functionals/Home";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { listStoryDecorators } from "../../.storybook/listStoryFrame";
+import { NewHubsButtonListItem } from "../../src/components/button/NewHubsButtonListItem";
+import Filter from "../../src/components/icons/functionals/Filter";
+import Home from "../../src/components/icons/functionals/Home";
 
 export default {
-  title: "Components/NewHubsButtonListItem",
+  title: "Components/Buttons/NewHubsButtonListItem",
   component: NewHubsButtonListItem,
   decorators: listStoryDecorators,
   argTypes: {

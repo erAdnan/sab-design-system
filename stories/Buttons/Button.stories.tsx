@@ -1,12 +1,12 @@
 import * as allStories from "./Button.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { expect } from "storybook/test";
-import { spy } from "../.storybook/actions";
-import {Button} from "../src/components/button/Button";
-import {buttonContentStoryDecorators} from "../.storybook/buttonStoryFrame";
+import { spy } from "../../.storybook/actions";
+import {Button} from "../../src/components/button/Button";
+import {buttonContentStoryDecorators} from "../../.storybook/buttonStoryFrame";
 
 export default {
-  title: "Components/Button",
+  title: "Components/Buttons/Button",
   component: Button,
   tags: ["!autodocs"],
   argTypes: {

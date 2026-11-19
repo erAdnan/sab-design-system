@@ -1,15 +1,15 @@
 import * as allStories from "./FloatingButton.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { expect } from "storybook/test";
-import { spy } from "../.storybook/actions";
-import { FloatingButton } from "../src/components/newButtons/FloatingButton";
-import Prepaid from "../src/components/icons/outline/Prepaid";
-import ChevronEffectUp from "../src/components/icons/arrows/chevron/ChevronEffectUp";
-import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
+import { spy } from "../../.storybook/actions";
+import { FloatingButton } from "../../src/components/newButtons/FloatingButton";
+import Prepaid from "../../src/components/icons/outline/Prepaid";
+import ChevronEffectUp from "../../src/components/icons/arrows/chevron/ChevronEffectUp";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
   decorators: [centerStoryDecorator],
-  title: "Components/FloatingButton",
+  title: "Components/Buttons/FloatingButton",
   component: FloatingButton,
   argTypes: {
     variant: { control: "select", options: ["redAccent", "grayAccent"] },

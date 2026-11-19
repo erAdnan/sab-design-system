@@ -1,11 +1,11 @@
 import * as allStories from "./ButtonGroup.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { useState } from "react";
-import { buttonContentStoryDecorators } from "../.storybook/buttonStoryFrame";
-import { ButtonGroup } from "../src/components/button/ButtonGroup";
-import MyAccounts from "../src/components/icons/banking/MyAccounts";
-import { useTheme } from "../src/context/theme/themeContext";
-import BlockProductComplexStories from './BlockProductComplex.stories';
+import { buttonContentStoryDecorators } from "../../.storybook/buttonStoryFrame";
+import { ButtonGroup } from "../../src/components/button/ButtonGroup";
+import MyAccounts from "../../src/components/icons/banking/MyAccounts";
+import { useTheme } from "../../src/context/theme/themeContext";
+import BlockProductComplexStories from '../BlockProductComplex.stories';
 
 const InteractiveTemplate = (args: any) => {
   const { theme } = useTheme();
@@ -38,7 +38,7 @@ const CheckboxDisclaimerTemplate = (args: any) => {
 };
 
 export default {
-  title: "Components/ButtonGroup",
+  title: "Components/Buttons/ButtonGroup",
   component: ButtonGroup,
   // Figma mobile content width (343) centered, instead of stretching across the desktop canvas.
   decorators: buttonContentStoryDecorators,

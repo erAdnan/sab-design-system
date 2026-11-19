@@ -1,15 +1,15 @@
 import * as allStories from "./SegmentedButton.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
-import { SegmentedButton as SegmentedButtonComponent } from "../src/components/button/SegmentedButton";
-import { BadgeType } from "../src/components/badge/Badge";
-import Wallet from "../src/components/icons/filled/Wallet";
-import Menu from "../src/components/icons/functionals/Menu";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
+import { SegmentedButton as SegmentedButtonComponent } from "../../src/components/button/SegmentedButton";
+import { BadgeType } from "../../src/components/badge/Badge";
+import Wallet from "../../src/components/icons/filled/Wallet";
+import Menu from "../../src/components/icons/functionals/Menu";
 
 const badgeTypeOptions = Object.keys(BadgeType);
 
 export default {
-  title: "Components/SegmentedButton",
+  title: "Components/Buttons/SegmentedButton",
   component: SegmentedButtonComponent,
   decorators: [centerStoryDecorator],
   argTypes: {

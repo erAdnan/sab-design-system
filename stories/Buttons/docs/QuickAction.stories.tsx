@@ -2,10 +2,10 @@ import React from "react";
 import { FigmaDocPage } from "../../pulse-design-system/rules-and-patterns/FigmaDocPage";
 import { BUTTON_DOCS_PAGES } from "./catalog";
 
-const page = BUTTON_DOCS_PAGES.find((p) => p.title === "Bottom sheet - Button group Rules")!;
+const page = BUTTON_DOCS_PAGES.find((p) => p.title === "Quick Action")!;
 
 export default {
-  title: "Components/Button/Docs/Bottom sheet - Button group Rules",
+  title: "Components/Buttons/Docs/Quick Action",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -14,13 +14,13 @@ export default {
   },
 };
 
-/** Figma Final Pulse → Buttons canvas (7:189) → Bottom sheet - Button group Rules. */
+/** Figma Final Pulse → Buttons canvas (7:189) → Quick Action. */
 export const Overview = {
   name: "Overview",
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Button"
+      eyebrow="Components · Buttons"
       images={page.images}
     />
   ),

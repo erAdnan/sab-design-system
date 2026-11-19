@@ -1,12 +1,12 @@
 import * as allStories from "./ButtonListItem.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { listStoryDecorators } from "../.storybook/listStoryFrame";
-import { ButtonListItem } from "../src/components/button/ButtonListItem";
-import Icon from "../src/components/icon/Icon";
-import Home from "../src/components/icons/functionals/Home";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { listStoryDecorators } from "../../.storybook/listStoryFrame";
+import { ButtonListItem } from "../../src/components/button/ButtonListItem";
+import Icon from "../../src/components/icon/Icon";
+import Home from "../../src/components/icons/functionals/Home";
 
 export default {
-  title: "Components/ButtonListItem",
+  title: "Components/Buttons/ButtonListItem",
   component: ButtonListItem,
   decorators: listStoryDecorators,
   argTypes: {

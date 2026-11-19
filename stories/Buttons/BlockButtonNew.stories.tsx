@@ -1,12 +1,12 @@
 import * as allStories from "./BlockButtonNew.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { BlockButtonNew } from "../src/components/block/BlockButtonNew";
-import Mada from "../src/components/logos/Mada";
-import Drahim from "../src/components/logos/Drahim";
-import Sarie from "../src/components/logos/Sarie";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { BlockButtonNew } from "../../src/components/block/BlockButtonNew";
+import Mada from "../../src/components/logos/Mada";
+import Drahim from "../../src/components/logos/Drahim";
+import Sarie from "../../src/components/logos/Sarie";
 
 export default {
-  title: "Components/BlockButtonNew",
+  title: "Components/Buttons/BlockButtonNew",
   component: BlockButtonNew,
   argTypes: {
     caption: { control: "text" },
