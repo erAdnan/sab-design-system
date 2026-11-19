@@ -4,7 +4,7 @@ import { BlockButton } from "../../src/components/block/Button";
 import LogoImage from "../../src/components/icons/sab360/LogoImage";
 
 export default {
-  title: "Components/Buttons/BlockButton",
+  title: "Components/Navigation/Buttons/BlockButton",
   component: BlockButton,
   argTypes: {
     caption: { action: "Caption", control: "text" },

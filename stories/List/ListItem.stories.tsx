@@ -15,7 +15,7 @@ import { Avatar } from "../../src/components/avatar/Avatar";
 import { fontMediumLarge } from "../../src/assets/styles/constants/size";
 
 export default {
-  title: "Components/List/ListItem",
+  title: "Components/Navigation/List/ListItem",
   component: ListItem,
   decorators: listStoryDecorators,
   argTypes: {

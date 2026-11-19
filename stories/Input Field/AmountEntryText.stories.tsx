@@ -11,7 +11,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Input Field/AmountEntry",
+  title: "Components/Data Entry/Input Field/AmountEntry",
   component: AmountEntryText,
   argTypes: {
     showChipsInfoText: { action: "Show chips info text", control: "boolean" },

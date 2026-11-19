@@ -8,7 +8,7 @@ import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
 import Prepaid from "../../src/components/icons/outline/Prepaid";
 
 export default {
-  title: "Components/Blocks/BlockEntry",
+  title: "Components/Data Display/Blocks/BlockEntry",
   component: Entry,
   argTypes: {
     title: { control: "text" },

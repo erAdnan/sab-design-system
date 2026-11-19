@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const HEADER_DOCS_PAGES: DocPage[] = [
   {
     title: "Header",
-    storyTitle: "Components/Header/Docs/Header",
+    storyTitle: "Components/Navigation/Header/Docs/Header",
     images: [
       img(require("./assets/header-00.webp"), 2400, 1506),
       img(require("./assets/header-01.webp"), 2400, 882),
@@ -61,7 +61,7 @@ export const HEADER_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Supporting Actions",
-    storyTitle: "Components/Header/Docs/Supporting Actions",
+    storyTitle: "Components/Navigation/Header/Docs/Supporting Actions",
     images: [
       img(require("./assets/supporting-actions-00.webp"), 2400, 1028),
       img(require("./assets/supporting-actions-01.webp"), 2400, 722),
@@ -75,7 +75,7 @@ export const HEADER_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Level 1 Add-on",
-    storyTitle: "Components/Header/Docs/Level 1 Add-on",
+    storyTitle: "Components/Navigation/Header/Docs/Level 1 Add-on",
     images: [
       img(require("./assets/level-1-add-on-00.webp"), 2400, 1012),
       img(require("./assets/level-1-add-on-01.webp"), 2400, 722),
@@ -89,7 +89,7 @@ export const HEADER_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Pre-login Add-on",
-    storyTitle: "Components/Header/Docs/Pre-login Add-on",
+    storyTitle: "Components/Navigation/Header/Docs/Pre-login Add-on",
     images: [
       img(require("./assets/pre-login-add-on-00.webp"), 2400, 1012),
       img(require("./assets/pre-login-add-on-01.webp"), 2400, 722),
@@ -103,7 +103,7 @@ export const HEADER_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Segment Add-on",
-    storyTitle: "Components/Header/Docs/Segment Add-on",
+    storyTitle: "Components/Navigation/Header/Docs/Segment Add-on",
     images: [
       img(require("./assets/segment-add-on-00.webp"), 2400, 1020),
       img(require("./assets/segment-add-on-01.webp"), 2400, 722),
@@ -117,7 +117,7 @@ export const HEADER_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Global Search",
-    storyTitle: "Components/Header/Docs/Global Search",
+    storyTitle: "Components/Navigation/Header/Docs/Global Search",
     images: [
       img(require("./assets/global-search-00.webp"), 2400, 1044),
       img(require("./assets/global-search-01.webp"), 2400, 722),
@@ -131,7 +131,7 @@ export const HEADER_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Levels of Navigation",
-    storyTitle: "Components/Header/Docs/Levels of Navigation",
+    storyTitle: "Components/Navigation/Header/Docs/Levels of Navigation",
     images: [
       img(require("./assets/levels-of-navigation-00.webp"), 6384, 860),
       img(require("./assets/levels-of-navigation-01.webp"), 6384, 752),

@@ -9,7 +9,7 @@ import { View } from "react-native";
 import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
 
 export default {
-  title: "Components/Radio Button",
+  title: "Components/Data Entry/Radio Button",
   component: RadioButton,
   tags: ["!autodocs"],
   argTypes: {

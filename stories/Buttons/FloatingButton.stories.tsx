@@ -9,7 +9,7 @@ import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
   decorators: [centerStoryDecorator],
-  title: "Components/Buttons/FloatingButton",
+  title: "Components/Navigation/Buttons/FloatingButton",
   component: FloatingButton,
   argTypes: {
     variant: { control: "select", options: ["redAccent", "grayAccent"] },

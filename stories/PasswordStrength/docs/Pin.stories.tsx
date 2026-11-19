@@ -5,7 +5,7 @@ import { PASSWORD_STRENGTH_DOCS_PAGES } from "./catalog";
 const page = PASSWORD_STRENGTH_DOCS_PAGES.find((p) => p.title === "PIN")!;
 
 export default {
-  title: "Components/PasswordStrength/Docs/PIN",
+  title: "Components/Data Display/PasswordStrength/Docs/PIN",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Password Strength"
+      eyebrow="Components · Data Display · Password Strength"
       images={page.images}
     />
   ),

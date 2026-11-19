@@ -7,7 +7,7 @@ const page = PRODUCTS_CARDS_DOCS_PAGES.find(
 )!;
 
 export default {
-  title: "Components/ProductsCards/Docs/Image Thumbnail",
+  title: "Components/Data Display/ProductsCards/Docs/Image Thumbnail",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -22,7 +22,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · ProductsCards"
+      eyebrow="Components · Data Display · ProductsCards"
       images={page.images}
     />
   ),

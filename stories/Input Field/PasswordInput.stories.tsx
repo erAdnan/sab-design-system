@@ -5,7 +5,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Input Field/PasswordInput",
+  title: "Components/Data Entry/Input Field/PasswordInput",
   component: PasswordInput,
   argTypes: {
     error: { action: "Input error", control: "boolean" },

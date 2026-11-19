@@ -6,7 +6,7 @@ import MyAccounts from "../../src/components/icons/banking/MyAccounts";
 import Undrawdocument from "../../src/assets/svgs/illustration/undraw_document_search.svg";
 
 export default {
-  title: "Components/Blocks/BlockProduct",
+  title: "Components/Data Display/Blocks/BlockProduct",
   component: Product,
   argTypes: {
     title: { action: "Title", control: "text" },

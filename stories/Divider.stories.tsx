@@ -7,7 +7,7 @@ import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Divider",
+  title: "Components/Layout/Divider",
   component: Divider,
   tags: ["!autodocs"],
 };

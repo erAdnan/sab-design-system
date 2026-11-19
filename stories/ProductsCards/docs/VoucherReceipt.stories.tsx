@@ -5,7 +5,7 @@ import { PRODUCTS_CARDS_DOCS_PAGES } from "./catalog";
 const page = PRODUCTS_CARDS_DOCS_PAGES.find((p) => p.title === "Voucher Receipt")!;
 
 export default {
-  title: "Components/ProductsCards/Docs/Voucher Receipt",
+  title: "Components/Data Display/ProductsCards/Docs/Voucher Receipt",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · ProductsCards"
+      eyebrow="Components · Data Display · ProductsCards"
       images={page.images}
     />
   ),

@@ -7,7 +7,7 @@ import { Checkbox } from "../src/components/checkbox/Checkbox";
 import i18n from "i18next";
 
 export default {
-  title: "Components/Checkbox",
+  title: "Components/Data Entry/Checkbox",
   component: Checkbox,
   tags: ["!autodocs"],
   argTypes: {

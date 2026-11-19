@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const BADGE_DOCS_PAGES: DocPage[] = [
   {
     title: "Badge",
-    storyTitle: "Components/Badge/Docs/Badge",
+    storyTitle: "Components/Data Display/Badge/Docs/Badge",
     images: [
       img(require("./assets/badge-00.webp"), 2400, 306),
       img(require("./assets/badge-01.webp"), 2400, 1000),

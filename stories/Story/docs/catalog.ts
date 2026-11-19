@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const STORY_DOCS_PAGES: DocPage[] = [
   {
     title: "Story",
-    storyTitle: "Components/Story/Docs/Story",
+    storyTitle: "Components/Data Display/Story/Docs/Story",
     images: [
       img(require("./assets/story-00.webp"), 2800, 331),
       img(require("./assets/story-01.webp"), 2400, 1666),

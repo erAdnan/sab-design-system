@@ -5,7 +5,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Cards & Accounts & Finance/Balance",
+  title: "Components/Data Display/Cards & Accounts & Finance/Balance",
   component: Balance,
   argTypes: {
     firstValue: { action: "First Value", control: "text" },

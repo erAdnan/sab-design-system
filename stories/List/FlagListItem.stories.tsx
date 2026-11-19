@@ -4,7 +4,7 @@ import { listStoryDecorators } from "../../.storybook/listStoryFrame";
 import { FlagListItem } from "../../src/components/list/FlagListItem";
 
 export default {
-  title: "Components/List/FlagListItem",
+  title: "Components/Navigation/List/FlagListItem",
   component: FlagListItem,
   decorators: listStoryDecorators,
 }

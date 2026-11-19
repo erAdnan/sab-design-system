@@ -19,7 +19,7 @@ import { DropdownScreen } from "../../src/components/dropdown/DropdownScreen";
 import Icon from "../../src/components/icon/Icon";
 
 export default {
-  title: "Components/Cards & Accounts & Finance/BalanceModule",
+  title: "Components/Data Display/Cards & Accounts & Finance/BalanceModule",
   component: BalanceModule,
   argTypes: {},
   args: {

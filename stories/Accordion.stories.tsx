@@ -18,7 +18,7 @@ import { deepTranslateArgs, tx } from "../src/localization/tx";
 import { TextFieldInput } from "../src/components/input/TextFieldInput";
 
 export default {
-  title: "Components/Accordion",
+  title: "Components/Data Display/Accordion",
   component: Accordion,
   tags: ["!autodocs"],
   decorators: listStoryDecorators,

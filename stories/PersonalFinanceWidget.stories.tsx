@@ -16,7 +16,7 @@ import { lightTheme } from "../src/assets/styles/theme/light";
 import Education from "../src/components/icons/sab360/Education";
 
 export default {
-  title: "Components/PersonalFinanceWidgets",
+  title: "Components/Data Display/PersonalFinanceWidgets",
   tags: ["!autodocs"],
   components: [
     ExpensesWidget,

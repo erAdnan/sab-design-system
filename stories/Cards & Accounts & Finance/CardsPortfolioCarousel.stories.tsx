@@ -1,7 +1,7 @@
 import { PortfolioCarousel } from "../../src/components/cards/PortfolioCarousel";
 
 export default {
-  title: "Components/Cards & Accounts & Finance/CardsPortfolioCarousel",
+  title: "Components/Data Display/Cards & Accounts & Finance/CardsPortfolioCarousel",
   component: PortfolioCarousel,
   argTypes: {
     accountName: {

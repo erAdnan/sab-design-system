@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const PROGRESS_INDICATOR_DOCS_PAGES: DocPage[] = [
   {
     title: "Progress Indicator_Linear - Documentation",
-    storyTitle: "Components/ProgressIndicator/Docs/Progress Indicator_Linear - Documentation",
+    storyTitle: "Components/Data Display/ProgressIndicator/Docs/Progress Indicator_Linear - Documentation",
     images: [
       img(require("./assets/progress-indicator-linear-documentation-00.webp"), 2400, 360),
       img(require("./assets/progress-indicator-linear-documentation-01.webp"), 2400, 1000),
@@ -55,7 +55,7 @@ export const PROGRESS_INDICATOR_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Progress Indicator_Circular  - Documentation",
-    storyTitle: "Components/ProgressIndicator/Docs/Progress Indicator_Circular  - Documentation",
+    storyTitle: "Components/Data Display/ProgressIndicator/Docs/Progress Indicator_Circular  - Documentation",
     images: [
       img(require("./assets/progress-indicator-circular-documentation-00.webp"), 2400, 360),
       img(require("./assets/progress-indicator-circular-documentation-01.webp"), 2400, 1000),
@@ -89,7 +89,7 @@ export const PROGRESS_INDICATOR_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Exchange rate indicator  - Documentation",
-    storyTitle: "Components/ProgressIndicator/Docs/Exchange rate indicator  - Documentation",
+    storyTitle: "Components/Data Display/ProgressIndicator/Docs/Exchange rate indicator  - Documentation",
     images: [
       img(require("./assets/exchange-rate-indicator-documentation-00.webp"), 2400, 360),
       img(require("./assets/exchange-rate-indicator-documentation-01.webp"), 2400, 1000),

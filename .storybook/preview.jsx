@@ -349,9 +349,71 @@ const preview = {
               if (leafDiff !== 0) return leafDiff;
             }
           }
+
+          // Components section order (Layout → Navigation → Data Entry → Data Display)
+          const componentSections = [
+            "Layout",
+            "Navigation",
+            "Data Entry",
+            "Data Display",
+          ];
+          const componentSectionsSet = new Set(componentSections);
+          /** Strip Layout/Navigation/Data Entry/Data Display for legacy docs sort paths. */
+          const componentsParts = (title) => {
+            const p = String(title).split("/");
+            if (p[0] === "Components" && componentSectionsSet.has(p[1])) {
+              return ["Components", ...p.slice(2)];
+            }
+            return p;
+          };
+          if (aRoot === "Components") {
+            const layoutChildren = ["Text", "Divider"];
+            const navigationChildren = [
+              "Buttons",
+              "Header",
+              "List",
+              "Stepper",
+              "NavigationDots",
+              "Bottom Navigation",
+            ];
+            const dataEntryChildren = [
+              "Input Field",
+              "Checkbox",
+              "Radio Button",
+              "Toggle",
+              "Range",
+              "Uploader",
+            ];
+            const sectionRank = (title) => {
+              const s = String(title).split("/")[1] || "";
+              const i = componentSections.indexOf(s);
+              return i === -1 ? componentSections.length : i;
+            };
+            const sectionDiff = sectionRank(a.title) - sectionRank(b.title);
+            if (sectionDiff !== 0) return sectionDiff;
+            const section = String(a.title).split("/")[1];
+            const childOrder =
+              section === "Layout"
+                ? layoutChildren
+                : section === "Navigation"
+                  ? navigationChildren
+                  : section === "Data Entry"
+                    ? dataEntryChildren
+                    : null;
+            if (childOrder) {
+              const childRank = (title) => {
+                const c = String(title).split("/")[2] || "";
+                const i = childOrder.indexOf(c);
+                return i === -1 ? childOrder.length : i;
+              };
+              const childDiff = childRank(a.title) - childRank(b.title);
+              if (childDiff !== 0) return childDiff;
+            }
+          }
+
           // Components/Text/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Text" &&
@@ -371,7 +433,7 @@ const preview = {
           }
           // Components/Buttons/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Buttons" &&
@@ -391,7 +453,7 @@ const preview = {
           }
           // Components/Header/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Header" &&
@@ -411,7 +473,7 @@ const preview = {
           }
           // Components/List/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "List" &&
@@ -431,7 +493,7 @@ const preview = {
           }
           // Components/Stepper/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Stepper" &&
@@ -451,7 +513,7 @@ const preview = {
           }
           // Components/NavigationDots/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "NavigationDots" &&
@@ -487,7 +549,7 @@ const preview = {
           }
           // Components/Input Field/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Input Field" &&
@@ -507,7 +569,7 @@ const preview = {
           }
           // Components/Checkbox/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Checkbox" &&
@@ -529,7 +591,7 @@ const preview = {
           {
             const aTitle = String(a.title);
             const bTitle = String(b.title);
-            const rbPrefix = "Components/Radio Button/Docs/";
+            const rbPrefix = "Components/Data Entry/Radio Button/Docs/";
             if (aTitle.startsWith(rbPrefix) && bTitle.startsWith(rbPrefix)) {
               const leafRank = (title) => {
                 const leaf = title.slice(rbPrefix.length);
@@ -542,7 +604,7 @@ const preview = {
           }
           // Components/Toggle/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Toggle" &&
@@ -562,7 +624,7 @@ const preview = {
           }
           // Components/Accordion/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Accordion" &&
@@ -582,7 +644,7 @@ const preview = {
           }
           // Components/Dropdown/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Dropdown" &&
@@ -602,7 +664,7 @@ const preview = {
           }
           // Components/Avatar/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Avatar" &&
@@ -622,7 +684,7 @@ const preview = {
           }
           // Components/Badge/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Badge" &&
@@ -642,7 +704,7 @@ const preview = {
           }
           // Components/Chips/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Chips" &&
@@ -662,7 +724,7 @@ const preview = {
           }
           // Components/ProgressIndicator/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "ProgressIndicator" &&
@@ -682,7 +744,7 @@ const preview = {
           }
           // Components/Tracker/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Tracker" &&
@@ -702,7 +764,7 @@ const preview = {
           }
           // Components/Graphs/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Graphs" &&
@@ -722,7 +784,7 @@ const preview = {
           }
           // Components/PasswordStrength/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "PasswordStrength" &&
@@ -742,7 +804,7 @@ const preview = {
           }
           // Components/Notifications/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Notifications" &&
@@ -762,7 +824,7 @@ const preview = {
           }
           // Components/EmptyState/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "EmptyState" &&
@@ -782,7 +844,7 @@ const preview = {
           }
           // Components/Story/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Story" &&
@@ -802,7 +864,7 @@ const preview = {
           }
           // Components/ProductsCards/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "ProductsCards" &&
@@ -822,7 +884,7 @@ const preview = {
           }
           // Components/PersonalFinanceWidgets/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "PersonalFinanceWidgets" &&
@@ -842,7 +904,7 @@ const preview = {
           }
           // Components/Calendar/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Calendar" &&
@@ -862,7 +924,7 @@ const preview = {
           }
           // Components/ThemeSelector/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "ThemeSelector" &&
@@ -882,7 +944,7 @@ const preview = {
           }
           // Components/Bottomsheet/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Bottomsheet" &&
@@ -920,7 +982,7 @@ const preview = {
           }
           // Components/Range/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Range" &&
@@ -940,7 +1002,7 @@ const preview = {
           }
           // Components/Uploader/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Uploader" &&
@@ -960,7 +1022,7 @@ const preview = {
           }
           // Components/Cards & Accounts & Finance/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Cards & Accounts & Finance" &&
@@ -980,7 +1042,7 @@ const preview = {
           }
           // Components/Tabs/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Tabs" &&
@@ -1000,7 +1062,7 @@ const preview = {
           }
           // Components/Banners/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Banners" &&
@@ -1020,7 +1082,7 @@ const preview = {
           }
           // Components/Blocks/Docs topic order (Figma left → right)
           {
-            const parts = (title) => String(title).split("/");
+            const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
               parts(a.title)[1] === "Blocks" &&

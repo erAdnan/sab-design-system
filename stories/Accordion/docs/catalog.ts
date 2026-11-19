@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const ACCORDION_DOCS_PAGES: DocPage[] = [
   {
     title: "Accordion",
-    storyTitle: "Components/Accordion/Docs/Accordion",
+    storyTitle: "Components/Data Display/Accordion/Docs/Accordion",
     images: [
       img(require("./assets/accordion-00.webp"), 2400, 360),
       img(require("./assets/accordion-01.webp"), 2400, 1000),

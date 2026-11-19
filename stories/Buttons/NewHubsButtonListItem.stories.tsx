@@ -6,7 +6,7 @@ import Filter from "../../src/components/icons/functionals/Filter";
 import Home from "../../src/components/icons/functionals/Home";
 
 export default {
-  title: "Components/Buttons/NewHubsButtonListItem",
+  title: "Components/Navigation/Buttons/NewHubsButtonListItem",
   component: NewHubsButtonListItem,
   decorators: listStoryDecorators,
   argTypes: {

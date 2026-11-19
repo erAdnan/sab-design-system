@@ -7,7 +7,7 @@ import { passwordStrengthWebDecorator } from "../.storybook/passwordStrengthWebD
 export default {
   // Innermost: web-only bar-row width fix (native Yoga already resolves this).
   decorators: [...mobileContentDecorators, passwordStrengthWebDecorator],
-  title: "Components/PasswordStrength",
+  title: "Components/Data Display/PasswordStrength",
   component: PasswordStrength,
   tags: ["!autodocs"],
   argTypes: {

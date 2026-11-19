@@ -6,7 +6,7 @@ import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/SkeletonBox",
+  title: "Components/Data Display/SkeletonBox",
   component: SkeletonBox,
   argTypes: {
     shape: {

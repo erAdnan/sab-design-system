@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const STEPPER_DOCS_PAGES: DocPage[] = [
   {
     title: "Stepper",
-    storyTitle: "Components/Stepper/Docs/Stepper",
+    storyTitle: "Components/Navigation/Stepper/Docs/Stepper",
     images: [
       img(require("./assets/stepper-00.webp"), 2400, 360),
       img(require("./assets/stepper-01.webp"), 2400, 1000),

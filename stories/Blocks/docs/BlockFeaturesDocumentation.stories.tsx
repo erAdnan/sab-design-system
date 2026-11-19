@@ -5,7 +5,7 @@ import { BLOCKS_DOCS_PAGES } from "./catalog";
 const page = BLOCKS_DOCS_PAGES.find((p) => p.title === "block.features Documentation")!;
 
 export default {
-  title: "Components/Blocks/Docs/block.features Documentation",
+  title: "Components/Data Display/Blocks/Docs/block.features Documentation",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Blocks"
+      eyebrow="Components · Data Display · Blocks"
       images={page.images}
     />
   ),

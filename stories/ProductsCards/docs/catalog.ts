@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const PRODUCTS_CARDS_DOCS_PAGES: DocPage[] = [
   {
     title: "Image Thumbnail",
-    storyTitle: "Components/ProductsCards/Docs/Image Thumbnail",
+    storyTitle: "Components/Data Display/ProductsCards/Docs/Image Thumbnail",
     images: [
       img(require("./assets/image-thumbnail-00.webp"), 2800, 332),
       img(require("./assets/image-thumbnail-01.webp"), 2400, 1666),
@@ -37,7 +37,7 @@ export const PRODUCTS_CARDS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Product Card",
-    storyTitle: "Components/ProductsCards/Docs/Product Card",
+    storyTitle: "Components/Data Display/ProductsCards/Docs/Product Card",
     images: [
       img(require("./assets/product-card-00.webp"), 2800, 332),
       img(require("./assets/product-card-01.webp"), 2400, 1666),
@@ -53,7 +53,7 @@ export const PRODUCTS_CARDS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Category Card",
-    storyTitle: "Components/ProductsCards/Docs/Category Card",
+    storyTitle: "Components/Data Display/ProductsCards/Docs/Category Card",
     images: [
       img(require("./assets/category-card-00.webp"), 2800, 332),
       img(require("./assets/category-card-01.webp"), 2400, 1666),
@@ -69,7 +69,7 @@ export const PRODUCTS_CARDS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Product Card/Summary",
-    storyTitle: "Components/ProductsCards/Docs/Product Card/Summary",
+    storyTitle: "Components/Data Display/ProductsCards/Docs/Product Card/Summary",
     images: [
       img(require("./assets/product-card-summary-00.webp"), 2800, 331),
       img(require("./assets/product-card-summary-01.webp"), 2400, 1666),
@@ -85,7 +85,7 @@ export const PRODUCTS_CARDS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Selection Card",
-    storyTitle: "Components/ProductsCards/Docs/Selection Card",
+    storyTitle: "Components/Data Display/ProductsCards/Docs/Selection Card",
     images: [
       img(require("./assets/selection-card-00.webp"), 2800, 331),
       img(require("./assets/selection-card-01.webp"), 2400, 1666),
@@ -101,7 +101,7 @@ export const PRODUCTS_CARDS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Voucher Card",
-    storyTitle: "Components/ProductsCards/Docs/Voucher Card",
+    storyTitle: "Components/Data Display/ProductsCards/Docs/Voucher Card",
     images: [
       img(require("./assets/voucher-card-00.webp"), 2800, 331),
       img(require("./assets/voucher-card-01.webp"), 2400, 1666),
@@ -117,7 +117,7 @@ export const PRODUCTS_CARDS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Voucher Receipt",
-    storyTitle: "Components/ProductsCards/Docs/Voucher Receipt",
+    storyTitle: "Components/Data Display/ProductsCards/Docs/Voucher Receipt",
     images: [
       img(require("./assets/voucher-receipt-00.webp"), 2800, 331),
       img(require("./assets/voucher-receipt-01.webp"), 2400, 1666),
@@ -133,7 +133,7 @@ export const PRODUCTS_CARDS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Learning Product Cards",
-    storyTitle: "Components/ProductsCards/Docs/Learning Product Cards",
+    storyTitle: "Components/Data Display/ProductsCards/Docs/Learning Product Cards",
     images: [
       img(require("./assets/learning-product-cards-00.webp"), 2800, 331),
       img(require("./assets/learning-product-cards-01.webp"), 2400, 1666),

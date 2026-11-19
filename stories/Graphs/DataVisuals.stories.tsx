@@ -5,7 +5,7 @@ import { fontMedium, fontSmall, lineHeightLarge, lineHeightXLarge, spacingS, spa
 
 import { tx } from "../../src/localization/tx";
 export default {
-  title: "Components/Graphs/Data Visuals",
+  title: "Components/Data Display/Graphs/Data Visuals",
   components: [CarbonFootprintComponent]
 }
 

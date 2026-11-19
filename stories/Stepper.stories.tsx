@@ -8,7 +8,7 @@ import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
     decorators: mobileContentDecorators,
-    title: "Components/Stepper",
+    title: "Components/Navigation/Stepper",
     component: Stepper,
     tags: ["!autodocs"],
     argTypes: {

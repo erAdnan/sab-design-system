@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const LIST_DOCS_PAGES: DocPage[] = [
   {
     title: "List",
-    storyTitle: "Components/List/Docs/List",
+    storyTitle: "Components/Navigation/List/Docs/List",
     images: [
       img(require("./assets/list-00.webp"), 2400, 360),
       img(require("./assets/list-01.webp"), 2400, 1000),
@@ -75,7 +75,7 @@ export const LIST_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "List — Usage guide",
-    storyTitle: "Components/List/Docs/List — Usage guide",
+    storyTitle: "Components/Navigation/List/Docs/List — Usage guide",
     images: [
       img(require("./assets/list-usage-guide-00.webp"), 2400, 1156),
       img(require("./assets/list-usage-guide-01.webp"), 2400, 1038),
@@ -97,7 +97,7 @@ export const LIST_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "List — Combinations",
-    storyTitle: "Components/List/Docs/List — Combinations",
+    storyTitle: "Components/Navigation/List/Docs/List — Combinations",
     images: [
       img(require("./assets/list-combinations-00.webp"), 2400, 932),
       img(require("./assets/list-combinations-01.webp"), 2400, 2714),
@@ -131,7 +131,7 @@ export const LIST_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "List — Option catalogue",
-    storyTitle: "Components/List/Docs/List — Option catalogue",
+    storyTitle: "Components/Navigation/List/Docs/List — Option catalogue",
     images: [
       img(require("./assets/list-option-catalogue-00.webp"), 2400, 650),
       img(require("./assets/list-option-catalogue-01.webp"), 2400, 2032),
@@ -159,7 +159,7 @@ export const LIST_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "List New — Usage guide",
-    storyTitle: "Components/List/Docs/List New — Usage guide",
+    storyTitle: "Components/Navigation/List/Docs/List New — Usage guide",
     images: [
       img(require("./assets/list-new-usage-guide-00.webp"), 2400, 1244),
       img(require("./assets/list-new-usage-guide-01.webp"), 2400, 1124),

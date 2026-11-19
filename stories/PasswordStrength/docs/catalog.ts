@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const PASSWORD_STRENGTH_DOCS_PAGES: DocPage[] = [
   {
     title: "Password Strength",
-    storyTitle: "Components/PasswordStrength/Docs/Password Strength",
+    storyTitle: "Components/Data Display/PasswordStrength/Docs/Password Strength",
     images: [
       img(require("./assets/password-strength-00.webp"), 2400, 462),
       img(require("./assets/password-strength-01.webp"), 2400, 1200),
@@ -66,7 +66,7 @@ export const PASSWORD_STRENGTH_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "PIN",
-    storyTitle: "Components/PasswordStrength/Docs/PIN",
+    storyTitle: "Components/Data Display/PasswordStrength/Docs/PIN",
     images: [
       img(require("./assets/pin-00.webp"), 2400, 462),
       img(require("./assets/pin-01.webp"), 2400, 1200),

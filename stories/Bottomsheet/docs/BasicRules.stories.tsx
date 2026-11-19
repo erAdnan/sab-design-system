@@ -7,7 +7,7 @@ const page = BOTTOMSHEET_DOCS_PAGES.find(
 )!;
 
 export default {
-  title: "Components/Bottomsheet/Docs/Bottom sheet Basic Rules",
+  title: "Components/Data Display/Bottomsheet/Docs/Bottom sheet Basic Rules",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -22,7 +22,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Bottomsheet"
+      eyebrow="Components · Data Display · Bottomsheet"
       images={page.images}
     />
   ),

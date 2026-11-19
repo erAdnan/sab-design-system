@@ -7,7 +7,7 @@ import MyAccounts from "../src/components/icons/banking/MyAccounts";
 import IconComponent from "../src/components/icon/Icon";
 
 export default {
-  title: "Components/Avatar",
+  title: "Components/Data Display/Avatar",
   component: Avatar,
   tags: ["!autodocs"],
   argTypes: {

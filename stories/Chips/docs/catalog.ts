@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const CHIPS_DOCS_PAGES: DocPage[] = [
   {
     title: "Chips->Filter — Documentation",
-    storyTitle: "Components/Chips/Docs/Chips->Filter — Documentation",
+    storyTitle: "Components/Data Display/Chips/Docs/Chips->Filter — Documentation",
     images: [
       img(require("./assets/chips-filter-documentation-00.webp"), 2400, 446),
       img(require("./assets/chips-filter-documentation-01.webp"), 2400, 1000),
@@ -59,7 +59,7 @@ export const CHIPS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Chips → Info — Documentation",
-    storyTitle: "Components/Chips/Docs/Chips → Info — Documentation",
+    storyTitle: "Components/Data Display/Chips/Docs/Chips → Info — Documentation",
     images: [
       img(require("./assets/chips-info-documentation-00.webp"), 2400, 1802),
       img(require("./assets/chips-info-documentation-01.webp"), 2400, 602),
@@ -74,7 +74,7 @@ export const CHIPS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Chips → New — Documentation",
-    storyTitle: "Components/Chips/Docs/Chips → New — Documentation",
+    storyTitle: "Components/Data Display/Chips/Docs/Chips → New — Documentation",
     images: [
       img(require("./assets/chips-new-documentation-00.webp"), 2400, 2322),
       img(require("./assets/chips-new-documentation-01.webp"), 2400, 602),
@@ -89,7 +89,7 @@ export const CHIPS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Tags/Chips",
-    storyTitle: "Components/Chips/Docs/Tags/Chips",
+    storyTitle: "Components/Data Display/Chips/Docs/Tags/Chips",
     images: [
       img(require("./assets/tags-chips-00.webp"), 2400, 338),
       img(require("./assets/tags-chips-01.webp"), 2400, 1000),
@@ -132,7 +132,7 @@ export const CHIPS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Chips Select",
-    storyTitle: "Components/Chips/Docs/Chips Select",
+    storyTitle: "Components/Data Display/Chips/Docs/Chips Select",
     images: [
       img(require("./assets/chips-select-00.webp"), 2400, 1402),
       img(require("./assets/chips-select-01.webp"), 2400, 200),

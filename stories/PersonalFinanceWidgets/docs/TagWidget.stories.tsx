@@ -5,7 +5,7 @@ import { PERSONAL_FINANCE_WIDGETS_DOCS_PAGES } from "./catalog";
 const page = PERSONAL_FINANCE_WIDGETS_DOCS_PAGES.find((p) => p.title === "Tag Widget")!;
 
 export default {
-  title: "Components/PersonalFinanceWidgets/Docs/Tag Widget",
+  title: "Components/Data Display/PersonalFinanceWidgets/Docs/Tag Widget",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · PersonalFinanceWidgets"
+      eyebrow="Components · Data Display · PersonalFinanceWidgets"
       images={page.images}
     />
   ),

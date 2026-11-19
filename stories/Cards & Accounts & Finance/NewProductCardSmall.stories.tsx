@@ -3,7 +3,7 @@ import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { NewProductCardSmall } from "../../src/components/productsCards/NewProductCardSmall";
 
 export default {
-  title: "Components/Cards & Accounts & Finance/New Product Card Small",
+  title: "Components/Data Display/Cards & Accounts & Finance/New Product Card Small",
   component: NewProductCardSmall
 }
 

@@ -6,7 +6,7 @@ import Icon from "../../src/components/icon/Icon";
 import Home from "../../src/components/icons/functionals/Home";
 
 export default {
-  title: "Components/Buttons/ButtonListItem",
+  title: "Components/Navigation/Buttons/ButtonListItem",
   component: ButtonListItem,
   decorators: listStoryDecorators,
   argTypes: {

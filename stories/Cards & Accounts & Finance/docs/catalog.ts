@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const CREDIT_ACCOUNT_FINANCE_DOCS_PAGES: DocPage[] = [
   {
     title: "Credit Card",
-    storyTitle: "Components/Cards & Accounts & Finance/Docs/Credit Card",
+    storyTitle: "Components/Data Display/Cards & Accounts & Finance/Docs/Credit Card",
     images: [
       img(require("./assets/credit-card-00.webp"), 3472, 360),
       img(require("./assets/credit-card-01.webp"), 3472, 1000),
@@ -56,7 +56,7 @@ export const CREDIT_ACCOUNT_FINANCE_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Debit Card",
-    storyTitle: "Components/Cards & Accounts & Finance/Docs/Debit Card",
+    storyTitle: "Components/Data Display/Cards & Accounts & Finance/Docs/Debit Card",
     images: [
       img(require("./assets/debit-card-00.webp"), 3972, 360),
       img(require("./assets/debit-card-01.webp"), 3972, 1000),
@@ -90,7 +90,7 @@ export const CREDIT_ACCOUNT_FINANCE_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Card.view.all",
-    storyTitle: "Components/Cards & Accounts & Finance/Docs/Card.view.all",
+    storyTitle: "Components/Data Display/Cards & Accounts & Finance/Docs/Card.view.all",
     images: [
       img(require("./assets/card-view-all-00.webp"), 2400, 360),
       img(require("./assets/card-view-all-01.webp"), 2400, 1000),
@@ -123,7 +123,7 @@ export const CREDIT_ACCOUNT_FINANCE_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Balance Module",
-    storyTitle: "Components/Cards & Accounts & Finance/Docs/Balance Module",
+    storyTitle: "Components/Data Display/Cards & Accounts & Finance/Docs/Balance Module",
     images: [
       img(require("./assets/balance-module-00.webp"), 2400, 360),
       img(require("./assets/balance-module-01.webp"), 2400, 1000),
@@ -163,7 +163,7 @@ export const CREDIT_ACCOUNT_FINANCE_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Finance",
-    storyTitle: "Components/Cards & Accounts & Finance/Docs/Finance",
+    storyTitle: "Components/Data Display/Cards & Accounts & Finance/Docs/Finance",
     images: [
       img(require("./assets/finance-00.webp"), 2400, 306),
       img(require("./assets/finance-01.webp"), 2400, 1000),
@@ -200,7 +200,7 @@ export const CREDIT_ACCOUNT_FINANCE_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Accounts",
-    storyTitle: "Components/Cards & Accounts & Finance/Docs/Accounts",
+    storyTitle: "Components/Data Display/Cards & Accounts & Finance/Docs/Accounts",
     images: [
       img(require("./assets/accounts-00.webp"), 2400, 306),
       img(require("./assets/accounts-01.webp"), 2400, 1000),
@@ -237,7 +237,7 @@ export const CREDIT_ACCOUNT_FINANCE_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "accounts.view",
-    storyTitle: "Components/Cards & Accounts & Finance/Docs/accounts.view",
+    storyTitle: "Components/Data Display/Cards & Accounts & Finance/Docs/accounts.view",
     images: [
       img(require("./assets/accounts-view-00.webp"), 2686, 360),
       img(require("./assets/accounts-view-01.webp"), 2686, 1000),

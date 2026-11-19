@@ -5,7 +5,7 @@ import Prepaid from "../../src/components/icons/outline/Prepaid";
 import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
 
 export default {
-  title: "Components/Blocks/BlockNewGeneric",
+  title: "Components/Data Display/Blocks/BlockNewGeneric",
   component: NewGeneric,
   argTypes: {
     text: { action: "Text", control: "text" },

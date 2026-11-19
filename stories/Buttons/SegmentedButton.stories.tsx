@@ -9,7 +9,7 @@ import Menu from "../../src/components/icons/functionals/Menu";
 const badgeTypeOptions = Object.keys(BadgeType);
 
 export default {
-  title: "Components/Buttons/SegmentedButton",
+  title: "Components/Navigation/Buttons/SegmentedButton",
   component: SegmentedButtonComponent,
   decorators: [centerStoryDecorator],
   argTypes: {

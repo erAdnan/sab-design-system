@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const TOGGLE_DOCS_PAGES: DocPage[] = [
   {
     title: "Toggle",
-    storyTitle: "Components/Toggle/Docs/Toggle",
+    storyTitle: "Components/Data Entry/Toggle/Docs/Toggle",
     images: [
       img(require("./assets/toggle-00.webp"), 2400, 360),
       img(require("./assets/toggle-01.webp"), 2400, 1000),

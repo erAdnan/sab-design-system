@@ -70,7 +70,7 @@ const defaultData = [
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Graphs/LineChartWrapper",
+  title: "Components/Data Display/Graphs/LineChartWrapper",
   component: LineChartWrapper,
   argTypes: {
     totalSpentLabel: {

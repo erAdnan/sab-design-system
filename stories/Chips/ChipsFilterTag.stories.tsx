@@ -3,7 +3,7 @@ import { ChipsFilterTag } from "../../src/components/chips/ChipsFilterTag";
 import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/Chips/ChipsFilterTag",
+  title: "Components/Data Display/Chips/ChipsFilterTag",
   component: ChipsFilterTag,
   decorators: [centerStoryDecorator],
   argTypes: {

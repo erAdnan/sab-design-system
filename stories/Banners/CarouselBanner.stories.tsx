@@ -3,7 +3,7 @@ import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { CarouselBanner } from "../../src/components/banner/CarouselBanner";
 
 export default {
-  title: "Components/Banners/Carousel Banner",
+  title: "Components/Data Display/Banners/Carousel Banner",
   component: CarouselBanner,
   argTypes: {
     title: { action: "Label", control: "text" },

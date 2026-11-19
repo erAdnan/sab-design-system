@@ -5,7 +5,7 @@ import { LearningProductCard as LearningProductCardComponent } from "../src/comp
 import { ProductsCards } from "../src/components/productsCards/ProductsCards";
 
 export default {
-  title: "Components/ProductsCards",
+  title: "Components/Data Display/ProductsCards",
   component: ProductsCards,
   tags: ["!autodocs"],
   argTypes: {

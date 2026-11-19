@@ -5,7 +5,7 @@ import { PreviewModule } from "../../src/components/cards/PreviewModule";
 import { LanguageWrapper } from "../../src/components/local/LanguageWrapper";
 
 export default {
-  title: "Components/Cards & Accounts & Finance/CardsPreviewModule",
+  title: "Components/Data Display/Cards & Accounts & Finance/CardsPreviewModule",
   component: PreviewModule,
   argTypes: {
     type: {

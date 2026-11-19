@@ -3,7 +3,7 @@ import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { Features } from "../../src/components/block/Features";
 
 export default {
-  title: "Components/Blocks/BlockFeatures",
+  title: "Components/Data Display/Blocks/BlockFeatures",
   component: Features,
   argTypes: {
 	topText: { action: "Top text", control: "text" },

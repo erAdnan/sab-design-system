@@ -2,7 +2,7 @@ import Prepaid from "../../src/components/icons/outline/Prepaid";
 import { NewCategoryCard } from "../../src/components/productsCards/NewCategoryCard";
 
 export default {
-  title: "Components/Cards & Accounts & Finance/New Category Card",
+  title: "Components/Data Display/Cards & Accounts & Finance/New Category Card",
   component: NewCategoryCard
 }
 

@@ -5,7 +5,7 @@ import { View } from "react-native";
 import MyAccounts from "../../src/components/icons/banking/MyAccounts";
 
 export default {
-  title: "Components/Blocks/BlockBeneficiary",
+  title: "Components/Data Display/Blocks/BlockBeneficiary",
   component: Beneficiary,
   argTypes: {
     name: { action: "Name", control: "text" },

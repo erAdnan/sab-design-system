@@ -32,7 +32,7 @@ const LIGHT_SHEET = {
 };
 
 export default {
-  title: "Components/Buttons/ButtonGroupReview",
+  title: "Components/Navigation/Buttons/ButtonGroupReview",
   component: ButtonGroupReview,
   // 375 mobile frame centered on the canvas instead of shrinking/stretching with the desktop width.
   decorators: buttonFrameStoryDecorators,

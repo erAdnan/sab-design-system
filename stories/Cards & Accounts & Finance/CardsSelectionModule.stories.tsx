@@ -1,7 +1,7 @@
 import { SelectionModule } from "../../src/components/cards/SelectionModule";
 
 export default {
-  title: "Components/Cards & Accounts & Finance/CardsSelectionModule",
+  title: "Components/Data Display/Cards & Accounts & Finance/CardsSelectionModule",
   component: SelectionModule,
   argTypes: {
     showChipsInfo: { action: "Show chips info", control: "boolean" },

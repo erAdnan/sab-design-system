@@ -5,7 +5,7 @@ const { version, versionLabel, brandTitle } = require("./version");
 
 /**
  * Interactive component stories hidden from the sidebar (code + story files kept).
- * Matches `Components/<name>` or nested under a group (e.g. `Components/Banners/<name>`).
+ * Matches leaf names under Components (any section/group nesting).
  * Docs under the same name stay visible when present.
  */
 const HIDDEN_SIDEBAR_COMPONENTS = new Set([
@@ -30,7 +30,18 @@ const HIDDEN_SIDEBAR_COMPONENTS = new Set([
   "Widget",
 ]);
 
-/** Leaf name for hide matching: Components/<name> or Components/<Group>/<name> */
+/** Top-level Components sections from the design-system IA. */
+const COMPONENT_SECTIONS = new Set([
+  "Layout",
+  "Navigation",
+  "Data Entry",
+  "Data Display",
+]);
+
+/**
+ * Nested groups under a section (e.g. Components/Data Display/Banners/…).
+ * Leaf hide matching uses the name after the group.
+ */
 const SIDEBAR_COMPONENT_GROUPS = new Set([
   "Banners",
   "Blocks",
@@ -46,16 +57,31 @@ const SIDEBAR_COMPONENT_GROUPS = new Set([
   "Text",
 ]);
 
+/**
+ * Leaf name for hide matching under:
+ * - Components/<Section>/<name>
+ * - Components/<Section>/<Group>/<name>
+ */
 const sidebarComponentLeaf = (parts) => {
   if (parts[0] !== "Components") return null;
-  if (
-    SIDEBAR_COMPONENT_GROUPS.has(parts[1]) &&
-    parts[2] &&
-    parts[2] !== "Docs"
-  ) {
-    return parts[2];
+
+  let idx = 1;
+  if (COMPONENT_SECTIONS.has(parts[1])) {
+    idx = 2;
   }
-  return parts[1] || null;
+
+  const groupOrLeaf = parts[idx];
+  if (!groupOrLeaf || groupOrLeaf === "Docs") return null;
+
+  if (
+    SIDEBAR_COMPONENT_GROUPS.has(groupOrLeaf) &&
+    parts[idx + 1] &&
+    parts[idx + 1] !== "Docs"
+  ) {
+    return parts[idx + 1];
+  }
+
+  return groupOrLeaf;
 };
 
 /** @returns {boolean} `true` = keep in sidebar */
@@ -66,7 +92,7 @@ const showSidebarItem = (item) => {
   if (!leaf || !HIDDEN_SIDEBAR_COMPONENTS.has(leaf)) {
     return true;
   }
-  // Keep Figma docs pages (e.g. Components/Dropdown/Docs/… or Components/Banners/Docs/…)
+  // Keep Figma docs pages (e.g. Components/…/Docs/…)
   return parts.includes("Docs");
 };
 
@@ -125,5 +151,6 @@ if (typeof document !== "undefined") {
   `;
   document.head.appendChild(style);
 }
+
 
 console.info(`[Pulse Design System] Storybook ${versionLabel} (${version})`);

@@ -5,7 +5,7 @@ import { TRACKER_DOCS_PAGES } from "./catalog";
 const page = TRACKER_DOCS_PAGES.find((p) => p.title === "Tracker")!;
 
 export default {
-  title: "Components/Tracker/Docs/Tracker",
+  title: "Components/Data Display/Tracker/Docs/Tracker",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Tracker"
+      eyebrow="Components · Data Display · Tracker"
       images={page.images}
     />
   ),

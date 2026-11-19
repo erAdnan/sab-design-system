@@ -3,7 +3,7 @@ import { createAllVariantsStory } from "../.storybook/allVariants";
 import { NavigationDots } from "../src/components/navigationDots/NavigationDots";
 
 export default {
-    title: "Components/NavigationDots",
+    title: "Components/Navigation/NavigationDots",
     component: NavigationDots,
     tags: ["!autodocs"],
 };

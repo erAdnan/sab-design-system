@@ -8,7 +8,7 @@ import { deepTranslateArgs, tx } from "../src/localization/tx";
 import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 export default {
   decorators: mobileContentDecorators,
-    title: "Components/Tabs",
+    title: "Components/Data Display/Tabs",
     component: Tabs,
     tags: ["!autodocs"],
     args: {

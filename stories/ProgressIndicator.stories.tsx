@@ -8,7 +8,7 @@ import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/ProgressIndicator",
+  title: "Components/Data Display/ProgressIndicator",
   components: [ProgressIndicator, PieGraph],
   tags: ["!autodocs"],
   argTypes: {

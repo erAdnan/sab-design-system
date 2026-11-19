@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const BOTTOMSHEET_DOCS_PAGES: DocPage[] = [
   {
     title: "Bottomsheet - drawer",
-    storyTitle: "Components/Bottomsheet/Docs/Bottomsheet - drawer",
+    storyTitle: "Components/Data Display/Bottomsheet/Docs/Bottomsheet - drawer",
     images: [
       img(require("./assets/bottomsheet-00.webp"), 2800, 331),
       img(require("./assets/bottomsheet-01.webp"), 1400, 6000),
@@ -33,7 +33,7 @@ export const BOTTOMSHEET_DOCS_PAGES: DocPage[] = [
   {
     title: "Bottom sheet - Button group Rules",
     storyTitle:
-      "Components/Bottomsheet/Docs/Bottom sheet - Button group Rules",
+      "Components/Data Display/Bottomsheet/Docs/Bottom sheet - Button group Rules",
     images: [
       img(require("./assets/button-group-rules-00.webp"), 2800, 331),
       img(require("./assets/button-group-rules-01.webp"), 1400, 8539),
@@ -41,7 +41,7 @@ export const BOTTOMSHEET_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Bottom sheet Basic Rules",
-    storyTitle: "Components/Bottomsheet/Docs/Bottom sheet Basic Rules",
+    storyTitle: "Components/Data Display/Bottomsheet/Docs/Bottom sheet Basic Rules",
     // Body doc.Blocks from Figma page 22021:232361 (same section set as Rules/Bottom sheet)
     images: [
       img(require("./assets/basic-rules-01.webp"), 1440, 621),

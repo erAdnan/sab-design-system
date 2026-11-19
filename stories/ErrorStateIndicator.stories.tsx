@@ -5,7 +5,7 @@ import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/ErrorStateIndicator",
+  title: "Components/Data Display/ErrorStateIndicator",
   component: ErrorStateIndicator,
   argTypes: {
     message: { control: "text" },

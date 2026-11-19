@@ -7,7 +7,7 @@ import MyAccounts from "../../src/components/icons/banking/MyAccounts";
 import { useTheme } from "../../src/context/theme/themeContext";
 
 export default {
-  title: "Components/Buttons/QuickActionButton",
+  title: "Components/Navigation/Buttons/QuickActionButton",
   component: QuickActionButton,
   argTypes: {
     type: {

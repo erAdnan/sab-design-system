@@ -5,7 +5,7 @@ import { TABS_DOCS_PAGES } from "./catalog";
 const page = TABS_DOCS_PAGES.find((p) => p.title === "Tabs")!;
 
 export default {
-  title: "Components/Tabs/Docs/Tabs",
+  title: "Components/Data Display/Tabs/Docs/Tabs",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Tabs"
+      eyebrow="Components · Data Display · Tabs"
       images={page.images}
     />
   ),

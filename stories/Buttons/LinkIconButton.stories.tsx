@@ -6,7 +6,7 @@ import { LinkIconButton } from "../../src/components/button/LinkIconButton";
 import DocumentEdit from "../../src/components/icons/functionals/DocumentEdit";
 
 export default {
-  title: "Components/Buttons/Link Icon Button",
+  title: "Components/Navigation/Buttons/Link Icon Button",
   component: LinkIconButton,
   argTypes: {
     onButtonPress: { action: "onButtonPress" },

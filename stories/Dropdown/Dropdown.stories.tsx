@@ -6,7 +6,7 @@ import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Dropdown/Dropdown",
+  title: "Components/Data Display/Dropdown/Dropdown",
   component: Dropdown,
   tags: ["!autodocs"],
 };

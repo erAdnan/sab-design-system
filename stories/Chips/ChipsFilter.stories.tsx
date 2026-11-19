@@ -6,7 +6,7 @@ import { View } from "react-native";
 import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/Chips/ChipsFilter",
+  title: "Components/Data Display/Chips/ChipsFilter",
   component: ChipsFilter,
   decorators: [centerStoryDecorator],
   argTypes: {

@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const RADIO_BUTTON_DOCS_PAGES: DocPage[] = [
   {
     title: "Radio Button",
-    storyTitle: "Components/Radio Button/Docs/Radio Button",
+    storyTitle: "Components/Data Entry/Radio Button/Docs/Radio Button",
     images: [
       img(require("./assets/radio-button-00.webp"), 2400, 360),
       img(require("./assets/radio-button-01.webp"), 2400, 1000),

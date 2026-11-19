@@ -5,7 +5,7 @@ import { BADGE_DOCS_PAGES } from "./catalog";
 const page = BADGE_DOCS_PAGES.find((p) => p.title === "Badge")!;
 
 export default {
-  title: "Components/Badge/Docs/Badge",
+  title: "Components/Data Display/Badge/Docs/Badge",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Badge"
+      eyebrow="Components · Data Display · Badge"
       images={page.images}
     />
   ),

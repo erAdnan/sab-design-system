@@ -7,7 +7,7 @@ import { ChipsSelect } from "../../src/components/chips/ChipsSelect";
 import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/Chips/ChipsSelect",
+  title: "Components/Data Display/Chips/ChipsSelect",
   component: ChipsSelect,
   decorators: [centerStoryDecorator],
   argTypes: {

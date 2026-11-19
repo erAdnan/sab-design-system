@@ -6,7 +6,7 @@ import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-    title: "Components/Uploader",
+    title: "Components/Data Entry/Uploader",
     component: Uploader,
     tags: ["!autodocs"],
     argTypes: {

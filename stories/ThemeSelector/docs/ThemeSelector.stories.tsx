@@ -5,7 +5,7 @@ import { THEME_SELECTOR_DOCS_PAGES } from "./catalog";
 const page = THEME_SELECTOR_DOCS_PAGES.find((p) => p.title === "Theme selector")!;
 
 export default {
-  title: "Components/ThemeSelector/Docs/Theme selector",
+  title: "Components/Data Display/ThemeSelector/Docs/Theme selector",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · ThemeSelector"
+      eyebrow="Components · Data Display · ThemeSelector"
       images={page.images}
     />
   ),

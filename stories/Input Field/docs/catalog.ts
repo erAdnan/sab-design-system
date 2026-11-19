@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   {
     title: "Input Field",
-    storyTitle: "Components/Input Field/Docs/Input Field",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Input Field",
     images: [
       img(require("./assets/input-field-00.webp"), 2400, 362),
       img(require("./assets/input-field-01.webp"), 2400, 1000),
@@ -71,7 +71,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Text Field Documentation",
-    storyTitle: "Components/Input Field/Docs/Text Field Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Text Field Documentation",
     images: [
       img(require("./assets/text-field-documentation-00.webp"), 2400, 362),
       img(require("./assets/text-field-documentation-01.webp"), 2400, 1000),
@@ -103,7 +103,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Dropdown Documentation",
-    storyTitle: "Components/Input Field/Docs/Dropdown Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Dropdown Documentation",
     images: [
       img(require("./assets/dropdown-documentation-00.webp"), 2400, 362),
       img(require("./assets/dropdown-documentation-01.webp"), 2400, 1000),
@@ -133,7 +133,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Date Documentation",
-    storyTitle: "Components/Input Field/Docs/Date Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Date Documentation",
     images: [
       img(require("./assets/date-documentation-00.webp"), 2400, 418),
       img(require("./assets/date-documentation-01.webp"), 2400, 1000),
@@ -162,7 +162,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Password Documentation",
-    storyTitle: "Components/Input Field/Docs/Password Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Password Documentation",
     images: [
       img(require("./assets/password-documentation-00.webp"), 2400, 362),
       img(require("./assets/password-documentation-01.webp"), 2400, 1000),
@@ -191,7 +191,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Amount Documentation",
-    storyTitle: "Components/Input Field/Docs/Amount Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Amount Documentation",
     images: [
       img(require("./assets/amount-documentation-00.webp"), 2400, 418),
       img(require("./assets/amount-documentation-01.webp"), 2400, 1000),
@@ -222,7 +222,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Account Documentation",
-    storyTitle: "Components/Input Field/Docs/Account Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Account Documentation",
     images: [
       img(require("./assets/account-documentation-00.webp"), 2400, 362),
       img(require("./assets/account-documentation-01.webp"), 2400, 1000),
@@ -253,7 +253,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Text Area Documentation",
-    storyTitle: "Components/Input Field/Docs/Text Area Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Text Area Documentation",
     images: [
       img(require("./assets/text-area-documentation-00.webp"), 2400, 362),
       img(require("./assets/text-area-documentation-01.webp"), 2400, 1000),
@@ -282,7 +282,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Phone Number Documentation",
-    storyTitle: "Components/Input Field/Docs/Phone Number Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Phone Number Documentation",
     images: [
       img(require("./assets/phone-number-documentation-00.webp"), 2400, 362),
       img(require("./assets/phone-number-documentation-01.webp"), 2400, 1000),
@@ -311,7 +311,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Search Documentation",
-    storyTitle: "Components/Input Field/Docs/Search Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Search Documentation",
     images: [
       img(require("./assets/search-documentation-00.webp"), 2400, 362),
       img(require("./assets/search-documentation-01.webp"), 2400, 1000),
@@ -340,7 +340,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Segmented Input Documentation",
-    storyTitle: "Components/Input Field/Docs/Segmented Input Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Segmented Input Documentation",
     images: [
       img(require("./assets/segmented-input-documentation-00.webp"), 2400, 362),
       img(require("./assets/segmented-input-documentation-01.webp"), 2400, 1000),
@@ -369,7 +369,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Message Input Documentation",
-    storyTitle: "Components/Input Field/Docs/Message Input Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/Message Input Documentation",
     images: [
       img(require("./assets/message-input-documentation-00.webp"), 2400, 362),
       img(require("./assets/message-input-documentation-01.webp"), 2400, 1000),
@@ -396,7 +396,7 @@ export const INPUT_FIELD_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "amount.entryText Documentation",
-    storyTitle: "Components/Input Field/Docs/amount.entryText Documentation",
+    storyTitle: "Components/Data Entry/Input Field/Docs/amount.entryText Documentation",
     images: [
       img(require("./assets/amount-entrytext-documentation-00.webp"), 2400, 362),
       img(require("./assets/amount-entrytext-documentation-01.webp"), 2400, 1000),

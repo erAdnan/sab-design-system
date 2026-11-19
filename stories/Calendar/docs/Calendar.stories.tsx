@@ -5,7 +5,7 @@ import { CALENDAR_DOCS_PAGES } from "./catalog";
 const page = CALENDAR_DOCS_PAGES.find((p) => p.title === "Calendar")!;
 
 export default {
-  title: "Components/Calendar/Docs/Calendar",
+  title: "Components/Data Display/Calendar/Docs/Calendar",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Calendar"
+      eyebrow="Components · Data Display · Calendar"
       images={page.images}
     />
   ),

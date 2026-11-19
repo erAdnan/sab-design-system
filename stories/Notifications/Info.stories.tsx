@@ -10,7 +10,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-    title: "Components/Notifications/Info",
+    title: "Components/Data Display/Notifications/Info",
     component: Info,
     argTypes: {
         text: {

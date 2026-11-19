@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const EMPTY_STATE_DOCS_PAGES: DocPage[] = [
   {
     title: "Empty State",
-    storyTitle: "Components/EmptyState/Docs/Empty State",
+    storyTitle: "Components/Data Display/EmptyState/Docs/Empty State",
     images: [
       img(require("./assets/empty-state-00.webp"), 2400, 462),
       img(require("./assets/empty-state-01.webp"), 2400, 1200),

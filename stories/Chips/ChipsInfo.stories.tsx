@@ -4,7 +4,7 @@ import { ChipsInfo } from "../../src/components/chips/ChipsInfo";
 import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/Chips/ChipsInfo",
+  title: "Components/Data Display/Chips/ChipsInfo",
   component: ChipsInfo,
   decorators: [centerStoryDecorator],
   argTypes: {

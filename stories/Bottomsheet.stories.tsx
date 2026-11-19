@@ -65,7 +65,7 @@ bottomSheetModalAny.defaultProps = {
 };
 
 export default {
-  title: "Components/Bottomsheet",
+  title: "Components/Data Display/Bottomsheet",
   component: SabBottomsheet,
   decorators: mobileFrameDecorators,
   tags: ["!autodocs"],

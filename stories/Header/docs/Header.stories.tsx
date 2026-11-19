@@ -5,7 +5,7 @@ import { HEADER_DOCS_PAGES } from "./catalog";
 const page = HEADER_DOCS_PAGES.find((p) => p.title === "Header")!;
 
 export default {
-  title: "Components/Header/Docs/Header",
+  title: "Components/Navigation/Header/Docs/Header",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Header"
+      eyebrow="Components · Navigation · Header"
       images={page.images}
     />
   ),

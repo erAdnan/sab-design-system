@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const GRAPH_DOCS_PAGES: DocPage[] = [
   {
     title: "Line Graph",
-    storyTitle: "Components/Graphs/Docs/Line Graph",
+    storyTitle: "Components/Data Display/Graphs/Docs/Line Graph",
     images: [
       img(require("./assets/line-graph-00.webp"), 2400, 462),
       img(require("./assets/line-graph-01.webp"), 2400, 964),
@@ -75,7 +75,7 @@ export const GRAPH_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Circle Graph",
-    storyTitle: "Components/Graphs/Docs/Circle Graph",
+    storyTitle: "Components/Data Display/Graphs/Docs/Circle Graph",
     images: [
       img(require("./assets/circle-graph-00.webp"), 2400, 462),
       img(require("./assets/circle-graph-01.webp"), 2400, 1168),
@@ -118,7 +118,7 @@ export const GRAPH_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Bar Graph",
-    storyTitle: "Components/Graphs/Docs/Bar Graph",
+    storyTitle: "Components/Data Display/Graphs/Docs/Bar Graph",
     images: [
       img(require("./assets/bar-graph-00.webp"), 2400, 462),
       img(require("./assets/bar-graph-01.webp"), 2400, 1168),
@@ -159,7 +159,7 @@ export const GRAPH_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Semi-circle Graph",
-    storyTitle: "Components/Graphs/Docs/Semi-circle Graph",
+    storyTitle: "Components/Data Display/Graphs/Docs/Semi-circle Graph",
     images: [
       img(require("./assets/semi-circle-graph-00.webp"), 2400, 462),
       img(require("./assets/semi-circle-graph-01.webp"), 2400, 1168),

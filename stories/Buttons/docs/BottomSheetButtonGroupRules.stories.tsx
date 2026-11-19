@@ -5,7 +5,7 @@ import { BUTTON_DOCS_PAGES } from "./catalog";
 const page = BUTTON_DOCS_PAGES.find((p) => p.title === "Bottom sheet - Button group Rules")!;
 
 export default {
-  title: "Components/Buttons/Docs/Bottom sheet - Button group Rules",
+  title: "Components/Navigation/Buttons/Docs/Bottom sheet - Button group Rules",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Buttons"
+      eyebrow="Components · Navigation · Buttons"
       images={page.images}
     />
   ),

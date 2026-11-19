@@ -5,7 +5,7 @@ import { RADIO_BUTTON_DOCS_PAGES } from "./catalog";
 const page = RADIO_BUTTON_DOCS_PAGES.find((p) => p.title === "Radio Button")!;
 
 export default {
-  title: "Components/Radio Button/Docs/Radio Button",
+  title: "Components/Data Entry/Radio Button/Docs/Radio Button",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Radio Button"
+      eyebrow="Components · Data Entry · Radio Button"
       images={page.images}
     />
   ),

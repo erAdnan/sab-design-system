@@ -5,7 +5,7 @@ import { EMPTY_STATE_DOCS_PAGES } from "./catalog";
 const page = EMPTY_STATE_DOCS_PAGES.find((p) => p.title === "Empty State")!;
 
 export default {
-  title: "Components/EmptyState/Docs/Empty State",
+  title: "Components/Data Display/EmptyState/Docs/Empty State",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Empty State"
+      eyebrow="Components · Data Display · Empty State"
       images={page.images}
     />
   ),

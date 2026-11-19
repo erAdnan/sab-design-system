@@ -3,7 +3,7 @@ import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { InfoMarketingBanner } from "../../src/components/banner/InfoMarketingBanner";
 
 export default {
-  title: "Components/Banners/Info Marketing Banner",
+  title: "Components/Data Display/Banners/Info Marketing Banner",
   component: InfoMarketingBanner
 }
 

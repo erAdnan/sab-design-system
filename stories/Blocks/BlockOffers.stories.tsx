@@ -3,7 +3,7 @@ import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { BlockOffers } from "../../src/components/block/Offers";
 
 export default {
-  title: "Components/Blocks/BlockOffers",
+  title: "Components/Data Display/Blocks/BlockOffers",
   component: BlockOffers,
   argTypes: {
     category: { action: "Category", control: "text" },

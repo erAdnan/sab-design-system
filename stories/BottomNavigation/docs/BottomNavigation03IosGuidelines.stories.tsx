@@ -5,7 +5,7 @@ import { BOTTOM_NAVIGATION_DOCS_PAGES } from "./catalog";
 const page = BOTTOM_NAVIGATION_DOCS_PAGES.find((p) => p.title === "Bottom navigation / 03 \u00b7 iOS guidelines")!;
 
 export default {
-  title: "Components/Bottom Navigation/Docs/Bottom navigation / 03 \u00b7 iOS guidelines",
+  title: "Components/Navigation/Bottom Navigation/Docs/Bottom navigation / 03 \u00b7 iOS guidelines",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Bottom Navigation"
+      eyebrow="Components · Navigation · Bottom Navigation"
       images={page.images}
     />
   ),

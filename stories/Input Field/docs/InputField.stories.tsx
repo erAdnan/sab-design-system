@@ -5,7 +5,7 @@ import { INPUT_FIELD_DOCS_PAGES } from "./catalog";
 const page = INPUT_FIELD_DOCS_PAGES.find((p) => p.title === "Input Field")!;
 
 export default {
-  title: "Components/Input Field/Docs/Input Field",
+  title: "Components/Data Entry/Input Field/Docs/Input Field",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Input Field"
+      eyebrow="Components · Data Entry · Input Field"
       images={page.images}
     />
   ),

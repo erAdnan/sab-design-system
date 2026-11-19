@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const DROPDOWN_DOCS_PAGES: DocPage[] = [
   {
     title: "Dropdown- Home Page",
-    storyTitle: "Components/Dropdown/Docs/Dropdown- Home Page",
+    storyTitle: "Components/Data Display/Dropdown/Docs/Dropdown- Home Page",
     images: [
       img(require("./assets/dropdown-home-page-00.webp"), 2400, 462),
       img(require("./assets/dropdown-home-page-01.webp"), 2400, 1200),

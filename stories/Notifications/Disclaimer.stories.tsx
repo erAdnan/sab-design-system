@@ -15,7 +15,7 @@ import Zakaty from "../../src/components/logos/Zakaty";
 import Icon from "../../src/components/icon/Icon";
 
 export default {
-  title: "Components/Notifications/Disclaimer",
+  title: "Components/Data Display/Notifications/Disclaimer",
   component: Disclaimer,
   decorators: disclaimerStoryDecorators,
   argTypes: {

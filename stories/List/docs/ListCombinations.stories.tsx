@@ -5,7 +5,7 @@ import { LIST_DOCS_PAGES } from "./catalog";
 const page = LIST_DOCS_PAGES.find((p) => p.title === "List \u2014 Combinations")!;
 
 export default {
-  title: "Components/List/Docs/List \u2014 Combinations",
+  title: "Components/Navigation/List/Docs/List \u2014 Combinations",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · List"
+      eyebrow="Components · Navigation · List"
       images={page.images}
     />
   ),

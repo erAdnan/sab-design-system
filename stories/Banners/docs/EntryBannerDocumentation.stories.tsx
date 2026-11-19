@@ -5,7 +5,7 @@ import { BANNERS_DOCS_PAGES } from "./catalog";
 const page = BANNERS_DOCS_PAGES.find((p) => p.title === "Entry Banner \u2014 Documentation")!;
 
 export default {
-  title: "Components/Banners/Docs/Entry Banner \u2014 Documentation",
+  title: "Components/Data Display/Banners/Docs/Entry Banner \u2014 Documentation",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Banners"
+      eyebrow="Components · Data Display · Banners"
       images={page.images}
     />
   ),

@@ -10,7 +10,7 @@ import { useStoryCopy } from "./helpers/useStoryCopy";
 const SAMPLE_TITLE = en.stories.accountBalance;
 
 export default {
-  title: "Components/Text/Text Title Actions",
+  title: "Components/Layout/Text/Text Title Actions",
   component: TextTitleActions,
   argTypes: {
     text: { control: "text" },

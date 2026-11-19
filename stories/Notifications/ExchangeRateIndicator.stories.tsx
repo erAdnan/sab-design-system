@@ -5,7 +5,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Notifications/ExchangeRateIndicator",
+  title: "Components/Data Display/Notifications/ExchangeRateIndicator",
   component: ExchangeRateIndicator,
   argTypes: {
     text: { control: "text" },

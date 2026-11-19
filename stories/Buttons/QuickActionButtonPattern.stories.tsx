@@ -6,7 +6,7 @@ import MyAccounts from "../../src/components/icons/banking/MyAccounts";
 import { useTheme } from "../../src/context/theme/themeContext";
 
 export default {
-  title: "Components/Buttons/QuickActionButtonPattern",
+  title: "Components/Navigation/Buttons/QuickActionButtonPattern",
   component: QuickActionButtonPattern,
   // Figma quickAction.pattern is 343 wide; keep it at mobile width and centered on desktop.
   decorators: buttonContentStoryDecorators,

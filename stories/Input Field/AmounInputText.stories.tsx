@@ -5,7 +5,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Input Field/AmountInputText",
+  title: "Components/Data Entry/Input Field/AmountInputText",
   component: AmountInputText,
 };
 

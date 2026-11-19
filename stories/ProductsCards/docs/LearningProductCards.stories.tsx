@@ -5,7 +5,7 @@ import { PRODUCTS_CARDS_DOCS_PAGES } from "./catalog";
 const page = PRODUCTS_CARDS_DOCS_PAGES.find((p) => p.title === "Learning Product Cards")!;
 
 export default {
-  title: "Components/ProductsCards/Docs/Learning Product Cards",
+  title: "Components/Data Display/ProductsCards/Docs/Learning Product Cards",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · ProductsCards"
+      eyebrow="Components · Data Display · ProductsCards"
       images={page.images}
     />
   ),

@@ -5,7 +5,7 @@ import { DROPDOWN_DOCS_PAGES } from "./catalog";
 const page = DROPDOWN_DOCS_PAGES.find((p) => p.title === "Dropdown- Home Page")!;
 
 export default {
-  title: "Components/Dropdown/Docs/Dropdown- Home Page",
+  title: "Components/Data Display/Dropdown/Docs/Dropdown- Home Page",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Dropdown"
+      eyebrow="Components · Data Display · Dropdown"
       images={page.images}
     />
   ),

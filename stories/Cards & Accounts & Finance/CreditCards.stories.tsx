@@ -13,7 +13,7 @@ const Template = ({ showActiveStatus, statusChipsProps, ...args }: any) => (
 );
 
 export default {
-    title: "Components/Cards & Accounts & Finance/CreditCards",
+    title: "Components/Data Display/Cards & Accounts & Finance/CreditCards",
     component: CreditCard,
     render: Template,
     argTypes: {

@@ -4,7 +4,7 @@ import Beauty from "../../src/components/icons/other/Beauty";
 import { NewProductCardLarge } from "../../src/components/productsCards/NewProductCardLarge";
 
 export default {
-  title: "Components/Cards & Accounts & Finance/New Product Card Large",
+  title: "Components/Data Display/Cards & Accounts & Finance/New Product Card Large",
   component: NewProductCardLarge
 }
 

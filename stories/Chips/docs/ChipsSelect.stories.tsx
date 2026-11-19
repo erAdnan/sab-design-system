@@ -5,7 +5,7 @@ import { CHIPS_DOCS_PAGES } from "./catalog";
 const page = CHIPS_DOCS_PAGES.find((p) => p.title === "Chips Select")!;
 
 export default {
-  title: "Components/Chips/Docs/Chips Select",
+  title: "Components/Data Display/Chips/Docs/Chips Select",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Chips"
+      eyebrow="Components · Data Display · Chips"
       images={page.images}
     />
   ),

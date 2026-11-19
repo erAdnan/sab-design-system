@@ -3,7 +3,7 @@ import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { Generic } from "../../src/components/block/Generic";
 
 export default {
-  title: "Components/Blocks/BlockGeneric",
+  title: "Components/Data Display/Blocks/BlockGeneric",
   component: Generic,
   argTypes: {
     name: { action: "Name", control: "text" },

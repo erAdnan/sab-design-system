@@ -23,7 +23,7 @@ import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/EmptyState",
+  title: "Components/Data Display/EmptyState",
   component: EmptyState,
   tags: ["!autodocs"],
   argTypes: {

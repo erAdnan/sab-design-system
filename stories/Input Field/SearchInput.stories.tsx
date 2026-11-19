@@ -9,7 +9,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Input Field/SearchInput",
+  title: "Components/Data Entry/Input Field/SearchInput",
   component: SearchInput,
   argTypes: {
     placeholder:        { control: "text" },

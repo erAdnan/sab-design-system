@@ -5,7 +5,7 @@ import { NAVIGATION_DOTS_DOCS_PAGES } from "./catalog";
 const page = NAVIGATION_DOTS_DOCS_PAGES.find((p) => p.title === "Navigation Dots")!;
 
 export default {
-  title: "Components/NavigationDots/Docs/Navigation Dots",
+  title: "Components/Navigation/NavigationDots/Docs/Navigation Dots",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · NavigationDots"
+      eyebrow="Components · Navigation · NavigationDots"
       images={page.images}
     />
   ),

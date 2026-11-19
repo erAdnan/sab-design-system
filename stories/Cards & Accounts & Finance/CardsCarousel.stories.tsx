@@ -5,7 +5,7 @@ import { LanguageWrapper } from "../../src/components/local/LanguageWrapper";
 import { CardsCarousel } from "../../src/components/cards/CardsCarousel";
 
 export default {
-    title: "Components/Cards & Accounts & Finance/Cards Carousel",
+    title: "Components/Data Display/Cards & Accounts & Finance/Cards Carousel",
     component: CardsCarousel,
     args: {
         accountNumber: "****** 6234",

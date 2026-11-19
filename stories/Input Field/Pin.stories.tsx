@@ -5,7 +5,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Input Field/PIN",
+  title: "Components/Data Entry/Input Field/PIN",
   component: Pin,
   argTypes: {
     info: {

@@ -5,7 +5,7 @@ import { ACCORDION_DOCS_PAGES } from "./catalog";
 const page = ACCORDION_DOCS_PAGES.find((p) => p.title === "Accordion")!;
 
 export default {
-  title: "Components/Accordion/Docs/Accordion",
+  title: "Components/Data Display/Accordion/Docs/Accordion",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Accordion"
+      eyebrow="Components · Data Display · Accordion"
       images={page.images}
     />
   ),

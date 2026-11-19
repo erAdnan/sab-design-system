@@ -5,7 +5,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Banners/EntryBanner",
+  title: "Components/Data Display/Banners/EntryBanner",
   component: EntryBanner,
   argTypes: {
     title: { control: "text" },

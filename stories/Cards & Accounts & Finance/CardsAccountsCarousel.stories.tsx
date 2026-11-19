@@ -2,7 +2,7 @@ import { AccountsCarousel } from "../../src/components/cards/AccountsCarousel";
 import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/Cards & Accounts & Finance/CardsAccountsCarousel",
+  title: "Components/Data Display/Cards & Accounts & Finance/CardsAccountsCarousel",
   component: AccountsCarousel,
   decorators: [centerStoryDecorator],
   argTypes: {

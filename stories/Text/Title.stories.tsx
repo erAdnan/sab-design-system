@@ -16,7 +16,7 @@ const SAMPLE_TITLE = en.stories.titleText;
 const SAMPLE_SUBTITLE = en.stories.subtitleText;
 
 export default {
-  title: "Components/Text/Title",
+  title: "Components/Layout/Text/Title",
   component: Title,
   argTypes: {
     children: { control: "text" },

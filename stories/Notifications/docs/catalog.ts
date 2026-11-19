@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const NOTIFICATIONS_DOCS_PAGES: DocPage[] = [
   {
     title: "Snackbar",
-    storyTitle: "Components/Notifications/Docs/Snackbar",
+    storyTitle: "Components/Data Display/Notifications/Docs/Snackbar",
     images: [
       img(require("./assets/snackbar-00.webp"), 2400, 462),
       img(require("./assets/snackbar-01.webp"), 2400, 1200),
@@ -46,7 +46,7 @@ export const NOTIFICATIONS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Clipboard Toast",
-    storyTitle: "Components/Notifications/Docs/Clipboard Toast",
+    storyTitle: "Components/Data Display/Notifications/Docs/Clipboard Toast",
     images: [
       img(require("./assets/clipboard-toast-00.webp"), 2400, 462),
       img(require("./assets/clipboard-toast-01.webp"), 2400, 1200),
@@ -65,7 +65,7 @@ export const NOTIFICATIONS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Disclaimer",
-    storyTitle: "Components/Notifications/Docs/Disclaimer",
+    storyTitle: "Components/Data Display/Notifications/Docs/Disclaimer",
     images: [
       img(require("./assets/disclaimer-00.webp"), 2400, 462),
       img(require("./assets/disclaimer-01.webp"), 2400, 1200),
@@ -90,7 +90,7 @@ export const NOTIFICATIONS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Notification",
-    storyTitle: "Components/Notifications/Docs/Notification",
+    storyTitle: "Components/Data Display/Notifications/Docs/Notification",
     images: [
       img(require("./assets/notification-00.webp"), 2400, 462),
       img(require("./assets/notification-01.webp"), 2400, 1200),

@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const CHECKBOX_DOCS_PAGES: DocPage[] = [
   {
     title: "Check Box",
-    storyTitle: "Components/Checkbox/Docs/Check Box",
+    storyTitle: "Components/Data Entry/Checkbox/Docs/Check Box",
     images: [
       img(require("./assets/check-box-00.webp"), 2400, 360),
       img(require("./assets/check-box-01.webp"), 2400, 1000),

@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const TRACKER_DOCS_PAGES: DocPage[] = [
   {
     title: "Tracker",
-    storyTitle: "Components/Tracker/Docs/Tracker",
+    storyTitle: "Components/Data Display/Tracker/Docs/Tracker",
     images: [
       img(require("./assets/tracker-00.webp"), 2400, 360),
       img(require("./assets/tracker-01.webp"), 2400, 1000),

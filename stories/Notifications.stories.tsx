@@ -7,7 +7,7 @@ const KYC_BODY =
   "Please update your KYC information via SAB Online or SAB Mobile to avoid suspension of your account.";
 
 export default {
-  title: "Components/Notifications",
+  title: "Components/Data Display/Notifications",
   component: NotificationList,
   decorators: mobileContentDecorators,
   tags: ["!autodocs"],

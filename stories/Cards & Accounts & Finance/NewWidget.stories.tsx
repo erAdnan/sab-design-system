@@ -5,7 +5,7 @@ import Gift from "../../src/components/icons/other/Gift";
 import { NewWidget } from "../../src/components/widget/NewWidget";
 
 export default {
-  title: "Components/Cards & Accounts & Finance/New Widget",
+  title: "Components/Data Display/Cards & Accounts & Finance/New Widget",
   component: NewWidget,
   argTypes: {
     size: {

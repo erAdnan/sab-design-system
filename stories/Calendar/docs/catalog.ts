@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const CALENDAR_DOCS_PAGES: DocPage[] = [
   {
     title: "Calendar",
-    storyTitle: "Components/Calendar/Docs/Calendar",
+    storyTitle: "Components/Data Display/Calendar/Docs/Calendar",
     images: [
       img(require("./assets/calendar-00.webp"), 2800, 331),
       img(require("./assets/calendar-01.webp"), 1400, 10598),

@@ -5,7 +5,7 @@ import { STORY_DOCS_PAGES } from "./catalog";
 const page = STORY_DOCS_PAGES.find((p) => p.title === "Story")!;
 
 export default {
-  title: "Components/Story/Docs/Story",
+  title: "Components/Data Display/Story/Docs/Story",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Story"
+      eyebrow="Components · Data Display · Story"
       images={page.images}
     />
   ),

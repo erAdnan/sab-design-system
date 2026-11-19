@@ -7,7 +7,7 @@ import AlBilad from "../../src/components/logos/banks/AlBilad";
 import { LogoWrapper } from "../../src/components/logos/LogoWrapper";
 
 export default {
-  title: "Components/Blocks/BlockInformation",
+  title: "Components/Data Display/Blocks/BlockInformation",
   component: Information,
   args: {
     loading: false

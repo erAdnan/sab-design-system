@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const PERSONAL_FINANCE_WIDGETS_DOCS_PAGES: DocPage[] = [
   {
     title: "Tag Widget",
-    storyTitle: "Components/PersonalFinanceWidgets/Docs/Tag Widget",
+    storyTitle: "Components/Data Display/PersonalFinanceWidgets/Docs/Tag Widget",
     images: [
       img(require("./assets/tag-widget-00.webp"), 2800, 331),
       img(require("./assets/tag-widget-01.webp"), 1400, 3588),
@@ -29,7 +29,7 @@ export const PERSONAL_FINANCE_WIDGETS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Category List",
-    storyTitle: "Components/PersonalFinanceWidgets/Docs/Category List",
+    storyTitle: "Components/Data Display/PersonalFinanceWidgets/Docs/Category List",
     images: [
       img(require("./assets/category-list-00.webp"), 1400, 166),
       img(require("./assets/category-list-01.webp"), 1400, 6719),
@@ -37,7 +37,7 @@ export const PERSONAL_FINANCE_WIDGETS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Budget Card Widget",
-    storyTitle: "Components/PersonalFinanceWidgets/Docs/Budget Card Widget",
+    storyTitle: "Components/Data Display/PersonalFinanceWidgets/Docs/Budget Card Widget",
     images: [
       img(require("./assets/budget-card-widget-00.webp"), 1400, 166),
       img(require("./assets/budget-card-widget-01.webp"), 1400, 7762),

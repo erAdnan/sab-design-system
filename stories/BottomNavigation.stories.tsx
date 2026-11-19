@@ -14,7 +14,7 @@ import Sadad from "../src/components/icons/other/Sadad";
 import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/Bottom Navigation",
+  title: "Components/Navigation/Bottom Navigation",
   component: BottomNavigation,
   tags: ["!autodocs"],
   decorators: [centerStoryDecorator],

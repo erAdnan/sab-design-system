@@ -9,7 +9,7 @@ import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
   decorators: [centerStoryDecorator],
-  title: "Components/Buttons/New Buttons"
+  title: "Components/Navigation/Buttons/New Buttons"
 };
 
 export const FloatingButtonWithIconRedAccent = {

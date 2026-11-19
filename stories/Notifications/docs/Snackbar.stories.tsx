@@ -5,7 +5,7 @@ import { NOTIFICATIONS_DOCS_PAGES } from "./catalog";
 const page = NOTIFICATIONS_DOCS_PAGES.find((p) => p.title === "Snackbar")!;
 
 export default {
-  title: "Components/Notifications/Docs/Snackbar",
+  title: "Components/Data Display/Notifications/Docs/Snackbar",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Notifications"
+      eyebrow="Components · Data Display · Notifications"
       images={page.images}
     />
   ),

@@ -3,7 +3,7 @@ import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { MarketingBanner } from "../../src/components/banner/MarketingBanner";
 
 export default {
-  title: "Components/Banners/Marketing Banner",
+  title: "Components/Data Display/Banners/Marketing Banner",
   component: MarketingBanner,
   argTypes: {
     title: { action: "Label", control: "text" },

@@ -5,7 +5,7 @@ import { TEXT_DOCS_PAGES } from "./catalog";
 const page = TEXT_DOCS_PAGES.find((p) => p.title === "Title Actions")!;
 
 export default {
-  title: "Components/Text/Docs/Title Actions",
+  title: "Components/Layout/Text/Docs/Title Actions",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Text"
+      eyebrow="Components · Layout · Text"
       images={page.images}
     />
   ),

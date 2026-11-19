@@ -3,7 +3,7 @@ import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { SemiCircleGraph } from '../../src/components/graphs/semi-circle-chart/SemiCircleGraph';
 
 export default {
-  title: "Components/Graphs/SemiCircleGraph",
+  title: "Components/Data Display/Graphs/SemiCircleGraph",
   component: SemiCircleGraph,
   argTypes: {
     percentage: {

@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const BLOCKS_DOCS_PAGES: DocPage[] = [
   {
     title: "new_block.generic Documentation",
-    storyTitle: "Components/Blocks/Docs/new_block.generic Documentation",
+    storyTitle: "Components/Data Display/Blocks/Docs/new_block.generic Documentation",
     images: [
       img(require("./assets/new-block-generic-documentation-00.webp"), 2400, 360),
       img(require("./assets/new-block-generic-documentation-01.webp"), 2400, 1000),
@@ -49,7 +49,7 @@ export const BLOCKS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "New_block.product-complex Documentation",
-    storyTitle: "Components/Blocks/Docs/New_block.product-complex Documentation",
+    storyTitle: "Components/Data Display/Blocks/Docs/New_block.product-complex Documentation",
     images: [
       img(require("./assets/new-block-product-complex-documentation-00.webp"), 2400, 360),
       img(require("./assets/new-block-product-complex-documentation-01.webp"), 2400, 1000),
@@ -77,7 +77,7 @@ export const BLOCKS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "block.features Documentation",
-    storyTitle: "Components/Blocks/Docs/block.features Documentation",
+    storyTitle: "Components/Data Display/Blocks/Docs/block.features Documentation",
     images: [
       img(require("./assets/block-features-documentation-00.webp"), 2400, 360),
       img(require("./assets/block-features-documentation-01.webp"), 2400, 1000),
@@ -105,7 +105,7 @@ export const BLOCKS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Block.Article Documentation",
-    storyTitle: "Components/Blocks/Docs/Block.Article Documentation",
+    storyTitle: "Components/Data Display/Blocks/Docs/Block.Article Documentation",
     images: [
       img(require("./assets/block-article-documentation-00.webp"), 2400, 360),
       img(require("./assets/block-article-documentation-01.webp"), 2400, 1000),
@@ -130,7 +130,7 @@ export const BLOCKS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "block.product-selection Documentation",
-    storyTitle: "Components/Blocks/Docs/block.product-selection Documentation",
+    storyTitle: "Components/Data Display/Blocks/Docs/block.product-selection Documentation",
     images: [
       img(require("./assets/block-product-selection-documentation-00.webp"), 2400, 360),
       img(require("./assets/block-product-selection-documentation-01.webp"), 2400, 1000),
@@ -158,7 +158,7 @@ export const BLOCKS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "block.accounts Documentation",
-    storyTitle: "Components/Blocks/Docs/block.accounts Documentation",
+    storyTitle: "Components/Data Display/Blocks/Docs/block.accounts Documentation",
     images: [
       img(require("./assets/block-accounts-documentation-00.webp"), 2400, 362),
       img(require("./assets/block-accounts-documentation-01.webp"), 2400, 1000),
@@ -192,7 +192,7 @@ export const BLOCKS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "block.button Documentation",
-    storyTitle: "Components/Blocks/Docs/block.button Documentation",
+    storyTitle: "Components/Data Display/Blocks/Docs/block.button Documentation",
     images: [
       img(require("./assets/block-button-documentation-00.webp"), 2400, 362),
       img(require("./assets/block-button-documentation-01.webp"), 2400, 1000),
@@ -217,7 +217,7 @@ export const BLOCKS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Block.Entry Documentation",
-    storyTitle: "Components/Blocks/Docs/Block.Entry Documentation",
+    storyTitle: "Components/Data Display/Blocks/Docs/Block.Entry Documentation",
     images: [
       img(require("./assets/block-entry-documentation-00.webp"), 2400, 306),
       img(require("./assets/block-entry-documentation-01.webp"), 2400, 1000),
@@ -245,7 +245,7 @@ export const BLOCKS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "block.offers Documentation",
-    storyTitle: "Components/Blocks/Docs/block.offers Documentation",
+    storyTitle: "Components/Data Display/Blocks/Docs/block.offers Documentation",
     images: [
       img(require("./assets/block-offers-documentation-00.webp"), 2400, 360),
       img(require("./assets/block-offers-documentation-01.webp"), 2400, 1000),
@@ -276,7 +276,7 @@ export const BLOCKS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "block.apply Documentation",
-    storyTitle: "Components/Blocks/Docs/block.apply Documentation",
+    storyTitle: "Components/Data Display/Blocks/Docs/block.apply Documentation",
     images: [
       img(require("./assets/block-apply-documentation-00.webp"), 2400, 360),
       img(require("./assets/block-apply-documentation-01.webp"), 2400, 1000),
@@ -312,7 +312,7 @@ export const BLOCKS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "block.beneficiary Documentation",
-    storyTitle: "Components/Blocks/Docs/block.beneficiary Documentation",
+    storyTitle: "Components/Data Display/Blocks/Docs/block.beneficiary Documentation",
     images: [
       img(require("./assets/block-beneficiary-documentation-00.webp"), 2400, 1424),
       img(require("./assets/block-beneficiary-documentation-01.webp"), 2400, 200),

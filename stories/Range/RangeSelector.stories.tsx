@@ -5,7 +5,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Range/Selector",
+  title: "Components/Data Entry/Range/Selector",
   component: Selector,
   argTypes: {
     amountHelperText: { control: "text" },

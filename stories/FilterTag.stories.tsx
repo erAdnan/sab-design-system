@@ -4,7 +4,7 @@ import Plus from "../src/components/icons/outline/Plus";
 import { Filter } from "../src/components/tags/Filter";
 
 export default {
-  title: 'Components/FilterTag',
+  title: 'Components/Data Display/FilterTag',
   component: Filter,
 }
 

@@ -38,7 +38,7 @@ const CheckboxDisclaimerTemplate = (args: any) => {
 };
 
 export default {
-  title: "Components/Buttons/ButtonGroup",
+  title: "Components/Navigation/Buttons/ButtonGroup",
   component: ButtonGroup,
   // Figma mobile content width (343) centered, instead of stretching across the desktop canvas.
   decorators: buttonContentStoryDecorators,

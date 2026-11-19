@@ -5,7 +5,7 @@ import { PROGRESS_INDICATOR_DOCS_PAGES } from "./catalog";
 const page = PROGRESS_INDICATOR_DOCS_PAGES.find((p) => p.title === "Progress Indicator_Circular  - Documentation")!;
 
 export default {
-  title: "Components/ProgressIndicator/Docs/Progress Indicator_Circular  - Documentation",
+  title: "Components/Data Display/ProgressIndicator/Docs/Progress Indicator_Circular  - Documentation",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Progress Indicator"
+      eyebrow="Components · Data Display · Progress Indicator"
       images={page.images}
     />
   ),

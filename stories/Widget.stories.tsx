@@ -5,7 +5,7 @@ import Gift from "../src/components/icons/other/Gift";
 import { Widget } from "../src/components/widget/Widget";
 
 export default {
-  title: "Components/Widget",
+  title: "Components/Data Display/Widget",
   component: Widget,
   argTypes: {
     color: {

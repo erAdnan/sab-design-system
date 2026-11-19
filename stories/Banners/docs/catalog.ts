@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const BANNERS_DOCS_PAGES: DocPage[] = [
   {
     title: "Marketing Banner",
-    storyTitle: "Components/Banners/Docs/Marketing Banner",
+    storyTitle: "Components/Data Display/Banners/Docs/Marketing Banner",
     images: [
       img(require("./assets/marketing-banner-00.webp"), 2400, 362),
       img(require("./assets/marketing-banner-01.webp"), 2400, 1000),
@@ -49,7 +49,7 @@ export const BANNERS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Promotional Banner — Documentation",
-    storyTitle: "Components/Banners/Docs/Promotional Banner — Documentation",
+    storyTitle: "Components/Data Display/Banners/Docs/Promotional Banner — Documentation",
     images: [
       img(require("./assets/promotional-banner-documentation-00.webp"), 2400, 1290),
       img(require("./assets/promotional-banner-documentation-01.webp"), 2400, 718),
@@ -63,7 +63,7 @@ export const BANNERS_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Entry Banner — Documentation",
-    storyTitle: "Components/Banners/Docs/Entry Banner — Documentation",
+    storyTitle: "Components/Data Display/Banners/Docs/Entry Banner — Documentation",
     images: [
       img(require("./assets/entry-banner-documentation-00.webp"), 2400, 1212),
       img(require("./assets/entry-banner-documentation-01.webp"), 2400, 692),

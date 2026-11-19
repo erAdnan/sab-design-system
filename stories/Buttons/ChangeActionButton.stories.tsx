@@ -7,7 +7,7 @@ import { ChangeActionButton } from "../../src/components/button/ChangeActionButt
 import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/Buttons/ChangeActionButton",
+  title: "Components/Navigation/Buttons/ChangeActionButton",
   component: ChangeActionButton,
   decorators: [centerStoryDecorator],
   argTypes: {

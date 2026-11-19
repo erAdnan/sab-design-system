@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const TEXT_DOCS_PAGES: DocPage[] = [
   {
     title: "Title Actions",
-    storyTitle: "Components/Text/Docs/Title Actions",
+    storyTitle: "Components/Layout/Text/Docs/Title Actions",
     images: [
       img(require("./assets/title-actions-01-description.webp"), 2400, 1434),
       img(require("./assets/title-actions-02-copy-me.webp"), 2400, 606),
@@ -38,7 +38,7 @@ export const TEXT_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Text Headline",
-    storyTitle: "Components/Text/Docs/Text Headline",
+    storyTitle: "Components/Layout/Text/Docs/Text Headline",
     images: [
       img(require("./assets/text-headline-01-description.webp"), 2400, 1434),
       img(require("./assets/text-headline-02-copy-me.webp"), 2400, 602),
@@ -52,7 +52,7 @@ export const TEXT_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Body Text",
-    storyTitle: "Components/Text/Docs/Body Text",
+    storyTitle: "Components/Layout/Text/Docs/Body Text",
     images: [
       img(require("./assets/body-text-01-description.webp"), 2400, 1434),
       img(require("./assets/body-text-02-copy-me.webp"), 2400, 598),

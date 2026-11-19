@@ -5,7 +5,7 @@ import { Account } from "../../src/components/block/Account";
 import i18n from "i18next";
 
 export default {
-  title: "Components/Blocks/BlockAccount",
+  title: "Components/Data Display/Blocks/BlockAccount",
   component: Account,
   argTypes: {
     headline: { action: "Headline", control: "text" },

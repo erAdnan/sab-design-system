@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const NAVIGATION_DOTS_DOCS_PAGES: DocPage[] = [
   {
     title: "Navigation Dots",
-    storyTitle: "Components/NavigationDots/Docs/Navigation Dots",
+    storyTitle: "Components/Navigation/NavigationDots/Docs/Navigation Dots",
     images: [
       img(require("./assets/navigation-dots-00.webp"), 2400, 360),
       img(require("./assets/navigation-dots-01.webp"), 2400, 1000),

@@ -5,7 +5,7 @@ import { ProductComplex } from "../../src/components/block/ProductComplex";
 import CreditCards from "../../src/assets/svgs/illustration/CreditCards.svg";
 
 export default {
-  title: "Components/Blocks/BlockProductComplex",
+  title: "Components/Data Display/Blocks/BlockProductComplex",
   component: ProductComplex,
   argTypes: {
     variant: { control: "radio", options: ["default", "large"] },

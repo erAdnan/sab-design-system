@@ -15,7 +15,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Cards & Accounts & Finance/NewBalanceModule",
+  title: "Components/Data Display/Cards & Accounts & Finance/NewBalanceModule",
   components: [IcsabCashbackComponent, FCAndLifeGoalsComponent, PFMComponent]
 };
 

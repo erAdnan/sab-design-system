@@ -5,7 +5,7 @@ import { STEPPER_DOCS_PAGES } from "./catalog";
 const page = STEPPER_DOCS_PAGES.find((p) => p.title === "Stepper")!;
 
 export default {
-  title: "Components/Stepper/Docs/Stepper",
+  title: "Components/Navigation/Stepper/Docs/Stepper",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Stepper"
+      eyebrow="Components · Navigation · Stepper"
       images={page.images}
     />
   ),

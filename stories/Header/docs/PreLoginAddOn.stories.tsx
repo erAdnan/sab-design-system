@@ -5,7 +5,7 @@ import { HEADER_DOCS_PAGES } from "./catalog";
 const page = HEADER_DOCS_PAGES.find((p) => p.title === "Pre-login Add-on")!;
 
 export default {
-  title: "Components/Header/Docs/Pre-login Add-on",
+  title: "Components/Navigation/Header/Docs/Pre-login Add-on",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Header"
+      eyebrow="Components · Navigation · Header"
       images={page.images}
     />
   ),

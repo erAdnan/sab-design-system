@@ -5,7 +5,7 @@ import { TOGGLE_DOCS_PAGES } from "./catalog";
 const page = TOGGLE_DOCS_PAGES.find((p) => p.title === "Toggle")!;
 
 export default {
-  title: "Components/Toggle/Docs/Toggle",
+  title: "Components/Data Entry/Toggle/Docs/Toggle",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Toggle"
+      eyebrow="Components · Data Entry · Toggle"
       images={page.images}
     />
   ),

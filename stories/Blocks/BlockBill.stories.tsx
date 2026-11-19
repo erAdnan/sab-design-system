@@ -22,7 +22,7 @@ const baseBillArgs = {
 };
 
 export default {
-  title: "Components/Blocks/BlockBill",
+  title: "Components/Data Display/Blocks/BlockBill",
   component: BlockBill,
   argTypes: {
     mainText: { control: "text" },

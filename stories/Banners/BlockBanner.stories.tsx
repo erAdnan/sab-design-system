@@ -2,7 +2,7 @@ import { Banner } from "../../src/components/block/Banner";
 import i18n from "i18next";
 
 export default {
-  title: "Components/Banners/BlockBanner",
+  title: "Components/Data Display/Banners/BlockBanner",
   component: Banner,
   argTypes: {
     label: { action: "Label", control: "text" },

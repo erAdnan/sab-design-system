@@ -5,7 +5,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Range/RangeEntryText",
+  title: "Components/Data Entry/Range/RangeEntryText",
   component: RangeEntryText,
   argTypes: {
     minValue: { control: "text" },

@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const BOTTOM_NAVIGATION_DOCS_PAGES: DocPage[] = [
   {
     title: "Bottom Navigation",
-    storyTitle: "Components/Bottom Navigation/Docs/Bottom Navigation",
+    storyTitle: "Components/Navigation/Bottom Navigation/Docs/Bottom Navigation",
     images: [
       img(require("./assets/bottom-navigation-00.webp"), 2400, 474),
       img(require("./assets/bottom-navigation-01.webp"), 2400, 1000),
@@ -60,7 +60,7 @@ export const BOTTOM_NAVIGATION_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Bottom navigation / 03 · iOS guidelines",
-    storyTitle: "Components/Bottom Navigation/Docs/Bottom navigation / 03 · iOS guidelines",
+    storyTitle: "Components/Navigation/Bottom Navigation/Docs/Bottom navigation / 03 · iOS guidelines",
     images: [
       img(require("./assets/bottom-nav-ios-guidelines-00.webp"), 3200, 342),
       img(require("./assets/bottom-nav-ios-guidelines-01.webp"), 3200, 900),
@@ -70,7 +70,7 @@ export const BOTTOM_NAVIGATION_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "Bottom navigation / 04 · Android guidelines",
-    storyTitle: "Components/Bottom Navigation/Docs/Bottom navigation / 04 · Android guidelines",
+    storyTitle: "Components/Navigation/Bottom Navigation/Docs/Bottom navigation / 04 · Android guidelines",
     images: [
       img(require("./assets/bottom-nav-android-guidelines-00.webp"), 3200, 342),
       img(require("./assets/bottom-nav-android-guidelines-01.webp"), 3200, 900),

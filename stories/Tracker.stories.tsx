@@ -7,7 +7,7 @@ import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Tracker",
+  title: "Components/Data Display/Tracker",
   component: Tracker,
   tags: ["!autodocs"],
   argTypes: {

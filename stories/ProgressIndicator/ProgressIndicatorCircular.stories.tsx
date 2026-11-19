@@ -3,7 +3,7 @@ import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { ProgressIndicatorCircular } from "../../src/components/progressIndicatorCircular/ProgressIndicatorCircular";
 
 export default {
-  title: "Components/ProgressIndicator/Circular",
+  title: "Components/Data Display/ProgressIndicator/Circular",
   component: ProgressIndicatorCircular,
   tags: ["!autodocs"],
   argTypes: {

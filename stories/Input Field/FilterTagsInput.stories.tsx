@@ -6,7 +6,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: 'Components/Input Field/FilterTagsInput',
+  title: 'Components/Data Entry/Input Field/FilterTagsInput',
   component: FilterTagsInput
 };
 

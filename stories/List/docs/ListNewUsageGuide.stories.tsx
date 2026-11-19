@@ -5,7 +5,7 @@ import { LIST_DOCS_PAGES } from "./catalog";
 const page = LIST_DOCS_PAGES.find((p) => p.title === "List New \u2014 Usage guide")!;
 
 export default {
-  title: "Components/List/Docs/List New \u2014 Usage guide",
+  title: "Components/Navigation/List/Docs/List New \u2014 Usage guide",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · List"
+      eyebrow="Components · Navigation · List"
       images={page.images}
     />
   ),

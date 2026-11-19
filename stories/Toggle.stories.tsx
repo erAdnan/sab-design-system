@@ -6,7 +6,7 @@ import { spy } from "../.storybook/actions";
 import { Toggle } from "../src/components/toggle/Toggle";
 
 export default {
-  title: "Components/Toggle",
+  title: "Components/Data Entry/Toggle",
   component: Toggle,
   tags: ["!autodocs"],
   argTypes: {

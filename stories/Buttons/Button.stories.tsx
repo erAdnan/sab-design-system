@@ -6,7 +6,7 @@ import {Button} from "../../src/components/button/Button";
 import {buttonContentStoryDecorators} from "../../.storybook/buttonStoryFrame";
 
 export default {
-  title: "Components/Buttons/Button",
+  title: "Components/Navigation/Buttons/Button",
   component: Button,
   tags: ["!autodocs"],
   argTypes: {

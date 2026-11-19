@@ -5,7 +5,7 @@ import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-    title: 'Components/Tooltip',
+    title: 'Components/Data Display/Tooltip',
     component: TooltipComponent,
     argTypes: {
         'text': { action: 'Tooltip text', control: 'text' },

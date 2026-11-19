@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const THEME_SELECTOR_DOCS_PAGES: DocPage[] = [
   {
     title: "Theme selector",
-    storyTitle: "Components/ThemeSelector/Docs/Theme selector",
+    storyTitle: "Components/Data Display/ThemeSelector/Docs/Theme selector",
     images: [
       img(require("./assets/theme-selector-00.webp"), 2800, 331),
       img(require("./assets/theme-selector-01.webp"), 1400, 6902),

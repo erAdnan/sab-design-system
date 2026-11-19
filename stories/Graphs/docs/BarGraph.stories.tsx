@@ -5,7 +5,7 @@ import { GRAPH_DOCS_PAGES } from "./catalog";
 const page = GRAPH_DOCS_PAGES.find((p) => p.title === "Bar Graph")!;
 
 export default {
-  title: "Components/Graphs/Docs/Bar Graph",
+  title: "Components/Data Display/Graphs/Docs/Bar Graph",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Graphs"
+      eyebrow="Components · Data Display · Graphs"
       images={page.images}
     />
   ),

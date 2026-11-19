@@ -8,7 +8,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Notifications/Snackbar",
+  title: "Components/Data Display/Notifications/Snackbar",
   component: Snackbar,
   argTypes: {
     text: { action: "Text", control: "text" },

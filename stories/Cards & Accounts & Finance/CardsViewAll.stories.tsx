@@ -2,7 +2,7 @@ import * as allStories from "./CardsViewAll.stories";
 import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { CardsViewAll } from '../../src/components/cardsNew/CardsViewAll';
 export default {
-    title: "Components/Cards & Accounts & Finance/CardsViewAll",
+    title: "Components/Data Display/Cards & Accounts & Finance/CardsViewAll",
     component: CardsViewAll,
     argTypes: {
         cardName: {

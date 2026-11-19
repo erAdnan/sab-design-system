@@ -6,7 +6,7 @@ import { useWindowDimensions, View } from "react-native";
 import { spacingXS } from "../../src/assets/styles/constants/size";
 
 export default {
-  title: "Components/Cards & Accounts & Finance/AccountViewAll",
+  title: "Components/Data Display/Cards & Accounts & Finance/AccountViewAll",
   component: AccountViewAll,
   argTypes: {
     accountName: {

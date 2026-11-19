@@ -9,7 +9,7 @@ import { RagIconType } from "../../src/components/rag/Rag";
 import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
 
 export default {
-  title: "Components/Input Field/TextFieldInput",
+  title: "Components/Data Entry/Input Field/TextFieldInput",
   component: TextFieldInput,
   // Figma Input Field: fixed 343dp wide (label row 18, gap 8, 44dp field, 16/10 padding, radius 8).
   decorators: [

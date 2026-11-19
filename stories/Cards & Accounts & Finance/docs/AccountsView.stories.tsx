@@ -5,7 +5,7 @@ import { CREDIT_ACCOUNT_FINANCE_DOCS_PAGES } from "./catalog";
 const page = CREDIT_ACCOUNT_FINANCE_DOCS_PAGES.find((p) => p.title === "accounts.view")!;
 
 export default {
-  title: "Components/Cards & Accounts & Finance/Docs/accounts.view",
+  title: "Components/Data Display/Cards & Accounts & Finance/Docs/accounts.view",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Cards & Accounts & Finance"
+      eyebrow="Components · Data Display · Cards & Accounts & Finance"
       images={page.images}
     />
   ),

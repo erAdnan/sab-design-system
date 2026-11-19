@@ -5,7 +5,7 @@ import { CHECKBOX_DOCS_PAGES } from "./catalog";
 const page = CHECKBOX_DOCS_PAGES.find((p) => p.title === "Check Box")!;
 
 export default {
-  title: "Components/Checkbox/Docs/Check Box",
+  title: "Components/Data Entry/Checkbox/Docs/Check Box",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Checkbox"
+      eyebrow="Components · Data Entry · Checkbox"
       images={page.images}
     />
   ),

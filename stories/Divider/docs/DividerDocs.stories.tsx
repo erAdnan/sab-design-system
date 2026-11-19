@@ -3,7 +3,7 @@ import { FigmaDocPage } from "../../pulse-design-system/rules-and-patterns/Figma
 import { DIVIDER_DOC_IMAGES } from "./catalog";
 
 export default {
-  title: "Components/Divider/Docs",
+  title: "Components/Layout/Divider/Docs",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -18,7 +18,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title="Divider"
-      eyebrow="Components · Divider"
+      eyebrow="Components · Layout · Divider"
       images={DIVIDER_DOC_IMAGES}
     />
   ),

@@ -16,7 +16,7 @@ import { useTheme } from "../../src/context/theme/themeContext";
 import InfoFrame from "../../src/components/icons/status/InfoFrame";
 
 export default {
-  title: "Components/List/List",
+  title: "Components/Navigation/List/List",
   component: List,
   tags: ["!autodocs"],
   decorators: listStoryDecorators,

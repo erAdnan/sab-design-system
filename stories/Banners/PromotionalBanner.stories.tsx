@@ -6,7 +6,7 @@ import OpenAnAccount from "../../src/assets/svgs/illustration/opennewaccount.svg
 import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
 
 export default {
-  title: "Components/Banners/PromotionalBanner",
+  title: "Components/Data Display/Banners/PromotionalBanner",
   component: PromotionalBanner,
   argTypes: {
     title: { action: "Title", control: "text" },

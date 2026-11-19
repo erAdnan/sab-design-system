@@ -3,7 +3,7 @@ import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { ProductSelection } from "../../src/components/block/ProductSelection";
 
 export default {
-  title: "Components/Blocks/BlockProductSelection",
+  title: "Components/Data Display/Blocks/BlockProductSelection",
   component: ProductSelection,
   argTypes: {
     title: { action: "Title", control: "text" },

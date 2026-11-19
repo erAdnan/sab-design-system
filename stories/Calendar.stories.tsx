@@ -10,7 +10,7 @@ const SELECTED_DATE = new Date(2025, 7, 12);
 
 export default {
   decorators: mobileFrameDecorators,
-  title: "Components/Calendar",
+  title: "Components/Data Display/Calendar",
   component: Calendar,
   tags: ["!autodocs"],
   argTypes: {

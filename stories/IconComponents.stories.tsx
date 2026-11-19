@@ -26,7 +26,7 @@ import { useTheme } from "../src/context/theme/themeContext";
  * Distinct from Foundations/Assets (asset map via `Icon` + IconList).
  */
 export default {
-  title: "Components/Icon Components",
+  title: "Components/Data Display/Icon Components",
   component: View,
 };
 

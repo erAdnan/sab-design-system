@@ -5,7 +5,7 @@ import { AVATAR_DOCS_PAGES } from "./catalog";
 const page = AVATAR_DOCS_PAGES.find((p) => p.title === "Avatar \u2014 Documentation")!;
 
 export default {
-  title: "Components/Avatar/Docs/Avatar \u2014 Documentation",
+  title: "Components/Data Display/Avatar/Docs/Avatar \u2014 Documentation",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Avatar"
+      eyebrow="Components · Data Display · Avatar"
       images={page.images}
     />
   ),

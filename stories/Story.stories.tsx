@@ -5,7 +5,7 @@ import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
   decorators: [centerStoryDecorator],
-  title: "Components/Story",
+  title: "Components/Data Display/Story",
   component: Story,
   tags: ["!autodocs"],
   argTypes: {

@@ -6,7 +6,7 @@ import ProfileOutline from "../../src/components/icons/users/ProfileOutline";
 import { NewDashWidget } from "../../src/components/widget/NewDashWidget";
 
 export default {
-  title: "Components/Cards & Accounts & Finance/New Dash Widget",
+  title: "Components/Data Display/Cards & Accounts & Finance/New Dash Widget",
   component: NewDashWidget
 }
 

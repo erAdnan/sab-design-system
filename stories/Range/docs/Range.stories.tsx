@@ -5,7 +5,7 @@ import { RANGE_DOCS_PAGES } from "./catalog";
 const page = RANGE_DOCS_PAGES.find((p) => p.title === "Range")!;
 
 export default {
-  title: "Components/Range/Docs/Range",
+  title: "Components/Data Entry/Range/Docs/Range",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Range"
+      eyebrow="Components · Data Entry · Range"
       images={page.images}
     />
   ),

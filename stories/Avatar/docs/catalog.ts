@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const AVATAR_DOCS_PAGES: DocPage[] = [
   {
     title: "Avatar — Documentation",
-    storyTitle: "Components/Avatar/Docs/Avatar — Documentation",
+    storyTitle: "Components/Data Display/Avatar/Docs/Avatar — Documentation",
     images: [
       img(require("./assets/avatar-documentation-00.webp"), 2400, 298),
       img(require("./assets/avatar-documentation-01.webp"), 2400, 80),
@@ -62,7 +62,7 @@ export const AVATAR_DOCS_PAGES: DocPage[] = [
   },
   {
     title: "User profile — Documentation",
-    storyTitle: "Components/Avatar/Docs/User profile — Documentation",
+    storyTitle: "Components/Data Display/Avatar/Docs/User profile — Documentation",
     images: [
       img(require("./assets/user-profile-documentation-00.webp"), 2400, 298),
       img(require("./assets/user-profile-documentation-01.webp"), 2400, 80),

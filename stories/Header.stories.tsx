@@ -13,7 +13,7 @@ import Settings from "../src/components/icons/outline/Settings";
 import {actuatedNormalize} from "../src/assets/styles/utils/pixelScaling";
 
 export default {
-  title: "Components/Header",
+  title: "Components/Navigation/Header",
   component: Header,
   tags: ["!autodocs"],
   argTypes: {

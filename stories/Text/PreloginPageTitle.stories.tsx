@@ -6,7 +6,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Text/PreloginPageTitle",
+  title: "Components/Layout/Text/PreloginPageTitle",
   component: PreloginPageTitle,
   argTypes: {
     title: { action: "Title", control: "text" },
