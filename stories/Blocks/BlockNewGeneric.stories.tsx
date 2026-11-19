@@ -1,11 +1,11 @@
 import * as allStories from "./BlockNewGeneric.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { NewGeneric } from "../src/components/block/NewGeneric";
-import Prepaid from "../src/components/icons/outline/Prepaid";
-import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { NewGeneric } from "../../src/components/block/NewGeneric";
+import Prepaid from "../../src/components/icons/outline/Prepaid";
+import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
 
 export default {
-  title: "Components/BlockNewGeneric",
+  title: "Components/Blocks/BlockNewGeneric",
   component: NewGeneric,
   argTypes: {
     text: { action: "Text", control: "text" },
@@ -53,7 +53,7 @@ export const Large = {
 	size: "large",
 	text: "Text", 
     imgProps: {
-      url: require('../src/assets/images/houseIllustration.png'),
+      url: require('../../src/assets/images/houseIllustration.png'),
       isAbsolutePath: true,
       overrideImageStyles: {objectFit: "contain"}
     }

@@ -1,8 +1,8 @@
 import i18n from "i18next";
-import { Article } from "../src/components/block/Article";
+import { Article } from "../../src/components/block/Article";
 
 export default {
-  title: "Components/BlockArticle",
+  title: "Components/Blocks/BlockArticle",
   component: Article,
   argTypes: {
     subheading: { action: "Sub Heading", control: "text" },

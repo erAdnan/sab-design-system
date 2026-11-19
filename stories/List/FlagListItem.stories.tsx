@@ -1,18 +1,18 @@
 import * as allStories from "./FlagListItem.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { listStoryDecorators } from "../.storybook/listStoryFrame";
-import { FlagListItem } from "../src/components/list/FlagListItem";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { listStoryDecorators } from "../../.storybook/listStoryFrame";
+import { FlagListItem } from "../../src/components/list/FlagListItem";
 
 export default {
-  title: "Components/FlagListItem",
+  title: "Components/List/FlagListItem",
   component: FlagListItem,
   decorators: listStoryDecorators,
 }
 
 export const US = {
   args: {
-    circleImageProps: { url: require('../src/assets/images/flagUSsquare.png'), isAbsolutePath: true },
-    rectImageProps: { url: require('../src/assets/images/flagUSsquare.png'), isAbsolutePath: true },
+    circleImageProps: { url: require('../../src/assets/images/flagUSsquare.png'), isAbsolutePath: true },
+    rectImageProps: { url: require('../../src/assets/images/flagUSsquare.png'), isAbsolutePath: true },
     countryName: "United States of America",
     showDivider: true
   }

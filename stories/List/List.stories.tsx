@@ -1,22 +1,22 @@
 import * as allStories from "./List.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import React from "react";
 import { View } from "react-native";
-import { listStoryDecorators } from "../.storybook/listStoryFrame";
-import { List } from "../src/components/list/List";
+import { listStoryDecorators } from "../../.storybook/listStoryFrame";
+import { List } from "../../src/components/list/List";
 import {
   ListItemActionType,
   ListItemBadgeType,
-} from "../src/components/list/ListItem";
-import { TransactionListItem } from "../src/components/list/TransactionListItem";
-import Icon from "../src/components/icon/Icon";
-import Tick from "../src/components/icons/functionals/Tick";
-import { BadgeSize } from "../src/components/badge/Badge";
-import { useTheme } from "../src/context/theme/themeContext";
-import InfoFrame from "../src/components/icons/status/InfoFrame";
+} from "../../src/components/list/ListItem";
+import { TransactionListItem } from "../../src/components/list/TransactionListItem";
+import Icon from "../../src/components/icon/Icon";
+import Tick from "../../src/components/icons/functionals/Tick";
+import { BadgeSize } from "../../src/components/badge/Badge";
+import { useTheme } from "../../src/context/theme/themeContext";
+import InfoFrame from "../../src/components/icons/status/InfoFrame";
 
 export default {
-  title: "Components/List",
+  title: "Components/List/List",
   component: List,
   tags: ["!autodocs"],
   decorators: listStoryDecorators,

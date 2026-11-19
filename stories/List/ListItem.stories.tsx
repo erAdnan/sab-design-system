@@ -1,21 +1,21 @@
 import * as allStories from "./ListItem.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { listStoryDecorators } from "../.storybook/listStoryFrame";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { listStoryDecorators } from "../../.storybook/listStoryFrame";
 import {
   ListItem,
   ListItemActionType,
   ListItemBadgeType,
-} from "../src/components/list/ListItem";
-import InfoFrame from "../src/components/icons/status/InfoFrame";
-import Tick from "../src/components/icons/functionals/Tick";
-import { BadgeSize } from "../src/components/badge/Badge";
-import { useTheme } from "../src/context/theme/themeContext";
-import { PieGraph } from "../src/components/pieGraph/PieGraph";
-import { Avatar } from "../src/components/avatar/Avatar";
-import { fontMediumLarge } from "../src/assets/styles/constants/size";
+} from "../../src/components/list/ListItem";
+import InfoFrame from "../../src/components/icons/status/InfoFrame";
+import Tick from "../../src/components/icons/functionals/Tick";
+import { BadgeSize } from "../../src/components/badge/Badge";
+import { useTheme } from "../../src/context/theme/themeContext";
+import { PieGraph } from "../../src/components/pieGraph/PieGraph";
+import { Avatar } from "../../src/components/avatar/Avatar";
+import { fontMediumLarge } from "../../src/assets/styles/constants/size";
 
 export default {
-  title: "Components/ListItem",
+  title: "Components/List/ListItem",
   component: ListItem,
   decorators: listStoryDecorators,
   argTypes: {

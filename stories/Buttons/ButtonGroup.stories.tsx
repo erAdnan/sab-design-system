@@ -5,7 +5,7 @@ import { buttonContentStoryDecorators } from "../../.storybook/buttonStoryFrame"
 import { ButtonGroup } from "../../src/components/button/ButtonGroup";
 import MyAccounts from "../../src/components/icons/banking/MyAccounts";
 import { useTheme } from "../../src/context/theme/themeContext";
-import BlockProductComplexStories from '../BlockProductComplex.stories';
+import BlockProductComplexStories from '../Blocks/BlockProductComplex.stories';
 
 const InteractiveTemplate = (args: any) => {
   const { theme } = useTheme();

@@ -1,12 +1,12 @@
 import * as allStories from "./BlockProduct.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { Product } from "../src/components/block/Product";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { Product } from "../../src/components/block/Product";
 import i18n from "i18next";
-import MyAccounts from "../src/components/icons/banking/MyAccounts";
-import Undrawdocument from "../src/assets/svgs/illustration/undraw_document_search.svg";
+import MyAccounts from "../../src/components/icons/banking/MyAccounts";
+import Undrawdocument from "../../src/assets/svgs/illustration/undraw_document_search.svg";
 
 export default {
-  title: "Components/BlockProduct",
+  title: "Components/Blocks/BlockProduct",
   component: Product,
   argTypes: {
     title: { action: "Title", control: "text" },

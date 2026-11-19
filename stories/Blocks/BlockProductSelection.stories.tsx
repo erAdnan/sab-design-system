@@ -1,9 +1,9 @@
 import * as allStories from "./BlockProductSelection.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { ProductSelection } from "../src/components/block/ProductSelection";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { ProductSelection } from "../../src/components/block/ProductSelection";
 
 export default {
-  title: "Components/BlockProductSelection",
+  title: "Components/Blocks/BlockProductSelection",
   component: ProductSelection,
   argTypes: {
     title: { action: "Title", control: "text" },

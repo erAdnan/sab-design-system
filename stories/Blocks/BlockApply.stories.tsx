@@ -1,7 +1,7 @@
-import { Apply } from "../src/components/block/Apply";
+import { Apply } from "../../src/components/block/Apply";
 
 export default {
-  title: "Components/BlockApply",
+  title: "Components/Blocks/BlockApply",
   component: Apply,
 };
 

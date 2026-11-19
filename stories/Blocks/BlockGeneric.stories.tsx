@@ -1,9 +1,9 @@
 import * as allStories from "./BlockGeneric.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { Generic } from "../src/components/block/Generic";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { Generic } from "../../src/components/block/Generic";
 
 export default {
-  title: "Components/BlockGeneric",
+  title: "Components/Blocks/BlockGeneric",
   component: Generic,
   argTypes: {
     name: { action: "Name", control: "text" },

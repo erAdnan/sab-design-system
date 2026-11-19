@@ -1,11 +1,11 @@
 import * as allStories from "./BlockProductComplex.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
-import { ProductComplex } from "../src/components/block/ProductComplex";
-import CreditCards from "../src/assets/svgs/illustration/CreditCards.svg";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
+import { ProductComplex } from "../../src/components/block/ProductComplex";
+import CreditCards from "../../src/assets/svgs/illustration/CreditCards.svg";
 
 export default {
-  title: "Components/BlockProductComplex",
+  title: "Components/Blocks/BlockProductComplex",
   component: ProductComplex,
   argTypes: {
     variant: { control: "radio", options: ["default", "large"] },
@@ -33,7 +33,7 @@ export const Default = {
     linkButtonText: "Explore Benefits",
     primaryButtonText: "Apply Now",
     imgProps: {
-      url: require('../src/assets/images/card-image.png'),
+      url: require('../../src/assets/images/card-image.png'),
       isAbsolutePath: true,
       overrideStyles: {
         transform: [{ rotate: '90deg' }],

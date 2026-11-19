@@ -1,14 +1,14 @@
 import * as allStories from "./BlockEntry.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { View } from "react-native";
 import { expect } from "storybook/test";
-import { spy } from "../.storybook/actions";
-import { Entry } from "../src/components/block/Entry";
-import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
-import Prepaid from "../src/components/icons/outline/Prepaid";
+import { spy } from "../../.storybook/actions";
+import { Entry } from "../../src/components/block/Entry";
+import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
+import Prepaid from "../../src/components/icons/outline/Prepaid";
 
 export default {
-  title: "Components/BlockEntry",
+  title: "Components/Blocks/BlockEntry",
   component: Entry,
   argTypes: {
     title: { control: "text" },

@@ -1,10 +1,10 @@
 import * as allStories from "./BlockBill.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import React, { useState } from "react";
 import { View } from "react-native";
-import { BlockBill } from "../src/components/block/BlockBill";
-import STC from "../src/components/logos/banks/STC";
-import { spacingS } from "../src/assets/styles/constants/size";
+import { BlockBill } from "../../src/components/block/BlockBill";
+import STC from "../../src/components/logos/banks/STC";
+import { spacingS } from "../../src/assets/styles/constants/size";
 
 const baseBillArgs = {
   mainText: "Saudi Telecom Company",
@@ -22,7 +22,7 @@ const baseBillArgs = {
 };
 
 export default {
-  title: "Components/BlockBill",
+  title: "Components/Blocks/BlockBill",
   component: BlockBill,
   argTypes: {
     mainText: { control: "text" },

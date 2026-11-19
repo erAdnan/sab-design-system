@@ -1,9 +1,9 @@
 import * as allStories from "./BlockFeatures.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { Features } from "../src/components/block/Features";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { Features } from "../../src/components/block/Features";
 
 export default {
-  title: "Components/BlockFeatures",
+  title: "Components/Blocks/BlockFeatures",
   component: Features,
   argTypes: {
 	topText: { action: "Top text", control: "text" },
@@ -34,7 +34,7 @@ export const WithImage = {
 		title: "Title",
 		extraContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 		imgProps: {
-			url: require('../src/assets/images/checker.png'),
+			url: require('../../src/assets/images/checker.png'),
 			isAbsolutePath: true,
 			overrideImageStyles: {objectFit: "contain"}
 		}

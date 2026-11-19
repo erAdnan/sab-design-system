@@ -1,13 +1,13 @@
 import * as allStories from "./BlockInformation.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import React from "react";
-import { Information } from "../src/components/block/Information";
-import InfoFrame from "../src/components/icons/status/InfoFrame";
-import AlBilad from "../src/components/logos/banks/AlBilad";
-import { LogoWrapper } from "../src/components/logos/LogoWrapper";
+import { Information } from "../../src/components/block/Information";
+import InfoFrame from "../../src/components/icons/status/InfoFrame";
+import AlBilad from "../../src/components/logos/banks/AlBilad";
+import { LogoWrapper } from "../../src/components/logos/LogoWrapper";
 
 export default {
-  title: "Components/BlockInformation",
+  title: "Components/Blocks/BlockInformation",
   component: Information,
   args: {
     loading: false

@@ -1,11 +1,11 @@
 import * as allStories from "./BlockAccount.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import fonts from "../src/assets/styles/constants/fonts";
-import { Account } from "../src/components/block/Account";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import fonts from "../../src/assets/styles/constants/fonts";
+import { Account } from "../../src/components/block/Account";
 import i18n from "i18next";
 
 export default {
-  title: "Components/BlockAccount",
+  title: "Components/Blocks/BlockAccount",
   component: Account,
   argTypes: {
     headline: { action: "Headline", control: "text" },
@@ -59,7 +59,7 @@ export const CardWithAction = {
     balance: "1,000,000.00",
     cardImageProps: {
       isAbsolutePath: true,
-      url: require("../src/assets/images/card-image.png"),
+      url: require("../../src/assets/images/card-image.png"),
     },
     type: 'card'
   },
@@ -80,7 +80,7 @@ export const CurrencyWithFlagImage = {
     type: 'currency',
     cardImageProps: {
       isAbsolutePath: true,
-      url: require("../src/assets/images/flagUS.png"),
+      url: require("../../src/assets/images/flagUS.png"),
     },
   },
 };

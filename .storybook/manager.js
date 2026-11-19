@@ -31,10 +31,12 @@ const HIDDEN_SIDEBAR_COMPONENTS = new Set([
 /** Leaf name for hide matching: Components/<name> or Components/<Group>/<name> */
 const SIDEBAR_COMPONENT_GROUPS = new Set([
   "Banners",
+  "Blocks",
   "Buttons",
   "Chips",
   "Graphs",
   "Input Field",
+  "List",
 ]);
 
 const sidebarComponentLeaf = (parts) => {
