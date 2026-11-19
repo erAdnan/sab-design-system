@@ -227,6 +227,13 @@ const preview = {
           "Voucher Receipt",
           "Learning Product Cards",
         ];
+        // Components/PersonalFinanceWidgets/Docs — Figma Personal Finance Widgets canvas 2702:8148 left → right
+        const personalFinanceWidgetsDocsPages = [
+          "Tag Widget",
+          "Category List",
+          "Budget Card Widget",
+          "Content Cards Widget",
+        ];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -787,6 +794,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = productsCardsDocsPages.indexOf(leaf);
                 return i === -1 ? productsCardsDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/PersonalFinanceWidgets/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "PersonalFinanceWidgets" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "PersonalFinanceWidgets" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = personalFinanceWidgetsDocsPages.indexOf(leaf);
+                return i === -1 ? personalFinanceWidgetsDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

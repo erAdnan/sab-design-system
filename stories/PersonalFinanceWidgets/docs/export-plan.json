@@ -1,0 +1,78 @@
+[
+  {
+    "title": "Tag Widget",
+    "slug": "tag-widget",
+    "x": -9941,
+    "exports": [
+      {
+        "id": "22301:4744",
+        "name": "header",
+        "scale": 2,
+        "slug": "tag-widget-00"
+      },
+      {
+        "id": "22301:4771",
+        "name": "body",
+        "scale": 1,
+        "slug": "tag-widget-01"
+      }
+    ]
+  },
+  {
+    "title": "Category List",
+    "slug": "category-list",
+    "x": -8162,
+    "exports": [
+      {
+        "id": "22301:10591",
+        "name": "header",
+        "scale": 2,
+        "slug": "category-list-00"
+      },
+      {
+        "id": "22301:10618",
+        "name": "body",
+        "scale": 1,
+        "slug": "category-list-01"
+      }
+    ]
+  },
+  {
+    "title": "Budget Card Widget",
+    "slug": "budget-card-widget",
+    "x": -6480,
+    "exports": [
+      {
+        "id": "22327:17942",
+        "name": "header",
+        "scale": 2,
+        "slug": "budget-card-widget-00"
+      },
+      {
+        "id": "22327:17969",
+        "name": "body",
+        "scale": 1,
+        "slug": "budget-card-widget-01"
+      }
+    ]
+  },
+  {
+    "title": "Content Cards Widget",
+    "slug": "content-cards-widget",
+    "x": -4701,
+    "exports": [
+      {
+        "id": "22357:33456",
+        "name": "header",
+        "scale": 2,
+        "slug": "content-cards-widget-00"
+      },
+      {
+        "id": "22357:33483",
+        "name": "body",
+        "scale": 1,
+        "slug": "content-cards-widget-01"
+      }
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "budget-card-widget-00": {
+    "w": 1400,
+    "h": 166
+  },
+  "budget-card-widget-01": {
+    "w": 1400,
+    "h": 7762
+  },
+  "category-list-00": {
+    "w": 1400,
+    "h": 166
+  },
+  "category-list-01": {
+    "w": 1400,
+    "h": 6719
+  },
+  "content-cards-widget-00": {
+    "w": 1400,
+    "h": 166
+  },
+  "tag-widget-00": {
+    "w": 2800,
+    "h": 331
+  },
+  "tag-widget-01": {
+    "w": 1400,
+    "h": 3588
+  }
+}

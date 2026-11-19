@@ -17,6 +17,7 @@ import Education from "../src/components/icons/sab360/Education";
 
 export default {
   title: "Components/PersonalFinanceWidgets",
+  tags: ["!autodocs"],
   components: [
     ExpensesWidget,
     TagWidget,
