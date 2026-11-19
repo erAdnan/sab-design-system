@@ -8,7 +8,7 @@ import BirthdayIllustration from "../../src/components/illustrations/Birthday";
 const illustration = <BirthdayIllustration />;
 
 export default {
-  title: "Components/Data Display/Cards & Accounts & Finance/SelectionCard",
+  title: "Components/Data Display/ProductsCards/SelectionCard",
   component: SelectionCard,
   argTypes: {
     withBorder: {

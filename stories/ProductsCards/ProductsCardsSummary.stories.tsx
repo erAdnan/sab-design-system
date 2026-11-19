@@ -12,7 +12,7 @@ import {
 } from "../../src/assets/styles/constants/size";
 
 export default {
-  title: "Components/Data Display/Cards & Accounts & Finance/ProductsCardsSummary",
+  title: "Components/Data Display/ProductsCards/ProductsCardsSummary",
   component: ProductsCardsSummary,
   argTypes: {
     label: { action: "Initial value", control: "text" },

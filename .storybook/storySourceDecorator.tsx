@@ -59,13 +59,22 @@ export const withStorySourcePanel: Decorator = (Story, context) => {
   });
 
   return (
-    <View style={{ alignSelf: "stretch", width: "100%", maxWidth: "100%" }}>
+    <View
+      style={{
+        alignSelf: "stretch",
+        width: "100%",
+        maxWidth: "100%",
+        // Keep story content horizontally centered (wrapper is full-bleed for the
+        // code panel; without alignItems, Default stories sit flush left).
+        alignItems: "center",
+      }}
+    >
       <Story />
       <View
         style={{
           width: "100%",
           maxWidth: 720,
-          alignSelf: "center",
+          alignSelf: "stretch",
           paddingHorizontal: 16,
           paddingTop: 8,
           paddingBottom: 28,
