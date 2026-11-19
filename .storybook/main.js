@@ -33,6 +33,7 @@ module.exports = {
     "../stories/Tracker/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Graph/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/PasswordStrength/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Notifications/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [

@@ -205,6 +205,13 @@ const preview = {
         ];
         // Components/PasswordStrength/Docs — Figma Password Strength canvas 8:3445 left → right
         const passwordStrengthDocsPages = ["Password Strength", "PIN"];
+        // Components/Notifications/Docs — Figma Notifications canvas 11:3655 left → right
+        const notificationsDocsPages = [
+          "Snackbar",
+          "Clipboard Toast",
+          "Disclaimer",
+          "Notification",
+        ];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -685,6 +692,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = passwordStrengthDocsPages.indexOf(leaf);
                 return i === -1 ? passwordStrengthDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Notifications/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Notifications" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Notifications" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = notificationsDocsPages.indexOf(leaf);
+                return i === -1 ? notificationsDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;
