@@ -15,7 +15,6 @@ const HIDDEN_SIDEBAR_COMPONENTS = new Set([
   "CardsAccountsCarousel",
   "CardsPreviewModule", // Preview module
   "BlockButton",
-  "Dropdown",
   "ChipsInfo",
   "Cards Carousel",
   "CardsPortfolioCarousel",
@@ -97,6 +96,13 @@ const showSidebarItem = (item) => {
   return parts.includes("Docs");
 };
 
+/** Display labels for sidebar roots (internal story titles stay unchanged). */
+const SIDEBAR_ROOT_LABELS = {
+  "Pulse Design System": "━━━  🫀 Pulse Design System 🫀 ━━━━",
+  Foundations: "━━━ 🛠️ Foundations 🛠️ ━━━",
+  Components: "━━━ 🧩 All Components List  🧩 ━━━",
+};
+
 /**
  * Web Storybook manager chrome only.
  * On-device Storybook (`.rnstorybook`) has its own UI and does not load this file.
@@ -111,6 +117,12 @@ addons.setConfig({
     collapsedRoots: [],
     filters: {
       hideListedComponents: showSidebarItem,
+    },
+    renderLabel: (item) => {
+      if (item?.type === "root" && SIDEBAR_ROOT_LABELS[item.name]) {
+        return SIDEBAR_ROOT_LABELS[item.name];
+      }
+      return item?.name;
     },
   },
   toolbar: {

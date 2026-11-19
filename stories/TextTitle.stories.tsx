@@ -7,7 +7,7 @@ import { useStoryCopy } from "./helpers/useStoryCopy";
 const SAMPLE_TITLE = en.stories.titleText;
 
 export default {
-  title: "Components/Layout/Text/Text Title",
+  title: "Components/Layout/Text/Text Headline",
   component: TextTitle,
   argTypes: {
     text: { control: "text" },

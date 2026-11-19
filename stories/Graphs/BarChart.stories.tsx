@@ -14,7 +14,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 const meta: Meta<typeof BarChartWrapper> = {
   decorators: mobileContentDecorators,
-  title: "Components/Data Display/Graphs/BarChartWrapper",
+  title: "Components/Data Display/Graphs/Semi Circle Graph",
   component: BarChartWrapper,
   argTypes: {
     filterVariant: {

@@ -96,7 +96,7 @@ const preview = {
     deepControls: { enabled: true },
     options: {
       // Must stay inline and self-contained (Storybook statically analyses it; no outer references).
-      // Sidebar order: Pulse Design System, Components, Mobile Native Components, Foundations.
+      // Sidebar order: Pulse Design System, Components (incl. Mobile Native), Foundations.
       // Inside each component the "All variants" story comes first, so opening a component lands on it
       // (Storybook selects the first story of a component). Remaining stories stay alphabetical.
       storySort: (a, b) => {
@@ -104,7 +104,6 @@ const preview = {
         const top = [
           "Pulse Design System",
           "Components",
-          "Mobile Native Components",
           "Foundations",
         ];
         const pulsePages = [
@@ -286,7 +285,7 @@ const preview = {
         // Components/PersonalFinanceWidgets/Docs — Figma Personal Finance Widgets canvas 2702:8148 left → right
         const personalFinanceWidgetsDocsPages = [
           "Tag Widget",
-          "Category List",
+          "Category List Widget",
           "Budget Card Widget",
           "Content Cards Widget",
         ];
@@ -300,11 +299,11 @@ const preview = {
           "Bottom sheet - Button group Rules",
           "Bottom sheet Basic Rules",
         ];
-        // Mobile Native Components/Docs — Figma Mobile Native Components canvas 755:4645
+        // Components/Mobile Native Components/Docs — Figma canvas 755:4645
         const mobileNativeComponentsDocsPages = ["Native Components"];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
-        // Components/Uploader/Docs — Figma Upload canvas 4120:21000
+        // Components/Upload/Docs — Figma Upload canvas 4120:21000
         const uploaderDocsPages = ["Upload"];
         // Components/Cards & Accounts & Finance/Docs — Figma canvas 227:2376
         const creditAccountFinanceDocsPages = [
@@ -429,7 +428,7 @@ const preview = {
               "Radio Button",
               "Toggle",
               "Range",
-              "Uploader",
+              "Upload",
             ];
             const sectionRank = (title) => {
               const s = String(title).split("/")[1] || "";
@@ -1029,17 +1028,19 @@ const preview = {
               if (leafDiff !== 0) return leafDiff;
             }
           }
-          // Mobile Native Components/Docs topic order (Figma canvas 755:4645)
+          // Components/Mobile Native Components/Docs topic order (Figma canvas 755:4645)
           {
             const parts = (title) => String(title).split("/");
             if (
-              parts(a.title)[0] === "Mobile Native Components" &&
-              parts(a.title)[1] === "Docs" &&
-              parts(b.title)[0] === "Mobile Native Components" &&
-              parts(b.title)[1] === "Docs"
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Mobile Native Components" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Mobile Native Components" &&
+              parts(b.title)[2] === "Docs"
             ) {
               const leafRank = (title) => {
-                const leaf = parts(title)[2] || "";
+                const leaf = parts(title)[3] || "";
                 const i = mobileNativeComponentsDocsPages.indexOf(leaf);
                 return i === -1 ? mobileNativeComponentsDocsPages.length : i;
               };
@@ -1067,15 +1068,15 @@ const preview = {
               if (leafDiff !== 0) return leafDiff;
             }
           }
-          // Components/Uploader/Docs topic order (Figma left → right)
+          // Components/Upload/Docs topic order (Figma left → right)
           {
             const parts = componentsParts;
             if (
               parts(a.title)[0] === "Components" &&
-              parts(a.title)[1] === "Uploader" &&
+              parts(a.title)[1] === "Upload" &&
               parts(a.title)[2] === "Docs" &&
               parts(b.title)[0] === "Components" &&
-              parts(b.title)[1] === "Uploader" &&
+              parts(b.title)[1] === "Upload" &&
               parts(b.title)[2] === "Docs"
             ) {
               const leafRank = (title) => {

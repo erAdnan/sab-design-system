@@ -16,7 +16,7 @@ import { spacingS, spacingXS } from "../../src/assets/styles/constants/size";
  * https://www.figma.com/design/JC6uz9pPKMGCUSiA7a8gob/00.-SAB-DS-Components-and-Foundations?node-id=755-4645
  */
 export default {
-  title: "Mobile Native Components/Wallets",
+  title: "Components/Mobile Native Components/Wallets",
 };
 
 const stack = StyleSheet.create({

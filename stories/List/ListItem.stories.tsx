@@ -15,7 +15,7 @@ import { Avatar } from "../../src/components/avatar/Avatar";
 import { fontMediumLarge } from "../../src/assets/styles/constants/size";
 
 export default {
-  title: "Components/Navigation/List/ListItem",
+  title: "Components/Navigation/List/List",
   component: ListItem,
   decorators: listStoryDecorators,
   argTypes: {
@@ -311,7 +311,9 @@ export const TitleWithInfoTooltip = {
   },
 };
 
-export const AllVariants = createAllVariantsStory(allStories, [
+/** Unique export id — shares title with List.stories (both under List). */
+export const ListItemAllVariants = {
+  ...createAllVariantsStory(allStories, [
     "Simple",
     "Checkbox",
     "RadioButton",
@@ -338,4 +340,6 @@ export const AllVariants = createAllVariantsStory(allStories, [
     "TitleWithBodyAndSpinner",
     "NumberWithTextBadge",
     "TitleWithInfoTooltip",
-]);
+  ]),
+  name: "All Variants",
+};

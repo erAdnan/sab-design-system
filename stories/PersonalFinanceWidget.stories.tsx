@@ -27,6 +27,7 @@ export default {
 };
 
 export const Tag = {
+  name: "Tag Widget",
   render: TagWidget,
   args: {
     mainText: "#BusinessTrip",
@@ -70,6 +71,7 @@ export const MyActivityMonth = {
   },
 };
 export const BudgetCard = {
+  name: "Budget Card Widget",
   render: BudgetCardWidget,
   args: {
     amountRemaining: 10000,
@@ -98,6 +100,7 @@ export const BudgetCard = {
 };
 
 export const CategoryList = {
+  name: "Category List Widget",
   render: CategoryListWidget,
   args: {
     "listItemProps.title": { children: "Taxi" },
@@ -113,6 +116,7 @@ export const CategoryList = {
 };
 
 export const CategoryCardHorizontal = {
+  name: "Content Card Widget",
   render: CategoryCardWidget,
   args: {
     "listItemProps.title": { children: "University" },
@@ -148,6 +152,7 @@ export const CategoryCardHorizontal = {
 };
 
 export const CategoryCardHorizontalError = {
+  name: "Content Card Widget Error",
   render: CategoryCardWidget,
   args: {
     "listItemProps.title": { children: "University" },
@@ -175,6 +180,7 @@ export const CategoryCardHorizontalError = {
 };
 
 export const CategoryCardVertical = {
+  name: "Content Card Vertical",
   render: CategoryCardWidget,
   args: {
     small: true,

@@ -5,7 +5,7 @@ import { UPLOADER_DOCS_PAGES } from "./catalog";
 const page = UPLOADER_DOCS_PAGES.find((p) => p.title === "Upload")!;
 
 export default {
-  title: "Components/Data Entry/Uploader/Docs/Upload",
+  title: "Components/Data Entry/Upload/Docs/Upload",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -20,7 +20,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Components · Data Entry · Uploader"
+      eyebrow="Components · Data Entry · Upload"
       images={page.images}
     />
   ),

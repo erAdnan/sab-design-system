@@ -2,10 +2,10 @@ import React from "react";
 import { FigmaDocPage } from "../../pulse-design-system/rules-and-patterns/FigmaDocPage";
 import { PERSONAL_FINANCE_WIDGETS_DOCS_PAGES } from "./catalog";
 
-const page = PERSONAL_FINANCE_WIDGETS_DOCS_PAGES.find((p) => p.title === "Category List")!;
+const page = PERSONAL_FINANCE_WIDGETS_DOCS_PAGES.find((p) => p.title === "Category List Widget")!;
 
 export default {
-  title: "Components/Data Display/PersonalFinanceWidgets/Docs/Category List",
+  title: "Components/Data Display/PersonalFinanceWidgets/Docs/Category List Widget",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -14,7 +14,7 @@ export default {
   },
 };
 
-/** Figma Final Pulse → Personal Finance Widgets canvas (2702:8148) → Category List. */
+/** Figma Final Pulse → Personal Finance Widgets canvas (2702:8148) → Category List Widget. */
 export const Overview = {
   name: "Overview",
   render: () => (

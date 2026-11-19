@@ -10,7 +10,7 @@ import { View } from "react-native";
  * Types: faceID | Fingerprint | Default
  */
 export default {
-  title: "Mobile Native Components/MPIN Keyboard",
+  title: "Components/Mobile Native Components/MPIN Keyboard",
   component: Pin,
   argTypes: {
     biometricType: {

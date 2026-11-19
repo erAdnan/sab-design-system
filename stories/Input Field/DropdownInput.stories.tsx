@@ -6,7 +6,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Data Entry/Input Field/DropdownInput",
+  title: "Components/Data Entry/Input Field/Dropdown",
   component: DropdownInput,
   argTypes: {
     error: { action: "Input error", control: "boolean" },

@@ -7,7 +7,7 @@ const page = MOBILE_NATIVE_COMPONENTS_DOCS_PAGES.find(
 )!;
 
 export default {
-  title: "Mobile Native Components/Docs/Native Components",
+  title: "Components/Mobile Native Components/Docs/Native Components",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -22,7 +22,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Mobile Native Components"
+      eyebrow="Components · Mobile Native Components"
       images={page.images}
     />
   ),

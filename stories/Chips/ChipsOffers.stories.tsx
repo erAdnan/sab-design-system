@@ -4,7 +4,7 @@ import { ChipsOffers } from "../../src/components/chips/ChipsOffers";
 import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/Data Display/Chips/ChipsOffers",
+  title: "Components/Data Display/Chips/New_Chip",
   component: ChipsOffers,
   decorators: [centerStoryDecorator],
   argTypes: {
@@ -13,9 +13,11 @@ export default {
       control: "radio",
       options: ["centered", "right", "left", "new"],
     },
+    label: {
       action: "Chips label",
       control: "text",
     },
+  },
   args: {
     type: "centered",
     label: "Label",

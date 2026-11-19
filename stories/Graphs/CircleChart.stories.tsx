@@ -16,7 +16,7 @@ import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 const meta: Meta<typeof CircleChartWrapper> = {
   decorators: mobileContentDecorators,
-  title: "Components/Data Display/Graphs/CircleGraphWrapper",
+  title: "Components/Data Display/Graphs/Circle Graph",
   component: CircleChartWrapper,
   argTypes: {
     totalSpentLabel: {

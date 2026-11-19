@@ -36,7 +36,13 @@
     color: var(--sab-red) !important;
   }
 
-  [data-nodetype="root"] > button,
+  /* Keep custom root labels (emoji + casing) — Storybook defaults to uppercase roots. */
+  [data-nodetype="root"] > button {
+    text-transform: none !important;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
   [data-nodetype="group"] > button {
     letter-spacing: 0.02em;
   }

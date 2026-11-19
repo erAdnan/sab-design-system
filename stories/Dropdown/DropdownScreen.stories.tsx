@@ -11,7 +11,7 @@ import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
 
 export default {
   decorators: mobileFrameDecorators,
-  title: "Components/Data Display/Dropdown/DropdownScreen",
+  title: "Components/Data Display/Dropdown/Dropdown",
   component: DropdownScreen,
 };
 

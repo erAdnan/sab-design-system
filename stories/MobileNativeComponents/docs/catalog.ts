@@ -21,7 +21,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const MOBILE_NATIVE_COMPONENTS_DOCS_PAGES: DocPage[] = [
   {
     title: "Native Components",
-    storyTitle: "Mobile Native Components/Docs/Native Components",
+    storyTitle: "Components/Mobile Native Components/Docs/Native Components",
     images: [
       img(require("./assets/native-components-00.webp"), 2800, 331),
       img(require("./assets/native-components-01.webp"), 1200, 180),

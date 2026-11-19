@@ -9,7 +9,7 @@ import { useStoryCopy } from "./helpers/useStoryCopy";
 const SAMPLE_TEXT = en.stories.simpleText;
 
 export default {
-  title: "Components/Layout/Text/Text",
+  title: "Components/Layout/Text/Body Text",
   component: Text,
   argTypes: {
     children: { control: "text" },

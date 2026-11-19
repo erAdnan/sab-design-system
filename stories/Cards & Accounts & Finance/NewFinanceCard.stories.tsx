@@ -4,7 +4,7 @@ import { NewFinance } from "../../src/components/cards/NewFinance";
 import AccountInfo from "../../src/components/icons/filled/AccountInfo";
 
 export default {
-  title: "Components/Data Display/Cards & Accounts & Finance/NewFinanceCard",
+  title: "Components/Data Display/Cards & Accounts & Finance/Finance",
   component: NewFinance,
   argTypes: {
     label: {

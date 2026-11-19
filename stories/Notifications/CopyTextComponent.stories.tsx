@@ -2,7 +2,7 @@ import CopyTextComponent from "../../src/components/snackbar/CopyTextComponent";
 import { View, StyleSheet } from "react-native";
 
 export default {
-  title: "Components/Layout/Text/CopyTextComponent",
+  title: "Components/Data Display/Notifications/Clip Toast",
   component: CopyTextComponent,
   argTypes: {
     text: { control: "text" },

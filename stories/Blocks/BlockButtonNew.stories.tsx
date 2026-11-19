@@ -6,7 +6,7 @@ import Drahim from "../../src/components/logos/Drahim";
 import Sarie from "../../src/components/logos/Sarie";
 
 export default {
-  title: "Components/Navigation/Buttons/BlockButtonNew",
+  title: "Components/Data Display/Blocks/Block Button",
   component: BlockButtonNew,
   argTypes: {
     caption: { control: "text" },

@@ -14,7 +14,7 @@ import { spacingS } from "../../src/assets/styles/constants/size";
  * https://www.figma.com/design/JC6uz9pPKMGCUSiA7a8gob/00.-SAB-DS-Components-and-Foundations?node-id=1173-2174
  */
 export default {
-  title: "Mobile Native Components/Master component",
+  title: "Components/Mobile Native Components/iOS Native",
 };
 
 const styles = StyleSheet.create({

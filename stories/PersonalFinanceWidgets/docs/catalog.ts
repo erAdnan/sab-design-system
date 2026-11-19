@@ -28,8 +28,8 @@ export const PERSONAL_FINANCE_WIDGETS_DOCS_PAGES: DocPage[] = [
     ],
   },
   {
-    title: "Category List",
-    storyTitle: "Components/Data Display/PersonalFinanceWidgets/Docs/Category List",
+    title: "Category List Widget",
+    storyTitle: "Components/Data Display/PersonalFinanceWidgets/Docs/Category List Widget",
     images: [
       img(require("./assets/category-list-00.webp"), 1400, 166),
       img(require("./assets/category-list-01.webp"), 1400, 6719),

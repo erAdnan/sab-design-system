@@ -24,7 +24,7 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
 export const UPLOADER_DOCS_PAGES: DocPage[] = [
   {
     title: "Upload",
-    storyTitle: "Components/Data Entry/Uploader/Docs/Upload",
+    storyTitle: "Components/Data Entry/Upload/Docs/Upload",
     images: [
       img(require("./assets/upload-00.webp"), 2400, 360),
       img(require("./assets/upload-01.webp"), 2400, 1000),
