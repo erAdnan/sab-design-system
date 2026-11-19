@@ -39,6 +39,7 @@ module.exports = {
     "../stories/ProductsCards/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/PersonalFinanceWidgets/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Calendar/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/ThemeSelector/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [

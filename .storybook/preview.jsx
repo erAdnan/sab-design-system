@@ -236,6 +236,8 @@ const preview = {
         ];
         // Components/Calendar/Docs — Figma Calendar canvas 14209:10136
         const calendarDocsPages = ["Calendar"];
+        // Components/ThemeSelector/Docs — Figma Theme selector canvas 15234:56750
+        const themeSelectorDocsPages = ["Theme selector"];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -836,6 +838,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = calendarDocsPages.indexOf(leaf);
                 return i === -1 ? calendarDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/ThemeSelector/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "ThemeSelector" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "ThemeSelector" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = themeSelectorDocsPages.indexOf(leaf);
+                return i === -1 ? themeSelectorDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

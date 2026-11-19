@@ -7,6 +7,7 @@ export default {
   decorators: [centerStoryDecorator],
   title: "Components/ThemeSelector",
   component: ThemeSelector,
+  tags: ["!autodocs"],
 }
 
 export const ThemeSelectorLight = {
