@@ -2,9 +2,11 @@ import * as allStories from "./PasswordStrength.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
 import { PasswordStrength } from "../src/components/passwordStrength/PasswordStrength";
 import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
+import { passwordStrengthWebDecorator } from "../.storybook/passwordStrengthWebDecorator";
 
 export default {
-  decorators: mobileContentDecorators,
+  // Innermost: web-only bar-row width fix (native Yoga already resolves this).
+  decorators: [...mobileContentDecorators, passwordStrengthWebDecorator],
   title: "Components/PasswordStrength",
   component: PasswordStrength,
   tags: ["!autodocs"],
