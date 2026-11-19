@@ -41,6 +41,7 @@ module.exports = {
     "../stories/Calendar/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/ThemeSelector/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Bottomsheet/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/MobileNativeComponents/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [

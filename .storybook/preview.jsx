@@ -51,12 +51,17 @@ const preview = {
     deepControls: { enabled: true },
     options: {
       // Must stay inline and self-contained (Storybook statically analyses it; no outer references).
-      // Sidebar order: Pulse Design System, Components, Foundations; alphabetical by title. Inside each
-      // component the "All variants" story comes first, so opening a component lands on it (Storybook
-      // selects the first story of a component). Remaining stories stay alphabetical.
+      // Sidebar order: Pulse Design System, Components, Mobile Native Components, Foundations.
+      // Inside each component the "All variants" story comes first, so opening a component lands on it
+      // (Storybook selects the first story of a component). Remaining stories stay alphabetical.
       storySort: (a, b) => {
         if (a.id === b.id) return 0;
-        const top = ["Pulse Design System", "Components", "Foundations"];
+        const top = [
+          "Pulse Design System",
+          "Components",
+          "Mobile Native Components",
+          "Foundations",
+        ];
         const pulsePages = [
           "Pulse Design Ecosystem",
           "Rules & Patterns",
@@ -248,6 +253,8 @@ const preview = {
           "Bottom sheet - Button group Rules",
           "Bottom sheet Basic Rules",
         ];
+        // Mobile Native Components/Docs — Figma Mobile Native Components canvas 755:4645
+        const mobileNativeComponentsDocsPages = ["Native Components"];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -888,6 +895,24 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = bottomsheetDocsPages.indexOf(leaf);
                 return i === -1 ? bottomsheetDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Mobile Native Components/Docs topic order (Figma canvas 755:4645)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Mobile Native Components" &&
+              parts(a.title)[1] === "Docs" &&
+              parts(b.title)[0] === "Mobile Native Components" &&
+              parts(b.title)[1] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[2] || "";
+                const i = mobileNativeComponentsDocsPages.indexOf(leaf);
+                return i === -1 ? mobileNativeComponentsDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;
