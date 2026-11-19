@@ -19,6 +19,27 @@ import { FoundationsDocsContainer } from "./FoundationsDocsContainer";
  * Web Storybook only (.storybook). On-device Storybook uses `.rnstorybook`
  * and does not load this preview / manager toolbar.
  */
+/**
+ * Docs (autodocs, CSF …/Docs/… pages, story id ending in --docs) always stay
+ * light — Dark Mode is for component canvases only.
+ */
+function isDocsContext(context) {
+  const title = String(context?.title ?? context?.kind ?? "");
+  const name = String(context?.name ?? "");
+  const id = String(context?.id ?? "").toLowerCase();
+  const viewMode = String(context?.viewMode ?? "");
+  if (viewMode === "docs") return true;
+  if (title.includes("/Docs/") || /\/Docs$/i.test(title)) return true;
+  if (/^docs$/i.test(name)) return true;
+  if (id.endsWith("--docs") || id.includes("-docs--")) return true;
+  if (typeof window !== "undefined") {
+    const href = String(window.location?.href ?? "");
+    if (/[?&]viewMode=docs(?:&|$)/.test(href)) return true;
+    if (/\/docs\//.test(href) || /path=\/docs\//.test(href)) return true;
+  }
+  return false;
+}
+
 function ThemeFromGlobals({ themeKey, children }) {
   const { setAppTheme, isDarkTheme } = useTheme();
 
@@ -30,6 +51,28 @@ function ThemeFromGlobals({ themeKey, children }) {
     // Only react to toolbar theme changes; isDarkTheme is read for the guard.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [themeKey, setAppTheme]);
+
+  // Keep the iframe page chrome in sync with Dark Mode (preview-head defaults
+  // to white). Without this, gaps around the RN tree stay white while
+  // components use light-on-dark colors. Docs pages never get the dark chrome.
+  useEffect(() => {
+    if (typeof document === "undefined") return undefined;
+    const dark = themeKey === "dark";
+    const bg = dark ? "#000000" : "";
+    const fg = dark ? "#FFFFFF" : "";
+    const prevBody = document.body.style.backgroundColor;
+    const prevHtml = document.documentElement.style.backgroundColor;
+    const prevColor = document.body.style.color;
+    document.body.style.backgroundColor = bg;
+    document.documentElement.style.backgroundColor = bg;
+    if (dark) document.body.style.color = fg;
+    else document.body.style.color = prevColor;
+    return () => {
+      document.body.style.backgroundColor = prevBody;
+      document.documentElement.style.backgroundColor = prevHtml;
+      document.body.style.color = prevColor;
+    };
+  }, [themeKey]);
 
   return children;
 }
@@ -170,7 +213,7 @@ const preview = {
           "Text Area Documentation",
           "Phone Number Documentation",
           "Search Documentation",
-          "Segmented Input Documentation",
+          "Pin Input Documentation",
           "Message Input Documentation",
           "amount.entryText Documentation",
         ];
@@ -1219,7 +1262,12 @@ const preview = {
 
   decorators: [
     (Story, context) => {
-      const themeKey = context.globals?.theme === "dark" ? "dark" : "light";
+      // Docs wrappers / autodocs / CSF Docs stories: always light (ignore Dark Mode toolbar).
+      const themeKey = isDocsContext(context)
+        ? "light"
+        : context.globals?.theme === "dark"
+          ? "dark"
+          : "light";
       const locale = context.globals?.locale === "ar" ? "ar" : "en";
 
       // Keep i18n in sync before render so t()/tx() and args translation match the toolbar.
