@@ -196,6 +196,13 @@ const preview = {
         ];
         // Components/Tracker/Docs — Figma Tracker canvas 4391:37792
         const trackerDocsPages = ["Tracker"];
+        // Components/Graph/Docs — Figma Graphs canvas 11572:15448 left → right
+        const graphDocsPages = [
+          "Line Graph",
+          "Circle Graph",
+          "Bar Graph",
+          "Semi-circle Graph",
+        ];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -636,6 +643,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = trackerDocsPages.indexOf(leaf);
                 return i === -1 ? trackerDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Graph/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Graph" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Graph" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = graphDocsPages.indexOf(leaf);
+                return i === -1 ? graphDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

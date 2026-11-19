@@ -31,6 +31,7 @@ module.exports = {
     "../stories/Chips/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/ProgressIndicator/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Tracker/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Graph/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [
