@@ -1,11 +1,11 @@
 import * as allStories from "./RangeEntryText.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { RangeEntryText } from "../src/components/range/EntryText";
-import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { RangeEntryText } from "../../src/components/range/EntryText";
+import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/RangeEntryText",
+  title: "Components/Range/RangeEntryText",
   component: RangeEntryText,
   argTypes: {
     minValue: { control: "text" },

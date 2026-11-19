@@ -1,22 +1,22 @@
 import * as allStories from "./Title.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { Title } from "../src/components/text/Title";
-import { TextColor } from "../src/types/TextColor";
-import Home from "../src/components/icons/functionals/Home";
-import Edit from "../src/components/icons/functionals/Edit";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { Title } from "../../src/components/text/Title";
+import { TextColor } from "../../src/types/TextColor";
+import Home from "../../src/components/icons/functionals/Home";
+import Edit from "../../src/components/icons/functionals/Edit";
 import {
   fontMedium,
   fontMediumLarge,
-} from "../src/assets/styles/constants/size";
-import { Text } from "../src/components/text/Text";
-import en from "../src/localization/locales/en";
-import { useStoryCopy } from "./helpers/useStoryCopy";
+} from "../../src/assets/styles/constants/size";
+import { Text } from "../../src/components/text/Text";
+import en from "../../src/localization/locales/en";
+import { useStoryCopy } from "../helpers/useStoryCopy";
 
 const SAMPLE_TITLE = en.stories.titleText;
 const SAMPLE_SUBTITLE = en.stories.subtitleText;
 
 export default {
-  title: "Components/Title",
+  title: "Components/Text/Title",
   component: Title,
   argTypes: {
     children: { control: "text" },

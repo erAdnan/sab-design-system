@@ -1,17 +1,17 @@
 import * as allStories from "./NewProductCardLarge.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import Beauty from "../src/components/icons/other/Beauty";
-import { NewProductCardLarge } from "../src/components/productsCards/NewProductCardLarge";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import Beauty from "../../src/components/icons/other/Beauty";
+import { NewProductCardLarge } from "../../src/components/productsCards/NewProductCardLarge";
 
 export default {
-  title: "Components/New Product Card Large",
+  title: "Components/Cards & Accounts & Finance/New Product Card Large",
   component: NewProductCardLarge
 }
 
 export const Vertical = {
   args: {
     imgProps: {
-      url: require('../src/assets/images/product_image.png'),
+      url: require('../../src/assets/images/product_image.png'),
       isAbsolutePath: true
     },
     label: "Coach",
@@ -24,7 +24,7 @@ export const Vertical = {
 export const Horizontal = {
   args: {
     imgProps: {
-      url: require('../src/assets/images/product_image.png'),
+      url: require('../../src/assets/images/product_image.png'),
       isAbsolutePath: true
     },
     label: "Marly",

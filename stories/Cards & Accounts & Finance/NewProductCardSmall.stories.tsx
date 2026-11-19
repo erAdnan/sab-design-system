@@ -1,9 +1,9 @@
 import * as allStories from "./NewProductCardSmall.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { NewProductCardSmall } from "../src/components/productsCards/NewProductCardSmall";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { NewProductCardSmall } from "../../src/components/productsCards/NewProductCardSmall";
 
 export default {
-  title: "Components/New Product Card Small",
+  title: "Components/Cards & Accounts & Finance/New Product Card Small",
   component: NewProductCardSmall
 }
 

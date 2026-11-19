@@ -1,11 +1,11 @@
 import * as allStories from "./RangeSelector.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { Selector } from "../src/components/range/Selector";
-import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { Selector } from "../../src/components/range/Selector";
+import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Selector",
+  title: "Components/Range/Selector",
   component: Selector,
   argTypes: {
     amountHelperText: { control: "text" },

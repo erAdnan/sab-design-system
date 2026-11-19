@@ -1,11 +1,11 @@
 import * as allStories from "./NewWidget.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { useTranslation } from "react-i18next";
-import Gift from "../src/components/icons/other/Gift";
-import { NewWidget } from "../src/components/widget/NewWidget";
+import Gift from "../../src/components/icons/other/Gift";
+import { NewWidget } from "../../src/components/widget/NewWidget";
 
 export default {
-  title: "Components/New Widget",
+  title: "Components/Cards & Accounts & Finance/New Widget",
   component: NewWidget,
   argTypes: {
     size: {

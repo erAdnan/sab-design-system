@@ -1,12 +1,12 @@
 import * as allStories from "./NewDashWidget.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import More from "../src/components/icons/functionals/More";
-import LogoNoText from "../src/components/icons/sab360/LogoNoText";
-import ProfileOutline from "../src/components/icons/users/ProfileOutline";
-import { NewDashWidget } from "../src/components/widget/NewDashWidget";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import More from "../../src/components/icons/functionals/More";
+import LogoNoText from "../../src/components/icons/sab360/LogoNoText";
+import ProfileOutline from "../../src/components/icons/users/ProfileOutline";
+import { NewDashWidget } from "../../src/components/widget/NewDashWidget";
 
 export default {
-  title: "Components/New Dash Widget",
+  title: "Components/Cards & Accounts & Finance/New Dash Widget",
   component: NewDashWidget
 }
 

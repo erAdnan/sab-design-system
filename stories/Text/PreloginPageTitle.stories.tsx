@@ -1,12 +1,12 @@
 
 
-import { PreloginPageTitle } from "../src/components/preloginPageTitle/PreloginPageTitle";
-import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
+import { PreloginPageTitle } from "../../src/components/preloginPageTitle/PreloginPageTitle";
+import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/PreloginPageTitle",
+  title: "Components/Text/PreloginPageTitle",
   component: PreloginPageTitle,
   argTypes: {
     title: { action: "Title", control: "text" },

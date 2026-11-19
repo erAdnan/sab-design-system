@@ -1,11 +1,11 @@
 import { View } from "react-native";
-import { CarbonFootprint as CarbonFootprintComponent } from "../src/components/dataVisuals/CarbonFootprint";
-import { Text } from "../src/components/text/Text";
-import { fontMedium, fontSmall, lineHeightLarge, lineHeightXLarge, spacingS, spacingXS, spacingXXS } from "../src/assets/styles/constants/size";
+import { CarbonFootprint as CarbonFootprintComponent } from "../../src/components/dataVisuals/CarbonFootprint";
+import { Text } from "../../src/components/text/Text";
+import { fontMedium, fontSmall, lineHeightLarge, lineHeightXLarge, spacingS, spacingXS, spacingXXS } from "../../src/assets/styles/constants/size";
 
-import { tx } from "../src/localization/tx";
+import { tx } from "../../src/localization/tx";
 export default {
-  title: "Components/Data Visuals",
+  title: "Components/Graphs/Data Visuals",
   components: [CarbonFootprintComponent]
 }
 

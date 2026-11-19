@@ -1,14 +1,14 @@
 import * as allStories from "./SelectionCard.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import React from "react";
 import { View } from "react-native";
-import { SelectionCard } from "../src/components/cards/SelectionCard";
-import BirthdayIllustration from "../src/components/illustrations/Birthday";
+import { SelectionCard } from "../../src/components/cards/SelectionCard";
+import BirthdayIllustration from "../../src/components/illustrations/Birthday";
 
 const illustration = <BirthdayIllustration />;
 
 export default {
-  title: "Components/SelectionCard",
+  title: "Components/Cards & Accounts & Finance/SelectionCard",
   component: SelectionCard,
   argTypes: {
     withBorder: {

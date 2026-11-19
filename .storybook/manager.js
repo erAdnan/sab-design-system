@@ -22,6 +22,8 @@ const HIDDEN_SIDEBAR_COMPONENTS = new Set([
   "Carousel Banner",
   "ChangeActionButton",
   "FloatingButton",
+  "FilterTag",
+  "Icon Components",
   "Tooltip",
   "ErrorStateIndicator",
   "BlockGeneric",
@@ -39,6 +41,9 @@ const SIDEBAR_COMPONENT_GROUPS = new Set([
   "Graphs",
   "Input Field",
   "List",
+  "Notifications",
+  "Range",
+  "Text",
 ]);
 
 const sidebarComponentLeaf = (parts) => {

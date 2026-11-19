@@ -1,16 +1,16 @@
 import * as allStories from "./Info.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { View } from "react-native";
-import { fontSmallMedium, spacingXXS } from "../src/assets/styles/constants/size";
-import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
-import Info from "../src/components/info/Info";
-import { Text } from "../src/components/text/Text";
-import { SarFont } from "../src/components/sarFont/SarFont";
-import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
+import { fontSmallMedium, spacingXXS } from "../../src/assets/styles/constants/size";
+import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
+import Info from "../../src/components/info/Info";
+import { Text } from "../../src/components/text/Text";
+import { SarFont } from "../../src/components/sarFont/SarFont";
+import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-    title: "Components/Info",
+    title: "Components/Notifications/Info",
     component: Info,
     argTypes: {
         text: {

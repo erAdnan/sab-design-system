@@ -1,14 +1,14 @@
 import * as allStories from "./Snackbar.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { Snackbar } from "../src/components/snackbar/Snackbar";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { Snackbar } from "../../src/components/snackbar/Snackbar";
 import { useTranslation } from "react-i18next";
 import {  Text } from "react-native";
 import React from "react";
-import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
+import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Snackbar",
+  title: "Components/Notifications/Snackbar",
   component: Snackbar,
   argTypes: {
     text: { action: "Text", control: "text" },

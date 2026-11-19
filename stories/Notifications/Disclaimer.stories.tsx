@@ -1,21 +1,21 @@
 import * as allStories from "./Disclaimer.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { SafeAreaView } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { disclaimerStoryDecorators } from "../.storybook/disclaimerStoryFrame";
-import { Disclaimer } from "../src/components/disclaimer/Disclaimer";
-import { Text } from "../src/components/text/Text";
-import { fontSmall } from "../src/assets/styles/constants/size";
-import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
-import Absher from "../src/components/logos/Absher";
-import Drahim from "../src/components/logos/Drahim";
-import Sarie from "../src/components/logos/Sarie";
-import SimahNew from "../src/components/logos/SimahNew";
-import Zakaty from "../src/components/logos/Zakaty";
-import Icon from "../src/components/icon/Icon";
+import { disclaimerStoryDecorators } from "../../.storybook/disclaimerStoryFrame";
+import { Disclaimer } from "../../src/components/disclaimer/Disclaimer";
+import { Text } from "../../src/components/text/Text";
+import { fontSmall } from "../../src/assets/styles/constants/size";
+import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
+import Absher from "../../src/components/logos/Absher";
+import Drahim from "../../src/components/logos/Drahim";
+import Sarie from "../../src/components/logos/Sarie";
+import SimahNew from "../../src/components/logos/SimahNew";
+import Zakaty from "../../src/components/logos/Zakaty";
+import Icon from "../../src/components/icon/Icon";
 
 export default {
-  title: "Components/Disclaimer",
+  title: "Components/Notifications/Disclaimer",
   component: Disclaimer,
   decorators: disclaimerStoryDecorators,
   argTypes: {
@@ -67,7 +67,7 @@ export const ImageType = {
   args: {
     type: "image",
     imgProps: {
-      url: require("../src/assets/images/checker.png"), // Sample image URL
+      url: require("../../src/assets/images/checker.png"), // Sample image URL
       isAbsolutePath: true,
       width: actuatedNormalize(31),
       height: actuatedNormalize(31),

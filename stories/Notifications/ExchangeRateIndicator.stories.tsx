@@ -1,11 +1,11 @@
 import * as allStories from "./ExchangeRateIndicator.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { ExchangeRateIndicator } from "../src/components/info/ExchangeRateIndicator";
-import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { ExchangeRateIndicator } from "../../src/components/info/ExchangeRateIndicator";
+import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/ExchangeRateIndicator",
+  title: "Components/Notifications/ExchangeRateIndicator",
   component: ExchangeRateIndicator,
   argTypes: {
     text: { control: "text" },

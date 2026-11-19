@@ -1,11 +1,11 @@
 import * as allStories from "./Pin.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import {Pin} from "../src/components/pinDialPad/Pin";
-import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import {Pin} from "../../src/components/pinDialPad/Pin";
+import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/PIN",
+  title: "Components/Input Field/PIN",
   component: Pin,
   argTypes: {
     info: {

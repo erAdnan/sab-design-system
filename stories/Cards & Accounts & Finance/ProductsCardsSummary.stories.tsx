@@ -1,18 +1,18 @@
 import * as allStories from "./ProductsCardsSummary.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { useState } from "react";
-import { ProductsCardsSummary } from "../src/components/productsCards/ProductsCardsSummary";
+import { ProductsCardsSummary } from "../../src/components/productsCards/ProductsCardsSummary";
 import {
   ListItemActionType,
   ListItemBadgeType,
-} from "../src/components/list/ListItem";
+} from "../../src/components/list/ListItem";
 import {
   fontMediumLarge,
   spacingXS,
-} from "../src/assets/styles/constants/size";
+} from "../../src/assets/styles/constants/size";
 
 export default {
-  title: "Components/ProductsCardsSummary",
+  title: "Components/Cards & Accounts & Finance/ProductsCardsSummary",
   component: ProductsCardsSummary,
   argTypes: {
     label: { action: "Initial value", control: "text" },
