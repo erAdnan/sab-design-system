@@ -9,6 +9,7 @@ export default {
   decorators: mobileContentDecorators,
   title: "Components/Tracker",
   component: Tracker,
+  tags: ["!autodocs"],
   argTypes: {
     textHeadline: { action: "Tracker left title", control: "text" },
     text2: { action: "Tracker left subtitle", control: "text" },

@@ -30,6 +30,7 @@ module.exports = {
     "../stories/Badge/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Chips/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/ProgressIndicator/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Tracker/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [
