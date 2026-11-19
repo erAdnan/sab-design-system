@@ -35,6 +35,7 @@ const SIDEBAR_COMPONENT_GROUPS = new Set([
   "Buttons",
   "Cards & Accounts & Finance",
   "Chips",
+  "Dropdown",
   "Graphs",
   "Input Field",
   "List",
