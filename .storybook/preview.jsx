@@ -203,6 +203,8 @@ const preview = {
           "Bar Graph",
           "Semi-circle Graph",
         ];
+        // Components/PasswordStrength/Docs — Figma Password Strength canvas 8:3445 left → right
+        const passwordStrengthDocsPages = ["Password Strength", "PIN"];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -663,6 +665,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = graphDocsPages.indexOf(leaf);
                 return i === -1 ? graphDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/PasswordStrength/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "PasswordStrength" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "PasswordStrength" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = passwordStrengthDocsPages.indexOf(leaf);
+                return i === -1 ? passwordStrengthDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

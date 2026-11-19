@@ -1,56 +1,54 @@
 import * as allStories from "./PasswordStrength.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
 import { PasswordStrength } from "../src/components/passwordStrength/PasswordStrength";
-import { useTranslation } from "react-i18next";
 import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
   title: "Components/PasswordStrength",
   component: PasswordStrength,
+  tags: ["!autodocs"],
   argTypes: {
-    label: { action: "Label", control: "text" },
+    label: { control: "text" },
     strength: {
-      action: "Strength",
       control: "radio",
-      options: ["weak", "normal", "strong"],
+      options: ["strong", "weak", "normal"],
     },
+    loading: { control: "boolean" },
+  },
+  args: {
+    label: "Password strength",
+    strength: "strong",
+    loading: false,
   },
 };
 
-const InteractiveTemplate = (args: any) => {
-  const { t } = useTranslation();
-  return (
-      <PasswordStrength {...args} label={t("label")} />
-  );
+export const Strong = {
+  args: {
+    label: "Strong",
+    strength: "strong",
+    loading: false,
+  },
 };
 
 export const Weak = {
-  render: InteractiveTemplate,
   args: {
+    label: "Weak",
     strength: "weak",
     loading: false,
   },
 };
 
 export const Normal = {
-  render: InteractiveTemplate,
   args: {
+    label: "Normal",
     strength: "normal",
     loading: false,
   },
 };
 
-export const Strong = {
-  render: InteractiveTemplate,
-  args: {
-    strength: "strong",
-    loading: false,
-  },
-};
-
 export const AllVariants = createAllVariantsStory(allStories, [
-    "Weak",
-    "Normal",
-    "Strong",
+  "Strong",
+  "Weak",
+  "Normal",
 ]);
