@@ -216,6 +216,17 @@ const preview = {
         const emptyStateDocsPages = ["Empty State"];
         // Components/Story/Docs — Figma Story canvas 2253:2450
         const storyDocsPages = ["Story"];
+        // Components/ProductsCards/Docs — Figma Products card canvas 2379:30802 left → right
+        const productsCardsDocsPages = [
+          "Image Thumbnail",
+          "Product Card",
+          "Category Card",
+          "Product Card/Summary",
+          "Selection Card",
+          "Voucher Card",
+          "Voucher Receipt",
+          "Learning Product Cards",
+        ];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -756,6 +767,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = storyDocsPages.indexOf(leaf);
                 return i === -1 ? storyDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/ProductsCards/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "ProductsCards" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "ProductsCards" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = productsCardsDocsPages.indexOf(leaf);
+                return i === -1 ? productsCardsDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

@@ -7,6 +7,7 @@ import { ProductsCards } from "../src/components/productsCards/ProductsCards";
 export default {
   title: "Components/ProductsCards",
   component: ProductsCards,
+  tags: ["!autodocs"],
   argTypes: {
     type: {
       action: "Type",
