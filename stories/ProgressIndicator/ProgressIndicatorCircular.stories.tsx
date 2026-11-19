@@ -1,10 +1,11 @@
 import * as allStories from "./ProgressIndicatorCircular.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { ProgressIndicatorCircular } from "../src/components/progressIndicatorCircular/ProgressIndicatorCircular";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { ProgressIndicatorCircular } from "../../src/components/progressIndicatorCircular/ProgressIndicatorCircular";
 
 export default {
-  title: "Components/ProgressIndicatorCircular",
+  title: "Components/ProgressIndicator/Circular",
   component: ProgressIndicatorCircular,
+  tags: ["!autodocs"],
   argTypes: {
     size: {
       control: "radio",
@@ -49,8 +50,8 @@ export const Small = {
 };
 
 export const AllVariants = createAllVariantsStory(allStories, [
-    "XL",
-    "Large",
-    "Medium",
-    "Small",
+  "XL",
+  "Large",
+  "Medium",
+  "Small",
 ]);

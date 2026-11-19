@@ -188,6 +188,12 @@ const preview = {
           "Tags/Chips",
           "Chips Select",
         ];
+        // Components/ProgressIndicator/Docs — Figma Progress Indicator canvas 82:1799 left → right
+        const progressIndicatorDocsPages = [
+          "Progress Indicator_Linear - Documentation",
+          "Progress Indicator_Circular  - Documentation",
+          "Exchange rate indicator  - Documentation",
+        ];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -588,6 +594,26 @@ const preview = {
                 const leaf = parts(title).slice(3).join("/") || "";
                 const i = chipsDocsPages.indexOf(leaf);
                 return i === -1 ? chipsDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/ProgressIndicator/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "ProgressIndicator" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "ProgressIndicator" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = progressIndicatorDocsPages.indexOf(leaf);
+                return i === -1 ? progressIndicatorDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

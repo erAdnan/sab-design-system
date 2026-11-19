@@ -10,6 +10,7 @@ export default {
   decorators: mobileContentDecorators,
   title: "Components/ProgressIndicator",
   components: [ProgressIndicator, PieGraph],
+  tags: ["!autodocs"],
   argTypes: {
     progress: { action: "Progress", control: "number" },
   },
