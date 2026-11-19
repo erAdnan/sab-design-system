@@ -1,25 +1,25 @@
 import * as allStories from "./BalanceModule.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { Animated, FlatList, useWindowDimensions, View } from "react-native";
 import {
   BalanceModule,
   BalanceModuleExtendedProps,
-} from "../src/components/balanceModule/BalanceModule";
+} from "../../src/components/balanceModule/BalanceModule";
 import { useCallback, useRef, useState } from "react";
-import { NavigationDots } from "../src/components/navigationDots/NavigationDots";
-import { spacingM } from "../src/assets/styles/constants/size";
-import { QuickActionButtonPattern } from "../src/components/button/QuickActionButtonPattern";
-import MyAccounts from "../src/components/icons/banking/MyAccounts";
-import { useTheme } from "../src/context/theme/themeContext";
-import Graph from "../src/components/icons/banking/Graph";
-import Card from "../src/components/icons/banking/Card";
-import VirtualCard from "../src/components/icons/banking/VirtualCard";
-import More from "../src/components/icons/functionals/More";
-import { DropdownScreen } from "../src/components/dropdown/DropdownScreen";
-import Icon from "../src/components/icon/Icon";
+import { NavigationDots } from "../../src/components/navigationDots/NavigationDots";
+import { spacingM } from "../../src/assets/styles/constants/size";
+import { QuickActionButtonPattern } from "../../src/components/button/QuickActionButtonPattern";
+import MyAccounts from "../../src/components/icons/banking/MyAccounts";
+import { useTheme } from "../../src/context/theme/themeContext";
+import Graph from "../../src/components/icons/banking/Graph";
+import Card from "../../src/components/icons/banking/Card";
+import VirtualCard from "../../src/components/icons/banking/VirtualCard";
+import More from "../../src/components/icons/functionals/More";
+import { DropdownScreen } from "../../src/components/dropdown/DropdownScreen";
+import Icon from "../../src/components/icon/Icon";
 
 export default {
-  title: "Components/BalanceModule",
+  title: "Components/Cards & Accounts & Finance/BalanceModule",
   component: BalanceModule,
   argTypes: {},
   args: {

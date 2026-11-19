@@ -1,7 +1,7 @@
 import * as allStories from "./CreditCards.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { CreditCard } from '../src/components/cardsNew/CreditCard';
-import Success from "../src/components/icons/status/Success";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { CreditCard } from '../../src/components/cardsNew/CreditCard';
+import Success from "../../src/components/icons/status/Success";
 
 const ACTIVE_STATUS = { label: "Active", state: "success", showIcon: true };
 
@@ -13,7 +13,7 @@ const Template = ({ showActiveStatus, statusChipsProps, ...args }: any) => (
 );
 
 export default {
-    title: "Components/CreditCards",
+    title: "Components/Cards & Accounts & Finance/CreditCards",
     component: CreditCard,
     render: Template,
     argTypes: {

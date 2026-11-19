@@ -1,11 +1,11 @@
 import * as allStories from "./Balance.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { Balance } from "../src/components/balance/Balance";
-import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { Balance } from "../../src/components/balance/Balance";
+import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/Balance",
+  title: "Components/Cards & Accounts & Finance/Balance",
   component: Balance,
   argTypes: {
     firstValue: { action: "First Value", control: "text" },

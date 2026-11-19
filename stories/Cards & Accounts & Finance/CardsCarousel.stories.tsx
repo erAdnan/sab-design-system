@@ -1,11 +1,11 @@
 import * as allStories from "./CardsCarousel.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { useState } from "react";
-import { LanguageWrapper } from "../src/components/local/LanguageWrapper";
-import { CardsCarousel } from "../src/components/cards/CardsCarousel";
+import { LanguageWrapper } from "../../src/components/local/LanguageWrapper";
+import { CardsCarousel } from "../../src/components/cards/CardsCarousel";
 
 export default {
-    title: "Components/Cards Carousel",
+    title: "Components/Cards & Accounts & Finance/Cards Carousel",
     component: CardsCarousel,
     args: {
         accountNumber: "****** 6234",

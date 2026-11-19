@@ -1,8 +1,10 @@
-import { PortfolioCarousel } from "../src/components/cards/PortfolioCarousel";
+import { AccountsCarousel } from "../../src/components/cards/AccountsCarousel";
+import { centerStoryDecorator } from "../../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/CardsPortfolioCarousel",
-  component: PortfolioCarousel,
+  title: "Components/Cards & Accounts & Finance/CardsAccountsCarousel",
+  component: AccountsCarousel,
+  decorators: [centerStoryDecorator],
   argTypes: {
     accountName: {
       action: "Account name",
@@ -22,11 +24,11 @@ export default {
     },
   },
   args: {
-    accountName: "Portfolio account",
+    accountName: "Current account",
     accountNumber: "*****9091",
-    balanceLabel: "Ledger Balance",
+    balanceLabel: "Balance",
     balance: "56,240.00",
-    loading: false
+    loading: false,
   },
 };
 

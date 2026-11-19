@@ -1,7 +1,7 @@
-import { FinanceCarousel } from "../src/components/cards/FinanceCarousel";
+import { FinanceCarousel } from "../../src/components/cards/FinanceCarousel";
 
 export default {
-  title: "Components/CardsFinanceCarousel",
+  title: "Components/Cards & Accounts & Finance/CardsFinanceCarousel",
   component: FinanceCarousel,
   argTypes: {
     totalAmountLabel: {

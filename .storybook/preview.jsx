@@ -259,7 +259,7 @@ const preview = {
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
         const uploaderDocsPages = ["Upload"];
-        // Components/creditAccountFinance/Docs — Figma Cards & Accounts & Finance canvas 227:2376
+        // Components/Cards & Accounts & Finance/Docs — Figma canvas 227:2376
         const creditAccountFinanceDocsPages = [
           "Credit Card",
           "Debit Card",
@@ -958,15 +958,15 @@ const preview = {
               if (leafDiff !== 0) return leafDiff;
             }
           }
-          // Components/creditAccountFinance/Docs topic order (Figma left → right)
+          // Components/Cards & Accounts & Finance/Docs topic order (Figma left → right)
           {
             const parts = (title) => String(title).split("/");
             if (
               parts(a.title)[0] === "Components" &&
-              parts(a.title)[1] === "creditAccountFinance" &&
+              parts(a.title)[1] === "Cards & Accounts & Finance" &&
               parts(a.title)[2] === "Docs" &&
               parts(b.title)[0] === "Components" &&
-              parts(b.title)[1] === "creditAccountFinance" &&
+              parts(b.title)[1] === "Cards & Accounts & Finance" &&
               parts(b.title)[2] === "Docs"
             ) {
               const leafRank = (title) => {

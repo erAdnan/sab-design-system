@@ -1,11 +1,11 @@
 import * as allStories from "./CardsPreviewModule.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
 import { useState } from "react";
-import { PreviewModule } from "../src/components/cards/PreviewModule";
-import { LanguageWrapper } from "../src/components/local/LanguageWrapper";
+import { PreviewModule } from "../../src/components/cards/PreviewModule";
+import { LanguageWrapper } from "../../src/components/local/LanguageWrapper";
 
 export default {
-  title: "Components/CardsPreviewModule",
+  title: "Components/Cards & Accounts & Finance/CardsPreviewModule",
   component: PreviewModule,
   argTypes: {
     type: {

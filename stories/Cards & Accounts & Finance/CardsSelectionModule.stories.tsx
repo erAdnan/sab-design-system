@@ -1,7 +1,7 @@
-import { SelectionModule } from "../src/components/cards/SelectionModule";
+import { SelectionModule } from "../../src/components/cards/SelectionModule";
 
 export default {
-  title: "Components/CardsSelectionModule",
+  title: "Components/Cards & Accounts & Finance/CardsSelectionModule",
   component: SelectionModule,
   argTypes: {
     showChipsInfo: { action: "Show chips info", control: "boolean" },
@@ -24,7 +24,7 @@ export const Default = {
   args: {
     imageProps: {
       isAbsolutePath: true,
-      url: require("../src/assets/images/card-image.png"),
+      url: require("../../src/assets/images/card-image.png"),
     },
   },
 };

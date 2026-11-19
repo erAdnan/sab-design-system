@@ -1,10 +1,10 @@
 import * as allStories from "./NewFinanceCard.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { NewFinance } from "../src/components/cards/NewFinance";
-import AccountInfo from "../src/components/icons/filled/AccountInfo";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { NewFinance } from "../../src/components/cards/NewFinance";
+import AccountInfo from "../../src/components/icons/filled/AccountInfo";
 
 export default {
-  title: "Components/NewFinanceCard",
+  title: "Components/Cards & Accounts & Finance/NewFinanceCard",
   component: NewFinance,
   argTypes: {
     label: {

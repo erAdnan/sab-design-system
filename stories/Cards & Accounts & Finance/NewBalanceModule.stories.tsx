@@ -1,21 +1,21 @@
 import * as allStories from "./NewBalanceModule.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import Bolt from "../src/components/icons/filled/Bolt";
-import { ListItemBadgeType } from "../src/components/list/ListItem";
-import { IcsabCashback as IcsabCashbackComponent, IcsabCashbackProps } from "../src/components/newBalanceModule/IcsabCashback";
-import { FCAndLifeGoals as FCAndLifeGoalsComponent, FCAndLifeGoalsProps } from "../src/components/newBalanceModule/FCAndLifeGoals";
-import Home from "../src/components/icons/sab360/Home";
-import { PFM as PFMComponent } from "../src/components/newBalanceModule/PFM";
-import type { LineChartDataPoint } from "../src/components/graphs/line-chart";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import Bolt from "../../src/components/icons/filled/Bolt";
+import { ListItemBadgeType } from "../../src/components/list/ListItem";
+import { IcsabCashback as IcsabCashbackComponent, IcsabCashbackProps } from "../../src/components/newBalanceModule/IcsabCashback";
+import { FCAndLifeGoals as FCAndLifeGoalsComponent, FCAndLifeGoalsProps } from "../../src/components/newBalanceModule/FCAndLifeGoals";
+import Home from "../../src/components/icons/sab360/Home";
+import { PFM as PFMComponent } from "../../src/components/newBalanceModule/PFM";
+import type { LineChartDataPoint } from "../../src/components/graphs/line-chart";
 import { Animated, FlatList, useWindowDimensions, View } from "react-native";
 import { useCallback, useRef, useState } from "react";
-import { NavigationDots } from "../src/components/navigationDots/NavigationDots";
-import { fontMediumLarge, spacingL } from "../src/assets/styles/constants/size";
-import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
+import { NavigationDots } from "../../src/components/navigationDots/NavigationDots";
+import { fontMediumLarge, spacingL } from "../../src/assets/styles/constants/size";
+import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/NewBalanceModule",
+  title: "Components/Cards & Accounts & Finance/NewBalanceModule",
   components: [IcsabCashbackComponent, FCAndLifeGoalsComponent, PFMComponent]
 };
 

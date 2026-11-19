@@ -20,7 +20,7 @@ module.exports = {
     "../stories/Toggle/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Range/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Uploader/**/*.stories.@(ts|tsx|js|jsx)",
-    "../stories/creditAccountFinance/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Cards & Accounts & Finance/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Tabs/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Banners/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/Blocks/**/*.stories.@(ts|tsx|js|jsx)",
