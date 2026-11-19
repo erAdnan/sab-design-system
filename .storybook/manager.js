@@ -4,6 +4,41 @@ const { createSabTheme } = require("./createSabTheme");
 const { version, versionLabel, brandTitle } = require("./version");
 
 /**
+ * Interactive component stories hidden from the sidebar (code + story files kept).
+ * Exact `Components/<name>` match — Docs under the same name stay visible when present.
+ */
+const HIDDEN_SIDEBAR_COMPONENTS = new Set([
+  "BlockBill",
+  "BlockInformation",
+  "BlockBanner",
+  "CardsAccountsCarousel",
+  "CardsPreviewModule", // Preview module
+  "BlockButton",
+  "Dropdown",
+  "ChipsInfo",
+  "Cards Carousel",
+  "CardsPortfolioCarousel",
+  "Carousel Banner",
+  "ChangeActionButton",
+  "FloatingButton",
+  "Tooltip",
+  "ErrorStateIndicator",
+  "BlockGeneric",
+  "Widget",
+]);
+
+/** @returns {boolean} `true` = keep in sidebar */
+const showSidebarItem = (item) => {
+  const title = String(item?.title ?? "");
+  const parts = title.split("/");
+  if (parts[0] !== "Components" || !HIDDEN_SIDEBAR_COMPONENTS.has(parts[1])) {
+    return true;
+  }
+  // Keep Figma docs pages (e.g. Components/Dropdown/Docs/…)
+  return parts[2] === "Docs";
+};
+
+/**
  * Web Storybook manager chrome only.
  * On-device Storybook (`.rnstorybook`) has its own UI and does not load this file.
  *
@@ -15,6 +50,9 @@ addons.setConfig({
   sidebar: {
     showRoots: true,
     collapsedRoots: [],
+    filters: {
+      hideListedComponents: showSidebarItem,
+    },
   },
   toolbar: {
     title: { hidden: false },
