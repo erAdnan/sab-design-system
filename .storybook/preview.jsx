@@ -234,6 +234,8 @@ const preview = {
           "Budget Card Widget",
           "Content Cards Widget",
         ];
+        // Components/Calendar/Docs — Figma Calendar canvas 14209:10136
+        const calendarDocsPages = ["Calendar"];
         // Components/Range/Docs — Figma Range canvas 2379:34719
         const rangeDocsPages = ["Range"];
         // Components/Uploader/Docs — Figma Upload canvas 4120:21000
@@ -814,6 +816,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = personalFinanceWidgetsDocsPages.indexOf(leaf);
                 return i === -1 ? personalFinanceWidgetsDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Calendar/Docs topic order (Figma left → right)
+          {
+            const parts = (title) => String(title).split("/");
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Calendar" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Calendar" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = calendarDocsPages.indexOf(leaf);
+                return i === -1 ? calendarDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

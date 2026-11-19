@@ -56,6 +56,11 @@ export interface CalendarProps extends AutomationProps {
   selectedDate?: Date | null;
   /** Month shown when there is no selected date. Defaults to the current month. */
   defaultViewMonth?: Date;
+  /**
+   * Opens the month or year picker on mount (Figma Unit=Months / Unit=Years).
+   * Omit for the default week grid.
+   */
+  defaultPickerMode?: CalendarPickerMode | null;
   /** Called when the user taps a day in the current month. */
   onDateSelect: (date: Date) => void;
   /**
@@ -73,6 +78,7 @@ export interface CalendarProps extends AutomationProps {
 export const Calendar: FC<CalendarProps> = ({
   selectedDate = null,
   defaultViewMonth,
+  defaultPickerMode = null,
   onDateSelect,
   onMonthPillPress,
   overrideStyles,
@@ -87,7 +93,9 @@ export const Calendar: FC<CalendarProps> = ({
     if (defaultViewMonth) return startOfMonth(defaultViewMonth);
     return startOfMonth(new Date());
   });
-  const [pickerMode, setPickerMode] = useState<CalendarPickerMode | null>(null);
+  const [pickerMode, setPickerMode] = useState<CalendarPickerMode | null>(
+    () => defaultPickerMode ?? null
+  );
   const [yearPageStart, setYearPageStart] = useState(() => {
     const year = (selectedDate ?? defaultViewMonth ?? new Date()).getFullYear();
     return year - 2;
