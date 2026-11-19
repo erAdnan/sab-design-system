@@ -30,6 +30,7 @@ import {
 import fonts from "../../src/assets/styles/constants/fonts";
 import { canvasTier } from "../../src/assets/styles/utils/responsive";
 import { tx } from "../../src/localization/tx";
+import { foundationsDocsCanvas } from "../../.storybook/foundationsDocs";
 
 /**
  * Figma: Spacing page (69:6522), frame “Spacing” (69:6524).
@@ -183,6 +184,7 @@ export default {
   parameters: {
     layout: "fullscreen",
     docs: {
+      ...foundationsDocsCanvas,
       description: {
         component:
           "SAB Pulse spacing foundations from Figma (node 69:6522): the 8px multiple spacing rule and spacing.3XS → spacing.4XXL tokens.",

@@ -36,6 +36,7 @@ import {
 import fonts from "../../src/assets/styles/constants/fonts";
 import { canvasTier } from "../../src/assets/styles/utils/responsive";
 import { tx } from "../../src/localization/tx";
+import { foundationsDocsCanvas } from "../../.storybook/foundationsDocs";
 
 /**
  * Figma: Border Radius page (69:6599)
@@ -217,6 +218,7 @@ export default {
   parameters: {
     layout: "fullscreen",
     docs: {
+      ...foundationsDocsCanvas,
       page: BorderRadiusDocsPage,
       description: {
         component:

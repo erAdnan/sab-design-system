@@ -42,6 +42,7 @@ import { canvasTier } from "../../src/assets/styles/utils/responsive";
 import { tx } from "../../src/localization/tx";
 import { FigmaDocPage } from "../pulse-design-system/rules-and-patterns/FigmaDocPage";
 import { PLATFORM_AGNOSTIC_IMAGES } from "./typography/catalog";
+import { foundationsDocsCanvas } from "../../.storybook/foundationsDocs";
 
 /**
  * Figma: Typography page (24:2)
@@ -52,6 +53,7 @@ export default {
   title: "Foundations/Typography",
   parameters: {
     docs: {
+      ...foundationsDocsCanvas,
       description: {
         component:
           "SAB Pulse typography foundations from Figma (node 24:2): platform-agnostic system fonts, font weight, size, line height, English and Arabic text styles, and the Saudi Riyal (SAR) symbol scale.",

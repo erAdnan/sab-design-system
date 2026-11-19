@@ -36,6 +36,7 @@ import Meem from "../src/components/logos/banks/Meem";
 import Mizuho from "../src/components/logos/banks/Mizuho";
 import Urpay from "../src/components/logos/banks/Urpay";
 import Neo from "../src/components/logos/banks/Neo";
+import { foundationsDocsCanvas } from "../.storybook/foundationsDocs";
 
 export default {
   title: "Foundations/Assets/Local Banks Icons",
@@ -45,7 +46,12 @@ export default {
   },
   args: {
     size: 'extra-small'
-  }
+  },
+  parameters: {
+    docs: {
+      ...foundationsDocsCanvas,
+    },
+  },
 }
 
 const Template = (args: any) => {

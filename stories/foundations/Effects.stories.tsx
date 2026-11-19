@@ -25,6 +25,7 @@ import {
 import fonts from "../../src/assets/styles/constants/fonts";
 import { canvasTier } from "../../src/assets/styles/utils/responsive";
 import { tx } from "../../src/localization/tx";
+import { foundationsDocsCanvas } from "../../.storybook/foundationsDocs";
 
 /**
  * Figma: Effects page (3214:2708), frame “Effects” (3214:2739).
@@ -125,6 +126,7 @@ export default {
   parameters: {
     layout: "fullscreen",
     docs: {
+      ...foundationsDocsCanvas,
       description: {
         component:
           "SAB Pulse effects foundations from Figma (node 3214:2708): backdrop blur tokens BackgroundBlurLight, GlassBlurMedium, GlassBlurRegular, and OverlayBlur.",

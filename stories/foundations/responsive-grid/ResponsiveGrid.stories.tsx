@@ -30,6 +30,7 @@ import { canvasTier } from "../../../src/assets/styles/utils/responsive";
 import { tx } from "../../../src/localization/tx";
 import { FigmaDocPage } from "../../pulse-design-system/rules-and-patterns/FigmaDocPage";
 import { RESPONSIVE_GRID_PAGES } from "./catalog";
+import { foundationsDocsCanvas } from "../../../.storybook/foundationsDocs";
 
 /**
  * Figma: Responsive Grid page (69:6658)
@@ -116,6 +117,7 @@ export default {
   parameters: {
     layout: "fullscreen",
     docs: {
+      ...foundationsDocsCanvas,
       description: {
         component:
           "SAB Pulse responsive grid foundations from Figma (node 69:6658): layout tokens sab/mobile, sab/tablet, sab/tablet-large, plus device reference frames.",

@@ -53,9 +53,15 @@ import OpenBankingIllustration from "../src/components/illustrations/OpenBanking
 import { SABStore as SABStoreIllustration } from "../src/components/illustrations/SABStore";
 import { SmartMoney as SmartMoneyIllustration } from "../src/components/illustrations/SmartMoney";
 import { TransferMoney as TransferMoneyIllustration } from "../src/components/illustrations/TransferMoney";
+import { foundationsDocsCanvas } from "../.storybook/foundationsDocs";
 
 export default {
   title: "Foundations/Assets/Illustrations",
+  parameters: {
+    docs: {
+      ...foundationsDocsCanvas,
+    },
+  },
   components: [
     Pin,
     Lock,

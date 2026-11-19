@@ -8,9 +8,16 @@ import RagFilledError from "../src/components/icons/ragFilled/RagFilledError";
 import RagFilledWarning from "../src/components/icons/ragFilled/RagFilledWarning";
 import RagFilledInfo from "../src/components/icons/ragFilled/RagFilledInfo";
 
+import { foundationsDocsCanvas } from "../.storybook/foundationsDocs";
+
 export default {
   title: "Foundations/Assets/RAG",
   component: Rag,
+  parameters: {
+    docs: {
+      ...foundationsDocsCanvas,
+    },
+  },
 };
 
 const InteractiveTemplateDefault = (args: any) => {

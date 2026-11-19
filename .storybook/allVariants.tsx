@@ -3,6 +3,10 @@ import { Text as RNText, View } from "react-native";
 import { useTheme } from "../src/context/theme/themeContext";
 import { deepTranslateArgs } from "../src/localization/tx";
 import { MOBILE_CONTENT_WIDTH } from "./mobileContentFrame";
+import {
+  resolveVariantSource,
+  VariantCodePanel,
+} from "./variantSource";
 
 /**
  * "All variants" gallery for a stories file.
@@ -20,9 +24,10 @@ import { MOBILE_CONTENT_WIDTH } from "./mobileContentFrame";
  * (their `args` / `render` / per-story `decorators`) and never duplicates markup. Members of the
  * namespace are only read at render time, which keeps the circular import safe.
  *
- * Layout: a vertical, top-aligned stack capped at the mobile content width (343) and horizontally
- * centered, with a small label (story name) above each variant. The file's own decorators still
- * wrap the gallery (theme / locale / i18n come from the global preview decorator, untouched).
+ * Each variant includes Show/Hide code + Copy code (see variantSource.tsx). Snippets are inferred
+ * from `meta.component` + resolved args; set `parameters.docs.source.code` or
+ * `parameters.allVariantsSource` on a story to override. Catalogue/matrix renders without a
+ * component instance show an explanatory comment instead of JSX.
  */
 
 export const ALL_VARIANTS_STORY_NAME = "All variants";
@@ -34,6 +39,7 @@ type AnyStory = {
   decorators?: any[];
   name?: string;
   storyName?: string;
+  parameters?: Record<string, any>;
   [key: string]: any;
 };
 
@@ -51,6 +57,8 @@ export type AllVariantsOptions = {
   mapArgs?: (args: Record<string, any>, name: string) => Record<string, any>;
   /** Extra style for each variant's wrapper (e.g. padding / separator). */
   itemStyle?: Record<string, any>;
+  /** Hide the Show/Hide + Copy code panel (default: false). */
+  hideSource?: boolean;
 };
 
 const matchesFilter = (filter: unknown, name: string) => {
@@ -160,6 +168,7 @@ const Variant = ({
   locale,
   name,
   mapArgs,
+  hideSource,
 }: {
   story: AnyStory;
   meta: Record<string, any>;
@@ -167,6 +176,7 @@ const Variant = ({
   locale: string;
   name: string;
   mapArgs?: AllVariantsOptions["mapArgs"];
+  hideSource?: boolean;
 }) => {
   const resolvedArgs = deepTranslateArgs(
     expandDottedArgs({ ...(meta.args ?? {}), ...((story as any).args ?? {}) }),
@@ -199,7 +209,15 @@ const Variant = ({
     return Current;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return <Inner />;
+
+  const source = resolveVariantSource({ name, story, meta, args });
+
+  return (
+    <View style={{ width: "100%" }}>
+      <Inner />
+      {hideSource ? null : <VariantCodePanel source={source} />}
+    </View>
+  );
 };
 
 /**
@@ -211,8 +229,14 @@ export const createAllVariantsStory = (module: StoriesModule, order?: string[], 
   // Controls would only edit meta-level args that the gallery merges per variant; hide them.
   parameters: {
     controls: { disable: true },
-    // The auto "Show code" JSX printer chokes on the (large) gallery tree; the story is a composition anyway.
-    docs: { source: { type: "code", code: "// Gallery of every variant in this file (see .storybook/allVariants.tsx)" } },
+    // The auto "Show code" JSX printer chokes on the (large) gallery tree; per-variant panels
+    // under each item provide Show/Hide + Copy instead (see variantSource.tsx).
+    docs: {
+      source: {
+        type: "code",
+        code: "// All variants gallery — use Show code under each variant for per-item snippets.",
+      },
+    },
   },
   render: (_args: any, context: any) => {
     const meta = module.default ?? {};
@@ -242,6 +266,7 @@ export const createAllVariantsStory = (module: StoriesModule, order?: string[], 
                 locale={locale}
                 name={name}
                 mapArgs={options.mapArgs}
+                hideSource={options.hideSource}
               />
             </View>
           );

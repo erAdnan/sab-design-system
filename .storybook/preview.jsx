@@ -12,6 +12,8 @@ import i18n from "../src/localization/i18n";
 import { deepTranslateArgs } from "../src/localization/tx";
 import { versionLabel } from "./version";
 import { createSabTheme } from "./createSabTheme";
+import { withStorySourcePanel } from "./storySourceDecorator";
+import { FoundationsDocsContainer } from "./FoundationsDocsContainer";
 
 /**
  * Web Storybook only (.storybook). On-device Storybook uses `.rnstorybook`
@@ -1178,6 +1180,8 @@ const preview = {
     },
     docs: {
       theme: createSabTheme(`Pulse Design System ${versionLabel}`),
+      // Foundations: hide native Show code / Copy code (see FoundationsDocsContainer).
+      container: FoundationsDocsContainer,
     },
   },
 
@@ -1234,7 +1238,21 @@ const preview = {
                   <ThemeFromGlobals themeKey={themeKey}>
                     <StoryBookWrapper locale={locale} showLanguageSwitcher={false}>
                       <View style={storySlotStyle} key={locale}>
-                        <Story args={translatedArgs} />
+                        {/*
+                          withStorySourcePanel adds Show/Hide + Copy code under individual
+                          stories (e.g. Default-only files). All variants + Foundations
+                          (incl. Docs embeds) are skipped — see storySourceDecorator.tsx.
+                        */}
+                        {withStorySourcePanel(
+                          () => <Story args={translatedArgs} />,
+                          {
+                            ...context,
+                            args: translatedArgs,
+                            // Docs mode can omit title; keep id/kind for Foundations skip.
+                            title: context.title ?? context.kind,
+                            id: context.id,
+                          },
+                        )}
                       </View>
                     </StoryBookWrapper>
                   </ThemeFromGlobals>

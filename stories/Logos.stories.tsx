@@ -12,10 +12,16 @@ import SimahNew from "../src/components/logos/SimahNew";
 import { SABLogo } from "../src/components/logos/SABLogo";
 import Zakaty from "../src/components/logos/Zakaty";
 import Visa from "../src/components/logos/Visa";
+import { foundationsDocsCanvas } from "../.storybook/foundationsDocs";
 
 export default {
   title: "Foundations/Assets/Logos",
   components: [SABLogo, Absher, Drahim, Mada, Sarie, SimahNew, Zakaty, Visa],
+  parameters: {
+    docs: {
+      ...foundationsDocsCanvas,
+    },
+  },
 };
 
 /** 48×48 preview slot — matches design / disclaimer usage; overflow clips any SVG web quirks. */

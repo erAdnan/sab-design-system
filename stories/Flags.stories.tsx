@@ -15,9 +15,15 @@ import {
 } from "../src/assets/styles/constants/size";
 import { Text } from "../src/components/text/Text";
 import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
+import { foundationsDocsCanvas } from "../.storybook/foundationsDocs";
 
 export default {
   title: "Foundations/Assets/Flags",
+  parameters: {
+    docs: {
+      ...foundationsDocsCanvas,
+    },
+  },
 };
 
 type FlagGalleryProps = {

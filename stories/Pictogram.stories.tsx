@@ -7,9 +7,16 @@ import { PictogramSabstorePlus } from "../src/components/pictogram/PictogramSabs
 import Bolt from "../src/components/icons/filled/Bolt";
 
 import { tx } from "../src/localization/tx";
+import { foundationsDocsCanvas } from "../.storybook/foundationsDocs";
+
 export default {
     title: "Foundations/Assets/Pictograms",
     component: Pictogram,
+    parameters: {
+      docs: {
+        ...foundationsDocsCanvas,
+      },
+    },
 };
 
 const InteractiveTemplate = (args: any) => {
