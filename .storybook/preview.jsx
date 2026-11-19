@@ -281,6 +281,8 @@ const preview = {
           "Voucher Receipt",
           "Learning Product Cards",
         ];
+        // Components/Widgets/Docs — Figma Pulse Design System Widgets canvas 2148:2 left → right
+        const widgetsDocsPages = ["Widget", "Tile List Widget"];
         // Components/PersonalFinanceWidgets/Docs — Figma Personal Finance Widgets canvas 2702:8148 left → right
         const personalFinanceWidgetsDocsPages = [
           "Tag Widget",
@@ -922,6 +924,26 @@ const preview = {
                 const leaf = parts(title)[3] || "";
                 const i = productsCardsDocsPages.indexOf(leaf);
                 return i === -1 ? productsCardsDocsPages.length : i;
+              };
+              const leafDiff = leafRank(a.title) - leafRank(b.title);
+              if (leafDiff !== 0) return leafDiff;
+            }
+          }
+          // Components/Widgets/Docs topic order (Figma left → right)
+          {
+            const parts = componentsParts;
+            if (
+              parts(a.title)[0] === "Components" &&
+              parts(a.title)[1] === "Widgets" &&
+              parts(a.title)[2] === "Docs" &&
+              parts(b.title)[0] === "Components" &&
+              parts(b.title)[1] === "Widgets" &&
+              parts(b.title)[2] === "Docs"
+            ) {
+              const leafRank = (title) => {
+                const leaf = parts(title)[3] || "";
+                const i = widgetsDocsPages.indexOf(leaf);
+                return i === -1 ? widgetsDocsPages.length : i;
               };
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;

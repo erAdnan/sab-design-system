@@ -27,7 +27,7 @@ const HIDDEN_SIDEBAR_COMPONENTS = new Set([
   "Tooltip",
   "ErrorStateIndicator",
   "BlockGeneric",
-  "Widget",
+  "SkeletonBox",
 ]);
 
 /** Top-level Components sections from the design-system IA. */
@@ -55,6 +55,7 @@ const SIDEBAR_COMPONENT_GROUPS = new Set([
   "Notifications",
   "Range",
   "Text",
+  "Widgets",
 ]);
 
 /**

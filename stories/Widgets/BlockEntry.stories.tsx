@@ -8,8 +8,9 @@ import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
 import Prepaid from "../../src/components/icons/outline/Prepaid";
 
 export default {
-  title: "Components/Data Display/Blocks/BlockEntry",
+  title: "Components/Data Display/Widgets/Tile List Widget",
   component: Entry,
+  tags: ["!autodocs"],
   argTypes: {
     title: { control: "text" },
     subtitle: { control: "text" },

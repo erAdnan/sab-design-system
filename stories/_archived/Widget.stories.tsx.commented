@@ -1,3 +1,13 @@
+/**
+ * ARCHIVED — legacy Widget component stories (commented out).
+ * Replaced by:
+ * - Components/Data Display/Widgets (New Widget)
+ * - Components/Data Display/Widgets/Docs/Widget (Figma Pulse Design System 2148:2)
+ *
+ * This file is not loaded by Storybook (not matching *.stories.tsx).
+ */
+
+/*
 import * as allStories from "./Widget.stories";
 import { createAllVariantsStory } from "../.storybook/allVariants";
 import { useTranslation } from "react-i18next";
@@ -207,3 +217,4 @@ export const AllVariants = createAllVariantsStory(allStories, [
     "ImageLargeWithChips",
     "IconWithImageMedium",
 ]);
+*/
