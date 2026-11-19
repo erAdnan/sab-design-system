@@ -1,12 +1,12 @@
 import * as allStories from "./PromotionalBanner.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { PromotionalBanner } from "../src/components/banner/PromotionalBanner";
-import CreditCards from "../src/assets/svgs/illustration/CreditCards.svg"
-import OpenAnAccount from "../src/assets/svgs/illustration/opennewaccount.svg"
-import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { PromotionalBanner } from "../../src/components/banner/PromotionalBanner";
+import CreditCards from "../../src/assets/svgs/illustration/CreditCards.svg"
+import OpenAnAccount from "../../src/assets/svgs/illustration/opennewaccount.svg"
+import { actuatedNormalize } from "../../src/assets/styles/utils/pixelScaling";
 
 export default {
-  title: "Components/PromotionalBanner",
+  title: "Components/Banners/PromotionalBanner",
   component: PromotionalBanner,
   argTypes: {
     title: { action: "Title", control: "text" },

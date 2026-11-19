@@ -5,7 +5,8 @@ const { version, versionLabel, brandTitle } = require("./version");
 
 /**
  * Interactive component stories hidden from the sidebar (code + story files kept).
- * Exact `Components/<name>` match — Docs under the same name stay visible when present.
+ * Matches `Components/<name>` or nested under a group (e.g. `Components/Banners/<name>`).
+ * Docs under the same name stay visible when present.
  */
 const HIDDEN_SIDEBAR_COMPONENTS = new Set([
   "BlockBill",
@@ -27,15 +28,25 @@ const HIDDEN_SIDEBAR_COMPONENTS = new Set([
   "Widget",
 ]);
 
+/** Leaf name for hide matching: Components/<name> or Components/<Group>/<name> */
+const sidebarComponentLeaf = (parts) => {
+  if (parts[0] !== "Components") return null;
+  if (parts[1] === "Banners" && parts[2] && parts[2] !== "Docs") {
+    return parts[2];
+  }
+  return parts[1] || null;
+};
+
 /** @returns {boolean} `true` = keep in sidebar */
 const showSidebarItem = (item) => {
   const title = String(item?.title ?? "");
   const parts = title.split("/");
-  if (parts[0] !== "Components" || !HIDDEN_SIDEBAR_COMPONENTS.has(parts[1])) {
+  const leaf = sidebarComponentLeaf(parts);
+  if (!leaf || !HIDDEN_SIDEBAR_COMPONENTS.has(leaf)) {
     return true;
   }
-  // Keep Figma docs pages (e.g. Components/Dropdown/Docs/…)
-  return parts[2] === "Docs";
+  // Keep Figma docs pages (e.g. Components/Dropdown/Docs/… or Components/Banners/Docs/…)
+  return parts.includes("Docs");
 };
 
 /**

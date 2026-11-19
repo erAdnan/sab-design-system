@@ -1,9 +1,9 @@
 import * as allStories from "./CarouselBanner.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { CarouselBanner } from "../src/components/banner/CarouselBanner";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { CarouselBanner } from "../../src/components/banner/CarouselBanner";
 
 export default {
-  title: "Components/Carousel Banner",
+  title: "Components/Banners/Carousel Banner",
   component: CarouselBanner,
   argTypes: {
     title: { action: "Label", control: "text" },
@@ -24,7 +24,7 @@ export const Default = {
   },
 };
 
-const image = require("../src/assets/images/carouselBannerImagePattern.png");
+const image = require("../../src/assets/images/carouselBannerImagePattern.png");
 export const Image = {
   args: {
     type: "image",

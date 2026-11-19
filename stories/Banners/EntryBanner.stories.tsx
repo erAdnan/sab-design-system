@@ -1,11 +1,11 @@
 import * as allStories from "./EntryBanner.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { EntryBanner } from "../src/components/banner/EntryBanner";
-import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { EntryBanner } from "../../src/components/banner/EntryBanner";
+import { mobileContentDecorators } from "../../.storybook/mobileContentFrame";
 
 export default {
   decorators: mobileContentDecorators,
-  title: "Components/EntryBanner",
+  title: "Components/Banners/EntryBanner",
   component: EntryBanner,
   argTypes: {
     title: { control: "text" },

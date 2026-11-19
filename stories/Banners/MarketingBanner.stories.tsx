@@ -1,9 +1,9 @@
 import * as allStories from "./MarketingBanner.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { MarketingBanner } from "../src/components/banner/MarketingBanner";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { MarketingBanner } from "../../src/components/banner/MarketingBanner";
 
 export default {
-  title: "Components/Marketing Banner",
+  title: "Components/Banners/Marketing Banner",
   component: MarketingBanner,
   argTypes: {
     title: { action: "Label", control: "text" },

@@ -1,9 +1,9 @@
 import * as allStories from "./InfoMarketingBanner.stories";
-import { createAllVariantsStory } from "../.storybook/allVariants";
-import { InfoMarketingBanner } from "../src/components/banner/InfoMarketingBanner";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { InfoMarketingBanner } from "../../src/components/banner/InfoMarketingBanner";
 
 export default {
-  title: "Components/Info Marketing Banner",
+  title: "Components/Banners/Info Marketing Banner",
   component: InfoMarketingBanner
 }
 
