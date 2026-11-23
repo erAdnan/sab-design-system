@@ -1,8 +1,12 @@
+import * as allStories from "./Skeleton.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { View } from "react-native";
 import { SkeletonBox } from "../src/components/skeleton/SkeletonBox";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
-  title: "Components/SkeletonBox",
+  decorators: mobileContentDecorators,
+  title: "Components/Data Display/SkeletonBox",
   component: SkeletonBox,
   argTypes: {
     shape: {
@@ -51,3 +55,9 @@ export const SkeletonSquares = {
     size: "medium",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "SkeletonLines",
+    "SkeletonCircles",
+    "SkeletonSquares",
+]);

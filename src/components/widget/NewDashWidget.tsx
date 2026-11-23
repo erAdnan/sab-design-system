@@ -5,7 +5,6 @@ import { fontMedium, radiusS, spacing1XS, spacingS, spacingXXS } from "../../ass
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import { Text } from "../text/Text";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 type AddOn = {
   icon: ReactElement,
@@ -29,13 +28,12 @@ export const NewDashWidget: React.FC<NewDashWidgetProps> = ({
   loading = false
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const styles = StyleSheet.create({
     container: {
       padding: spacingS,
       borderRadius: radiusS,
       backgroundColor: theme.stylesblockbg,
-      ...frame.of(164),
+      width: actuatedNormalize(164),
       height: actuatedNormalize(178),
       display: 'flex',
       flexDirection: 'column',

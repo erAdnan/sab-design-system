@@ -1,6 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { useWindowDimensions, ViewStyle } from "react-native";
 import { spacingS } from "../constants/size";
+import { actuatedNormalize } from "./pixelScaling";
 
 export type CanvasTier = "smallMobile" | "largeMobile" | "tablet" | "largeTablet";
 
@@ -39,7 +40,15 @@ export function useFluidWidth() {
   const tier = canvasTier(width);
   const span = contentSpan(width);
 
-  const of = useCallback((_designWidth?: number) => fillFrame, []);
+  /**
+   * Figma fixed size: returns `actuatedNormalize(designWidth)` for width + maxWidth.
+   * Without a designWidth, falls back to `fillFrame` (intentional full-bleed shells only).
+   */
+  const of = useCallback((designWidth?: number): ViewStyle => {
+    if (designWidth == null) return fillFrame;
+    const w = actuatedNormalize(designWidth);
+    return { width: w, maxWidth: w, alignSelf: "center" };
+  }, []);
 
   return useMemo(
     () => ({

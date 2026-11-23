@@ -31,7 +31,7 @@ export const ProductsCardsSummarySkeleton: FC<
       borderRadius: radiusS,
       backgroundColor: theme.stylesblockbg,
       paddingVertical: actuatedNormalize(12),
-      width: "100%",
+      width: actuatedNormalize(343),
     },
     mainWrapper: {
       display: "flex",

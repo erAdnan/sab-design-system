@@ -5,6 +5,7 @@ import { useTheme } from "../../context/theme/themeContext";
 import {
   fontMedium,
   fontXSmall,
+  lineHeightMedium,
   lineHeightXSmall,
   radiusL,
   spacingS,
@@ -53,6 +54,9 @@ export const FloatingButton: React.FC<FloatingButtonProps> = ({
       paddingVertical: spacingXS,
       borderRadius: radiusL,
       alignSelf: "flex-start",
+      // Figma floating.button (Text + Icon): min-width 128, max-width 343
+      minWidth: actuatedNormalize(128),
+      maxWidth: actuatedNormalize(343),
     },
     iconButton: {
       width: actuatedNormalize(48),
@@ -173,7 +177,7 @@ export const FloatingButton: React.FC<FloatingButtonProps> = ({
     >
       {redIcon}
       {text && (
-        <Text size={fontMedium} variant="primarycolor4static" overrideStyles={{ fontFamily: fonts.HSBC_Medium }}>
+        <Text size={fontMedium} variant="primarycolor4static" overrideStyles={{ fontFamily: fonts.HSBC_Medium, lineHeight: lineHeightMedium }}>
           {text}
         </Text>
       )}

@@ -16,6 +16,8 @@ import {
   SocialSvgsLight,
   FilledSvgsLight,
   FilledSvgsDark,
+  UsersSvgsLight,
+  UsersSvgsDark,
 } from "./IconList";
 import { SvgProps } from "react-native-svg";
 import { useTheme } from "../../context/theme/themeContext";
@@ -60,6 +62,8 @@ const Icon: FC<LocalIconProps> = ({
         return isDarkTheme || isWhite
           ? FunctionalsSvgsDark
           : FunctionalsSvgsLight;
+      case "users":
+        return isDarkTheme || isWhite ? UsersSvgsDark : UsersSvgsLight;
       case "notifications":
         return isDarkTheme || isWhite
           ? NotificationsSvgsDark
@@ -75,7 +79,7 @@ const Icon: FC<LocalIconProps> = ({
       default:
         return ArrowSvgsLight;
     }
-  }, [type, isDarkTheme]);
+  }, [type, isDarkTheme, isWhite]);
 
   const SvgIcon = svgs[name];
 

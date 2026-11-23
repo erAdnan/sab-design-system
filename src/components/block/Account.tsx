@@ -24,7 +24,6 @@ import ImageThumbnail, { ImageThumbnailProps } from "../imageThumbnail/ImageThum
 import ChevronLeft from "../icons/arrows/chevron/ChevronLeft";
 import fonts from "../../assets/styles/constants/fonts";
 import { NewCurrency } from "../text/NewCurrency";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface BlockAccountProps {
   headline: string;
@@ -96,7 +95,6 @@ export const Account: FC<BlockAccountProps> = ({
   onBlockPress
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
   const isNegativeBalance = balance?.trimStart().startsWith("-") ?? false;
   const formattedBalance = balance?.trimStart().replace(/^[+-]\s*/, "");
@@ -156,7 +154,7 @@ export const Account: FC<BlockAccountProps> = ({
   return loading ? (
     <View
       style={{
-        ...frame.of(343),
+        width: actuatedNormalize(343),
         height: extraContent ? actuatedNormalize(80) : actuatedNormalize(60),
         backgroundColor: theme.stylesblockbg,
         display: "flex",
@@ -199,7 +197,6 @@ export const Account: FC<BlockAccountProps> = ({
     <TouchableOpacity
       style={{
         ...styles.blockWrapper,
-        ...frame.of(343),
         backgroundColor: theme.stylesblockbg,
       }}
       onPress={onBlockPress}
@@ -264,6 +261,7 @@ export const Account: FC<BlockAccountProps> = ({
 
 const styles = StyleSheet.create({
   blockWrapper: {
+    width: actuatedNormalize(343),
     borderRadius: radiusS,
     display: "flex",
     flexDirection: "row",
@@ -280,9 +278,6 @@ const styles = StyleSheet.create({
   textWrapper: {
     display: 'flex',
     alignItems: 'flex-start',
-    flex: 1,
-    flexShrink: 1,
-    minWidth: 0,
     gap: actuatedNormalize(3),
   },
   balance: {

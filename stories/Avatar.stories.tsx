@@ -1,3 +1,5 @@
+import * as allStories from "./Avatar.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { View } from "react-native";
 import { Avatar } from "../src/components/avatar/Avatar";
 import Edit from "../src/components/icons/functionals/Edit";
@@ -5,8 +7,9 @@ import MyAccounts from "../src/components/icons/banking/MyAccounts";
 import IconComponent from "../src/components/icon/Icon";
 
 export default {
-  title: "Components/Avatar",
+  title: "Components/Data Display/Avatar",
   component: Avatar,
+  tags: ["!autodocs"],
   argTypes: {
     initials: { action: "Initials", control: "text" },
     size: { action: "Size", control: "radio", options: ["small", "medium", "large"] },
@@ -97,3 +100,16 @@ export const LogoWithIcon = {
     icon: <IconComponent type="banking" name="card" />,
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "InitialsSmall",
+    "InitialsMedium",
+    "InitialsLarge",
+    "ProfilePictureSmall",
+    "ProfilePictureMedium",
+    "ProfilePictureLarge",
+    "ProfilePictureWithStatusIcon",
+    "ProfilePictureWithEditIcon",
+    "Icon",
+    "LogoWithIcon",
+]);

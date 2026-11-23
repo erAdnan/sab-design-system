@@ -7,9 +7,16 @@ import { PictogramSabstorePlus } from "../src/components/pictogram/PictogramSabs
 import Bolt from "../src/components/icons/filled/Bolt";
 
 import { tx } from "../src/localization/tx";
+import { foundationsDocsCanvas } from "../.storybook/foundationsDocs";
+
 export default {
-    title: "Components/Pictograms",
+    title: "Foundations/Assets/Pictograms",
     component: Pictogram,
+    parameters: {
+      docs: {
+        ...foundationsDocsCanvas,
+      },
+    },
 };
 
 const InteractiveTemplate = (args: any) => {
@@ -37,6 +44,9 @@ const InteractiveTemplate = (args: any) => {
                 <Pictogram {...args} type="link" />
                 <Pictogram {...args} type="loginLocked" />
                 <Pictogram {...args} type="achievement" />
+                <Pictogram {...args} type="default" />
+                <Pictogram {...args} type="success-new" />
+                <Pictogram {...args} type="failure-new" />
             </View>
             <Text bold size={fontXLarge}>{tx("Number and Loader")}</Text>
             <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacingXS, marginVertical: spacingSM }}>

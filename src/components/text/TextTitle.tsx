@@ -4,12 +4,14 @@ import { Title } from "./Title";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import { Badge } from "../badge/Badge";
 import { TooltipComponent, TooltipProps } from "../tooltip/Tooltip";
-import { fontMediumLarge, spacingXS } from "../../assets/styles/constants/size";
+import { fontLarge, spacingXXS } from "../../assets/styles/constants/size";
 import { LanguageCodes } from "../../localization/languages";
 import i18n from "i18next";
 
 export interface TextTitleProps {
   text: string;
+  /** Headline font size. Figma text.headline = 17 (fontLarge) / 22 line height. */
+  size?: number;
   badge?: boolean;
   tooltip?: boolean;
   tooltipText?: string;
@@ -44,6 +46,7 @@ export interface TextTitleProps {
  */
 export const TextTitle: FC<TextTitleProps> = ({
   text,
+  size = fontLarge,
   badge = false,
   tooltip = false,
   tooltipText,
@@ -75,12 +78,14 @@ export const TextTitle: FC<TextTitleProps> = ({
       style={{
         flexDirection: isRtl ? "row-reverse" : "row",
         alignItems: "center",
-        ...(tooltip && {gap:spacingXS})
+        ...(tooltip && {gap: spacingXXS})
       }}
     >
       <Title
-        size={fontMediumLarge}
-        overrideStyles={overrideStyles}
+        size={size}
+        mediumFont
+        iconGap={spacingXXS}
+        overrideStyles={{ paddingVertical: 0, paddingHorizontal: 0, ...overrideStyles }}
         loading={loading}
         textWidth={textWidth}
         loadingStateStyles={loadingStateStyles}

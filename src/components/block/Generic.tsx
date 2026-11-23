@@ -14,7 +14,6 @@ import ChevronRight from "../icons/arrows/chevron/ChevronRight";
 import Icon from "../icon/Icon";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface BlockGenericProps {
   type: "solid" | "pattern";
@@ -58,7 +57,6 @@ export const Generic: FC<BlockGenericProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
 
   const isSolid = useMemo(() => type === "solid", [type]);
   const textColor = useMemo(
@@ -71,7 +69,7 @@ export const Generic: FC<BlockGenericProps> = ({
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
-      ...frame.of(168),
+      width: 167.5,
       height: 110,
       borderRadius: radiusS,
       padding: spacingS,
@@ -98,7 +96,7 @@ export const Generic: FC<BlockGenericProps> = ({
   return loading ? (
     <View
       style={{
-        width: actuatedNormalize(167), maxWidth: "100%", flexShrink: 1,
+        width: actuatedNormalize(167),
         height: actuatedNormalize(110),
         backgroundColor: theme.stylesblockbg,
         display: "flex",

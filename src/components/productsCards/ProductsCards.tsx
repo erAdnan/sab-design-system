@@ -24,7 +24,6 @@ import { Text } from "../text/Text";
 import Heart from "../icons/outline/Heart";
 import HeartFilled from "../icons/filled/HeartFilled";
 import Redeem from "../icons/outline/Redeem";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 export interface ProductsCardsProps {
   type: "product-page" | "carousel";
@@ -70,7 +69,6 @@ export const ProductsCards: FC<ProductsCardsProps> = ({
   textContainerStyles,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
   const [favorite, setFavorite] = useState(isFavorite);
 
@@ -86,12 +84,13 @@ export const ProductsCards: FC<ProductsCardsProps> = ({
       borderRadius: radiusS,
       backgroundColor: theme.stylesblockbg,
     },
+    // Figma Products card: Medium 163.5×163, Carousel 138×135.
     productPageContainer: {
-      ...frame.of(164),
-      height: actuatedNormalize(164),
+      width: actuatedNormalize(163.5),
+      height: actuatedNormalize(163),
     },
     productPageImageThumbnail: {
-      ...frame.of(164),
+      width: actuatedNormalize(163.5),
       height: actuatedNormalize(95),
       borderRadius: radiusS,
     },
@@ -104,11 +103,11 @@ export const ProductsCards: FC<ProductsCardsProps> = ({
       height: actuatedNormalize(68),
     },
     carouselContainer: {
-      width: actuatedNormalize(137),
+      width: actuatedNormalize(138),
       height: actuatedNormalize(135),
     },
     carouselImageThumbnail: {
-      width: actuatedNormalize(137),
+      width: actuatedNormalize(138),
       height: actuatedNormalize(80),
       borderRadius: radiusS,
     },
@@ -219,8 +218,8 @@ export const ProductsCards: FC<ProductsCardsProps> = ({
         <ImageThumbnail
           width={
             type === "product-page"
-              ? actuatedNormalize(164)
-              : actuatedNormalize(137)
+              ? actuatedNormalize(163.5)
+              : actuatedNormalize(138)
           }
           height={
             type === "product-page"

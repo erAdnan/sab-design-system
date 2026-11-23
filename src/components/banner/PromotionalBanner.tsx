@@ -12,6 +12,7 @@ import {
   radiusS,
   spacingS,
   spacingXS,
+  spacingXXXS,
 } from "../../assets/styles/constants/size";
 import { Text } from "../text/Text";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
@@ -21,7 +22,6 @@ import ImageThumbnail, {
 } from "../imageThumbnail/ImageThumbnail";
 import { Button } from "../button/Button";
 import fonts from "../../assets/styles/constants/fonts";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface PromotionalBannerProps {
   title: string;
@@ -60,9 +60,9 @@ export const PromotionalBanner: FC<PromotionalBannerProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
 
-  const containerHeight = actuatedNormalize(106);
+  // Figma promotional.banner: 343×118 (86 content + 16 top/bottom padding).
+  const containerHeight = actuatedNormalize(118);
 
   const styles = StyleSheet.create({
     container: {
@@ -70,7 +70,8 @@ export const PromotionalBanner: FC<PromotionalBannerProps> = ({
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "flex-start",
-      ...frame.of(343),
+      width: actuatedNormalize(343),
+      minHeight: containerHeight,
       borderRadius: radiusL,
       padding: spacingS,
       // gap: spacingS,
@@ -82,6 +83,7 @@ export const PromotionalBanner: FC<PromotionalBannerProps> = ({
       flexDirection: "column",
       alignItems: "flex-start",
       justifyContent: "center",
+      gap: spacingXXXS,
     },
     title: {
       lineHeight: lineHeightLarge,
@@ -134,7 +136,7 @@ export const PromotionalBanner: FC<PromotionalBannerProps> = ({
 
       <View
         style={{
-          width: actuatedNormalize(130),
+          width: actuatedNormalize(135),
           height: actuatedNormalize(81),
           justifyContent: "center",
           alignItems: "center",
@@ -153,7 +155,7 @@ export const PromotionalBanner: FC<PromotionalBannerProps> = ({
   return loading ? (
     <View
       style={{
-        width: "100%",
+        width: actuatedNormalize(343),
         height: containerHeight,
         backgroundColor: theme.stylesblockbg,
         display: "flex",
@@ -196,13 +198,13 @@ export const PromotionalBanner: FC<PromotionalBannerProps> = ({
       </View>
     </View>
   ) : (
-    <TouchableOpacity style={frame.of()} onPress={() => onPress && onPress()}>
+    <TouchableOpacity onPress={() => onPress && onPress()}>
       {solidBackground ? (
         <View style={[styles.container, overrideStyles]}>{bannerContent}</View>
       ) : (
         <ImageThumbnail
-          width={frame.span}
-          // height={actuatedNormalize(109)}
+          width={actuatedNormalize(343)}
+          height={containerHeight}
           url={bgImageUrl || require('../../assets/images/promotional_banner_pattern.png')}
           overrideStyles={[styles.container, overrideStyles]}
           isAbsolutePath

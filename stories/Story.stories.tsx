@@ -1,8 +1,13 @@
+import * as allStories from "./Story.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Story } from "../src/components/story/Story";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/Story",
+  decorators: [centerStoryDecorator],
+  title: "Components/Data Display/Story",
   component: Story,
+  tags: ["!autodocs"],
   argTypes: {
     seen: { action: "Seen", control: "boolean" },
   },
@@ -26,3 +31,8 @@ export const WithExtraContent = {
     extraContent: "Extra content",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "WithText",
+    "WithExtraContent",
+]);

@@ -5,9 +5,12 @@ import { Text } from "../src/components/text/Text";
 import BeneficiaryOutline from "../src/components/icons/users/BeneficiaryOutline";
 
 import { deepTranslateArgs, tx } from "../src/localization/tx";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 export default {
-    title: "Components/Tabs",
+  decorators: mobileContentDecorators,
+    title: "Components/Data Display/Tabs",
     component: Tabs,
+    tags: ["!autodocs"],
     args: {
         loading: false
     }

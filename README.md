@@ -38,6 +38,7 @@ yarn clean:all
 | Theme | `src/context/theme`, `src/assets/styles/theme` |
 | Language codes and component copy | `src/localization/` |
 | Story | `stories/` |
+| Figma docs in Storybook (export, WebP, catalog) | [`stories/docs/README.md`](stories/docs/README.md) |
 | Storybook preview | `.storybook/` |
 | Device Storybook (Xcode, Gradle, Fastlane) | `ios/`, `android/`, `fastlane/` |
 
@@ -52,6 +53,8 @@ yarn storybook
 ```
 
 Opens `http://localhost:6006`. Saving a component or a story reloads the browser.
+
+To add **Figma documentation pages** (exports, WebP conversion, `FigmaDocPage` catalog/stories, `main.js` / `preview.jsx` wiring): see [`stories/docs/README.md`](stories/docs/README.md).
 
 Device Storybook on a simulator or emulator:
 

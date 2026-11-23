@@ -1,9 +1,14 @@
+import * as allStories from "./Uploader.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Uploader } from "../src/components/uploader/Uploader";
 import { useState } from "react";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
-    title: "Components/Uploader",
+  decorators: mobileContentDecorators,
+    title: "Components/Data Entry/Upload",
     component: Uploader,
+    tags: ["!autodocs"],
     argTypes: {
         title:        { control: "text" },
         subTitle:     { control: "text" },
@@ -82,3 +87,12 @@ export const InvalidFormat = {
         handleRemoveFile: (id: string | number) => console.log("Remove file", id),
     },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Disabled",
+    "Loading",
+    "Files",
+    "AttachedDisabled",
+    "InvalidFormat",
+]);

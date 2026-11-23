@@ -1,4 +1,6 @@
 import { View } from "react-native";
+import { FigmaDocPage } from "./pulse-design-system/rules-and-patterns/FigmaDocPage";
+import { LOCAL_BANKS_DOC_IMAGES } from "./foundations/assets/catalog";
 import { LogoWrapper } from "../src/components/logos/LogoWrapper";
 import Alinma from "../src/components/logos/banks/Alinma";
 import Alrajhi from "../src/components/logos/banks/Alrajhi";
@@ -34,16 +36,22 @@ import Meem from "../src/components/logos/banks/Meem";
 import Mizuho from "../src/components/logos/banks/Mizuho";
 import Urpay from "../src/components/logos/banks/Urpay";
 import Neo from "../src/components/logos/banks/Neo";
+import { foundationsDocsCanvas } from "../.storybook/foundationsDocs";
 
 export default {
-  title: 'Components/Bank Logos',
+  title: "Foundations/Assets/Local Banks Icons",
   component: LogoWrapper,
   argTypes: {
     size: {action: 'Size', control: 'radio', options: ['extra-small', 'small', 'medium', 'large']}
   },
   args: {
     size: 'extra-small'
-  }
+  },
+  parameters: {
+    docs: {
+      ...foundationsDocsCanvas,
+    },
+  },
 }
 
 const Template = (args: any) => {
@@ -90,5 +98,22 @@ const Template = (args: any) => {
 }
 
 export const Logos = {
-  render: Template
-}
+  render: Template,
+};
+
+/** Figma Final Pulse Assets → Local Banks Icons (9390:11482). */
+export const Reference = {
+  name: "Reference",
+  render: () => (
+    <FigmaDocPage
+      title="Local Banks Icons"
+      eyebrow="Foundations · Assets"
+      images={LOCAL_BANKS_DOC_IMAGES}
+    />
+  ),
+  parameters: {
+    layout: "fullscreen",
+    controls: { disable: true },
+    a11y: { disable: true },
+  },
+};

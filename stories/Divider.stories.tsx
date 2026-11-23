@@ -3,10 +3,13 @@ import { TextTitle } from "../src/components/text/TextTitle";
 import { Text } from "../src/components/text/Text";
 import { StyleSheet, View } from "react-native";
 import { spacingS } from "../src/assets/styles/constants/size";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
-  title: "Components/Divider",
+  decorators: mobileContentDecorators,
+  title: "Components/Layout/Divider",
   component: Divider,
+  tags: ["!autodocs"],
 };
 
 const DividerExample = () => {

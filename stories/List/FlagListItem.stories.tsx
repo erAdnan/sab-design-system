@@ -1,0 +1,44 @@
+import * as allStories from "./FlagListItem.stories";
+import { createAllVariantsStory } from "../../.storybook/allVariants";
+import { listStoryDecorators } from "../../.storybook/listStoryFrame";
+import { FlagListItem } from "../../src/components/list/FlagListItem";
+
+export default {
+  title: "Components/Navigation/List/FlagListItem",
+  component: FlagListItem,
+  decorators: listStoryDecorators,
+}
+
+export const US = {
+  args: {
+    circleImageProps: { url: require('../../src/assets/images/flagUSsquare.png'), isAbsolutePath: true },
+    rectImageProps: { url: require('../../src/assets/images/flagUSsquare.png'), isAbsolutePath: true },
+    countryName: "United States of America",
+    showDivider: true
+  }
+}
+
+export const Placeholder = {
+  args: {
+    countryName: "Antartica",
+    showDivider: true
+  }
+}
+
+export const PlaceholderWithAction = {
+  args: {
+    countryName: "Antartica",
+    showDivider: true,
+    showAction: true,
+    checkboxProps: {
+      isChecked: false,
+      onPress: () => {}
+    }
+  }
+}
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "US",
+    "Placeholder",
+    "PlaceholderWithAction",
+]);

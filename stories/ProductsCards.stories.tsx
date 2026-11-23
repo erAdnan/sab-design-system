@@ -1,10 +1,12 @@
+import * as allStories from "./ProductsCards.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import Gift from "../src/components/icons/other/Gift";
-import { LearningProductCard as LearningProductCardComponent } from "../src/components/productsCards/LearningProductCard";
 import { ProductsCards } from "../src/components/productsCards/ProductsCards";
 
 export default {
-  title: "Components/ProductsCards",
+  title: "Components/Data Display/ProductsCards",
   component: ProductsCards,
+  tags: ["!autodocs"],
   argTypes: {
     type: {
       action: "Type",
@@ -21,12 +23,6 @@ export default {
     chipsOffersProps: { type: 'centered', label: 'Label'}
   },
 };
-
-const LearningProductCardTemplate = (args: any) => {
-  return (
-    <LearningProductCardComponent {...args} />
-  )
-}
 
 export const ProductPageWithoutIconAndChips = {
   args: {
@@ -106,17 +102,6 @@ export const ProductPageWithFavorite = {
   },
 };
 
-export const LearningProductCard = {
-  render: LearningProductCardTemplate,
-  args: {
-    subheading: "Label",
-    title: "Headline",
-    bodyText: "Learn to save your money using this tried and tested way.",
-    percentage: 80,
-    percentageText: "80% Left"
-  }
-}
-
 export const CarouselWithChipsOffers = {
   args: {
     type: "carousel",
@@ -128,3 +113,14 @@ export const CarouselWithChipsOffers = {
     }
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "ProductPageWithoutIconAndChips",
+    "ProductPageWithChips",
+    "ProductPageWithChipsOffers",
+    "ProductPageWithChipsAndIcon",
+    "Carousel",
+    "CarouselWithIcon",
+    "ProductPageWithFavorite",
+    "CarouselWithChipsOffers",
+]);

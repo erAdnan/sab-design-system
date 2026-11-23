@@ -1,11 +1,16 @@
+import * as allStories from "./Stepper.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { View } from "react-native";
 import { Stepper } from "../src/components/stepper/Stepper";
 import { spacingS } from "../src/assets/styles/constants/size";
 import { actuatedNormalize } from "../src/assets/styles/utils/pixelScaling";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
-    title: "Components/Stepper",
+    decorators: mobileContentDecorators,
+    title: "Components/Navigation/Stepper",
     component: Stepper,
+    tags: ["!autodocs"],
     argTypes: {
         currentStep: {
             action: "Current Step",
@@ -47,3 +52,8 @@ export const Interactive = {
     },
 };
 
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "Interactive",
+]);

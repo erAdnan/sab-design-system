@@ -32,23 +32,21 @@ interface BlockProductComplexProps {
   variantColor?: string;
 }
 
+// Figma block.product-complex: Size=Large 302×354, Size=Small 213×224.
+const LARGE_CARD_WIDTH = actuatedNormalize(302);
 const LARGE_IMAGE_SIZE = actuatedNormalize(200);
 
 const ProductComplexSkeleton = ({ variant = "default" }: { variant?: "default" | "large" }) => {
   const { theme } = useTheme();
   const isLarge = variant === "large";
-  const w = "100%";
+  const w = isLarge ? LARGE_CARD_WIDTH : actuatedNormalize(213);
   const h = isLarge ? undefined : actuatedNormalize(224);
   return (
     <View
       style={{
         width: w,
-        maxWidth: "100%",
-        minWidth: 0,
-        alignSelf: "stretch",
         height: h,
         minHeight: isLarge ? actuatedNormalize(360) : undefined,
-        alignSelf: "flex-start",
         backgroundColor: theme.stylesblockbg,
         display: "flex",
         flexDirection: "column",
@@ -190,18 +188,12 @@ const styles = StyleSheet.create({
     padding: spacingS,
   },
   containerDefault: {
-    width: "100%",
-    maxWidth: "100%",
-    minWidth: 0,
-    alignSelf: "stretch",
+    width: actuatedNormalize(213),
     gap: actuatedNormalize(21),
     borderRadius: radiusS,
   },
   containerLarge: {
-    width: "100%",
-    maxWidth: "100%",
-    minWidth: 0,
-    alignSelf: "stretch",
+    width: LARGE_CARD_WIDTH,
     gap: actuatedNormalize(24),
     borderRadius: radiusL,
   },

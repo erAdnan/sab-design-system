@@ -1,10 +1,15 @@
+import * as allStories from "./Tracker.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Tracker } from "../src/components/tracker/Tracker";
 import { RagIconType } from "../src/components/rag/Rag";
 import { View } from "react-native";
+import { mobileContentDecorators } from "../.storybook/mobileContentFrame";
 
 export default {
-  title: "Components/Tracker",
+  decorators: mobileContentDecorators,
+  title: "Components/Data Display/Tracker",
   component: Tracker,
+  tags: ["!autodocs"],
   argTypes: {
     textHeadline: { action: "Tracker left title", control: "text" },
     text2: { action: "Tracker left subtitle", control: "text" },
@@ -154,3 +159,16 @@ export const Icons = {
     rightText2: "Content",
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Success",
+    "SuccessNoBalance",
+    "Error",
+    "Warning",
+    "Info",
+    "Icon",
+    "Number",
+    "Empty",
+    "Spinner",
+    "Icons",
+]);

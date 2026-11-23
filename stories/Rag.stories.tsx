@@ -1,3 +1,5 @@
+import * as allStories from "./Rag.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { View } from "react-native";
 import { RagIconType, Rag } from "../src/components/rag/Rag";
 import { spacingS } from "../src/assets/styles/constants/size";
@@ -6,9 +8,16 @@ import RagFilledError from "../src/components/icons/ragFilled/RagFilledError";
 import RagFilledWarning from "../src/components/icons/ragFilled/RagFilledWarning";
 import RagFilledInfo from "../src/components/icons/ragFilled/RagFilledInfo";
 
+import { foundationsDocsCanvas } from "../.storybook/foundationsDocs";
+
 export default {
-  title: "Components/Rag",
+  title: "Foundations/Assets/RAG",
   component: Rag,
+  parameters: {
+    docs: {
+      ...foundationsDocsCanvas,
+    },
+  },
 };
 
 const InteractiveTemplateDefault = (args: any) => {
@@ -76,3 +85,9 @@ export const FilledSmall = {
 export const Family = {
   render: InteractiveTemplateFamily
 }
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Default",
+    "FilledSmall",
+    "Family",
+]);

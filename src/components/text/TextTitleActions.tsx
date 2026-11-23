@@ -79,17 +79,19 @@ export const TextTitleActions: FC<TextTitleProps> = ({
   const isRtl = I18nManager.isRTL;
 
   const dynamicIcon = useMemo(() => {
-    return icon
-      ? React.cloneElement(icon, {
-          fill: theme.primarycolor3,
-        })
-      : null;
+    if (!icon) {
+      return null;
+    }
+    const iconEl = icon as ReactElement<{ fill?: string }>;
+    return React.cloneElement(iconEl, {
+      fill: theme.primarycolor3,
+    });
   }, [theme, icon]);
   return (
-    <View style={{ width: "100%", maxWidth: "100%", minWidth: 0, alignSelf: "stretch" }}>
+    <View>
       <Title
         size={size}
-        overrideStyles={{ paddingVertical: 0, paddingHorizontal: 0, width: "100%" }}
+        overrideStyles={{ paddingVertical: 0,paddingHorizontal : 0 }}
         loading={loading}
         loadingNumOfLines={1}
         iconRight={
@@ -122,7 +124,7 @@ export const TextTitleActions: FC<TextTitleProps> = ({
           showLinkButton && linkButtonText ? (
             <Button
               variant="link"
-              size="small"
+              size="medium"
               linkIconRight={showLinkButtonIcon && !isRtl}
               linkIconLeft={showLinkButtonIcon && isRtl}
               overrideStyles={{ paddingVertical: 0 ,paddingHorizontal : 0}}

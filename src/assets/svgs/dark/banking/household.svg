@@ -1,0 +1,11 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_dark_household" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+<rect id="Bounding box" width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_dark_household)">
+<g id="Group 3184103">
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M17.11 13.2618H13.466L12 14.7697V18.1205H5.46598V7.39789L10.8691 5.01044L11.8744 4.59159L10.0733 3.79578L4 6.43453L4.04189 18.1205L5.46598 19.5864V19.5446L5.50786 19.5864H12L13.5079 20.7592V19.5864H17.11V18.1205H13.5079V14.7697H17.11V19.5864L18.6179 18.1205V14.7278L17.11 13.2618Z" fill="white"/>
+<path id="Vector_2" fill-rule="evenodd" clip-rule="evenodd" d="M11.8324 3L9.9895 3.79581L18.4922 7.4817V9.49218H20V6.60211L11.8324 3Z" fill="white"/>
+</g>
+</g>
+</svg>

@@ -11,9 +11,14 @@ import {
   fontWeightMedium,
   fontXLarge,
   fontXXLarge,
+  lineHeightLarge,
+  lineHeightSmall,
   lineHeightXLarge,
   lineHeightXXLarge,
+  spacing1XS,
+  spacingM,
   spacingS,
+  spacingXS,
   spacingXXS,
   spacingXXXS,
 } from "../../assets/styles/constants/size";
@@ -78,16 +83,31 @@ export const ButtonGroupReview: FC<ButtonGroupReviewProps> = ({
 }) => {
   const { theme } = useTheme();
 
+  // Figma spacing (Buttons page, button.group-review):
+  //  - light variant: summary wrapper has 16 bottom padding (12 for the quantity variant), 8 between amount and subtitle,
+  //    16 around the disclaimer, then a full-width divider and 24 before the button group.
+  //  - dark variant: 17 between amount row and divider, 12 bottom padding, 24 before the button group.
+  const hasSubtitle = !!(description || subTitle);
+  const hasDisclaimer = !!(showDisclaimer && !loading && disclaimerText);
+  const lightBottomGap = withQuantity ? spacing1XS : spacingS;
+  const darkRowGap = actuatedNormalize(17);
+
   const styles = StyleSheet.create({
     container: {
       // Holds the entire component
-      backgroundColor: loading ? "transparent" : (lightVariant? theme.stylesbackground2 : theme.primarybackground),
+      backgroundColor: loading
+        ? "transparent"
+        : lightVariant
+          ? theme.stylesbackground2
+          : theme.whiteinvert,
     },
     detailsContainer: {
-      marginBottom: actuatedNormalize(30),
+      marginBottom: lightVariant ? spacingM : spacingM + spacing1XS,
     },
     amountContainer: {
-      paddingBottom: footNote ?0 : actuatedNormalize(12),
+      paddingBottom: lightVariant
+        ? (hasSubtitle || hasDisclaimer ? 0 : lightBottomGap)
+        : darkRowGap,
       flexDirection: "row",
       justifyContent: "space-between",
       display: "flex",
@@ -95,7 +115,7 @@ export const ButtonGroupReview: FC<ButtonGroupReviewProps> = ({
     },
     amountWrapper: {
       flexDirection: I18nManager.isRTL ? "row-reverse" :"row",
-      gap:spacingXXS,
+      gap: spacingXXXS,
       ...(I18nManager.isRTL && { alignItems: "center" }), // only for Arabic/RTL
     },
     amountText: {
@@ -110,6 +130,22 @@ export const ButtonGroupReview: FC<ButtonGroupReviewProps> = ({
     subTitleText: {
       paddingTop: spacingXXS,
      },
+    // Light variant subtitle: 12/16 gray text, 8 below the amount row (Figma `subtitle`).
+    lightSubtitleWrapper: {
+      alignSelf: "flex-start",
+      paddingTop: spacingXS,
+      paddingBottom: hasDisclaimer ? 0 : lightBottomGap,
+    },
+    lightSubtitleText: {
+      paddingHorizontal: 0,
+      paddingVertical: 0,
+      fontFamily: fonts.HSBC,
+      lineHeight: lineHeightSmall,
+    },
+    disclaimerWrapper: {
+      marginTop: lightVariant ? spacingS : 0,
+      marginBottom: lightVariant ? lightBottomGap : actuatedNormalize(12),
+    },
   });
 
   return (
@@ -130,7 +166,7 @@ export const ButtonGroupReview: FC<ButtonGroupReviewProps> = ({
       loading={loading}
       bold={lightVariant}
       textWidth={actuatedNormalize(80)}
-      overrideStyles={{ ...(I18nManager.isRTL && { paddingBottom: actuatedNormalize(3) }), fontFamily: lightVariant ? fonts.HSBC_Bold : fonts.HSBC_Medium }}
+      overrideStyles={{ ...(I18nManager.isRTL && { paddingBottom: actuatedNormalize(3) }), fontFamily: lightVariant ? fonts.HSBC_Bold : fonts.HSBC_Medium, lineHeight: lineHeightLarge }}
     >
       {amountLabel || i18n.t("TotalAmount")}
     </Text>
@@ -150,7 +186,6 @@ export const ButtonGroupReview: FC<ButtonGroupReviewProps> = ({
            size={lightVariant ? fontXLarge : fontXXLarge}
             lineHeight={lightVariant ? lineHeightXLarge : lineHeightXXLarge}
             variant={lightVariant ? "primarytextcolor" : "primarycolor4static"}
-            overrideStyles={{ marginHorizontal: spacingXXXS }}
           />
         )
       )}
@@ -179,32 +214,54 @@ export const ButtonGroupReview: FC<ButtonGroupReviewProps> = ({
     )}
   </View>
         </View>
-        {showDisclaimer && !loading && disclaimerText && (
-          <View style={{ marginBottom: actuatedNormalize(12) }}>
-            <Disclaimer type="tooltip" text={disclaimerText} />
-            
+        {lightVariant && description && (
+          <View style={styles.lightSubtitleWrapper}>
+            <CurrencyText
+              loading={loading}
+              text={description}
+              textstyle={styles.lightSubtitleText}
+              currencyTextStyle={styles.lightSubtitleText}
+              variant="primarytextcolor2"
+              size={fontSmall}
+            />
           </View>
         )}
-        
-  
+        {lightVariant && subTitle && (
+          <View style={styles.lightSubtitleWrapper}>
+            <CurrencyText
+              loading={loading}
+              text={subTitle}
+              textstyle={styles.lightSubtitleText}
+              currencyTextStyle={styles.lightSubtitleText}
+              variant="primarytextcolor2"
+              size={fontSmall}
+            />
+          </View>
+        )}
+        {showDisclaimer && !loading && disclaimerText && (
+          <View style={styles.disclaimerWrapper}>
+            <Disclaimer type="tooltip" text={disclaimerText} />
+          </View>
+        )}
+
         {!showDivider && <Divider overrideStyles={{backgroundColor: lightVariant ? theme.stylesblockbg : theme.primarycolor2_40}} />}
-       {description && <View style={{ alignSelf: "flex-start" }}>
+        {!lightVariant && description && <View style={{ alignSelf: "flex-start" }}>
           <CurrencyText
             loading={loading}
             text={description}
             textstyle={styles.descriptionText}
             currencyTextStyle={styles.descriptionText}
-            variant={lightVariant ? "primarytextcolor" : "primarycolor4static"}
+            variant="primarycolor4static"
             size={fontMedium}
           />
         </View>}
-        {subTitle && <View style={{ alignSelf: "flex-start" }}>
+        {!lightVariant && subTitle && <View style={{ alignSelf: "flex-start" }}>
           <CurrencyText
             loading={loading}
             textstyle={styles.subTitleText}
             currencyTextStyle={styles.subTitleText}
             text={subTitle}
-            variant={lightVariant ? "primarytextcolor" : "primarycolor4static"}
+            variant="primarycolor4static"
             size={fontMedium}
           />
         </View>}

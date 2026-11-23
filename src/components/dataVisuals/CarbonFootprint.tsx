@@ -6,7 +6,6 @@ import { Text } from "../text/Text";
 import { fontMedium, fontXXLarge } from "../../assets/styles/constants/size";
 import Health from "../icons/sab360/Health";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface CarbonFootprintProps {
   label: string | ReactElement;
@@ -16,10 +15,9 @@ interface CarbonFootprintProps {
 
 export const CarbonFootprint: React.FC<CarbonFootprintProps> = ({ label, amount, loading }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const styles = StyleSheet.create({
     outerContainer: {
-      ...frame.of(212),
+      width: actuatedNormalize(212),
       height: actuatedNormalize(212),
       borderRadius: actuatedNormalize(212),
       display: "flex",
@@ -28,7 +26,7 @@ export const CarbonFootprint: React.FC<CarbonFootprintProps> = ({ label, amount,
       backgroundColor: "rgba(0, 132, 127, 0.1)"
     },
     outerContainer2: {
-      ...frame.of(184),
+      width: actuatedNormalize(184),
       height: actuatedNormalize(184),
       borderRadius: actuatedNormalize(184),
       display: "flex",
@@ -37,7 +35,7 @@ export const CarbonFootprint: React.FC<CarbonFootprintProps> = ({ label, amount,
       backgroundColor: "rgba(0, 132, 127, 0.20)",
     },
     container: {
-      ...frame.of(158),
+      width: actuatedNormalize(158),
       height: actuatedNormalize(158),
       borderRadius: actuatedNormalize(158),
       display: "flex",

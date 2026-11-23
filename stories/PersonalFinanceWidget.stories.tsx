@@ -1,5 +1,6 @@
+import * as allStories from "./PersonalFinanceWidget.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { BudgetCard as BudgetCardWidget } from "../src/components/personalFinanceWidgets/BudgetCard";
-import { Expenses as ExpensesWidget } from "../src/components/personalFinanceWidgets/Expenses";
 import { Tag as TagWidget } from "../src/components/personalFinanceWidgets/Tag";
 import { BarChart } from "../src/components/personalFinanceWidgets/BarChart";
 import { CategoryList as CategoryListWidget } from "../src/components/personalFinanceWidgets/CategoryList";
@@ -14,9 +15,9 @@ import { lightTheme } from "../src/assets/styles/theme/light";
 import Education from "../src/components/icons/sab360/Education";
 
 export default {
-  title: "Components/PersonalFinanceWidgets",
+  title: "Components/Data Display/PersonalFinanceWidgets",
+  tags: ["!autodocs"],
   components: [
-    ExpensesWidget,
     TagWidget,
     BudgetCardWidget,
     BarChart,
@@ -25,17 +26,8 @@ export default {
   ],
 };
 
-export const Expenses = {
-  render: ExpensesWidget,
-  args: {
-    label: "My Spend",
-    description: "For November",
-    amount: "28,450.00",
-    loading: false,
-  },
-};
-
 export const Tag = {
+  name: "Tag Widget",
   render: TagWidget,
   args: {
     mainText: "#BusinessTrip",
@@ -79,6 +71,7 @@ export const MyActivityMonth = {
   },
 };
 export const BudgetCard = {
+  name: "Budget Card Widget",
   render: BudgetCardWidget,
   args: {
     amountRemaining: 10000,
@@ -107,6 +100,7 @@ export const BudgetCard = {
 };
 
 export const CategoryList = {
+  name: "Category List Widget",
   render: CategoryListWidget,
   args: {
     "listItemProps.title": { children: "Taxi" },
@@ -122,6 +116,7 @@ export const CategoryList = {
 };
 
 export const CategoryCardHorizontal = {
+  name: "Content Card Widget",
   render: CategoryCardWidget,
   args: {
     "listItemProps.title": { children: "University" },
@@ -157,6 +152,7 @@ export const CategoryCardHorizontal = {
 };
 
 export const CategoryCardHorizontalError = {
+  name: "Content Card Widget Error",
   render: CategoryCardWidget,
   args: {
     "listItemProps.title": { children: "University" },
@@ -184,6 +180,7 @@ export const CategoryCardHorizontalError = {
 };
 
 export const CategoryCardVertical = {
+  name: "Content Card Vertical",
   render: CategoryCardWidget,
   args: {
     small: true,
@@ -200,3 +197,14 @@ export const CategoryCardVertical = {
     completed: { action: "Completed", control: "boolean" },
   },
 };
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "Tag",
+    "MyActivityWeek",
+    "MyActivityMonth",
+    "BudgetCard",
+    "CategoryList",
+    "CategoryCardHorizontal",
+    "CategoryCardHorizontalError",
+    "CategoryCardVertical",
+]);

@@ -1,3 +1,6 @@
+import * as allStories from "./Logos.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 import type { ComponentType } from "react";
 import { View } from "react-native";
 import type { SvgProps } from "react-native-svg";
@@ -9,10 +12,16 @@ import SimahNew from "../src/components/logos/SimahNew";
 import { SABLogo } from "../src/components/logos/SABLogo";
 import Zakaty from "../src/components/logos/Zakaty";
 import Visa from "../src/components/logos/Visa";
+import { foundationsDocsCanvas } from "../.storybook/foundationsDocs";
 
 export default {
-  title: "Components/Logos",
+  title: "Foundations/Assets/Logos",
   components: [SABLogo, Absher, Drahim, Mada, Sarie, SimahNew, Zakaty, Visa],
+  parameters: {
+    docs: {
+      ...foundationsDocsCanvas,
+    },
+  },
 };
 
 /** 48×48 preview slot — matches design / disclaimer usage; overflow clips any SVG web quirks. */
@@ -82,4 +91,14 @@ export const ZakatyLogo = {
 
 export const VisaLogo = {
   render: logoInSlot(Visa),
+};
+
+// Every logo (brand lockups + 48x48 partner slots) as a labelled, top-aligned column at the 343 mobile width.
+export const AllVariants = {
+  ...createAllVariantsStory(
+    allStories,
+    ["SAB", "AbsherLogo", "SimahLogo", "DrahimLogo", "MadaLogo", "SarieLogo", "ZakatyLogo", "VisaLogo"],
+    { gap: 24, itemStyle: { alignItems: "flex-start" } },
+  ),
+  decorators: [centerStoryDecorator],
 };

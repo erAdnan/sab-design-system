@@ -3,8 +3,46 @@ const path = require("path");
 /** Web Storybook. Device Storybook uses `.rnstorybook`. */
 module.exports = {
   stories: [
+    "../stories/pulse-design-system/**/*.stories.@(ts|tsx|js|jsx)",
     "../stories/*.stories.@(ts|tsx|js|jsx)",
     "../stories/foundations/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Text/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Divider/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Buttons/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Header/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/List/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Stepper/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/NavigationDots/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/BottomNavigation/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Input Field/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Checkbox/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/RadioButton/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Toggle/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Range/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Uploader/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Cards & Accounts & Finance/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Tabs/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Banners/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Blocks/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Accordion/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Dropdown/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Avatar/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Badge/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Chips/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/ProgressIndicator/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Tracker/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Graphs/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/PasswordStrength/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Notifications/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/EmptyState/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Story/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/ProductsCards/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Widgets/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/PersonalFinanceWidgets/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Calendar/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/ThemeSelector/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/Bottomsheet/**/*.stories.@(ts|tsx|js|jsx)",
+    "../stories/MobileNativeComponents/**/*.stories.@(ts|tsx|js|jsx)",
   ],
 
   addons: [
@@ -12,9 +50,18 @@ module.exports = {
     {
       name: "@storybook/addon-react-native-web",
       options: {
+        // Reanimated + gorhom bottom-sheet ship worklets; Babel must transform them for web.
         modulesToTranspile: [
           "@sab-digital-bank/design-system",
           "react-native-svg-charts",
+          "react-native-reanimated",
+          "react-native-gesture-handler",
+          "@gorhom/bottom-sheet",
+        ],
+        babelPlugins: [
+          "@babel/plugin-transform-export-namespace-from",
+          // Must be listed last among plugins that touch worklets.
+          "react-native-reanimated/plugin",
         ],
         modulesToAlias: {
           "@sab-digital-bank/design-system": path.resolve(__dirname, "../src"),
@@ -23,12 +70,19 @@ module.exports = {
     },
     "storybook-addon-deep-controls",
     "@storybook/addon-docs",
+    "@storybook/addon-a11y",
   ],
 
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
   },
+
+  // SAB brand assets + glyph fonts for web (SAR riyal symbol, etc.).
+  staticDirs: [
+    { from: "./static", to: "/" },
+    { from: "../src/assets/fonts", to: "/fonts" },
+  ],
 
   // Bakes package.json version into the static Hosting build (Release bumps it first).
   env: (config) => ({
@@ -54,9 +108,21 @@ module.exports = {
         root,
         "node_modules/react-native-svg/lib/module/ReactNativeSVG.web.js"
       ),
+      // RN Web throws; gorhom bottom-sheet v4 still calls findNodeHandle.
+      "react-native-web/dist/exports/findNodeHandle": path.resolve(
+        __dirname,
+        "./mocks/findNodeHandle.js"
+      ),
+      "react-native-web/dist/exports/findNodeHandle/index.js": path.resolve(
+        __dirname,
+        "./mocks/findNodeHandle.js"
+      ),
     };
 
     excludeSvgFromAssetRules(config.module.rules);
+    // Reanimated worklets break if the plugin is not last, or if babel.config.js
+    // is merged after addon plugins (export-namespace / react-native-web).
+    ensureReanimatedBabelLast(config.module.rules);
     config.module.rules.unshift({
       test: /\.svg$/,
       exclude: /node_modules/,
@@ -114,5 +180,44 @@ function excludeSvgFromAssetRules(rules) {
     }
     excludeSvgFromAssetRules(rule.oneOf);
     excludeSvgFromAssetRules(rule.rules);
+  }
+}
+
+function isReanimatedPlugin(plugin) {
+  if (plugin === "react-native-reanimated/plugin") return true;
+  if (Array.isArray(plugin) && plugin[0] === "react-native-reanimated/plugin") {
+    return true;
+  }
+  if (typeof plugin === "string" && plugin.includes("react-native-reanimated/plugin")) {
+    return true;
+  }
+  return false;
+}
+
+function ensureReanimatedBabelLast(rules) {
+  if (!Array.isArray(rules)) return;
+  for (const rule of rules) {
+    if (!rule || typeof rule !== "object") continue;
+    const options = rule.options;
+    const isBabelLoader =
+      rule.loader === "babel-loader" ||
+      (typeof rule.loader === "string" && rule.loader.includes("babel-loader"));
+    // Only the @storybook/addon-react-native-web rule (has plugins + custom include).
+    if (
+      isBabelLoader &&
+      options &&
+      Array.isArray(options.plugins) &&
+      typeof rule.include === "function"
+    ) {
+      // Don't merge root babel.config.js — its reanimated plugin would run before
+      // addon plugins and violate "reanimated must be last".
+      options.babelrc = false;
+      options.configFile = false;
+      const plugins = options.plugins.filter((p) => !isReanimatedPlugin(p));
+      plugins.push("react-native-reanimated/plugin");
+      options.plugins = plugins;
+    }
+    ensureReanimatedBabelLast(rule.oneOf);
+    ensureReanimatedBabelLast(rule.rules);
   }
 }

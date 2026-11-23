@@ -23,7 +23,6 @@ import { SarFont } from "../sarFont/SarFont";
 import { TooltipComponent } from "../tooltip/Tooltip";
 import { ProgressIndicator } from "../progressIndicator/ProgressIndicator";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface CardsPreviewModuleProps {
   type: "account" | "cards" | "finance" | "portfolio";
@@ -78,13 +77,12 @@ export const PreviewModule: FC<CardsPreviewModuleProps> = ({
   loading = false,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
 
   const styles = StyleSheet.create({
     container: {
       height: actuatedNormalize(178),
-      width: "100%",
+      width: actuatedNormalize(343), // Figma accounts.view / cards: fixed 343 design width
       borderRadius: radiusL,
       padding: spacingS,
     },
@@ -165,7 +163,7 @@ export const PreviewModule: FC<CardsPreviewModuleProps> = ({
       alignItems: isRtl ? "flex-end" : "flex-start",
     },
     cardsBackground: {
-      ...frame.of(345),
+      width: actuatedNormalize(343),
       height: actuatedNormalize(178),
     },
   });
@@ -173,7 +171,7 @@ export const PreviewModule: FC<CardsPreviewModuleProps> = ({
     <View
       style={{
         height: actuatedNormalize(178),
-        width: "100%",
+        width: actuatedNormalize(343),
         backgroundColor: theme.stylesblockbg,
         display: "flex",
         flexDirection: "column",

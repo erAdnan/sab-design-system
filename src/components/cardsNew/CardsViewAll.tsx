@@ -14,7 +14,6 @@ import { Button, ButtonProps } from "../button/Button";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
 import { NewCurrency } from '../text/NewCurrency';
 import Plus from '../icons/outline/Plus';
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface CardsViewAllProps {
   cardName: "Default" |
@@ -56,7 +55,7 @@ interface CardsViewAllProps {
   "SAIB Generic Card" |
   "STC Generic Card" |
   "Vision Bank Generic Card" |
-  "SAB QatarAirways" |
+  "SAB Qatar Airways" |
   "Premier Top Tier";
   fullCardName?: string;
   fourDigits?: string;
@@ -107,7 +106,6 @@ export const CardsViewAll: React.FC<CardsViewAllProps> = ({
   cardFullnameStyles,
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const isRtl = I18nManager.isRTL;
 
   const cardFullName = useMemo(() => {
@@ -253,7 +251,7 @@ export const CardsViewAll: React.FC<CardsViewAllProps> = ({
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      ...frame.of(150)
+      width: actuatedNormalize(150)
     }
   })
   return (
@@ -331,7 +329,6 @@ export const CardsViewAll: React.FC<CardsViewAllProps> = ({
             </View>
           </View>
         ) : (
-          /*@ts-ignore */
           <CreditCard
             cardName={cardName}
             freeze={state === 'frozen'}
@@ -347,9 +344,6 @@ export const CardsViewAll: React.FC<CardsViewAllProps> = ({
             view="virtual"
             isViewAll
             imageUrl={imageUrl}
-            overrideStyles={{
-             borderRadius: radiusS,
-            }}
           />
         )}
         

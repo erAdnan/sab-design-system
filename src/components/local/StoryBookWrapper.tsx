@@ -19,13 +19,19 @@ export const StoryBookWrapper: FC<StoryBookWrapperProps> = ({
   locale,
   showLanguageSwitcher = Platform.OS !== "web",
 }) => {
-  const { theme } = useTheme();
+  const { theme, isDarkTheme } = useTheme();
   const [arabic, setArabic] = useState(false);
 
   return (
     <View
       style={{
-        backgroundColor: theme.stylesbackground2,
+        // Light (web): transparent so Storybook Backgrounds toolbar can tint the
+        // canvas. Dark: use the theme surface — otherwise light text/icons on a
+        // white page are invisible. On-device always uses the theme surface.
+        backgroundColor:
+          Platform.OS === "web" && !isDarkTheme
+            ? "transparent"
+            : (theme.stylesbackground2 ?? (isDarkTheme ? "#000000" : "#FFFFFF")),
         padding: 16,
         flex: 1,
         width: "100%",
@@ -34,7 +40,7 @@ export const StoryBookWrapper: FC<StoryBookWrapperProps> = ({
         minHeight: "100%",
         height: "100%",
         overflow: "visible",
-        alignSelf: "stretch",
+        alignItems: "center",
       }}
     >
       <LanguageWrapper

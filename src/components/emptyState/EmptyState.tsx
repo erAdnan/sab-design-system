@@ -50,6 +50,7 @@ export const EmptyState: FC<EmptyStateProps> = ({
         subtitleSize={fontMediumLarge}
         subtitleVariant="primarytextcolor2"
         mediumFont={true}
+        centered
         overrideStyles={{
           paddingVertical: 0,
           paddingHorizontal: 0,

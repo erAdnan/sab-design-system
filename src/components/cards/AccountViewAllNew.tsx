@@ -21,7 +21,6 @@ import { useTranslation } from "react-i18next";
 import fonts from "../../assets/styles/constants/fonts";
 import { NewCurrency } from "../text/NewCurrency";
 import { AccountsViewAllSkeletonNew } from "./skeletons/AccountsViewAllSkeletonNew";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 type CardVariant =
   | 'portfolio account'
@@ -226,7 +225,6 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
 }) => {
   const { t } = useTranslation();
   const { theme, isDarkTheme } = useTheme();
-  const frame = useFluidWidth();
   const isCarousel = useMemo(() => type === 'carousel', [type]);
   // Developer can pass either accountNumber or accountNumberShort — show whichever is provided
   const displayAccountNumber = accountNumber || accountNumberShort;
@@ -240,7 +238,7 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
   }, [variant, isCarousel, isDarkTheme]);
   const styles = StyleSheet.create({
     container: {
-      ...frame.of(isCarousel ? 306 : 343),
+      width: isCarousel ? actuatedNormalize(306) : actuatedNormalize(343),
       height: actuatedNormalize(150),
       padding: spacingS,
       backgroundColor: "transparent",
@@ -255,50 +253,29 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
       fontFamily:fonts.HSBC_Medium,
       textAlign: "left", 
       width:"100%",
-      maxWidth: "100%",
-      flexShrink: 1,
-    },
-    textClamp: {
-      width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
-      flexShrink: 1,
-      overflow: "hidden",
     },
     accountInfo: {
       flexDirection: 'column', 
       alignItems: "flex-start", 
       justifyContent: "space-between",
-      flex: 1,
-      minWidth: 0,
-      maxWidth: "100%",
-      overflow: "hidden",
+      flex: 1
     },
     inlineContent: {
       flexDirection:  "row",
       alignItems: "center",
-      gap: spacingXS,
-      maxWidth: "100%",
-      minWidth: 0,
-      flexShrink: 1,
+      gap: spacingXS,      
     },
     topContainer: {
       width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
       flexDirection: "row",
-      flexWrap: "wrap",
       justifyContent: "space-between",
       alignItems: "flex-start", 
-      gap: spacingS,
+      gap: spacingS
     },
     bottomContainer:{
       flexDirection: "column",
       alignItems:"flex-start",
       display:"flex",
-      width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
     },
     balanceWrapper: {
       flexDirection: "row",
@@ -306,12 +283,6 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
       alignItems:"center",
       display:"flex",
       width:"100%",
-      maxWidth: "100%",
-      minWidth: 0,
-    },
-    chipSlot: {
-      flexGrow: 0,
-      flexShrink: 0,
     },
   });
 
@@ -329,7 +300,7 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
   return loading ? (
     <AccountsViewAllSkeletonNew type={type} overrideStyles={overrideStyles} />
   ) : (
-    <TouchableOpacity style={frame.of()} onPress={onIconPress}>
+    <TouchableOpacity onPress={onIconPress}>
       <ImageBackground
         source={bgImage}
         resizeMode="cover"
@@ -338,33 +309,27 @@ export const AccountViewAllNew: FC<AccountViewAllNewProps> = ({
       >
         <View style={styles.topContainer}>
           <View style={styles.accountInfo}>
-            <View style={styles.textClamp}>
-              <Text bold size={fontMediumLarge} overrideStyles={styles.accountName} numberOfLines={numberOfLines} variant="primarytextcolor">
-                {accountName || cardConfig.accountName}
-              </Text>
-            </View>
+            <Text bold size={fontMediumLarge} overrideStyles={styles.accountName} numberOfLines={numberOfLines} variant="primarytextcolor">
+              {accountName || cardConfig.accountName} 
+            </Text>
             <View style={styles.inlineContent}>
             {(displayAccountNumber) && !hideBalance && (
-                <Text size={fontMedium} variant="primarytextcolor2" numberOfLines={1}>
+                <Text size={fontMedium} variant="primarytextcolor2">
                     {displayAccountNumber}
                     </Text>
                         )}
               
-                <View style={[styles.inlineContent,{flexShrink:1, minWidth: 0}]}>
+                <View style={[styles.inlineContent,{flexShrink:1}]}>
                   {verticalLine && !hideBalance && <Text size={fontSmallMedium} variant="primarytextcolor2">|</Text>}
-                  <View style={styles.textClamp}>
-                    <Text size={fontSmallMedium} numberOfLines={1} variant="primarytextcolor2" overrideStyles={{ maxWidth: "100%" }}>
-                      {accountType || cardConfig.accountType}
-                    </Text>
-                  </View>
+                  <Text size={fontSmallMedium} numberOfLines={numberOfLines} variant="primarytextcolor2">
+                    {accountType || cardConfig.accountType} 
+                  </Text>
                 </View>
               
             </View>
           </View>
           {showChipsInfo && (
-            <View style={styles.chipSlot}>
-              <ChipsInfo type="default" pill showIcon={false} label="Label" state="error" {...chipsInfoProps} />
-            </View>
+            <ChipsInfo type="default" pill showIcon={false} label="Label" state="error" {...chipsInfoProps} />
           )}
         </View>
           <View style={styles.bottomContainer}>

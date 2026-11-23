@@ -14,7 +14,6 @@ import { Text } from "../text/Text";
 import { SarFont } from "../sarFont/SarFont";
 import Ellipse from "../icons/functionals/Ellipse";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface ExpensesWidgetProps {
   label: string;
@@ -35,7 +34,6 @@ export const Expenses: FC<ExpensesWidgetProps> = ({
   amount,
   loading = false,
 }) => {
-  const frame = useFluidWidth();
   const styles = StyleSheet.create({
     container: {
       borderRadius: radiusS,
@@ -70,7 +68,7 @@ export const Expenses: FC<ExpensesWidgetProps> = ({
     <ImageThumbnail
       url={require("../../assets/images/expenses_pattern.png")}
       height={actuatedNormalize(143)}
-      width={frame.span}
+      width={actuatedNormalize(343)}
       overrideStyles={styles.container}
       overrideImageStyles={styles.image}
       isAbsolutePath

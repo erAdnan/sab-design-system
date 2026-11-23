@@ -35,7 +35,6 @@ import { Button } from "../button/Button";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
 import More from "../icons/functionals/More";
 import { NewCurrency } from "../text/NewCurrency";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 const LOGO_MORE_THRESHOLD = 3;
 const LOGO_SIZE = actuatedNormalize(36);
@@ -139,7 +138,6 @@ export const BlockButtonNew: FC<BlockButtonNewProps> = ({
   currency="SAR",
 }) => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
 
   const showMoreButton = logos.length >= LOGO_MORE_THRESHOLD;
   const visibleLogos = showMoreButton ? logos.slice(0, 2) : logos;
@@ -149,7 +147,7 @@ export const BlockButtonNew: FC<BlockButtonNewProps> = ({
 
   const styles = StyleSheet.create({
     container: {
-      ...frame.of(344),
+      width: actuatedNormalize(344),
       padding: spacingS,
       flexDirection: "column",
       alignItems: "flex-start",

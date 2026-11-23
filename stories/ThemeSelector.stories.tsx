@@ -1,8 +1,13 @@
+import * as allStories from "./ThemeSelector.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { ThemeSelector } from "../src/components/themeSelector/ThemeSelector";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 
 export default {
-  title: "Components/ThemeSelector",
+  decorators: [centerStoryDecorator],
+  title: "Components/Data Display/ThemeSelector",
   component: ThemeSelector,
+  tags: ["!autodocs"],
 }
 
 export const ThemeSelectorLight = {
@@ -32,3 +37,10 @@ export const ThemeSelectorNationalDay = {
     type: "nationalDay",
   }
 }
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "ThemeSelectorLight",
+    "ThemeSelectorDark",
+    "ThemeSelectorFoundingDay",
+    "ThemeSelectorNationalDay",
+]);

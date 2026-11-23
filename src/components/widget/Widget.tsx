@@ -197,27 +197,19 @@ export const Widget: FC<WidgetProps> = ({
   });
 
   const widgetSize = StyleSheet.create({
+    // Figma Widget-S 163.5×159, Widget-M 163.5×231, Widget-L 163×406 (two columns + 16 gap = 343).
     small: {
-      width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
-      alignSelf: "stretch",
-      height: actuatedNormalize(160),
+      width: actuatedNormalize(163.5),
+      height: actuatedNormalize(159),
       paddingVertical: spacingS,
     },
     medium: {
-      width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
-      alignSelf: "stretch",
-      height: actuatedNormalize(232),
+      width: actuatedNormalize(163.5),
+      height: actuatedNormalize(231),
       paddingVertical: spacingM,
     },
     large: {
-      width: "100%",
-      maxWidth: "100%",
-      minWidth: 0,
-      alignSelf: "stretch",
+      width: actuatedNormalize(163.5),
       height: actuatedNormalize(406),
       paddingVertical: spacingM,
     },

@@ -93,7 +93,7 @@ export const ProductsCardsSummary: FC<ProductsCardsSummaryProps> = ({
       borderRadius: radiusS,
       backgroundColor: theme.stylesblockbg,
       paddingVertical: actuatedNormalize(12),
-      width: "100%",
+      width: actuatedNormalize(343), // Figma products card summary 343
     },
     mainWrapper: {
       display: "flex",

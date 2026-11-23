@@ -2,7 +2,7 @@ import { SkeletonBox } from "../skeleton/SkeletonBox";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
 import React, { ReactElement, FC } from "react";
 import { I18nManager, StyleSheet, TouchableOpacity, View } from "react-native";
-import { radiusS, spacingS, spacingXS, spacingXXS, fontSmallMedium, spacingXXXS, fontXSmall, fontWeightMedium, lineHeightXXSmall } from "../../assets/styles/constants/size";
+import { radiusS, spacingS, spacingXS, spacingXXS, fontSmallMedium, fontMediumLarge, spacingXXXS, fontXSmall, fontWeightMedium, lineHeightXXSmall } from "../../assets/styles/constants/size";
 import { TextTitle } from "../text/TextTitle";
 import { useTheme } from "../../context/theme/themeContext";
 import { Text } from "../text/Text";
@@ -169,6 +169,7 @@ export const NewHubsButtonListItem: FC<NewHubsButtonListItemProps> = ({
         )}
         <View style={styles.textWrapper}>
           <TextTitle
+            size={fontMediumLarge}
             text={title}
             overrideStyles={{ paddingVertical: 0, paddingHorizontal: 0, fontWeight: fontWeightMedium,fontFamily:fonts.HSBC}}
           />

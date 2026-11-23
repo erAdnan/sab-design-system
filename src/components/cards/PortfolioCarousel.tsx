@@ -16,7 +16,6 @@ import { Text } from "../text/Text";
 import { SarFont } from "../sarFont/SarFont";
 import ChevronRight from "../icons/arrows/chevron/ChevronRight";
 import { BaseCardSkeleton } from "./BaseCardSkeleton";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 interface PortfolioCarouselCardProps {
   accountName: string;
@@ -48,7 +47,6 @@ export const PortfolioCarousel: FC<PortfolioCarouselCardProps> = ({
   loading = false,
 }) => {
   const { theme, isDarkTheme } = useTheme();
-  const frame = useFluidWidth();
 
   const background = useMemo(() => {
     return isDarkTheme
@@ -60,7 +58,7 @@ export const PortfolioCarousel: FC<PortfolioCarouselCardProps> = ({
     container: {
       display: "flex",
       flexDirection: "row",
-      ...frame.of(313),
+      width: actuatedNormalize(313),
       height: actuatedNormalize(123),
       padding: spacingS,
       alignItems: "center",
@@ -95,7 +93,7 @@ export const PortfolioCarousel: FC<PortfolioCarouselCardProps> = ({
   });
 
   return loading ? (
-    <BaseCardSkeleton width={frame.span} height={actuatedNormalize(123)} />
+    <BaseCardSkeleton width={actuatedNormalize(313)} height={actuatedNormalize(123)} />
   ) : (
     <ImageBackground
       style={[styles.container, overrideStyles]}

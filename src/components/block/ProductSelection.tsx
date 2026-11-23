@@ -30,7 +30,7 @@ export const ProductSelection: React.FC<ProductSelectionProps> = ({
 
   const styles = StyleSheet.create({
     container: {
-      width: "100%",
+      width: actuatedNormalize(343), // Figma block.product-selection 343×72
       padding: spacingS,
       display: "flex",
       flexDirection: "row",

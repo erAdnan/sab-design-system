@@ -1,0 +1,65 @@
+<style>
+  :root {
+    --sab-red: #db0011;
+    --sab-red-deep: #730014;
+    --sab-red-tonal: rgba(219, 0, 17, 0.1);
+    --sab-navy: #1e2e42;
+    --sab-black: #000000;
+    --sab-gray: #767676;
+    --sab-gray-light: #d7d8d6;
+    --sab-block: #f2f3f4;
+    --sab-border: #eeeeee;
+    --sab-white: #ffffff;
+    --sab-font: "Helvetica Neue", Helvetica, Arial, "Segoe UI", system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--sab-font) !important;
+  }
+
+  /* Pulse logo lockup in the sidebar brand slot (Figma 22021:249826) */
+  .sidebar-header img,
+  [class*="sidebar-header"] img {
+    display: block !important;
+    max-height: 36px !important;
+    height: 36px !important;
+    width: auto !important;
+    max-width: 160px !important;
+  }
+
+  /* Selected story accent rail */
+  a[data-nodetype="story"][data-selected="true"],
+  button[data-nodetype="story"][data-selected="true"] {
+    box-shadow: inset 3px 0 0 var(--sab-red);
+    background: var(--sab-red-tonal) !important;
+    border-radius: 0 6px 6px 0;
+    color: var(--sab-red) !important;
+  }
+
+  /* Keep custom root labels (emoji + casing) — Storybook defaults to uppercase roots. */
+  [data-nodetype="root"] > button {
+    text-transform: none !important;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  [data-nodetype="group"] > button {
+    letter-spacing: 0.02em;
+  }
+
+  .sb-bar,
+  [class*="bar_"] {
+    border-bottom: 1px solid var(--sab-border) !important;
+  }
+
+  :focus-visible {
+    outline-color: var(--sab-red) !important;
+  }
+
+  .os-content::-webkit-scrollbar-thumb {
+    background: var(--sab-gray-light);
+    border-radius: 8px;
+  }
+</style>
+<link rel="icon" type="image/png" href="./pulse-favicon.png" />
+<link rel="shortcut icon" type="image/png" href="./pulse-favicon.png" />

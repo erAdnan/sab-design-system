@@ -15,7 +15,6 @@ export function StorybookVersionBadge() {
         borderRadius: 4,
         backgroundColor: "#161616",
       }}
-      accessibilityLabel={`Design system version ${versionLabel}`}
     >
       <RNText
         style={{

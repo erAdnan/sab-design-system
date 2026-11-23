@@ -1,3 +1,6 @@
+import * as allStories from "./Illustrations.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
+import { centerStoryDecorator } from "../.storybook/centerStoryDecorator";
 import Lock from "../src/components/illustrations/Lock";
 import Pin from "../src/components/illustrations/Pin";
 import { Documents as DocumentsIllustration } from "../src/components/illustrations/Documents";
@@ -50,9 +53,15 @@ import OpenBankingIllustration from "../src/components/illustrations/OpenBanking
 import { SABStore as SABStoreIllustration } from "../src/components/illustrations/SABStore";
 import { SmartMoney as SmartMoneyIllustration } from "../src/components/illustrations/SmartMoney";
 import { TransferMoney as TransferMoneyIllustration } from "../src/components/illustrations/TransferMoney";
+import { foundationsDocsCanvas } from "../.storybook/foundationsDocs";
 
 export default {
-  title: "Components/Illustrations",
+  title: "Foundations/Assets/Illustrations",
+  parameters: {
+    docs: {
+      ...foundationsDocsCanvas,
+    },
+  },
   components: [
     Pin,
     Lock,
@@ -313,3 +322,66 @@ export const TransferMoney = {
 export const NoBeneficiaryFound = {
   render: NoBeneficiaryFoundIllustration
 }
+
+// Every illustration (most are authored at 343 x ~205) as a labelled column at the 343 mobile content width.
+export const AllVariants = {
+  ...createAllVariantsStory(
+    allStories,
+    [
+    "PhoneWithPin",
+    "PhoneWithLock",
+    "Documents",
+    "Location",
+    "TermsAndConditions",
+    "Investments",
+    "HomeFinance",
+    "Installation",
+    "Phone",
+    "FamilyBanking",
+    "PersonalFinance",
+    "ICSAB",
+    "Mortgage",
+    "CurrentAccount",
+    "IslamicCommodity",
+    "GreenDepositAccount",
+    "WaferAccount",
+    "SavingsAccount",
+    "ReferAFriend",
+    "Household",
+    "AutoSearchAddress",
+    "Cards",
+    "ActivateCard",
+    "Budgeting",
+    "SuccessEndProcess",
+    "Spending",
+    "LoungeAccess",
+    "HSBCGlobal",
+    "GiftHappyBirthday",
+    "GiftCongratulations",
+    "GiftVoucher",
+    "Gift",
+    "ErrorMessage",
+    "SuccessMessage",
+    "WarningMessage",
+    "InfoMessage",
+    "Feedback",
+    "ReceivedMail",
+    "ReceivedDoc",
+    "Review",
+    "ConnectionError",
+    "TrafficFines",
+    "VPN",
+    "Learn",
+    "GlobalConnection",
+    "Birthday",
+    "NothingFound",
+    "OpenBanking",
+    "SABStore",
+    "SmartMoney",
+    "TransferMoney",
+    "NoBeneficiaryFound",
+    ],
+    { gap: 32 },
+  ),
+  decorators: [centerStoryDecorator],
+};

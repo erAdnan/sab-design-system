@@ -1,13 +1,15 @@
+import * as allStories from "./Text.stories";
+import { createAllVariantsStory } from "../.storybook/allVariants";
 import { Text } from "../src/components/text/Text";
 import Edit from "../src/components/icons/functionals/Edit";
-import { fontMedium } from "../src/assets/styles/constants/size";
+import { fontMediumLarge } from "../src/assets/styles/constants/size";
 import en from "../src/localization/locales/en";
 import { useStoryCopy } from "./helpers/useStoryCopy";
 
 const SAMPLE_TEXT = en.stories.simpleText;
 
 export default {
-  title: "Components/Text",
+  title: "Components/Layout/Text/Body Text",
   component: Text,
   argTypes: {
     children: { control: "text" },
@@ -20,7 +22,8 @@ export default {
   },
   args: {
     children: SAMPLE_TEXT,
-    size: fontMedium,
+    // Figma text.text: Body 15/20
+    size: fontMediumLarge,
     variant: "primarytextcolor",
     loading: false,
     textWidth: 80,
@@ -85,6 +88,7 @@ export const TextWithBulletPoint = {
   args: {
     children: SAMPLE_TEXT,
     showBulletPoint: true,
+    bulletPointProps: { type: "disc", variant: "primary" },
   },
   argTypes: {
     "bulletPointProps.type": {
@@ -97,3 +101,65 @@ export const TextWithBulletPoint = {
     },
   },
 };
+
+// ---- Figma parity (Text page 8:3574, text.text): Hierarchy x Bullet x Editable x Copyable ----
+export const TextSecondary = {
+  render: TranslatedText,
+  args: {
+    children: SAMPLE_TEXT,
+    variant: "primarytextcolor2",
+  },
+};
+
+export const TextSecondaryEditable = {
+  render: TranslatedText,
+  args: {
+    children: SAMPLE_TEXT,
+    variant: "primarytextcolor2",
+    editable: true,
+  },
+};
+
+export const TextSecondaryCopyable = {
+  render: TranslatedText,
+  args: {
+    children: SAMPLE_TEXT,
+    variant: "primarytextcolor2",
+    copyable: true,
+  },
+};
+
+export const TextSecondaryWithBulletPoint = {
+  render: TranslatedText,
+  args: {
+    children: SAMPLE_TEXT,
+    variant: "primarytextcolor2",
+    showBulletPoint: true,
+    bulletPointProps: { type: "disc", variant: "secondary" },
+  },
+};
+
+export const TextSecondaryWithSuccessBulletPoint = {
+  render: TranslatedText,
+  args: {
+    children: SAMPLE_TEXT,
+    variant: "primarytextcolor2",
+    showBulletPoint: true,
+    bulletPointProps: { type: "success", variant: "secondary" },
+  },
+};
+
+export const AllVariants = createAllVariantsStory(allStories, [
+    "SimpleText",
+    "SimpleTextWithDivider",
+    "TextWithIconLeft",
+    "TextWithIconRigth",
+    "TextCopyable",
+    "TextEditable",
+    "TextWithBulletPoint",
+    "TextSecondary",
+    "TextSecondaryEditable",
+    "TextSecondaryCopyable",
+    "TextSecondaryWithBulletPoint",
+    "TextSecondaryWithSuccessBulletPoint",
+]);

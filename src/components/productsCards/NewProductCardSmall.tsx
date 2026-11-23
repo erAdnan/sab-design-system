@@ -60,7 +60,7 @@ export const NewProductCardSmall: React.FC<NewProductCardSmallProps> = ({
       alignItems: 'flex-start',
       backgroundColor: theme.stylesblockbg,
       height: actuatedNormalize(143),
-      width: actuatedNormalize(110)
+      width: actuatedNormalize(109)
     },
     details: {
       display: 'flex',
@@ -98,7 +98,7 @@ export const NewProductCardSmall: React.FC<NewProductCardSmallProps> = ({
                   shape="square"
                   size="medium"
                   overrideStyles={{
-                    width: actuatedNormalize(110),
+                    width: actuatedNormalize(109),
                     height: actuatedNormalize(64),
                     borderTopLeftRadius: radiusS,
                     borderTopRightRadius: radiusS,
@@ -108,7 +108,7 @@ export const NewProductCardSmall: React.FC<NewProductCardSmallProps> = ({
           <ImageThumbnail
         url={imgProps?.url || require('../../assets/images/merchant_placeholder.png')}
         height={actuatedNormalize(64)}
-        width={actuatedNormalize(110)}
+        width={actuatedNormalize(109)}
         overrideImageStyles={{ borderTopLeftRadius: radiusS, borderTopRightRadius: radiusS,backgroundColor:theme.primarycolor2static  }}
         isAbsolutePath={imgProps?.isAbsolutePath ?? true}
       >

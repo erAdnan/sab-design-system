@@ -13,7 +13,10 @@ import {
   fontSmallMedium,
   heightXl,
   iconS,
+  lineHeightLarge,
+  lineHeightMedium,
   lineHeightMediumLarge,
+  lineHeightSmallMedium,
   radiusL,
   spacingXXS,
 } from "../../assets/styles/constants/size";
@@ -140,6 +143,13 @@ export const Button: FC < ButtonProps > = ({
       backgroundColor: theme.complimentaryprimarycolor3_3 ?? "#730014",
       borderRadius: radiusL
     },
+    // Figma link button: 24px tall, no horizontal padding / min-width, 4px vertical padding.
+    linkGeometry: {
+      height: actuatedNormalize(24),
+      minWidth: 0,
+      paddingHorizontal: 0,
+      paddingVertical: spacingXXS
+    },
     active: {},
     disabledFill: {
       borderColor: theme.primarycolor2_30,
@@ -222,6 +232,18 @@ export const Button: FC < ButtonProps > = ({
   const isLinkButton = useMemo(() => variant === "link", [variant]);
   const isIconButton = useMemo(() => variant === "icon", [variant]);
 
+  // Figma type scale per size: Fill/Outline L 15/20 bold, M 13/17 bold, S 13/17 regular;
+  // Link L 17/22 (Medium weight), M 14/18 (Regular), S 13/17 (Regular); Link Active / Underline = Bold.
+  const textMetrics = useMemo(() => {
+    if (isLinkButton) {
+      if (size === "large") return {fontSize: fontLarge, lineHeight: lineHeightLarge};
+      if (size === "medium") return {fontSize: fontMedium, lineHeight: lineHeightMedium};
+      return {fontSize: fontSmallMedium, lineHeight: lineHeightSmallMedium};
+    }
+    if (size === "large") return {fontSize: fontMediumLarge, lineHeight: lineHeightMediumLarge};
+    return {fontSize: fontSmallMedium, lineHeight: lineHeightSmallMedium};
+  }, [isLinkButton, size]);
+
   const buttonTextColor = useMemo(
     () => {
       if (variant === "fill") {
@@ -267,7 +289,9 @@ export const Button: FC < ButtonProps > = ({
     : activeTextColor}, [disabled, variant, underline, buttonText.variant]);
 
     const compactHitSlop =
-      size === "small"
+      isLinkButton
+        ? { top: 12, bottom: 12, left: 4, right: 4 }
+        : size === "small"
         ? { top: 6, bottom: 6, left: 4, right: 4 }
         : size === "medium"
           ? { top: 2, bottom: 2, left: 2, right: 2 }
@@ -303,7 +327,7 @@ export const Button: FC < ButtonProps > = ({
 
   const linkChevronGap =
     isLinkButton && (linkIconLeft || linkIconRight)
-      ? { gap: spacingXXS }
+      ? { gap: 0 }
       : null;
 
   return loading
@@ -324,6 +348,7 @@ export const Button: FC < ButtonProps > = ({
             ...disabledStyles[color],
             ...disabledStyles[variant],
             ...activeStyles[size],
+            ...(isLinkButton ? activeStyles.linkGeometry : null),
             ...overrideStyles,
           }
           : {
@@ -332,6 +357,7 @@ export const Button: FC < ButtonProps > = ({
             ...activeStyles[color],
             ...activeStyles[variant],
             ...activeStyles[size],
+            ...(isLinkButton ? activeStyles.linkGeometry : null),
             ...overrideStyles,
           }
 } {...getAutomationProps(testID, accessibilityLabel, String(buttonText.children ?? ""))}>
@@ -351,21 +377,19 @@ export const Button: FC < ButtonProps > = ({
         }
 
         {
-             !isIconButton && (<Text size={size === "large"
-              ? fontMediumLarge
-              : isLinkButton
-                ? fontMedium
-                : fontSmallMedium
-} variant={isLinkButton
+             !isIconButton && (<Text size={textMetrics.fontSize} variant={isLinkButton
               ? linkTextColor
-              : buttonTextColor} bold={bold || linkIconLeft || linkIconRight || size === "small" || isLinkButton
-              ? false
-              : true
+              : buttonTextColor} bold={isLinkButton
+              ? (bold || underline)
+              : (bold || linkIconLeft || linkIconRight || size === "small"
+                ? false
+                : true)
 }
+medium={isLinkButton && !bold && !underline && size === "large"}
 numberOfLines={1}
 overrideStyles={{
               ...activeStyles.buttonText,
-              lineHeight: lineHeightMediumLarge,
+              lineHeight: textMetrics.lineHeight,
             }} {...buttonText}>
             {buttonText.children}
           </Text>)

@@ -8,11 +8,9 @@ import {
 } from "../../assets/styles/constants/size";
 import { useTheme } from "../../context/theme/themeContext";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
-import { useFluidWidth } from "../../assets/styles/utils/responsive";
 
 const TagSkeleton = () => {
   const { theme } = useTheme();
-  const frame = useFluidWidth();
   const styles = StyleSheet.create({
     container: {
       backgroundColor: theme.stylesblockbg,
@@ -21,7 +19,7 @@ const TagSkeleton = () => {
       gap: spacingS,
       flexDirection: "row",
       alignItems: "center",
-      ...frame.of(230),
+      width: actuatedNormalize(230),
       height: actuatedNormalize(64),
     },
   });
