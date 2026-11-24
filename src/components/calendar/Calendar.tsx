@@ -47,8 +47,12 @@ import { AutomationProps, getAutomationProps } from "../automationProps";
 /** Figma `_Calendar cell item`: 48×44 */
 const CALENDAR_CELL_WIDTH = actuatedNormalize(48);
 const CALENDAR_CELL_HEIGHT = actuatedNormalize(44);
-/** Figma weekday label width */
+/**
+ * Figma `week range` weekday labels: 40×18, pitched every 48 (8 gap).
+ * Row is inset 4px so 7×40 + 6×8 + 2×4 = 336 (same as day grid).
+ */
 const WEEKDAY_CELL_WIDTH = actuatedNormalize(40);
+const WEEKDAY_ROW_INSET = actuatedNormalize(4);
 const ICON_SIZE = actuatedNormalize(24);
 
 export interface CalendarProps extends AutomationProps {
@@ -299,6 +303,7 @@ export const Calendar: FC<CalendarProps> = ({
                 <Text
                   size={fontMedium}
                   variant="primarytextcolor2"
+                  numberOfLines={1}
                   overrideStyles={styles.weekdayText}
                 >
                   {t(`calendar.weekdays.${key}`)}
@@ -407,6 +412,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: spacingXS,
+    paddingHorizontal: WEEKDAY_ROW_INSET,
   },
   weekdayCell: {
     width: WEEKDAY_CELL_WIDTH,
@@ -416,7 +422,11 @@ const styles = StyleSheet.create({
   weekdayText: {
     lineHeight: lineHeightMedium,
     textAlign: "center",
-  },
+    width: "100%",
+    // Figma short labels (Sun / خميس) stay on one line inside 40dp
+    flexShrink: 0,
+    whiteSpace: "nowrap",
+  } as ViewStyle,
   grid: {
     alignItems: "center",
   },

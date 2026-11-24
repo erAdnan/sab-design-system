@@ -8,16 +8,16 @@ import fonts from "../../assets/styles/constants/fonts";
 import { SkeletonBox } from "../skeleton/SkeletonBox";
 
 interface NewWidgetProps {
-  icon: ReactElement;
-  size: 'small' | 'medium' | 'large' | 'extra-large',
-  color: 'red' | 'neutral' | 'purple' | 'green' | 'amber'
+  icon: ReactElement<any>;
+  size: 'small' | 'medium' | 'large' | 'extra-large';
+  color: 'red' | 'neutral' | 'purple' | 'green' | 'amber';
   headline: string;
   text?: string;
-  loading?: false;
+  loading?: boolean;
   overrideStyles?: any;
   iconWrapper?: any;
   iconColor?: string;
-  headlineProps: TextProps;
+  headlineProps?: TextProps;
 }
 
 /** 
