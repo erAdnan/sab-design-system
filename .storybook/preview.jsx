@@ -111,7 +111,7 @@ const preview = {
           "Rules & Patterns",
           "Guidelines",
           "Journey",
-          "Updating Governance",
+          "Governance ／ Operating Model",
         ];
         const rulesPages = [
           "Documentation",
@@ -150,6 +150,7 @@ const preview = {
           "Basic Screen Construction",
         ];
         const governancePages = [
+          "Operating Model",
           "Governance Model - DS Communication channel",
           "Changelog",
         ];
@@ -384,8 +385,8 @@ const preview = {
               const leafDiff = leafRank(a.title) - leafRank(b.title);
               if (leafDiff !== 0) return leafDiff;
             }
-            // Updating Governance topic order (Figma top → bottom)
-            if (parts(a.title)[1] === "Updating Governance") {
+            // Governance／Operating Model topic order
+            if (parts(a.title)[1] === "Governance ／ Operating Model") {
               const leafRank = (title) => {
                 const leaf = parts(title)[2] || "";
                 const i = governancePages.indexOf(leaf);

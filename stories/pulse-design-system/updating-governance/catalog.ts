@@ -17,12 +17,19 @@ const img = (source: ImageSourcePropType, w: number, h: number): DocImage => ({
   aspectRatio: w / h,
 });
 
-/** Updating Governance pages — Figma node 22021:151701 (top → bottom). */
+/** Fullwidth solidus so Storybook keeps one sidebar group (ASCII `/` would nest). */
+const SECTION = "Pulse Design System/Governance ／ Operating Model";
+
+/** Governance / Operating Model pages. */
 export const UPDATING_GOVERNANCE_PAGES: DocPage[] = [
   {
+    title: "Operating Model",
+    storyTitle: `${SECTION}/Operating Model`,
+    images: [img(require("./assets/operating-model.webp"), 3840, 2160)],
+  },
+  {
     title: "Governance Model - DS Communication channel",
-    storyTitle:
-      "Pulse Design System/Updating Governance/Governance Model - DS Communication channel",
+    storyTitle: `${SECTION}/Governance Model - DS Communication channel`,
     images: [
       img(
         require("./assets/governance-model-ds-communication-channel.webp"),
@@ -33,7 +40,7 @@ export const UPDATING_GOVERNANCE_PAGES: DocPage[] = [
   },
   {
     title: "Changelog",
-    storyTitle: "Pulse Design System/Updating Governance/Changelog",
+    storyTitle: `${SECTION}/Changelog`,
     images: [img(require("./assets/changelog.webp"), 1280, 716)],
   },
 ];

@@ -5,7 +5,7 @@ import { UPDATING_GOVERNANCE_PAGES } from "./catalog";
 const page = UPDATING_GOVERNANCE_PAGES.find((p) => p.title === "Changelog")!;
 
 export default {
-  title: "Pulse Design System/Updating Governance/Changelog",
+  title: "Pulse Design System/Governance ／ Operating Model/Changelog",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -19,7 +19,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Updating Governance"
+      eyebrow="Governance / Operating Model"
       images={page.images}
     />
   ),

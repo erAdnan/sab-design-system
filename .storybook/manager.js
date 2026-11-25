@@ -103,6 +103,11 @@ const SIDEBAR_ROOT_LABELS = {
   Components: "━━━ 🧩 All Components List  🧩 ━━━",
 };
 
+/** Group/item labels where CSF title uses a non-ASCII slash to avoid nesting. */
+const SIDEBAR_ITEM_LABELS = {
+  "Governance ／ Operating Model": "Governance / Operating Model",
+};
+
 /**
  * Web Storybook manager chrome only.
  * On-device Storybook (`.rnstorybook`) has its own UI and does not load this file.
@@ -121,6 +126,9 @@ addons.setConfig({
     renderLabel: (item) => {
       if (item?.type === "root" && SIDEBAR_ROOT_LABELS[item.name]) {
         return SIDEBAR_ROOT_LABELS[item.name];
+      }
+      if (item?.name && SIDEBAR_ITEM_LABELS[item.name]) {
+        return SIDEBAR_ITEM_LABELS[item.name];
       }
       return item?.name;
     },

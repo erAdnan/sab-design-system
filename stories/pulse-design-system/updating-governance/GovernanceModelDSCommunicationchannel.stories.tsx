@@ -8,7 +8,7 @@ const page = UPDATING_GOVERNANCE_PAGES.find(
 
 export default {
   title:
-    "Pulse Design System/Updating Governance/Governance Model - DS Communication channel",
+    "Pulse Design System/Governance ／ Operating Model/Governance Model - DS Communication channel",
   tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -22,7 +22,7 @@ export const Overview = {
   render: () => (
     <FigmaDocPage
       title={page.title}
-      eyebrow="Updating Governance"
+      eyebrow="Governance / Operating Model"
       images={page.images}
     />
   ),
