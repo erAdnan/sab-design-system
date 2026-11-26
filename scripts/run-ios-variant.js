@@ -6,9 +6,10 @@
  *   sb   → scheme SABDS / Debug-SB / com.sabdesignsystem.sb / "SAB DS"
  *   demo → scheme SABDSDemo / Debug / com.sabdesignsystem.demoapp / "SAB DS DemoApp"
  */
-const { execFileSync, spawn, spawnSync } = require("child_process");
+const { execFileSync, spawn } = require("child_process");
 const fs = require("fs");
 const http = require("http");
+const os = require("os");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
@@ -57,12 +58,31 @@ function run(cmd, args, opts = {}) {
   execFileSync(cmd, args, { stdio: "inherit", ...opts });
 }
 
-function which(bin) {
-  const result = spawnSync("command", ["-v", bin], {
-    encoding: "utf8",
-    shell: true,
-  });
-  return result.status === 0 ? result.stdout.trim() : "";
+function isYarnNodeShim(nodePath) {
+  return /\/T\/yarn--[^/]+\/node$/.test(nodePath);
+}
+
+function resolveNodeBinary() {
+  const execPath = process.execPath;
+  if (!execPath || isYarnNodeShim(execPath)) {
+    throw new Error(
+      "Node.js was not found on PATH. Install Node 18+ (Homebrew or nvm) and retry."
+    );
+  }
+
+  try {
+    const real = fs.realpathSync(execPath);
+    if (real && fs.existsSync(real) && !isYarnNodeShim(real)) return real;
+  } catch {
+    // Fall through to the executing binary.
+  }
+
+  if (!fs.existsSync(execPath)) {
+    throw new Error(
+      "Node.js was not found on PATH. Install Node 18+ (Homebrew or nvm) and retry."
+    );
+  }
+  return execPath;
 }
 
 function developerDir() {
@@ -78,12 +98,7 @@ function simulatorAppExists() {
 }
 
 function ensureXcodeNodeBinary() {
-  const nodePath = which("node");
-  if (!nodePath) {
-    throw new Error(
-      "Node.js was not found on PATH. Install Node 18+ (Homebrew or nvm) and retry."
-    );
-  }
+  const nodePath = resolveNodeBinary();
 
   let existing = "";
   if (fs.existsSync(XCODE_ENV_LOCAL)) {
@@ -93,7 +108,9 @@ function ensureXcodeNodeBinary() {
     existing = match ? match[1].trim().replace(/^["']|["']$/g, "") : "";
   }
 
-  if (!existing || !fs.existsSync(existing)) {
+  // Yarn classic puts a temp `node` shell wrapper first on PATH. Xcode keeps
+  // NODE_BINARY after that wrapper is deleted, so never persist it.
+  if (!existing || !fs.existsSync(existing) || isYarnNodeShim(existing)) {
     fs.writeFileSync(XCODE_ENV_LOCAL, `export NODE_BINARY=${nodePath}\n`);
     console.log(`Wrote ios/.xcode.env.local → ${nodePath}`);
   }
@@ -150,18 +167,34 @@ async function startMetroIfNeeded(variant) {
   }
   console.log("Starting Metro...");
   const yarnCmd = process.platform === "win32" ? "yarn.cmd" : "yarn";
+  const logPath = path.join(os.tmpdir(), "sab-metro-ios.log");
+  const logFd = fs.openSync(logPath, "w");
   const metro = spawn(yarnCmd, [variant.metroScript], {
     cwd: ROOT,
     env: { ...process.env },
-    stdio: "ignore",
+    stdio: ["ignore", logFd, logFd],
     detached: true,
   });
+  fs.closeSync(logFd);
+
+  let exited = false;
+  metro.on("exit", () => {
+    exited = true;
+  });
   metro.unref();
+
   for (let i = 0; i < 30; i++) {
+    if (exited) break;
     await new Promise((r) => setTimeout(r, 1000));
     if (await ensureMetro()) return;
   }
-  throw new Error("Metro did not become ready on http://127.0.0.1:8081");
+
+  const log = fs.existsSync(logPath)
+    ? fs.readFileSync(logPath, "utf8").trim().slice(-2000)
+    : "";
+  throw new Error(
+    `Metro did not become ready on http://127.0.0.1:8081${log ? `\n${log}` : ""}`
+  );
 }
 
 function envFor() {

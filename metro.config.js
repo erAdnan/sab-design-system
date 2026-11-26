@@ -2,7 +2,11 @@ require("./scripts/load-app-env");
 
 const { getDefaultConfig, mergeConfig } = require("@react-native/metro-config");
 const path = require("path");
-const withStorybook = require("@storybook/react-native/metro/withStorybook");
+const withStorybookModule = require("@storybook/react-native/metro/withStorybook");
+const withStorybook =
+  typeof withStorybookModule === "function"
+    ? withStorybookModule
+    : withStorybookModule.withStorybook;
 
 const defaultConfig = getDefaultConfig(__dirname);
 const src = path.resolve(__dirname, "src");
