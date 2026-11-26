@@ -7,6 +7,7 @@ import {
 import TextSkeleton from "./TextSkeleton";
 import { useTheme } from "../../context/theme/themeContext";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
+import { withReadingTextAlign } from "../../localization/rtlStyle";
 
 export interface NewCurrencyProps {
   text: string;
@@ -41,7 +42,7 @@ export const NewCurrency: FC<NewCurrencyProps> = ({
       style={fonts.withTrueBoldWeight([
         styles.text,
         { color: variantColor, fontSize: size },
-        textstyle,
+        withReadingTextAlign(textstyle),
       ])}
     >
       {text.split(SAR_CHECK_REGEX).map((part, index) => {
@@ -66,7 +67,7 @@ export const NewCurrency: FC<NewCurrencyProps> = ({
             style={fonts.withTrueBoldWeight([
               styles.text,
               { color: variantColor, fontSize: size },
-              textstyle,
+              withReadingTextAlign(textstyle),
             ])}
           >
             {part}

@@ -8,6 +8,7 @@ import RNRestart from "react-native-restart";
 import { Button } from "../button/Button";
 import { BlurView } from "@react-native-community/blur";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "../../context/theme/themeContext";
 
 interface LanguageWrapperProps {
   children?: React.ReactNode;
@@ -16,6 +17,8 @@ interface LanguageWrapperProps {
   locale?: "en" | "ar" | string;
   /** When false, hide the in-canvas language button (web toolbar handles it). */
   showSwitcher?: boolean;
+  /** Extra header control rendered beside the language button (device theme toggle). */
+  accessory?: React.ReactNode;
 }
 
 export const LanguageWrapper: FC<LanguageWrapperProps> = ({
@@ -23,7 +26,9 @@ export const LanguageWrapper: FC<LanguageWrapperProps> = ({
   setArabic,
   locale,
   showSwitcher = Platform.OS !== "web",
+  accessory,
 }) => {
+  const { theme } = useTheme();
   const [lang, setLang] = useState(LanguageCodes.en);
   const [isSelectLangOpen, setIsSelectLangOpen] = useState(false);
   const { t } = useTranslation();
@@ -80,28 +85,40 @@ export const LanguageWrapper: FC<LanguageWrapperProps> = ({
         width: "100%",
         maxWidth: "100%",
         minWidth: 0,
-        minHeight: "100%",
+        // Web: at least the canvas height so the iframe document can grow and scroll.
+        // Device: allow the story ScrollView to shrink inside the fixed story view.
+        minHeight: Platform.OS === "web" ? "100%" : 0,
         overflow: "visible",
         alignSelf: "stretch",
       }}
     >
-      {showSwitcher ? (
+      {showSwitcher || accessory ? (
         <View
           style={{
-            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
             width: "100%",
             maxWidth: "100%",
-            alignItems: "flex-end",
-            marginBottom: 16,
+            alignItems: "center",
+            justifyContent: "flex-end",
+            gap: 12,
+            paddingHorizontal: 16,
+            paddingVertical: 8,
             alignSelf: "stretch",
+            backgroundColor: theme.stylesblockbg ?? theme.stylesbackground2,
+            borderBottomWidth: StyleSheet.hairlineWidth,
+            borderBottomColor: theme.primarytextcolor2 ?? "#E5E5E5",
           }}
         >
-          <Button
-            size="small"
-            variant="outlined"
-            buttonText={{ children: t("changeLanguage") }}
-            onButtonPress={() => setIsSelectLangOpen(true)}
-          />
+          {accessory}
+          {showSwitcher ? (
+            <Button
+              size="small"
+              variant="outlined"
+              buttonText={{ children: t("changeLanguage") }}
+              onButtonPress={() => setIsSelectLangOpen(true)}
+            />
+          ) : null}
         </View>
       ) : null}
       <Modal
@@ -175,6 +192,7 @@ export const LanguageWrapper: FC<LanguageWrapperProps> = ({
           width: "100%",
           maxWidth: "100%",
           minWidth: 0,
+          minHeight: Platform.OS === "web" ? undefined : 0,
           overflow: "visible",
           alignItems: "stretch",
           alignSelf: "stretch",

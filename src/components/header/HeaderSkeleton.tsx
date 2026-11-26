@@ -1,7 +1,5 @@
 import React, {FC, useMemo} from "react";
 import {useTheme} from "../../context/theme/themeContext";
-import {LanguageCodes} from "../../localization/languages";
-import i18n from "i18next";
 import {I18nManager, Platform, StyleSheet, View} from "react-native";
 import {SkeletonBox} from "../skeleton/SkeletonBox";
 import {actuatedNormalize} from "../../assets/styles/utils/pixelScaling";
@@ -65,88 +63,130 @@ export const HeaderSkeleton: FC < HeaderProps > = ({type, state}) => {
     }
   });
 
-  return (<View style={styles.headerContent}>
-    {
-      type === "link" && (<View style={styles.inlineContent}>
-        <View style={styles.boxContainer}>
-          <SkeletonBox shape="square" size="medium" overrideStyles={styles.squareSmall}/>{" "}
-          {isPostLogin && (<SkeletonBox shape="square" size="medium" overrideStyles={styles.squareSmall}/>)}
+  return (
+    <View style={styles.headerContent}>
+      {type === "link" && (
+        <View style={styles.inlineContent}>
+          <View style={styles.boxContainer}>
+            <SkeletonBox
+              shape="square"
+              size="medium"
+              overrideStyles={styles.squareSmall}
+            />
+            {isPostLogin ? (
+              <SkeletonBox
+                shape="square"
+                size="medium"
+                overrideStyles={styles.squareSmall}
+              />
+            ) : null}
+          </View>
+          <View style={styles.boxContainer}>
+            <SkeletonBox shape="square" size="medium" />
+          </View>
         </View>
-        <View style={styles.boxContainer}>
-          <SkeletonBox shape="square" size="medium"/>
+      )}
+      {type === "level0" && (
+        <View style={styles.inlineContent}>
+          <View style={styles.boxContainer}>
+            <SkeletonBox
+              shape="square"
+              size="medium"
+              overrideStyles={styles.squareSmall}
+            />
+            {isPostLogin ? (
+              <SkeletonBox
+                shape="square"
+                size="medium"
+                overrideStyles={styles.squareSmall}
+              />
+            ) : null}
+          </View>
+          <View style={styles.boxContainer}>
+            <SkeletonBox shape="circle" size="medium" />
+            {isPostLogin ? (
+              <>
+                <SkeletonBox shape="circle" size="medium" />
+                <SkeletonBox shape="circle" size="medium" />
+              </>
+            ) : null}
+          </View>
         </View>
-      </View>)
-    }
-    {
-      type === "level0" && (<View style={styles.inlineContent}>
-        <View style={styles.boxContainer}>
-          <SkeletonBox shape="square" size="medium" overrideStyles={styles.squareSmall}/>{" "}
-          {isPostLogin && (<SkeletonBox shape="square" size="medium" overrideStyles={styles.squareSmall}/>)}
+      )}
+      {type === "level1" && (
+        <View style={styles.inlineContent}>
+          <View style={styles.boxContainer}>
+            <SkeletonBox
+              shape="square"
+              size="medium"
+              overrideStyles={styles.squareSmall}
+            />
+            <SkeletonBox
+              shape="square"
+              size="medium"
+              overrideStyles={styles.squareSmall}
+            />
+          </View>
+          {isPostLogin ? (
+            <View style={styles.boxContainer}>
+              <SkeletonBox shape="circle" size="medium" />
+              <SkeletonBox shape="circle" size="medium" />
+              <SkeletonBox shape="circle" size="medium" />
+            </View>
+          ) : null}
         </View>
-        <View style={styles.boxContainer}>
-          <SkeletonBox shape="circle" size="medium"/>{" "}
-          {
-            isPostLogin && (<> {
-              " "
-            } < SkeletonBox shape = "circle" size = "medium" /> {
-              " "
-            } < SkeletonBox shape = "circle" size = "medium" /> </>)
-          }
+      )}
+      {type === "level1-foryou" && (
+        <View style={styles.inlineContent}>
+          <SkeletonBox
+            shape="square"
+            size="medium"
+            overrideStyles={styles.squareSmall}
+          />
+          <View style={styles.boxContainer}>
+            <SkeletonBox shape="circle" size="medium" />
+            <SkeletonBox shape="circle" size="medium" />
+          </View>
         </View>
-      </View>)
-    }
-    {
-      type === "level1" && (<View style={styles.inlineContent}>
-        <View style={styles.boxContainer}>
-          <SkeletonBox shape="square" size="medium" overrideStyles={styles.squareSmall}/>
-
-          <SkeletonBox shape="square" size="medium" overrideStyles={styles.squareSmall}/>
+      )}
+      {(type === "level2" || type === "search") && (
+        <View style={styles.inlineContent}>
+          <SkeletonBox shape="circle" size="medium" />
+          <SkeletonBox
+            shape="square"
+            size="medium"
+            overrideStyles={styles.squareMedium}
+          />
+          <View style={{ width: 60 }} />
         </View>
-        {
-          isPostLogin && (<View style={styles.boxContainer}>
-            <SkeletonBox shape="circle" size="medium"/>
-            <SkeletonBox shape="circle" size="medium"/>
-            <SkeletonBox shape="circle" size="medium"/>
-          </View>)
-        }
-      </View>)
-    }
-    {
-      type === "level1-foryou" && (<View style={styles.inlineContent}>
-        <SkeletonBox shape="square" size="medium" overrideStyles={styles.squareSmall}/>
-        <View style={styles.boxContainer}>
-          <SkeletonBox shape="circle" size="medium"/>
-          <SkeletonBox shape="circle" size="medium"/>
+      )}
+      {type === "level1-intermediate" && (
+        <View style={styles.inlineContent}>
+          <SkeletonBox shape="circle" size="medium" />
         </View>
-      </View>)
-    }
-    {
-      (type === "level2" || type === "search") && (<View style={styles.inlineContent}>
-        <SkeletonBox shape="circle" size="medium"/>
-        <SkeletonBox shape="square" size="medium" overrideStyles={styles.squareMedium}/>
-        <View style={{
-            width: 60
-          }}></View>
-      </View>)
-    }
-    {
-      type === "level1-intermediate" && (<View style={styles.inlineContent}>
-        <SkeletonBox shape="circle" size="medium"/>
-      </View>)
-    }
-    {
-      type === "authentication" && (<View style={styles.inlineContent}>
-        <View style={{
-            width: 60
-          }}></View>
-        <SkeletonBox shape="square" size="medium" overrideStyles={styles.squareMedium}/>
-        <SkeletonBox shape="circle" size="medium"/>
-      </View>)
-    }
-    {
-      (type === "level1" || type === "level1-foryou" || type === "level1-intermediate") && (<View style={styles.inlineContent}>
-        <SkeletonBox shape="square" size="medium" overrideStyles={styles.squareLarge}/>
-      </View>)
-    }
-  </View>);
+      )}
+      {type === "authentication" && (
+        <View style={styles.inlineContent}>
+          <View style={{ width: 60 }} />
+          <SkeletonBox
+            shape="square"
+            size="medium"
+            overrideStyles={styles.squareMedium}
+          />
+          <SkeletonBox shape="circle" size="medium" />
+        </View>
+      )}
+      {(type === "level1" ||
+        type === "level1-foryou" ||
+        type === "level1-intermediate") && (
+        <View style={styles.inlineContent}>
+          <SkeletonBox
+            shape="square"
+            size="medium"
+            overrideStyles={styles.squareLarge}
+          />
+        </View>
+      )}
+    </View>
+  );
 };

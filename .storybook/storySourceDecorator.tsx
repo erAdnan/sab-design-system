@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import type { Decorator } from "@storybook/react";
+import type { Decorator } from "@storybook/react-webpack5";
 import { ALL_VARIANTS_STORY_NAME } from "./allVariants";
 import { resolveVariantSource, VariantCodePanel } from "./variantSource";
 

@@ -23,6 +23,7 @@ import {
 import { Badge, BadgeProps, BadgeSize, BadgeType } from "../badge/Badge";
 import { TooltipComponent, TooltipProps } from "../tooltip/Tooltip";
 import { NewCurrency } from "./NewCurrency";
+import { withReadingTextAlign } from "../../localization/rtlStyle";
 
 export interface TextDividerProps {
   type?: "Promotional" | "Page Title" | "In Page" | "BottomSheet";
@@ -75,8 +76,8 @@ export const TextDivider: React.FC<TextDividerProps> = ({
 
   // Map type to font sizes & line heights
   const typeStyles = useMemo(() => {
-    const baseHeadline = { fontFamily: fonts.HSBC_Bold , color: theme.primarycolor,textAlign: "left",...(I18nManager.isRTL && { paddingBottom: actuatedNormalize(3) }) };
-    const baseDescription = { fontFamily: fonts.HSBC, fontWeight: fontWeightRegular, color: theme.primarycolor,textAlign: "left",...(I18nManager.isRTL && { paddingBottom: actuatedNormalize(3) }) };
+    const baseHeadline = withReadingTextAlign({ fontFamily: fonts.HSBC_Bold , color: theme.primarycolor,textAlign: "left" as const,...(I18nManager.isRTL && { paddingBottom: actuatedNormalize(3) }) });
+    const baseDescription = withReadingTextAlign({ fontFamily: fonts.HSBC, fontWeight: fontWeightRegular, color: theme.primarycolor,textAlign: "left" as const,...(I18nManager.isRTL && { paddingBottom: actuatedNormalize(3) }) });
 
     const map = {
       Promotional: {

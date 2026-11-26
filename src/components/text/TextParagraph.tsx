@@ -3,6 +3,7 @@ import React from "react";
 import { Pressable, Text as RNText, StyleProp, TextStyle } from "react-native";
 import { useTheme } from "../../context/theme/themeContext";
 import fonts from "../../assets/styles/constants/fonts";
+import { withReadingTextAlign } from "../../localization/rtlStyle";
 
 interface TextParagraphProps {
   mainText: string;
@@ -52,7 +53,7 @@ const TextParagraph: React.FC<TextParagraphProps> = ({
           fontFamily: fonts.HSBC,
           color: theme[variant],
         },
-        mainTextStyle,
+        withReadingTextAlign(mainTextStyle),
       ])}
     >
       {mainText + " "}
@@ -64,7 +65,7 @@ const TextParagraph: React.FC<TextParagraphProps> = ({
             fontFamily: fonts.HSBC,
             color: theme[subVariant],
           },
-          subTextStyle,
+          withReadingTextAlign(subTextStyle),
         ])}
         onPress={onSubTextPress}
         suppressHighlighting={true}

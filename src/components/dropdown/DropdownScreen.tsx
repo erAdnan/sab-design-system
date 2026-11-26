@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useMemo, useRef, useState } from 'react';
-import { FlatList, Modal, StyleSheet, TouchableOpacity, View, Text, TouchableWithoutFeedback, I18nManager } from 'react-native';
+import { Modal, ScrollView, StyleSheet, TouchableOpacity, View, Text, TouchableWithoutFeedback, I18nManager } from 'react-native';
 import { DropdownScreenMenuItem } from './DropdownScreenMenuItem';
 import { DropdownMenuItemProps } from './DropdownMenuItem';
 import { useTheme } from "../../context/theme/themeContext";
@@ -119,15 +119,25 @@ export const DropdownScreen: React.FC<DropdownScreenProps> = ({
                }]}>
                 <View style={styles.shadowWrapper}>
                 <View  style={styles.listContainer}>
-                <FlatList
-                  data={items}
-                  keyExtractor={(_, index) => index.toString()}
-                  renderItem={({ item, index }) => (
-                    <View style={index === items.length - 1 ? styles.lastItemContainer : styles.itemContainer}>
+                {/*
+                  ScrollView instead of FlatList: device Storybook wraps the
+                  canvas in a ScrollView, and Modal still inherits that context,
+                  which makes nested VirtualizedList log a console error.
+                */}
+                <ScrollView
+                  bounces={false}
+                  nestedScrollEnabled
+                  keyboardShouldPersistTaps="handled"
+                >
+                  {items.map((item, index) => (
+                    <View
+                      key={`${String(item.value)}-${index}`}
+                      style={index === items.length - 1 ? styles.lastItemContainer : styles.itemContainer}
+                    >
                       <DropdownScreenMenuItem {...item} onPress={handleItemPress} />
                     </View>
-                  )}
-                />
+                  ))}
+                </ScrollView>
                 </View>
                 </View>
                 

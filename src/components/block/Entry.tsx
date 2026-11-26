@@ -133,7 +133,7 @@ export const Entry: FC<BlockEntryProps> = ({
       {!isTile && (icon ? <View style={styles.iconContainer}>{icon}</View> : null)}
       <View style={styles.textContent}>
       {isTile && (icon ? <View style={styles.iconContainer}>{icon}</View> : null)}
-        <Text size={fontMediumLarge} variant="primarytextcolor" overrideStyles={{...styles.title,marginTop: isTile ? spacingXS : 0}}>
+        <Text size={fontMediumLarge} variant="primarytextcolor" overrideStyles={StyleSheet.flatten([styles.title, { marginTop: isTile ? spacingXS : 0 }])}>
           {title}
         </Text>
         {subtitle && (

@@ -734,7 +734,7 @@ const formattedPostloginLabel2 = useMemo(() => {
                           overrideLabelStyles={{ fontFamily: fonts.HSBC_Bold, color: theme.primarytextcolor4 }}
                         />
                       }
-                      {postloginLabel2 && <Text bold variant={postloginLabelColor} size={fontSmall}>{formattedPostloginLabel2}</Text>}
+                      {postloginLabel2 ? <Text bold variant={postloginLabelColor} size={fontSmall}>{formattedPostloginLabel2}</Text> : null}
                 </View>
               )}
             </View>
@@ -742,7 +742,7 @@ const formattedPostloginLabel2 = useMemo(() => {
           {state === "prelogin" && type === "level1" && showChatbotIcon && (
             <Chat fill={theme.primarytextcolor} />
           )}
-          {isScrollActive && headlineText && (
+          {isScrollActive && headlineText ? (
             // Figma scrolled bar: title centered in the 343 content width (32 side
             // gutters), supporting actions pinned to the trailing edge.
             <View style={[layoutStyles.scrolledTitleWrapper, { paddingHorizontal: spacingL }]} pointerEvents="none">
@@ -760,7 +760,7 @@ const formattedPostloginLabel2 = useMemo(() => {
                 {headlineText}
               </Text>
             </View>
-          )}
+          ) : null}
           {state === "postlogin" ? (
             <View style={[layoutStyles.inlineContent, isScrollActive && layoutStyles.scrolledActions]}>
                 {showCustomIcon && <Pressable onPress={onCustomIconPress} hitSlop={10} {...getAutomationProps(testID ? `${testID}-custom-icon` : undefined, accessibilityLabel ? `${accessibilityLabel}-custom-icon` : undefined, "custom-icon")}>
@@ -1060,7 +1060,7 @@ const formattedPostloginLabel2 = useMemo(() => {
               </Pressable>
             )}
           </View>
-          {headlineText && (
+          {headlineText ? (
             // Compact nav-bar title: centered in the 343 content width (32 side gutters).
             <Animated.View
               style={[layoutStyles.scrolledTitleWrapper, { paddingHorizontal: spacingL }, compactTitleAnim]}
@@ -1075,7 +1075,7 @@ const formattedPostloginLabel2 = useMemo(() => {
                 {headlineText}
               </Text>
             </Animated.View>
-          )}
+          ) : null}
          
           <Animated.View style={[compactTitleAnim,{ flexDirection: "row", gap: spacingXS }]} pointerEvents="none">
           {dynamicFirstSupportIcon}
@@ -1171,7 +1171,7 @@ const formattedPostloginLabel2 = useMemo(() => {
                 </Pressable>
               ))}
           </View>
-          {headlineText && (
+          {headlineText ? (
             <View style={layoutStyles.headlineContentWrapper}>
             <Text
               bold
@@ -1182,8 +1182,7 @@ const formattedPostloginLabel2 = useMemo(() => {
               {headlineText}
             </Text>
             </View>
-            
-          )}
+          ) : null}
           <View style={layoutStyles.inlineContent}>
             {dynamicFirstSupportIcon}
             {dynamicSecondSupportIcon}

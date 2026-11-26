@@ -94,6 +94,7 @@ const loremLine = () => (
         alignItems: "flex-start",
         gap: 8,
         paddingVertical: 8,
+        width: "100%",
       }}
     >
       <View
@@ -126,7 +127,12 @@ const AccordionWithList = (args: any) => {
 };
 
 const AccordionWithContent = (args: any) => (
-  <Accordion {...args} items={[loremLine(), loremLine(), loremLine()]} />
+  <Accordion
+    {...args}
+    items={[0, 1, 2].map((key) => (
+      <View key={key}>{loremLine()}</View>
+    ))}
+  />
 );
 
 export const Default = {

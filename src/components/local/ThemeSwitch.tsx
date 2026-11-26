@@ -3,6 +3,7 @@ import { View } from "react-native";
 import { useTheme } from "../../context/theme/themeContext";
 import { Toggle } from "../toggle/Toggle";
 import { Text } from "../text/Text";
+import { tx } from "../../localization/tx";
 
 interface ThemeSwitchProps {
   overrideStyles?: any;
@@ -36,7 +37,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ overrideStyles }) => {
         zIndex: 9999,
       }, overrideStyles]}
     >
-      <Text overrideStyles={{ marginRight: 5 }}>Dark theme</Text>
+      <Text overrideStyles={{ marginRight: 5 }}>{tx("Dark theme")}</Text>
       <Toggle isEnabled={checkState} handleToggle={handleChange} />
     </View>
   );

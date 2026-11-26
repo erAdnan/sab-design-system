@@ -43,6 +43,7 @@ import { NewCurrency, NewCurrencyProps } from "../text/NewCurrency";
 import { TooltipComponent, TooltipProps } from "../tooltip/Tooltip";
 import fonts from "../../assets/styles/constants/fonts";
 import { AutomationProps, getAutomationProps } from "../automationProps";
+import { readingEdgeAlign } from "../../localization/rtlStyle";
 
 export interface ListItemProps extends AutomationProps {
   label?: TextProps;
@@ -285,7 +286,11 @@ export const ListItem: FC<ListItemProps> = ({
       minWidth: 0,
       alignSelf: "stretch",
     },
-    bodyText: { flexDirection: "column", alignItems: "flex-start", minWidth: 0 },
+    bodyText: {
+      flexDirection: "column",
+      alignItems: isRtl ? "flex-end" : "flex-start",
+      minWidth: 0,
+    },
     withBackground: {
       borderRadius: radiusS,
     },
@@ -643,7 +648,7 @@ export const ListItem: FC<ListItemProps> = ({
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "flex-start",
+                    alignItems: isRtl ? "flex-end" : "flex-start",
                     gap: spacingXXS,
                   }}
                 >
@@ -664,7 +669,7 @@ export const ListItem: FC<ListItemProps> = ({
                     ) : null}
                   </View>
                   {
-                    isSarCheck ? <NewCurrency size={fontMediumLarge} text={valueText.children as string} variant={valueText.variant as string} textstyle={{ fontFamily: fonts.HSBC_Bold, textAlign: "left" }} /> :
+                    isSarCheck ? <NewCurrency size={fontMediumLarge} text={valueText.children as string} variant={valueText.variant as string} textstyle={{ fontFamily: fonts.HSBC_Bold, textAlign: readingEdgeAlign(isRtl) }} /> :
                       <Text
                         {...valueText}
                         bold
@@ -705,8 +710,7 @@ export const ListItem: FC<ListItemProps> = ({
                     paddingVertical: 0,
                     paddingHorizontal: 0,
                     gap: 0,
-                    textAlign: "left",
-                    // textAlign: isRtl ? "right" : "left", hide for  here in the Title.tsx file add writingDirection 
+                    textAlign: readingEdgeAlign(isRtl), 
                     width: isLinkButton ? "90%" : "auto",
                     ...title.overrideStyles,
                   }}
@@ -721,7 +725,7 @@ export const ListItem: FC<ListItemProps> = ({
                     size={fontMedium}
                     variant="primarytextcolor2"
                     numberOfLines={bodyText.numberOfLines ?? 2}
-                    textstyle={{ textAlign: "left" }}
+                    textstyle={{ textAlign: readingEdgeAlign(isRtl) }}
                   />
                 </View>
               )}

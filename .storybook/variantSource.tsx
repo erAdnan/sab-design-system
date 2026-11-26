@@ -7,6 +7,7 @@ import {
   View,
 } from "react-native";
 import { useTheme } from "../src/context/theme/themeContext";
+import { tx } from "../src/localization/tx";
 
 const MONO =
   'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace';
@@ -331,7 +332,7 @@ export const VariantCodePanel = ({
     }
   }, [source.code]);
 
-  const toggleLabel = open ? "Hide code" : "Show code";
+  const toggleLabel = open ? tx("Hide code") : tx("Show code");
   const toggleColor = open ? brandRed : muted;
 
   return (
@@ -386,7 +387,7 @@ export const VariantCodePanel = ({
         <Pressable
           onPress={onCopy}
           accessibilityRole="button"
-          accessibilityLabel="Copy code"
+          accessibilityLabel={tx("Copy code")}
           style={{ flexDirection: "row", alignItems: "center", gap: 6 }}
         >
           <CopyIcon color={copied ? brandRed : muted} />
@@ -397,7 +398,7 @@ export const VariantCodePanel = ({
               fontWeight: "600",
             }}
           >
-            {copied ? "Copied" : "Copy code"}
+            {copied ? tx("Copied") : tx("Copy code")}
           </RNText>
         </Pressable>
 

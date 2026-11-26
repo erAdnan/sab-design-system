@@ -1,6 +1,6 @@
 import React from "react";
 import { Platform, View } from "react-native";
-import type { Decorator } from "@storybook/react";
+import type { Decorator } from "@storybook/react-webpack5";
 
 /**
  * Web Storybook only: PasswordStrength's bar row relies on Yoga giving flex:1

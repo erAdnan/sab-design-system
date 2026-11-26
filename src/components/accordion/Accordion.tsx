@@ -77,14 +77,17 @@ export const Accordion: FC<AccordionProps> = ({
     container: {
       flexDirection: "column",
       justifyContent: "space-between",
-      alignItems: "center",
+      alignItems: "stretch",
       paddingVertical: spacing1XS,
       paddingHorizontal: spacingS,
       backgroundColor: theme.stylesblockbg,
       borderRadius: radiusS,
-      // Figma accordion: fixed 343dp width (scaled via actuatedNormalize), not canvas-stretch.
-      width: actuatedNormalize(343),
+      // Fill the parent (story frame is already capped at the 343 content width).
+      // A fixed 343dp width overflows once the canvas is narrower than that.
+      width: "100%",
       maxWidth: "100%",
+      minWidth: 0,
+      alignSelf: "stretch",
       // Figma open state: 24dp bottom padding below the content / edit action.
       ...(isOpen ? { paddingBottom: spacingM } : null),
     },
@@ -108,6 +111,18 @@ export const Accordion: FC<AccordionProps> = ({
       alignItems: "center",
       gap: spacingXS,
       width: "100%",
+      minWidth: 0,
+    },
+    checkboxSlot: {
+      flexGrow: 0,
+      flexShrink: 0,
+    },
+    // Title takes the leftover width and wraps. Chevron stays in this slot's
+    // trailing edge (ListItem action is flexShrink: 0).
+    titleSlot: {
+      flex: 1,
+      flexShrink: 1,
+      minWidth: 0,
     },
   });
 
@@ -126,57 +141,45 @@ export const Accordion: FC<AccordionProps> = ({
         >
           <View style={styles.titleWrapper}>
             {showCheckbox && checkboxProps && (
-              <Checkbox
-                {...checkboxProps}
-                overrideStyles={{ padding: 0 }}
-                testID={checkboxProps.testID ?? (props.testID ? `${props.testID}-checkbox` : undefined)}
-                accessibilityLabel={
-                  checkboxProps.accessibilityLabel ??
-                  (props.accessibilityLabel ? `${props.accessibilityLabel}-checkbox` : "checkbox")
-                }
-              />
-            )}
-            {showCheckbox ? (
-              <View style={{ flex: 1, minWidth: 0 }}>
-                {/* @ts-ignore */}
-                <ListItem
-                  label={{ children: text, medium: true, numberOfLines: 1 }}
-                  actionType={ListItemActionType.chevron}
-                  handleAction={handleToggle}
-                  overrideStyles={{ paddingHorizontal: 0, paddingVertical: 0, }}
-                  showBackground={false}
-                  showDivider={false}
-                  isOpen={isOpen}
-                  chevronUp
-                  testID={props.testID ? `${props.testID}-toggle` : undefined}
+              <View style={styles.checkboxSlot}>
+                <Checkbox
+                  {...checkboxProps}
+                  overrideStyles={{ padding: 0 }}
+                  testID={checkboxProps.testID ?? (props.testID ? `${props.testID}-checkbox` : undefined)}
                   accessibilityLabel={
-                    props.accessibilityLabel ? `${props.accessibilityLabel}-toggle` : text
+                    checkboxProps.accessibilityLabel ??
+                    (props.accessibilityLabel ? `${props.accessibilityLabel}-checkbox` : "checkbox")
                   }
-                  {...props}
                 />
               </View>
-            ) : (
-              <>
-                {/* @ts-ignore */}
-                <ListItem
-                  label={{ children: text, medium: true, numberOfLines: 1 }}
-                  actionType={ListItemActionType.chevron}
-                  handleAction={handleToggle}
-                  overrideStyles={{ paddingHorizontal: 0, paddingVertical: 0, }}
-                  showBackground={false}
-                  showDivider={false}
-                  isOpen={isOpen}
-                  chevronUp
-                  addonBodyWrapperStyle={{flex: 1.5}}
-                  actionBadgeStyle={{flex: 0.5}}
-                  testID={props.testID ? `${props.testID}-toggle` : undefined}
-                  accessibilityLabel={
-                    props.accessibilityLabel ? `${props.accessibilityLabel}-toggle` : text
-                  }
-                  {...props}
-                />
-              </>
             )}
+            <View style={styles.titleSlot}>
+              {/* @ts-ignore */}
+              <ListItem
+                {...props}
+                label={{ children: text, medium: true, fill: true }}
+                actionType={ListItemActionType.chevron}
+                handleAction={handleToggle}
+                overrideStyles={{
+                  paddingHorizontal: 0,
+                  paddingVertical: 0,
+                  width: "100%",
+                  maxWidth: "100%",
+                  minWidth: 0,
+                  flex: 1,
+                  alignSelf: "stretch",
+                }}
+                showBackground={false}
+                showDivider={false}
+                isOpen={isOpen}
+                chevronUp
+                actionBadgeStyle={{ flexGrow: 0, flexShrink: 0 }}
+                testID={props.testID ? `${props.testID}-toggle` : undefined}
+                accessibilityLabel={
+                  props.accessibilityLabel ? `${props.accessibilityLabel}-toggle` : text
+                }
+              />
+            </View>
           </View>  
         
       </View>

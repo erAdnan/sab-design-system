@@ -1,7 +1,7 @@
 import React from "react";
 import { Text as RNText, View } from "react-native";
 import { useTheme } from "../src/context/theme/themeContext";
-import { deepTranslateArgs } from "../src/localization/tx";
+import { deepTranslateArgs, resolveStoryLocale } from "../src/localization/tx";
 import { MOBILE_CONTENT_WIDTH } from "./mobileContentFrame";
 import {
   resolveVariantSource,
@@ -240,7 +240,7 @@ export const createAllVariantsStory = (module: StoriesModule, order?: string[], 
   },
   render: (_args: any, context: any) => {
     const meta = module.default ?? {};
-    const locale = context?.globals?.locale === "ar" ? "ar" : "en";
+    const locale = resolveStoryLocale(context?.globals?.locale);
     const names = collectStoryNames(module, order, options.exclude);
 
     return (

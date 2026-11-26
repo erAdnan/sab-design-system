@@ -3,6 +3,8 @@ import {
   StyleSheet,
   View,
   I18nManager,
+  StyleProp,
+  TextStyle,
 } from "react-native";
 import React, { FC, ReactElement } from "react";
 import { fontMediumLarge, fontWeightBold, spacing1XS, spacingXS, spacingXXS } from "../../assets/styles/constants/size";
@@ -16,6 +18,7 @@ import fonts from "../../assets/styles/constants/fonts";
 import TextSkeleton from "./TextSkeleton";
 import { Size } from "../../assets/styles";
 import { actuatedNormalize } from "../../assets/styles/utils/pixelScaling";
+import { readingEdgeAlign, withReadingTextAlign } from "../../localization/rtlStyle";
 
 export interface TextProps {
   size?: number | undefined;
@@ -32,6 +35,11 @@ export interface TextProps {
   /** When true, uses Medium font (weight 500) - e.g. for accordion titles */
   medium?: boolean;
   numberOfLines?: number;
+  /**
+   * Stretch to the parent width and wrap. Use inside a row when a sibling
+   * (such as an accordion chevron) must keep its position.
+   */
+  fill?: boolean;
   overrideStyles?: any;
   loading?: boolean;
   textWidth?: number;
@@ -72,6 +80,7 @@ export const Text: FC<TextProps> = ({
   bold = false,
   medium = false,
   numberOfLines,
+  fill = false,
   overrideStyles,
   loading = false,
   textWidth,
@@ -93,6 +102,34 @@ export const Text: FC<TextProps> = ({
   typeof children === "string" ? children : ""
   );
 
+  const overrideList: StyleProp<TextStyle>[] = overrideStyles
+    ? Array.isArray(overrideStyles)
+      ? overrideStyles
+      : [overrideStyles]
+    : [];
+  const flatOverride = (StyleSheet.flatten(overrideList) || {}) as TextStyle;
+  // `flex: 1` on the native Text sets flexBasis 0. On device the wrapper then
+  // measures as empty and the glyphs disappear (web keeps the inline text).
+  // Grow the wrapper instead, and let the text fill that width so it wraps.
+  const wantsFlex = flatOverride.flex != null || flatOverride.flexGrow != null;
+  const textOverrides = wantsFlex
+    ? overrideList.map((style) => {
+        if (style == null || typeof style !== "object" || Array.isArray(style)) {
+          return style;
+        }
+        const { flex: _flex, flexGrow: _flexGrow, flexBasis: _flexBasis, ...rest } =
+          style as TextStyle;
+        return rest;
+      })
+    : overrideList;
+  const flexWrapper = wantsFlex
+    ? {
+        flexGrow: typeof flatOverride.flex === "number" ? flatOverride.flex : (flatOverride.flexGrow ?? 1),
+        flexShrink: flatOverride.flexShrink ?? 1,
+        minWidth: 0,
+      }
+    : null;
+
   return loading ? (
     <TextSkeleton
       numOfLines={loadingNumOfLines}
@@ -104,13 +141,16 @@ export const Text: FC<TextProps> = ({
     <View
       // Always allow the wrapper to shrink inside row parents (RN-web defaults flexShrink to 0,
       // which makes long copy size to max-content and overflow its container instead of wrapping).
-      style={styles.shrinkable}
+      style={[styles.shrinkable, fill ? styles.fill : null, flexWrapper]}
     >
       <View
         style={[
           !isRtl ? styles.textContainer : styles.rtlText,
           showBulletPoint && bulletPointProps ? styles.bulletContainer : null,
           styles.shrinkable,
+          fill ? styles.fill : null,
+          flexWrapper,
+          wantsFlex ? styles.flexText : null,
         ]}
       >
         {showBulletPoint && bulletPointProps && (
@@ -137,15 +177,13 @@ export const Text: FC<TextProps> = ({
               // ...(bold && { fontWeight: fontWeightBold }),
               // paddingBottom: needsFix ? actuatedNormalize(3) : 0,
               writingDirection: isRtl ? "rtl" : "ltr",
+              textAlign: readingEdgeAlign(isRtl),
               flexShrink: 1,
               minWidth: 0,
               maxWidth: "100%",
+              ...(fill || wantsFlex ? { width: "100%" as const } : null),
             },
-            ...(overrideStyles
-              ? Array.isArray(overrideStyles)
-                ? overrideStyles
-                : [overrideStyles]
-              : []),
+            ...textOverrides.map((style) => withReadingTextAlign(style, isRtl)),
           ])}
         >
           {children}
@@ -182,6 +220,19 @@ const styles = StyleSheet.create({
     maxWidth: "100%",
     minWidth: 0,
     flexShrink: 1,
+  },
+  fill: {
+    alignSelf: "stretch",
+    width: "100%",
+    minWidth: 0,
+    flexGrow: 1,
+    flexShrink: 1,
+  },
+  flexText: {
+    flexGrow: 1,
+    flexShrink: 1,
+    minWidth: 0,
+    maxWidth: "100%",
   },
   // Figma text.text with bullet: 12px gap between bullet and text, 4px horizontal padding.
   bulletContainer: {

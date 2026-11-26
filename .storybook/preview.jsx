@@ -9,7 +9,7 @@ import { I18nextProvider } from "react-i18next";
 import { ThemeProvider, useTheme } from "../src/context/theme/themeContext.tsx";
 import { StoryBookWrapper } from "../src/components/local/StoryBookWrapper.tsx";
 import i18n from "../src/localization/i18n";
-import { deepTranslateArgs } from "../src/localization/tx";
+import { deepTranslateArgs, resolveStoryLocale } from "../src/localization/tx";
 import { versionLabel } from "./version";
 import { createSabTheme } from "./createSabTheme";
 import { withStorySourcePanel } from "./storySourceDecorator";
@@ -1234,16 +1234,15 @@ const preview = {
     // Canvas fill — switch from the toolbar "Backgrounds" control.
     // Wrapper is transparent on web so these values show through.
     backgrounds: {
-      default: "White",
-      values: [
-        { name: "White", value: "#FFFFFF" },
-        { name: "Block gray", value: "#F2F3F4" },
-        { name: "Subtle gray", value: "#FAFAFA" },
-        { name: "Light gray", value: "#EEEEEE" },
-        { name: "Red tonal", value: "#FBE5E7" },
-        { name: "Navy", value: "#1E2E42" },
-        { name: "Black", value: "#000000" },
-      ],
+      options: {
+        white: { name: "White", value: "#FFFFFF" },
+        block_gray: { name: "Block gray", value: "#F2F3F4" },
+        subtle_gray: { name: "Subtle gray", value: "#FAFAFA" },
+        light_gray: { name: "Light gray", value: "#EEEEEE" },
+        red_tonal: { name: "Red tonal", value: "#FBE5E7" },
+        navy: { name: "Navy", value: "#1E2E42" },
+        black: { name: "Black", value: "#000000" }
+      }
     },
     docs: {
       theme: createSabTheme(`Pulse Design System ${versionLabel}`),
@@ -1282,6 +1281,10 @@ const preview = {
   initialGlobals: {
     theme: "light",
     locale: "en",
+
+    backgrounds: {
+      value: "white"
+    }
   },
 
   decorators: [
@@ -1292,7 +1295,7 @@ const preview = {
         : context.globals?.theme === "dark"
           ? "dark"
           : "light";
-      const locale = context.globals?.locale === "ar" ? "ar" : "en";
+      const locale = resolveStoryLocale(context.globals?.locale);
 
       // Keep i18n in sync before render so t()/tx() and args translation match the toolbar.
       if (i18n.language !== locale) {

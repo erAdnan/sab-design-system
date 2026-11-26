@@ -153,14 +153,14 @@ export const Features: FC < BlockFeaturesProps > = ({
 
           <Text
             size={fontSmall}
-            overrideStyles={{
-              ...styles.extraContent,
-              ...(isInsights && {
+            overrideStyles={StyleSheet.flatten([
+              styles.extraContent,
+              isInsights && {
                 color: theme.primarytextcolor2,
                 fontFamily: fonts.HSBC,
                 lineHeight: lineHeightSmall,
-              }),
-            }}
+              },
+            ])}
             variant="primarycolor2_100"
           >
             {extraContent}

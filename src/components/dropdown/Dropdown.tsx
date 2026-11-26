@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { DropdownMenuItem, DropdownMenuItemProps } from "./DropdownMenuItem";
 import {
   radiusS,
@@ -98,24 +98,25 @@ export const Dropdown: FC<DropdownProps> = ({
       >
         <DropdownAddon />
       </View>
-      <View style={[styles.listContainer]}>
-        <FlatList
-          style={{ width: "100%" }}
-          data={items}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
-            <DropdownMenuItem
-              {...item}
-              onPress={handleItemPress}
-              active={active}
-              {...getNestedAutomationProps(
-                { testID, accessibilityLabel },
-                String(item.value),
-                item.label
-              )}
-            />
-          )}
-        />
+      <View style={[styles.listContainer, { width: "100%" }]}>
+        {/*
+          Plain map — not FlatList. Device Storybook wraps the canvas in a
+          ScrollView; nesting VirtualizedList there logs a hard console error.
+          Dropdown menus are short, so windowing is unnecessary.
+        */}
+        {items.map((item, index) => (
+          <DropdownMenuItem
+            key={`${String(item.value)}-${index}`}
+            {...item}
+            onPress={handleItemPress}
+            active={active}
+            {...getNestedAutomationProps(
+              { testID, accessibilityLabel },
+              String(item.value),
+              item.label
+            )}
+          />
+        ))}
       </View>
     </View>
   );

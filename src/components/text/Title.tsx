@@ -10,6 +10,7 @@ import fonts from "../../assets/styles/constants/fonts";
 import { Divider } from "../divider/Divider";
 import { fontWeightBold, fontXLG } from "../../assets/styles/constants/size";
 import TextSkeleton from "./TextSkeleton";
+import { readingEdgeAlign, withReadingTextAlign } from "../../localization/rtlStyle";
 
 export interface TitleProps extends TextProps {
   action?: ReactElement;
@@ -80,7 +81,7 @@ export const Title: FC<TitleProps> = ({
             ]}
           >
             {iconLeft && <View>{iconLeft}</View>}
-            {children && (
+            {children != null && children !== "" ? (
               <TextWrapper
                 numberOfLines={numberOfLines}
                 style={fonts.withTrueBoldWeight([
@@ -91,18 +92,19 @@ export const Title: FC<TitleProps> = ({
                     fontFamily: mediumFont ? fonts.HSBC_Medium : fonts.HSBC_Bold,
                     // fontWeight:fontWeightBold,
                     writingDirection: isRtl ? "rtl" : "ltr",
+                    textAlign: centered ? "center" : readingEdgeAlign(isRtl),
                   },
                   ...(overrideStyles
                     ? Array.isArray(overrideStyles)
-                      ? overrideStyles
-                      : [overrideStyles]
+                      ? withReadingTextAlign(overrideStyles, isRtl)
+                      : [withReadingTextAlign(overrideStyles, isRtl)]
                     : []),
                 ])
               }
               >
                 {children}
               </TextWrapper>
-            )}
+            ) : null}
             {iconRight && <View>{iconRight}</View>}
           </View>
           {action && <View>{action}</View>}

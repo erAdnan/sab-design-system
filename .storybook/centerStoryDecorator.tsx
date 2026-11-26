@@ -1,6 +1,6 @@
 import React from "react";
 import { View, type ViewStyle } from "react-native";
-import type { Decorator } from "@storybook/react";
+import type { Decorator } from "@storybook/react-webpack5";
 
 /**
  * Horizontally centers the story (top-aligned on Y).

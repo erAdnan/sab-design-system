@@ -7,8 +7,8 @@ import React, {
 } from "react";
 import {
   Animated,
-  FlatList,
   Modal,
+  ScrollView,
   StyleSheet,
   View,
   TouchableWithoutFeedback,
@@ -171,11 +171,19 @@ export const DropdownBalance: React.FC<DropdownBalanceProps> = ({
 
   const Content = (
     <View style={styles.listContainer}>
-      <FlatList
-        data={items}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({ item, index }) => (
+      {/*
+        ScrollView instead of FlatList: device Storybook wraps the canvas in a
+        ScrollView, and Modal still inherits that context, which makes nested
+        VirtualizedList log a console error.
+      */}
+      <ScrollView
+        bounces={false}
+        nestedScrollEnabled
+        keyboardShouldPersistTaps="handled"
+      >
+        {items.map((item, index) => (
           <View
+            key={`${String(item.value)}-${index}`}
             style={
               index === items.length - 1
                 ? styles.lastItemContainer
@@ -184,8 +192,8 @@ export const DropdownBalance: React.FC<DropdownBalanceProps> = ({
           >
             <DropdownScreenMenuItem {...item} onPress={handleItemPress} />
           </View>
-        )}
-      />
+        ))}
+      </ScrollView>
     </View>
   );
 
